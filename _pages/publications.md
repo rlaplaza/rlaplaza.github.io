@@ -26,7 +26,16 @@ years: [2018, 2019, 2020, 2021, 2022, 2023]
 {% bibliography --query @article %}
 </div>
 
+
+<div class="jumbotron">
+### Refereed book chapters
+{% bibliography --query @inbook %}
+</div>
+
+<!--
 <div class="jumbotron">
 ### Refereed conference proceedings
 {% bibliography --query @inproceedings %}
 </div>
+-->
+
