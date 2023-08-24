@@ -24,7 +24,8 @@ The world of digital chemistry. <br/>
 ### About me
 
 I am a digital chemist with a background in both computational and theoretical chemistry. 
-My current interests combine all three aspects to focus on catalysis and its fundamentals: how to discover new catalysts for more efficient, greener chemical production and energy.
+My current interests combine algorithm and pipeline development with highly automated simulations and experimental data to focus on catalysis.
+Some of the questions I try to answer are "how do we discover new catalysts for a given chemical transformation?" and "how do we define an optimal catalyst in a general way?".
 I received my PhD in 2020 in Sorbonne (Paris, France) under the supervision of Prof. Julia Contreras-Garcia.
 Since October 2023 I've been employed as a postdoctoral researcher at EPFL (Lausanne, Switzerland).
 

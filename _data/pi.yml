@@ -1,21 +1,21 @@
-- name: Dr. Richard Feynman
+- name: Dr. Ruben Laplaza
   photo: headshot.jpg
-  info: Richard C. Tolman Professor, California Institute of Technology
-  email: richard@university.edu
-  github: https://github.com/
-  researchgate: https://www.researchgate.net/
-  scholar: https://scholar.google.com/citations?user=B7vSqZsAAAAJ
+  info: Ruben Laplaza Solanas, Researcher, EPFL
+  email: ruben.laplazasolanas@epfl.ch
+  github: https://github.com/rlaplaza
+  researchgate: https://www.researchgate.net/profile/Ruben-Laplaza
+  scholar: https://scholar.google.com/citations?user=g7m7PwQAAAAJ&hl=es
   cv: cv/cv.pdf
   # Change the number below to the number of "educations" you have (up to 6)
-  number_educ: 2
-  education1: "(1942) Ph.D. Physics, Princeton University"
-  education2: "(1939) B.S. Physics, Massachusetts Institute of Technology"
+  number_educ: 1
+  education1: "(2020) Ph.D. Computational Chemistry, Sorbonne University"
+  # education2: "(2018) B.S. Physics, Massachusetts Institute of Technology"
   # education3: 
   # education4: 
   # education5: 
   # education6: 
-  education1short: (1942) Ph.D. Physics, Princeton
-  education2short: (1939) B.S. Physics, MIT
+  education1short: (2020) Ph.D. Chemistry, Sorbonne U.
+  # education2short: (1939) B.S. Physics, MIT
   # education3short: 
   # education4short: 
   # education5short: 
