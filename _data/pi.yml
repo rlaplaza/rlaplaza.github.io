@@ -9,14 +9,14 @@
   # Change the number below to the number of "educations" you have (up to 6)
   number_educ: 1
   education1: "(2020) Ph.D. Computational Chemistry, Sorbonne University"
-  # education2: "(2018) B.S. Physics, Massachusetts Institute of Technology"
+  education2: "(2018) European Master in Theoretical Chemistry and Computational Modelling, Universidad Autónoma de Madrid and Universidad de Santiago de Compostela"
   # education3: 
   # education4: 
   # education5: 
   # education6: 
-  education1short: (2020) Ph.D. Chemistry, Sorbonne U.
-  # education2short: (1939) B.S. Physics, MIT
-  # education3short: 
+  education1short: (2020) Ph.D. Chemistry, Sorbonne
+  education3short: (2018) ETCCM master, UAM 
+  education3short: (2016) B.S. Chemistry, UNIZAR
   # education4short: 
   # education5short: 
   # education6short: 
