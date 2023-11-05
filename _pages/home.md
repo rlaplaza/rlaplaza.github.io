@@ -14,8 +14,8 @@ As a very young field, it is hard to define exactly what digital chemistry is, b
 <div class="container">
 <div class="row">
 <center>
-<img src="{{ site.url }}{{ site.baseurl }}/images/banner.jpg" width="100%"/><br/>
-The world of digital chemistry. <br/>
+<img src="{{ site.url }}{{ site.baseurl }}/images/banner.png" width="100%"/><br/>
+The world of digital chemistry, according to DALLE3. <br/>
 </center>
 </div>
 </div>
