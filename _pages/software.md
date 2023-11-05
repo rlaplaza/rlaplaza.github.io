@@ -39,7 +39,7 @@ iframe {
 <div class="jumbotron">
 <div class="row align-items-end">
 <div class="col-md-12 col-sm-12">
-<h4><b>Example Software</b></h4>
+<h4><b>libarvo</b></h4>
 <a href="https://github.com/rlaplaza/libarvo" target="_blank"><button class="btn btn-success btn-sm">WEBSITE</button></a>
 <a href="https://github.com/rlaplaza/libarvo" target="_blank"><button class="btn btn-info btn-sm">GIT</button></a>
 
