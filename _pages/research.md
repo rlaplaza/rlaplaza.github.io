@@ -44,5 +44,7 @@ To make things worse, the optimization must often run over a mix of continuous a
 This means that significant effort must be devoted to find robust ways to accomplish this daunting task.
 If a reliable pipeline to catalyst discovery could be established, we would be able to make many widespread industrial processes both greener and more energy and cost efficient.
 
+The way we operate is chiefly through interaction with existing  catalyst discovery, optimization and scale-up processes, and then establishing and improving data integration. 
+We then use that data to push the boundaries of design-make-test cycles.
 </div>
 </div>
