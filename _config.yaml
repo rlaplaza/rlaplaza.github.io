@@ -1,19 +1,19 @@
 # site properties and page defaults
-title: rlaplaza
-subtitle: 
-description: An engaging 1-3 sentence description of your lab.
+title: rlaplaza and crew
+subtitle: at the IIQ in Seville
+description: A lab working on machine learning and computational tools to unveil the secrets of matter
 header: images/background.jpg
 footer: images/background.jpg
 proofer: false
 
 # site social media and other links
 links:
-  email: contact@rlaplaza.com
-  orcid: 0000-0001-8713-9213
-  google-scholar: ETJoidYAAAAJ
+  email: ruben.laplaza@iiq.csic.es
+  orcid: 0000-0001-6315-4398
+  google-scholar: g7m7PwQAAAAJ&hl=es
+  linkedin: rlaplaza
   github: rlaplaza
-  twitter: rlaplaza
-  youtube: rlaplaza
+  twitter: ruben_laplaza
 
 ### jekyll settings
 
