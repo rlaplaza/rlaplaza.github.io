@@ -1,1 +1,1 @@
-Sitemap: https://rlaplaza.github.io/rlaplaza_group_website/sitemap.xml
+Sitemap: https://rlaplaza.github.io/sitemap.xml
