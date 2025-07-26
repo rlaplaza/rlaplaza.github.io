@@ -1,191 +1,676 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
-- id: doi:10.1101/2025.06.19.660613
-  title: Scalable data harmonization for single-cell image-based profiling with CytoTable
+- id: doi:10.1088/2632-2153/adcd38
+  title: Integer linear programming for unsupervised training set selection in molecular
+    machine learning
   authors:
-  - Dave Bunten
-  - Jenna Tomkinson
-  - Erik Serrano
-  - Michael J. Lippincott
-  - Kenneth I. Brewer
-  - Vince Rubinetti
-  - Faisal Alquaddoomi
-  - Gregory P. Way
-  publisher: Cold Spring Harbor Laboratory
-  date: '2025-06-25'
-  link: https://doi.org/g9rfr3
-  orcid: 0000-0002-4655-3773
+  - Matthieu Haeberle
+  - Puck van Gerwen
+  - Ruben Laplaza
+  - Ksenia R Briling
+  - Jan Weinreich
+  - Friedrich Eisenbrand
+  - "Cl\xE9mence Corminboeuf"
+  publisher: 'Machine Learning: Science and Technology'
+  date: '2025-04-30'
+  link: https://doi.org/g9vdnj
+  orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1093/nar/gkad1082
-  title: "The Monarch Initiative in 2024: an analytic platform integrating phenotypes,\
-    \ genes\_and diseases across species"
+- id: doi:10.1021/acscatal.5c00412
+  title: SPOCK Tool for Constructing Empirical Volcano Diagrams from Catalytic Data
   authors:
-  - Tim E Putman
-  - Kevin Schaper
-  - Nicolas Matentzoglu
-  - "Vincent\_P Rubinetti"
-  - "Faisal\_S Alquaddoomi"
-  - Corey Cox
-  - J Harry Caufield
-  - Glass Elsarboukh
-  - Sarah Gehrke
-  - Harshad Hegde
-  - "Justin\_T Reese"
-  - Ian Braun
-  - "Richard\_M Bruskiewich"
-  - Luca Cappelletti
-  - Seth Carbon
-  - "Anita\_R Caron"
-  - "Lauren\_E Chan"
-  - "Christopher\_G Chute"
-  - "Katherina\_G Cortes"
-  - "Vin\xEDcius De\_Souza"
-  - Tommaso Fontana
-  - "Nomi\_L Harris"
-  - "Emily\_L Hartley"
-  - Eric Hurwitz
-  - "Julius\_O B Jacobsen"
-  - Madan Krishnamurthy
-  - "Bryan\_J Laraway"
-  - "James\_A McLaughlin"
-  - "Julie\_A McMurry"
-  - "Sierra\_A T Moxon"
-  - "Kathleen\_R Mullen"
-  - "Shawn\_T O\u2019Neil"
-  - "Kent\_A Shefchek"
-  - Ray Stefancsik
-  - Sabrina Toro
-  - "Nicole\_A Vasilevsky"
-  - "Ramona\_L Walls"
-  - "Patricia\_L Whetzel"
-  - David Osumi-Sutherland
-  - Damian Smedley
-  - "Peter\_N Robinson"
-  - "Christopher\_J Mungall"
-  - "Melissa\_A Haendel"
-  - "Monica\_C Munoz-Torres"
-  publisher: Nucleic Acids Research
-  date: '2023-11-24'
-  link: https://doi.org/gs6kmr
-  orcid: 0000-0002-4655-3773
+  - Manu Suvarna
+  - "Rub\xE9n Laplaza"
+  - Romain Graux
+  - "N\xFAria L\xF3pez"
+  - "Cl\xE9mence Corminboeuf"
+  - Kjell Jorner
+  - "Javier P\xE9rez-Ram\xEDrez"
+  publisher: ACS Catalysis
+  date: '2025-04-18'
+  link: https://doi.org/g9vdnk
+  orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1101/2023.10.11.560955
-  title: Integration of 168,000 samples reveals global patterns of the human gut microbiome
+- id: doi:10.1002/anie.202415056
+  title: "Inverse Design of Singlet\u2010Fission Materials with Uncertainty\u2010\
+    Controlled Genetic Optimization"
   authors:
-  - Richard J. Abdill
-  - Samantha P. Graham
-  - Vincent Rubinetti
-  - Frank W. Albert
-  - Casey S. Greene
-  - Sean Davis
-  - Ran Blekhman
-  publisher: Cold Spring Harbor Laboratory
-  date: '2023-10-11'
-  link: https://doi.org/gsvf5z
-  orcid: 0000-0002-4655-3773
+  - Luca Schaufelberger
+  - J. Terence Blaskovits
+  - Ruben Laplaza
+  - Kjell Jorner
+  - Clemence Corminboeuf
+  publisher: Angewandte Chemie International Edition
+  date: '2024-11-11'
+  link: https://doi.org/g9vdnm
+  orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1093/nar/gkad289
-  title: 'MyGeneset.info: an interactive and programmatic platform for community-curated
-    and user-created collections of genes'
+- id: doi:10.1002/ange.202415056
+  title: "Inverse Design of Singlet\u2010Fission Materials with Uncertainty\u2010\
+    Controlled Genetic Optimization"
   authors:
-  - Ricardo Avila
-  - Vincent Rubinetti
-  - Xinghua Zhou
-  - Dongbo Hu
-  - Zhongchao Qian
-  - Marco Alvarado Cano
-  - Everaldo Rodolpho
-  - Ginger Tsueng
-  - Casey Greene
-  - Chunlei Wu
-  publisher: Nucleic Acids Research
-  date: '2023-04-18'
-  link: https://doi.org/gr5hb5
-  orcid: 0000-0002-4655-3773
+  - Luca Schaufelberger
+  - J. Terence Blaskovits
+  - Ruben Laplaza
+  - Kjell Jorner
+  - Clemence Corminboeuf
+  publisher: Angewandte Chemie
+  date: '2024-11-12'
+  link: https://doi.org/g9vdnn
+  orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1101/2023.01.05.522941
-  title: Hetnet connectivity search provides rapid insights into how two biomedical
-    entities are related
+- id: doi:10.1021/jacs.4c13279
+  title: "Enantiospecific Synthesis of Planar Chiral Rhodium and Iridium Cyclopentadienyl\
+    \ Complexes: Enabling Streamlined and Computer-Guided Access to Highly Selective\
+    \ Catalysts for Asymmetric C\u2013H Functionalizations"
   authors:
-  - Daniel S. Himmelstein
-  - Michael Zietz
-  - Vincent Rubinetti
-  - Kyle Kloster
-  - Benjamin J. Heil
-  - Faisal Alquaddoomi
-  - Dongbo Hu
-  - David N. Nicholson
-  - Yun Hao
-  - Blair D. Sullivan
-  - Michael W. Nagle
-  - Casey S. Greene
-  publisher: Cold Spring Harbor Laboratory
-  date: '2023-01-07'
-  link: https://doi.org/grmcb9
-  orcid: 0000-0002-4655-3773
+  - Young Sebastian Ye
+  - Aragorn Laverny
+  - Matthew D. Wodrich
+  - Ruben Laplaza
+  - Farzaneh Fadaei-Tirani
+  - Rosario Scopelliti
+  - Clemence Corminboeuf
+  - Nicolai Cramer
+  publisher: Journal of the American Chemical Society
+  date: '2024-12-06'
+  link: https://doi.org/g8t4vk
+  orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1093/gigascience/giad047
-  title: Hetnet connectivity search provides rapid insights into how biomedical entities
-    are related
+- id: doi:10.1021/acs.jcim.4c00104
+  title: '3DReact: Geometric Deep Learning for Chemical Reactions'
   authors:
-  - Daniel S Himmelstein
-  - Michael Zietz
-  - Vincent Rubinetti
-  - Kyle Kloster
-  - Benjamin J Heil
-  - Faisal Alquaddoomi
-  - Dongbo Hu
-  - David N Nicholson
-  - Yun Hao
-  - Blair D Sullivan
-  - Michael W Nagle
-  - Casey S Greene
-  publisher: GigaScience
-  date: '2022-12-28'
-  link: https://doi.org/gsd85n
-  orcid: 0000-0002-4655-3773
+  - Puck van Gerwen
+  - Ksenia R. Briling
+  - Charlotte Bunne
+  - Vignesh Ram Somnath
+  - Ruben Laplaza
+  - Andreas Krause
+  - Clemence Corminboeuf
+  publisher: Journal of Chemical Information and Modeling
+  date: '2024-07-15'
+  link: https://doi.org/g9vdnp
+  orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1101/2022.02.18.461833
-  title: 'MolEvolvR: A web-app for characterizing proteins using molecular evolution
-    and phylogeny'
+- id: doi:10.26434/chemrxiv-2024-xzlt9
+  title: Inverse Design of Singlet Fission Materials with Uncertainty-Controlled Genetic
+    Optimization
   authors:
-  - Jacob D Krol
-  - Joseph T Burke
-  - Samuel Z Chen
-  - Lo M Sosinski
-  - Faisal S Alquaddoomi
-  - Evan P Brenner
-  - Ethan P Wolfe
-  - Vincent P Rubinetti
-  - Shaddai Amolitos
-  - Kellen M Reason
-  - John B Johnston
-  - Janani Ravi
-  publisher: Cold Spring Harbor Laboratory
-  date: '2022-02-22'
-  link: https://doi.org/gstx7j
-  orcid: 0000-0002-4655-3773
+  - Luca Schaufelberger
+  - J. Terence Blaskovits
+  - "Rub\xE9n Laplaza"
+  - Kjell Jorner
+  - Clemence Corminboeuf
+  publisher: American Chemical Society (ACS)
+  date: '2024-08-07'
+  link: https://doi.org/gt6rxj
+  orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1186/s13059-020-02021-3
-  title: Compressing gene expression data using multiple latent space dimensionalities
-    learns complementary biological representations
+- id: doi:10.1021/acs.jpclett.4c01657
+  title: Overcoming the Pitfalls of Computing Reaction Selectivity from Ensembles
+    of Transition States
   authors:
-  - Gregory P. Way
-  - Michael Zietz
-  - Vincent Rubinetti
-  - Daniel S. Himmelstein
-  - Casey S. Greene
-  publisher: Genome Biology
-  date: '2020-05-11'
-  link: https://doi.org/gg2mjh
-  orcid: 0000-0002-4655-3773
+  - Ruben Laplaza
+  - Matthew D. Wodrich
+  - Clemence Corminboeuf
+  publisher: The Journal of Physical Chemistry Letters
+  date: '2024-07-11'
+  link: https://doi.org/g9vdnq
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1021/acscatal.4c01175
+  title: Microkinetic Molecular Volcano Plots for Enhanced Catalyst Selectivity and
+    Activity Predictions
+  authors:
+  - Thanapat Worakul
+  - "Rub\xE9n Laplaza"
+  - Shubhajit Das
+  - Matthew D. Wodrich
+  - Clemence Corminboeuf
+  publisher: ACS Catalysis
+  date: '2024-06-17'
+  link: https://doi.org/g9vdnr
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1021/acscatal.4c02452
+  title: Reaction-Agnostic Featurization of Bidentate Ligands for Bayesian Ridge Regression
+    of Enantioselectivity
+  authors:
+  - Alexandre A. Schoepfer
+  - Ruben Laplaza
+  - Matthew D. Wodrich
+  - Jerome Waser
+  - Clemence Corminboeuf
+  publisher: ACS Catalysis
+  date: '2024-06-04'
+  link: https://doi.org/g9vdns
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1021/jacs.4c01890
+  title: Engineering Frustrated Lewis Pair Active Sites in Porous Organic Scaffolds
+    for Catalytic CO<sub>2</sub> Hydrogenation
+  authors:
+  - Shubhajit Das
+  - Ruben Laplaza
+  - J. Terence Blaskovits
+  - "Cl\xE9mence Corminboeuf"
+  publisher: Journal of the American Chemical Society
+  date: '2024-05-30'
+  link: https://doi.org/g9vdnt
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/adma.202305602
+  title: "Data\u2010Driven Discovery of Organic Electronic Materials Enabled by Hybrid\
+    \ Top\u2010Down/Bottom\u2010Up Design"
+  authors:
+  - J. Terence Blaskovits
+  - Ruben Laplaza
+  - Sergi Vela
+  - "Cl\xE9mence Corminboeuf"
+  publisher: Advanced Materials
+  date: '2023-11-23'
+  link: https://doi.org/g9vdnv
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/D3SC06208B
+  title: A genetic optimization strategy with generality in asymmetric organocatalysis
+    as a primary target
+  authors:
+  - Simone Gallarati
+  - Puck van Gerwen
+  - Ruben Laplaza
+  - Lucien Brey
+  - Alexander Makaveev
+  - Clemence Corminboeuf
+  publisher: Chemical Science
+  date: '2024-01-01'
+  link: https://doi.org/g9vdnw
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/D4DD00093E
+  title: Automated prediction of ground state spin for transition metal complexes
+  authors:
+  - Yuri Cho
+  - Ruben Laplaza
+  - Sergi Vela
+  - "Cl\xE9mence Corminboeuf"
+  publisher: Digital Discovery
+  date: '2024-01-01'
+  link: https://doi.org/g9vdnx
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/D4DD00225C
+  title: Cost-informed Bayesian reaction optimization
+  authors:
+  - Alexandre A. Schoepfer
+  - Jan Weinreich
+  - Ruben Laplaza
+  - Jerome Waser
+  - Clemence Corminboeuf
+  publisher: Digital Discovery
+  date: '2024-01-01'
+  link: https://doi.org/g9vdnz
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1088/2632-2153/acee43
+  title: "Reply to Comment on \u2018Physics-based representations for machine learning\
+    \ properties of chemical reactions\u2019"
+  authors:
+  - Puck van Gerwen
+  - Matthew D Wodrich
+  - Ruben Laplaza
+  - Clemence Corminboeuf
+  publisher: 'Machine Learning: Science and Technology'
+  date: '2023-10-06'
+  link: https://doi.org/g9vdn2
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.2533/chimia.2023.139
+  title: Toward in silico Catalyst Optimization
+  authors:
+  - Matthew D. Wodrich
+  - Ruben Laplaza
+  - Nicolai Cramer
+  - Markus Reiher
+  - Clemence Corminboeuf
+  publisher: CHIMIA
+  date: '2023-03-29'
+  link: https://doi.org/g9vdn3
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.2533/chimia.2023.39
+  title: Genetic Algorithms for the Discovery of Homogeneous Catalysts
+  authors:
+  - Simone Gallarati
+  - Puck Van Gerwen
+  - Alexandre A. Schoepfer
+  - Ruben Laplaza
+  - Clemence Corminboeuf
+  publisher: CHIMIA
+  date: '2023-02-22'
+  link: https://doi.org/g9vdn4
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1021/acs.jctc.2c01092
+  title: Extracting Quantitative Information at Quantum Mechanical Level from Noncovalent
+    Interaction Index Analyses
+  authors:
+  - Erna K. Wieduwilt
+  - Roberto A. Boto
+  - Giovanni Macetti
+  - "Rub\xE9n Laplaza"
+  - "Julia Contreras-Garc\xEDa"
+  - Alessandro Genoni
+  publisher: Journal of Chemical Theory and Computation
+  date: '2023-01-19'
+  link: https://doi.org/g9vdn5
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/wcms.1604
+  title: Machine intelligence for chemical reaction space
+  authors:
+  - Philippe Schwaller
+  - Alain C. Vaucher
+  - Ruben Laplaza
+  - Charlotte Bunne
+  - Andreas Krause
+  - Clemence Corminboeuf
+  - Teodoro Laino
+  publisher: WIREs Computational Molecular Science
+  date: '2022-03-07'
+  link: https://doi.org/gpzmgb
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1038/s41524-022-00874-9
+  title: 'cell2mol: encoding chemistry to interpret crystallographic data'
+  authors:
+  - Sergi Vela
+  - Ruben Laplaza
+  - Yuri Cho
+  - "Cl\xE9mence Corminboeuf"
+  publisher: npj Computational Materials
+  date: '2022-08-31'
+  link: https://doi.org/g9vdn6
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/ange.202202727
+  title: Mapping Active Site Geometry to Activity in Immobilized Frustrated Lewis
+    Pair Catalysts
+  authors:
+  - Shubhajit Das
+  - Ruben Laplaza
+  - J. Terence Blaskovits
+  - "Cl\xE9mence Corminboeuf"
+  publisher: Angewandte Chemie
+  date: '2022-05-05'
+  link: https://doi.org/g9vdn7
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/cmtd.202100107
+  title: Genetic Optimization of Homogeneous Catalysts
+  authors:
+  - Ruben Laplaza
+  - Simone Gallarati
+  - Clemence Corminboeuf
+  publisher: "Chemistry\u2013Methods"
+  date: '2022-03-04'
+  link: https://doi.org/hsnw
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1063/5.0085153
+  title: Assessing the persistence of chalcogen bonds in solution with neural network
+    potentials
+  authors:
+  - "Veronika Jur\xE1skov\xE1"
+  - "Frederic C\xE9lerse"
+  - Ruben Laplaza
+  - Clemence Corminboeuf
+  publisher: The Journal of Chemical Physics
+  date: '2022-04-19'
+  link: https://doi.org/g799tz
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/j.comptc.2021.113505
+  title: "Dependence of hydrocarbon sigma CC bond strength on bond angles: The concepts\
+    \ of \u201Cinverted\u201D, \u201Cdirect\u201D and \u201Csuperdirect\u201D bonds"
+  authors:
+  - "Rub\xE9n Laplaza"
+  - Julia Contreras-Garcia
+  - Franck Fuster
+  - "Fran\xE7ois Volatron"
+  - Patrick Chaquin
+  publisher: Computational and Theoretical Chemistry
+  date: '2022-01-01'
+  link: https://doi.org/g9vdn8
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/D2QO00550F
+  title: Harvesting the fragment-based nature of bifunctional organocatalysts to enhance
+    their activity
+  authors:
+  - Simone Gallarati
+  - Ruben Laplaza
+  - Clemence Corminboeuf
+  publisher: Organic Chemistry Frontiers
+  date: '2022-01-01'
+  link: https://doi.org/g9vdn9
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/D2CP03544H
+  title: "Helical <i>versus</i> linear Jahn\u2013Teller distortions in allene and\
+    \ spiropentadiene radical cations"
+  authors:
+  - Marc H. Garner
+  - Ruben Laplaza
+  - Clemence Corminboeuf
+  publisher: Physical Chemistry Chemical Physics
+  date: '2022-01-01'
+  link: https://doi.org/g9vdpb
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/D2SC04251G
+  title: 'OSCAR: an extensive repository of chemically and functionally diverse organocatalysts'
+  authors:
+  - Simone Gallarati
+  - Puck van Gerwen
+  - Ruben Laplaza
+  - Sergi Vela
+  - Alberto Fabrizio
+  - Clemence Corminboeuf
+  publisher: Chemical Science
+  date: '2022-01-01'
+  link: https://doi.org/g9vdpc
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/D2SC01714H
+  title: "The (not so) simple prediction of enantioselectivity \u2013 a pipeline for\
+    \ high-fidelity computations"
+  authors:
+  - "Rub\xE9n Laplaza"
+  - Jan-Grimo Sobez
+  - Matthew D. Wodrich
+  - Markus Reiher
+  - "Cl\xE9mence Corminboeuf"
+  publisher: Chemical Science
+  date: '2022-01-01'
+  link: https://doi.org/g9vdpd
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/jcc.26459
+  title: 'Orbital energies and nuclear forces in <scp>DFT</scp>: Interpretation and
+    validation'
+  authors:
+  - "Rub\xE9n Laplaza"
+  - "Carlos C\xE1rdenas"
+  - Patrick Chaquin
+  - "Julia Contreras\u2010Garc\xEDa"
+  - Paul W. Ayers
+  publisher: Journal of Computational Chemistry
+  date: '2020-12-10'
+  link: https://doi.org/gssgfp
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1107/S010876732109560X
+  title: 'NCI-ELMO: towards a more quantitative description of non-covalent interactions
+    in macromolecules'
+  authors:
+  - Erna Katharina Wieduwilt
+  - "Rub\xE9n Laplaza"
+  - Giovanni Macetti
+  - David Arias-Olivares
+  - Francesca Peccati
+  - "Julia Contreras-Garc\xEDa"
+  - Alessandro Genoni
+  publisher: Acta Crystallographica Section A Foundations and Advances
+  date: '2021-08-14'
+  link: https://doi.org/g9vdpf
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/D1SC00482D
+  title: Reaction-based machine learning representations for predicting the enantioselectivity
+    of organocatalysts
+  authors:
+  - Simone Gallarati
+  - Raimon Fabregat
+  - "Rub\xE9n Laplaza"
+  - Sinjini Bhattacharjee
+  - Matthew D. Wodrich
+  - Clemence Corminboeuf
+  publisher: Chemical Science
+  date: '2021-01-01'
+  link: https://doi.org/gkmwfq
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1155/2021/6673661
+  title: "W196 and the <i>\u03B2</i>\u2010Hairpin Motif Modulate the Redox Switch\
+    \ of Conformation and the Biomolecular Interaction Network of the Apoptosis\u2010\
+    Inducing Factor"
+  authors:
+  - Silvia Romero-Tamayo
+  - Ruben Laplaza
+  - Adrian Velazquez-Campoy
+  - Raquel Villanueva
+  - Milagros Medina
+  - Patricia Ferreira
+  publisher: Oxidative Medicine and Cellular Longevity
+  date: '2021-01-01'
+  link: https://doi.org/g9vdpg
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1021/acs.jctc.0c00063
+  title: 'NCIPLOT4: Fast, Robust, and Quantitative Analysis of Noncovalent Interactions'
+  authors:
+  - Roberto A. Boto
+  - Francesca Peccati
+  - "Rub\xE9n Laplaza"
+  - Chaoyu Quan
+  - Alessandra Carbone
+  - Jean-Philip Piquemal
+  - Yvon Maday
+  - "Julia Contreras-Garc\u0131\u0301a"
+  publisher: Journal of Chemical Theory and Computation
+  date: '2020-05-29'
+  link: https://doi.org/gjs83v
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/chem.201904910
+  title: "The \u201CInverted Bonds\u201D Revisited: Analysis of \u201CIn Silico\u201D\
+    \ Models and of [1.1.1]Propellane by Using Orbital Forces"
+  authors:
+  - "Rub\xE9n Laplaza"
+  - "Julia Contreras\u2010Garcia"
+  - Franck Fuster
+  - "Fran\xE7ois Volatron"
+  - Patrick Chaquin
+  publisher: "Chemistry \u2013 A European Journal"
+  date: '2020-02-06'
+  link: https://doi.org/g9vdph
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1021/acs.jpca.9b10251
+  title: "A Bond Charge Model Ansatz for Intrinsic Bond Energies: Application to C\u2013\
+    C Bonds"
+  authors:
+  - "Rub\xE9n Laplaza"
+  - Victor Polo
+  - "Julia Contreras-Garc\xEDa"
+  publisher: The Journal of Physical Chemistry A
+  date: '2019-12-12'
+  link: https://doi.org/g9vdpj
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/wcms.1497
+  title: <scp>NCIPLOT</scp>and the analysis of noncovalent interactions using the
+    reduced density gradient
+  authors:
+  - "Rub\xE9n Laplaza"
+  - Francesca Peccati
+  - Roberto A. Boto
+  - Chaoyu Quan
+  - Alessandra Carbone
+  - "Jean\u2010Philip Piquemal"
+  - Yvon Maday
+  - "Julia Contreras\u2010Garc\xEDa"
+  publisher: WIREs Computational Molecular Science
+  date: '2020-08-24'
+  link: https://doi.org/gjs832
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/D0CP03359F
+  title: 'Steric clash in real space: biphenyl revisited'
+  authors:
+  - "Rub\xE9n Laplaza"
+  - Roberto A. Boto
+  - "Julia Contreras-Garc\xEDa"
+  - M. Merced Montero-Campillo
+  publisher: Physical Chemistry Chemical Physics
+  date: '2020-01-01'
+  link: https://doi.org/g9vdpk
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1089/ars.2018.7658
+  title: Redox- and Ligand Binding-Dependent Conformational Ensembles in the Human
+    Apoptosis-Inducing Factor Regulate Its Pro-Life and Cell Death Functions
+  authors:
+  - Raquel Villanueva
+  - Silvia Romero-Tamayo
+  - Ruben Laplaza
+  - "Juan Mart\xEDnez-Olivan"
+  - "Adri\xE1n Vel\xE1zquez-Campoy"
+  - Javier Sancho
+  - Patricia Ferreira
+  - Milagros Medina
+  publisher: Antioxidants &amp; Redox Signaling
+  date: '2019-06-20'
+  link: https://doi.org/g9vdpm
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1021/acs.jpcc.8b10510
+  title: 'Overcoming Distrust in Solid State Simulations: Adding Error Bars to Computational
+    Data'
+  authors:
+  - Francesca Peccati
+  - "Rub\xE9n Laplaza"
+  - "Julia Contreras-Garc\xEDa"
+  publisher: The Journal of Physical Chemistry C
+  date: '2019-01-28'
+  link: https://doi.org/g9sfhq
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1080/00268976.2018.1542168
+  title: A bonding evolution theory study on the catalytic Noyori hydrogenation reaction
+  authors:
+  - "Julen Mun\xE1rriz"
+  - Ruben Laplaza
+  - "V\xEDctor Polo"
+  publisher: Molecular Physics
+  date: '2018-11-01'
+  link: https://doi.org/g9vdpn
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/C8CP07509C
+  title: A first step towards quantum energy potentials of electron pairs
+  authors:
+  - "Julen Mun\xE1rriz"
+  - "Rub\xE9n Laplaza"
+  - "A. Mart\xEDn Pend\xE1s"
+  - "Julia Contreras-Garc\xEDa"
+  publisher: Physical Chemistry Chemical Physics
+  date: '2019-01-01'
+  link: https://doi.org/gfvk9n
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/C9CP02806D
+  title: Localizing electron density errors in density functional theory
+  authors:
+  - "Rub\xE9n Laplaza"
+  - Victor Polo
+  - "Julia Contreras-Garc\xEDa"
+  publisher: Physical Chemistry Chemical Physics
+  date: '2019-01-01'
+  link: https://doi.org/g5vd8r
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1021/acs.inorgchem.8b01464
+  title: Proteasome versus Thioredoxin Reductase Competition as Possible Biological
+    Targets in Antitumor Mixed Thiolate-Dithiocarbamate Gold(III) Complexes
+  authors:
+  - Javier Quero
+  - Silvia Cabello
+  - Teresa Fuertes
+  - "In\xE9s M\xE1rmol"
+  - Ruben Laplaza
+  - Victor Polo
+  - "M. Concepci\xF3n Gimeno"
+  - "M. Jes\xFAs Rodriguez-Yoldi"
+  - Elena Cerrada
+  publisher: Inorganic Chemistry
+  date: '2018-08-17'
+  link: https://doi.org/gd9gth
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.3390/molecules23010029
+  title: Identification of Inhibitors Targeting Ferredoxin-NADP+ Reductase from the
+    Xanthomonas citri subsp. citri Phytopathogenic Bacteria
+  authors:
+  - "Marta Mart\xEDnez-J\xFAlvez"
+  - "Guillermina Go\xF1i"
+  - "Daniel P\xE9rez-Amigot"
+  - "Rub\xE9n Laplaza"
+  - Irina Ionescu
+  - Silvana Petrocelli
+  - "Mar\xEDa Tondo"
+  - Javier Sancho
+  - Elena Orellano
+  - Milagros Medina
+  publisher: Molecules
+  date: '2017-12-24'
+  link: https://doi.org/g9vdpp
+  orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
 - id: doi:10.1371/journal.pcbi.1007128
@@ -201,9 +686,6 @@
   publisher: PLOS Computational Biology
   date: '2020-12-04'
   link: https://doi.org/c7np
-  orcid: 0000-0002-4655-3773
-  plugin: sources.py
-  file: sources.yaml
   type: paper
   description: Lorem ipsum _dolor_ **sit amet**, consectetur adipiscing elit, sed
     do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -220,21 +702,8 @@
   - open science
   - collaboration
   repo: greenelab/meta-review
-- id: doi:10.1101/573782
-  title: Sequential compression of gene expression across dimensionalities and methods
-    reveals no single best method or dimensionality
-  authors:
-  - Gregory P. Way
-  - Michael Zietz
-  - Vincent Rubinetti
-  - Daniel S. Himmelstein
-  - Casey S. Greene
-  publisher: Cold Spring Harbor Laboratory
-  date: '2019-03-11'
-  link: https://doi.org/gfxjxf
-  orcid: 0000-0002-4655-3773
-  plugin: orcid.py
-  file: orcid.yaml
+  plugin: sources.py
+  file: sources.yaml
 - id: doi:10.1016/j.csbj.2020.05.017
   title: Constructing knowledge graphs and their biomedical applications
   authors:
