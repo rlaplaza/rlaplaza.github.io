@@ -1,12 +1,13 @@
 ---
 name: Ruben Laplaza
-image: images/photo.jpg
+image: images/ruben-headshot.jpg
 role: principal-investigator
 affiliation: IIQ (US-CSIC)
 aliases:
   - R. Laplaza
   - R Laplaza
   - Rubén Laplaza
+  - Ruben Laplaza
 links:
   home-page: https://rlaplaza.github.io
   orcid: 0000-0001-6315-4398
