@@ -22,7 +22,7 @@ Reach out with any inquiries you may have!
   text="(555) 867-5309"
   link="+1-555-867-5309"
 %}
-{% nocomment %}
+{% endcomment %}
 {%
   include button.html
   type="address"
@@ -76,4 +76,4 @@ sed do eiusmod tempor
 {% endcapture %}
 
 {% include cols.html col1=col1 col2=col2 col3=col3 %}
-{% nocomment %}
+{% endcomment %}
