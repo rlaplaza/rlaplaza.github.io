@@ -1,4 +1,4 @@
-- title: Cool Dataset
+- title: Cool Dataset Placeholder
   subtitle: a subtitle
   group: featured
   image: images/photo.jpg
@@ -8,7 +8,7 @@
   tags:
     - resource
 
-- title: Cool Package
+- title: Cool Package Placeholder
   subtitle: a subtitle
   group: featured
   image: images/photo.jpg
@@ -17,31 +17,3 @@
   repo: greenelab/lab-website-template
   tags:
     - resource
-
-- title: Cool Tutorial
-  subtitle: a subtitle
-  image: images/photo.jpg
-  link: https://github.com/
-  description: Lorem ipsum _dolor sit amet_, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  repo: greenelab/lab-website-template
-  tags:
-    - resource
-    - publication
-
-- title: Cool Web App
-  subtitle: a subtitle
-  image: images/photo.jpg
-  link: https://github.com/
-  description: Lorem ipsum _dolor sit amet_, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  repo: greenelab/lab-website-template
-  tags:
-    - software
-
-- title: Cool Web Server
-  subtitle: a subtitle
-  image: images/photo.jpg
-  link: https://github.com/
-  description: Lorem ipsum _dolor sit amet_, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  repo: greenelab/lab-website-template
-  tags:
-    - software

@@ -1,23 +1,12 @@
-- id: doi:10.1371/journal.pcbi.1007128
+- id: doi:10.1038/s41596-022-00726-2
   type: paper
-  description: Lorem ipsum _dolor_ **sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  date: 2020-12-4
-  image: https://journals.plos.org/ploscompbiol/article/figure/image?size=inline&id=info:doi/10.1371/journal.pcbi.1007128.g001&rev=2
+  description: A tutorial plus software package to construct volcano plots easily! Developed at LCMD in EPFL.
+  date: 2022-08-17
+  image: https://media.springernature.com/w440/springer-static/cover-hires/journal/41596/17/11
   buttons:
-    - type: manubot
-      link: https://greenelab.github.io/meta-review/
     - type: source
-      text: Manuscript Source
-      link: https://github.com/greenelab/meta-review
-    - type: website
-      link: http://manubot.org/
+      text: Get volcanic!
+      link: https://github.com/lcmd-epfl/volcanic
   tags:
     - open science
-    - collaboration
-  repo: greenelab/meta-review
 
-- id: doi:10.1016/j.csbj.2020.05.017
-  image: https://ars.els-cdn.com/content/image/1-s2.0-S2001037020302804-gr1.jpg
-
-- id: doi:10.7554/eLife.32822
-  image: https://iiif.elifesciences.org/lax:32822%2Felife-32822-fig8-v3.tif/full/863,/0/default.webp

@@ -3,9 +3,11 @@
 
 # rlaplaza's Website
 
-An engaging 1-3 sentence description of your lab.
+We do computational chemistry in the broadest possible sense, which includes electronic structure theory and density functional theory, machine learning and high-performance computing, all applied to problems in chemistry and materials science. Our aim is to unveil the secrets of matter and contribute to a greener, better world for everyone. The lab is based in sunny Seville, a gorgeous city in the south of Spain.
 
 {% include section.html %}
+
+{% comment %} 
 
 ## Highlights
 
@@ -79,3 +81,4 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   title="Our Team"
   text=text
 %}
+{% endcomment %} 
