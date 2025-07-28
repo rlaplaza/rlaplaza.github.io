@@ -13,10 +13,8 @@ nav:
 {% include list.html data="members" component="portrait" filter="role == 'pi'" %}
 {% include list.html data="members" component="portrait" filter="role != 'pi'" %}
 
-{% include section.html background="images/background.jpg" dark=true %}
-
 {% comment %} 
-
+{% include section.html background="images/background.jpg" dark=true %}
 {% include section.html %}
 
 {% capture content %}
@@ -26,7 +24,8 @@ nav:
 {% include figure.html image="images/group-photo-3.jpg" %}
 
 {% endcapture %}
+{% include grid.html style="square" content=content %}
 
 {% endcomment %} 
 
-{% include grid.html style="square" content=content %}
+

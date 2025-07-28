@@ -7,7 +7,7 @@ nav:
 
 # {% include icon.html icon="fa-regular fa-envelope" %}Contact
 
-Reach out with any inquiries you may have!
+Reach out with any inquiries you may have! Ruben and crew are (almost!) always happy to discuss science with passionate people.
 
 {%
   include button.html
