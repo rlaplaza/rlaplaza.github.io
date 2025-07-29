@@ -37,6 +37,21 @@ Overleaf templates ensure correct formatting and metadata setup.
 
 Follow the structure provided and don’t override style commands unless necessary.
 
+- In general, I prefer using [Overleaf](https://www.overleaf.com/) for all manuscripts (unless a journal prohibits LaTeX). Use group-maintained Overleaf templates where possible (cover letters, SI, latexdiff, etc.). If you are not sure if there is one, ask me!
+- Use cross-references (`\ref{}`) for figures, tables, sections—**never hard-code numbers**.
+- For versioning: Continue working in one Overleaf project. Backup older versions by copying to separate `.tex` files every now and then, specially before major changes.
+- For reviewer responses: Use `latexdiff` to highlight changes (e.g., for reviewer responses).
+
+### Outline First
+
+Before writing, prepare an outline for discussion with your advisor (i.e., me). The outline should include:
+
+- **Abstract**: 4–8 sentences summarizing the entire paper's message and contributions.
+- **Introduction**: A paragraph-level sketch of background, open questions, and this paper’s specific goals. End with a clear list of 2–4 main contributions.
+- **Figure 1**: Often a schematic or conceptual diagram—draft this early.
+- **Results**: Describe key experiments, figures, and tables. Write draft captions early on—they should be mostly self-contained.
+- **Discussion**: Draft sections for analysis and interpretation, including an explicit **limitations** paragraph if applicable.
+
 ---
 
 ## General Structure of a Scientific Paper
@@ -120,12 +135,11 @@ To clean up `.bib` files, use:
 
 - Use well-labeled figures and tables
 - Avoid clutter in graphs (no rainbow plots, overly small fonts)
-- Refer to every figure/table in the main text
+- Refer to **every** figure/table in the main text
 
-Use tools like:
-- [ChemDraw](https://www.perkinelmer.com/category/chemdraw)
+Recommended tools for figure-making are:
+- [ChemDraw](https://www.perkinelmer.com/category/chemdraw), always with ACS style
 - [Matplotlib](https://matplotlib.org/) / [Plotly](https://plotly.com/)
-- [Affinity Designer](https://affinity.serif.com/en-us/designer/) (for layout work)
 
 ---
 
@@ -140,6 +154,11 @@ Use tools like:
 ---
 
 ## Final Checklist
+
+- Never submit any version (poster, abstract, manuscript) without advisor approval.
+- If deadlines are involved, plan ahead for:
+  - Internal review. It takes me time to review a paper critically and several rounds may (probably will) be necessary.
+  - External collaborator approval — **allow ≥30 days** if needed.
 
 Before submission or feedback, ensure:
 
@@ -176,6 +195,8 @@ Before submission or feedback, ensure:
 - [LaTeX table converter](https://tableconvert.com/) – for tables
 - [LaTeX equation writer](https://latexeditor.lagrida.com/) – for equations
 - [Overleaf LaTeX Tutorials](https://www.overleaf.com/learn)
+- [Data Visualization: A Practical Introduction](https://serialmentor.com/dataviz/)
+- [Multipanel figures](https://stackoverflow.com/questions/44970010/axes-class-set-explicitly-size-width-height-of-axes-in-given-units)
 
 ---
 
