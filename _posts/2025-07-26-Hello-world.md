@@ -1,6 +1,6 @@
 ---
 title: Hello!
-image: images/post.jpg
+image: images/post-1.jpg
 author: rlaplaza
 tags: random, chemistry, computational
 ---

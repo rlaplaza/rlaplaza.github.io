@@ -14,4 +14,4 @@ links:
   github: rlaplaza
 ---
 
-Dr. Rubén Laplaza is a computational chemist specializing in digital chemistry and machine learning applications for catalyst discovery. He completed his PhD in theoretical chemistry at Sorbonne Université and held a postdoctoral position at EPFL, where his research was supported by the Swiss National Science Foundation through NCCR Catalysis. In 2025, he joined the Instituto de Investigaciones Químicas (IIQ) in Seville as a tenured research professor.
+Dr. Rubén Laplaza is a computational chemist specializing in digital chemistry and machine learning applications for catalyst discovery. He completed his PhD in theoretical chemistry at Sorbonne Université under the supervision of Julia Contreras-Garcia and Victor Polo. He then held a postdoctoral position at EPFL in Clemence Corminboeuf's laboratory for computational molecular design, where his research was supported by the Swiss National Science Foundation through NCCR Catalysis. In 2025, he joined the Instituto de Investigaciones Químicas (IIQ) in Seville as a tenured research professor.
