@@ -35,22 +35,21 @@ Use the same font style within **figures and diagrams** to maintain cohesion.
 Use color to **guide attention**, not decorate. Choose a consistent **color scheme** (e.g., red for drawbacks, green for advantages) and **stick to it throughout**.
 
 - Explore color palettes with [Coolors](https://coolors.co/) or [Adobe Color](https://color.adobe.com/create)
-- Ensure your palette is **colorblind-friendly**: [Color Universal Design (CUD)](https://jfly.uni-koeln.de/color/) or [ColorBrewer](https://colorbrewer2.org/)
+- Whenever possible, ensure your palette is **colorblind-friendly**: [Color Universal Design (CUD)](https://jfly.uni-koeln.de/color/) or [ColorBrewer](https://colorbrewer2.org/)
 
 ### Bullets
 
 Bullets organize content visually, but they must be used carefully:
 
-- Don’t use bullets if there's only **one point**.
-- Don’t mix **different types of information** in a single bulleted list.
-- Adjust **bullet spacing** (default spacing is often too wide).
+- Don’t use bullets if there's only **one point**
+- Don’t mix **different types of information** in a single bulleted list
 
 ### Animations
 
 Only use **simple appear/disappear animations** to reveal content progressively. This helps reduce cognitive overload and keeps your audience focused.
 
-- Avoid distracting transitions (spins, fly-ins, etc.).
-- Match your **spoken flow** to your animations.
+- Avoid distracting transitions (spins, fly-ins, etc.)
+- Match your **spoken flow** to your animations
 
 ---
 
@@ -79,27 +78,27 @@ Avoid changing the meaning of colors (e.g., don’t represent the same method in
 
 Less is more. Use **short sentences**, and **simple phrasing**. Try adding **“take-home messages”** at the bottom of each slide.
 
-- General rule: **1 slide per minute** of talk.
-- Speak slowly and enunciate.
-- Prioritize clarity over quantity.
+- General rule: **1 slide per minute** of talk
+- Speak slowly and enunciate
+- Prioritize clarity over quantity
 
 ### Be Scientific
 
 Maintain rigor:
-- Support all claims with references.
-- Label all figures clearly.
-- Introduce abbreviations before use.
-- Avoid cluttered or context-less plots.
+- Support all claims with references
+- Label all figures clearly
+- Introduce abbreviations before use
+- Avoid cluttered or context-less plots
 
 The goal isn’t to impress with complexity but to **communicate your work effectively and maturely**.
 
 ### Be a Storyteller
 
 Don’t list results — **tell a story**:
-- Frame your work as a **logical narrative**.
-- Connect each slide with cause/consequence logic.
-- Use transitions that **bridge one idea to the next**.
-- Consider using a **visual summary** or diagram to orient the audience.
+- Frame your work as a **logical narrative**
+- Connect each slide with cause/consequence logic
+- Use transitions that **bridge one idea to the next**
+- Consider using a **visual summary** or diagram to orient the audience
 
 ---
 
