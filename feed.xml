@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2025-07-29T13:03:21+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Presentation tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html" rel="alternate" type="text/html" title="Presentation tips and tricks" /><published>2025-07-29T00:00:00+00:00</published><updated>2025-07-29T13:01:30+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/Presentation-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html"><![CDATA[<h1 id="scientific-presentation-guidelines">Scientific Presentation Guidelines</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2025-07-29T13:42:20+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Presentation tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html" rel="alternate" type="text/html" title="Presentation tips and tricks" /><published>2025-07-29T00:00:00+00:00</published><updated>2025-07-29T13:40:11+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/Presentation-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html"><![CDATA[<h1 id="scientific-presentation-guidelines">Scientific Presentation Guidelines</h1>
 
 <h2 id="about">About</h2>
 
@@ -31,7 +31,7 @@
 
 <ul>
   <li>Explore color palettes with <a href="https://coolors.co/">Coolors</a> or <a href="https://color.adobe.com/create">Adobe Color</a></li>
-  <li>Ensure your palette is <strong>colorblind-friendly</strong>: <a href="https://jfly.uni-koeln.de/color/">Color Universal Design (CUD)</a> or <a href="https://colorbrewer2.org/">ColorBrewer</a></li>
+  <li>Whenever possible, ensure your palette is <strong>colorblind-friendly</strong>: <a href="https://jfly.uni-koeln.de/color/">Color Universal Design (CUD)</a> or <a href="https://colorbrewer2.org/">ColorBrewer</a></li>
 </ul>
 
 <h3 id="bullets">Bullets</h3>
@@ -39,9 +39,8 @@
 <p>Bullets organize content visually, but they must be used carefully:</p>
 
 <ul>
-  <li>Don’t use bullets if there’s only <strong>one point</strong>.</li>
-  <li>Don’t mix <strong>different types of information</strong> in a single bulleted list.</li>
-  <li>Adjust <strong>bullet spacing</strong> (default spacing is often too wide).</li>
+  <li>Don’t use bullets if there’s only <strong>one point</strong></li>
+  <li>Don’t mix <strong>different types of information</strong> in a single bulleted list</li>
 </ul>
 
 <h3 id="animations">Animations</h3>
@@ -49,8 +48,8 @@
 <p>Only use <strong>simple appear/disappear animations</strong> to reveal content progressively. This helps reduce cognitive overload and keeps your audience focused.</p>
 
 <ul>
-  <li>Avoid distracting transitions (spins, fly-ins, etc.).</li>
-  <li>Match your <strong>spoken flow</strong> to your animations.</li>
+  <li>Avoid distracting transitions (spins, fly-ins, etc.)</li>
+  <li>Match your <strong>spoken flow</strong> to your animations</li>
 </ul>
 
 <hr />
@@ -85,19 +84,19 @@
 <p>Less is more. Use <strong>short sentences</strong>, and <strong>simple phrasing</strong>. Try adding <strong>“take-home messages”</strong> at the bottom of each slide.</p>
 
 <ul>
-  <li>General rule: <strong>1 slide per minute</strong> of talk.</li>
-  <li>Speak slowly and enunciate.</li>
-  <li>Prioritize clarity over quantity.</li>
+  <li>General rule: <strong>1 slide per minute</strong> of talk</li>
+  <li>Speak slowly and enunciate</li>
+  <li>Prioritize clarity over quantity</li>
 </ul>
 
 <h3 id="be-scientific">Be Scientific</h3>
 
 <p>Maintain rigor:</p>
 <ul>
-  <li>Support all claims with references.</li>
-  <li>Label all figures clearly.</li>
-  <li>Introduce abbreviations before use.</li>
-  <li>Avoid cluttered or context-less plots.</li>
+  <li>Support all claims with references</li>
+  <li>Label all figures clearly</li>
+  <li>Introduce abbreviations before use</li>
+  <li>Avoid cluttered or context-less plots</li>
 </ul>
 
 <p>The goal isn’t to impress with complexity but to <strong>communicate your work effectively and maturely</strong>.</p>
@@ -106,10 +105,10 @@
 
 <p>Don’t list results — <strong>tell a story</strong>:</p>
 <ul>
-  <li>Frame your work as a <strong>logical narrative</strong>.</li>
-  <li>Connect each slide with cause/consequence logic.</li>
-  <li>Use transitions that <strong>bridge one idea to the next</strong>.</li>
-  <li>Consider using a <strong>visual summary</strong> or diagram to orient the audience.</li>
+  <li>Frame your work as a <strong>logical narrative</strong></li>
+  <li>Connect each slide with cause/consequence logic</li>
+  <li>Use transitions that <strong>bridge one idea to the next</strong></li>
+  <li>Consider using a <strong>visual summary</strong> or diagram to orient the audience</li>
 </ul>
 
 <hr />
@@ -163,7 +162,7 @@
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Clarity</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Consistency</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />References</li>
-</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Presentation Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hello!</title><link href="https://rlaplaza.github.io/2025/07/26/Hello-world.html" rel="alternate" type="text/html" title="Hello!" /><published>2025-07-26T00:00:00+00:00</published><updated>2025-07-29T13:01:30+00:00</updated><id>https://rlaplaza.github.io/2025/07/26/Hello-world</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/26/Hello-world.html"><![CDATA[<p>Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.</p>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Presentation Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hello!</title><link href="https://rlaplaza.github.io/2025/07/26/Hello-world.html" rel="alternate" type="text/html" title="Hello!" /><published>2025-07-26T00:00:00+00:00</published><updated>2025-07-29T13:40:11+00:00</updated><id>https://rlaplaza.github.io/2025/07/26/Hello-world</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/26/Hello-world.html"><![CDATA[<p>Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.</p>
 
 <p>Seville feels like the kind of city that gets under your skin and refuses to let go. You’ve got one of Europe’s most stunning historic centers right at your doorstep - the cathedral, the Alcázar, those winding medieval streets that seem to lead somewhere magical every time. The food scene is incredible, not just tourist-trap restaurants but real neighborhood bars where locals gather for tapas and conversation that stretches late into the night. The weather means you can actually enjoy outdoor life most of the year, and there’s this infectious energy going on. I guess if you know you know.</p>
 
