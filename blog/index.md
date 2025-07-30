@@ -2,7 +2,7 @@
 title: Blog
 nav:
   order: 4
-  tooltip: Musings and miscellany
+  tooltip: Musings, miscellany and tutorials for group members (and beyond!)
 ---
 
 # {% include icon.html icon="fa-solid fa-feather-pointed" %}Blog

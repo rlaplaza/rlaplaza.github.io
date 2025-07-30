@@ -32,15 +32,17 @@ Links:
 
 Overleaf templates ensure correct formatting and metadata setup.
 
-- **ACS Template:** [Link](https://www.overleaf.com/latex/templates/acs-publishing-template/jngpwwcvzjtv)
-- **RSC Template:** [Link](https://www.overleaf.com/latex/templates/rsc-article-template/fhxhhrxcqzvm)
+Here are some useful ones, but for most journals we will probably have a previous example. For others, you may have to look for the template yourself (if it exists!):
+
+- **ACS Template:** [Link](https://www.overleaf.com/latex/templates/latex-template-for-american-chemical-society-acs-journal-submissions/nzngbcrcptmm)
+- **RSC Template:** [Link](https://www.overleaf.com/latex/templates/tagged/rsc)
 
 Follow the structure provided and don’t override style commands unless necessary.
 
 - In general, I prefer using [Overleaf](https://www.overleaf.com/) for all manuscripts (unless a journal prohibits LaTeX). Use group-maintained Overleaf templates where possible (cover letters, SI, latexdiff, etc.). If you are not sure if there is one, ask me!
 - Use cross-references (`\ref{}`) for figures, tables, sections—**never hard-code numbers**.
 - For versioning: Continue working in one Overleaf project. Backup older versions by copying to separate `.tex` files every now and then, specially before major changes.
-- For reviewer responses: Use `latexdiff` to highlight changes (e.g., for reviewer responses).
+- For reviewer responses: Use `latexdiff` to highlight changes (e.g., for reviewer responses). For the actual answers, we may use [Google docs](https://docs.google.com/) instead.
 
 ### Outline First
 

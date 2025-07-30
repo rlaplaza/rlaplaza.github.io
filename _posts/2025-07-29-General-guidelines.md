@@ -69,11 +69,12 @@ We must adhere to the [FAIR](https://www.go-fair.org/fair-principles/) principle
 
 Staying on top of the relevant literature is essential for any research project:
 
-- **Responsibility**: You are expected to actively monitor the state-of-the-art in your area
+- **Responsibility**: You are expected to actively monitor the state-of-the-art in your (sub)area of work
 - **Avoid redundancy**: Familiarize yourself with existing work to ensure your project is novel
 - **Communication**: Share interesting papers with the group
-- **Summarize**: When possible, summarize main results with bullet points to spark discussion
-- **Google Scholar Alerts**: Set up alerts for keywords and authors relevant to your field ([Guide](https://libguides.mit.edu/c.php?g=175947&p=1158942))
+- **Social Media**: Can be an excellent way of keeping track of what other people are doing, but bear in mind it is designed to be addictive!
+- **Summarize**: When possible, summarize main results with bullet points to spark discussion, and organize those in your ELN
+- **Google Scholar Alerts**: Set up alerts for keywords and authors relevant to your field ([Learn how here](https://instr.iastate.libguides.com/c.php?g=49445&p=6574188))
 - **Reference Manager**: Use tools like [Zotero](https://www.zotero.org/) to organize references and export BibTeX entries directly to Overleaf
 - **Journal Clubs**: Consider forming small groups to review papers informally
 - **Skimming ToCs**: Skim table of contents from key journals
