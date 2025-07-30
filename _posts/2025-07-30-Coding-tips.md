@@ -1,5 +1,5 @@
 ---
-title: Writing tips and tricks
+title: Coding tips and tricks
 image: images/post-tutorial.jpg
 author: rlaplaza
 tags: tutorial, guidelines
