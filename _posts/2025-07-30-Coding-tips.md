@@ -8,11 +8,11 @@ tags: tutorial, guidelines
 # Coding Practices Guidelines
 
 ## Foundation & Learning Resources
-* **Software Carpentry Fundamentals**: Master basic coding practices through [Software Carpentry workshops](https://software-carpentry.org/lessons/) covering Unix shell commands, Git version control, and essential Python programming skills
+* **Software Carpentry Fundamentals**: Master basic coding practices through [Software Carpentry](https://software-carpentry.org/lessons/) and [Coderefinery](https://coderefinery.org/) workshops, covering Unix shell commands, Git version control, and essential Python programming skills. Any time spent learning is well spent!
 * **Scientific Computing Scripting**: Develop proficiency in scripting for scientific computing using resources from the [NSF MolSSI group's comprehensive Python tutorials](https://education.molssi.org/python_scripting_cms/aio/index.html)
 * **Deep Learning Education**: Utilize [d2l.ai resources](https://d2l.ai) for comprehensive deep learning fundamentals, including their preliminaries section and appendix of essential tools
 * **Command Line Editors**: Gain familiarity with standard editors like Vim, Emacs, or Nano to facilitate efficient editing and remote cluster work; [MIT's IAP "Missing Semester" class](https://missing.csail.mit.edu) provides excellent guidance on these tools and other essential development utilities
-* **Every Day Life**: I recommend using a good IDE, such as VSCode, which also has [python tutorials](https://code.visualstudio.com/docs/python/python-tutorial) and integration with LLMs
+* **Every Day Life**: I recommend using a good IDE, such as VSCode, which also has [python tutorials](https://code.visualstudio.com/docs/python/python-tutorial) and integration with LLMs. Whatever tools you choose to use every day, you should get to know *in depth!* 
 
 ## Python Development Standards
 * **Code Style & Quality**: We do most of our coding in python. Adhere to [PEP 8 guidelines](https://realpython.com/python-pep8/) for Python code formatting and use automated tools like Pylint, Google's yapf, black, or Sublime Text's AutoPEP8 to maintain consistent style standards
@@ -37,5 +37,12 @@ tags: tutorial, guidelines
 ## Modern Development Tools
 * **AI-Assisted Coding**: Embrace large language model assistants like GitHub Copilot for code generation, while maintaining responsibility for understanding, testing, and validating all generated code
 * **Code Accountability**: Ensure you can explain and verify any AI-generated code through appropriate testing and remain fully accountable for the final software product
+
+## Resources
+
+- [Advanced bash course](https://github.com/mfherbst/bash-course) by the fantastic [Michael Herbst](https://michael-herbst.com/)
+
+
+---
 
 
