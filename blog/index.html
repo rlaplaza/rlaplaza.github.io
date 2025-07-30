@@ -672,13 +672,85 @@
     
 
     
-      <a href="/2025/07/30/Coding-tips.html" class="post-excerpt-image" aria-label="Writing tips and tricks">
-        <img src="/images/post-tutorial.jpg" alt="Writing tips and tricks" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
+      <a href="/2025/07/30/Git-tips.html" class="post-excerpt-image" aria-label="Git tips and tricks">
+        <img src="/images/post-tutorial.jpg" alt="Git tips and tricks" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
       </a>
     
 
     <div class="post-excerpt-text">
-      <a href="/2025/07/30/Coding-tips.html">Writing tips and tricks</a>
+      <a href="/2025/07/30/Git-tips.html">Git tips and tricks</a>
+
+      <div class="post-info">
+  
+    
+    
+      
+      
+        <span data-tooltip="Author">
+          <i class="icon fa-solid fa-feather-pointed"></i>
+          <span>rlaplaza</span>
+        </span>
+      
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>July 30, 2025</span>
+    </span>
+  
+
+  
+</div>
+
+
+  
+
+
+  <div class="tags">
+    
+      <a href="/blog?search=%22tag:%20tutorial%22" class="tag" data-tooltip='Show items with the tag "tutorial"'>
+        tutorial
+      </a>
+    
+      <a href="/blog?search=%22tag:%20guidelines%22" class="tag" data-tooltip='Show items with the tag "guidelines"'>
+        guidelines
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Basic Git amp; GitHub Guide for Scientific ProjectsAboutThis guide is for beginners who are new to Git and GitHub. It walks you through the process of setting up Git on your computer, creating a GitHub account, learning basic commands, and joining a GitHub organization e.g., rlaplaza-lab .Step 1: Create a GitHub Account Go to https: github.com Click Sign up Choose a username, enter your email, and create a secure password Verify your email and follow the on-screen instructionsStep 2: Install GitOn macOSUse Homebrew:brew install gitOn Ubuntu Debiansudo apt updatesudo apt install gitOn WindowsDownload from the official site: https: git-scm.com download winFollow the installer with default settings.Step 3: Set Up GitOpen your terminal or Git Bash and configure Git with your name and email:git config --global user.name Your Full Name git config --global user.email your email.com You can check the configuration with:git config --listStep 4: Generate an SSH Key Optional but Recommended This allows you to securely connect to GitHub.ssh-keygen -t ed25519 -C your email.com Then add your key to the SSH agent:eval ssh-agent -s ssh-add .ssh id ed25519Copy your SSH public key:cat .ssh id ed25519.pubGo to GitHub SSH settings, click New SSH key , and paste the key there.Step 5: Request Access to rlaplaza-lab Contact Ruben and share your GitHub username They will invite you to the rlaplaza-lab GitHub organization Accept the invitation via email or at https: github.com orgs rlaplaza-labStep 6: Clone a RepositoryOnce you have access to a repository, you can clone it to your computer:git clone git github.com:rlaplaza-lab project-name.gitOr with HTTPS:git clone https: github.com rlaplaza-lab project-name.gitStep 7: Basic Git CommandsCheck project statusgit statusAdd changes to stagingStaging is a temporary location that stores the changes you are going to do to the repository kinda . Adding changes to staging is necessary to let git know that the changes you made are things you want to change in the repo.git add filename.pyOr add everything:git add .Commit changes with a messageA commit is a snapshot of the repository kinda . Once you have all the changes you want added in staging , you make a commit with all those.git commit -m Describe your changes clearly Push changes to GitHubNow, we can put our commit in the original repo upstream branch .git pushPull latest changes from GitHubWe can also get the latest commit from the upstream branch. Of course, it is possible to change the branch we push and pull from, but we dont cover it here.git pullStep 8: Best Practices Commit often with clear messages Use branches for new features or experiments: git checkout -b new-feature Keep your main or master branch clean Pull often to avoid conflicts Document your code and changes in a README.md or CHANGELOG.mdResources Git Book free GitHub Docs Git Cheat Sheet Oh My Git Game Learn Git by playing GitHub Student Developer Pack Free tools for students">
+        Basic Git &amp; GitHub Guide for Scientific Projects
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/2025/07/30/Coding-tips.html" class="post-excerpt-image" aria-label="Coding tips and tricks">
+        <img src="/images/post-tutorial.jpg" alt="Coding tips and tricks" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/2025/07/30/Coding-tips.html">Coding tips and tricks</a>
 
       <div class="post-info">
   
@@ -808,6 +880,83 @@
       
       <p data-search="Scientific Presentation GuidelinesAboutThis document aims to help you create effective slides for scientific communication, suitable for conferences, thesis defenses, candidacy exams, and other academic presentations. We cover the basics, offer tips and tricks, and end with a comprehensive checklist you should review systematically and carefully before presenting.You re encouraged to discuss your presentation s content and structure with senior lab members or your supervisor once you ve implemented these fundamentals. Doing so saves everyone time and enhances the quality of feedback.BasicsTemplateUsing a clean, consistent template will save you time and improve clarity. If your institution provides templates, start there check your department or lab resources . Otherwise, consult prior presentations from colleagues in your group or create a clean, minimalist layout yourself. Example templates: Google Slides templates, Canva academic templates, Overleaf Beamer Templates Don t reinvent the wheel reuse and improve FontStick to one sans serif font throughout e.g., Arial, Calibri, or Helvetica . Fonts should be large and readable minimum 18 20 pt for text. Maintain consistent font sizes and styles e.g., if your slide titles are bold 36 pt, make them all that size .Use the same font style within figures and diagrams to maintain cohesion.ColorUse color to guide attention, not decorate. Choose a consistent color scheme e.g., red for drawbacks, green for advantages and stick to it throughout. Explore color palettes with Coolors or Adobe Color Whenever possible, ensure your palette is colorblind-friendly: Color Universal Design CUD or ColorBrewerBulletsBullets organize content visually, but they must be used carefully: Don t use bullets if there s only one point Don t mix different types of information in a single bulleted listAnimationsOnly use simple appear disappear animations to reveal content progressively. This helps reduce cognitive overload and keeps your audience focused. Avoid distracting transitions spins, fly-ins, etc. Match your spoken flow to your animationsTips and TricksBe StructuredUse consistent titles and headers. Include visible slide numbers to help viewers follow along or jot down questions.Make it clear whether a slide represents: Background info Previous work Your contribution Ongoing future workBe ConsistentConsistency enhances clarity. Double-check: Fonts, colors, and text sizes Slide layout and figure styles Terminology and abbreviationsAvoid changing the meaning of colors e.g., don t represent the same method in red on one slide and blue on another .Be ClearLess is more. Use short sentences, and simple phrasing. Try adding take-home messages at the bottom of each slide. General rule: 1 slide per minute of talk Speak slowly and enunciate Prioritize clarity over quantityBe ScientificMaintain rigor: Support all claims with references Label all figures clearly Introduce abbreviations before use Avoid cluttered or context-less plotsThe goal isn t to impress with complexity but to communicate your work effectively and maturely.Be a StorytellerDon t list results tell a story: Frame your work as a logical narrative Connect each slide with cause consequence logic Use transitions that bridge one idea to the next Consider using a visual summary or diagram to orient the audienceFinal ChecklistBefore you present or seek feedback, go through this checklist carefully. Most first drafts can be improved substantially. Structure and Clarity Can a distracted viewer understand the current slide if they just woke up mid-talk Is the font readable from the back of the room Are slide numbers visible Consistency Are fonts, font sizes, colors, and layouts uniform Are texts, headers, and columns aligned ReferencesFollow a consistent citation style e.g., ACS, IEEE, or APA . I like shortened ACS style, for example: Gallarati, S.; Laplaza, R.; Corminboeuf, C. Org. Chem. Front. 2022, 9, 4041. Aspuru-Guzik, A. et al. ACS Cent. Sci. 2018, 4, 268.Use tools like: Zotero Mendeley BibGuru EndNoteQuick MemoBefore you consider your draft done, double check: Structure Story Scientific Rigor Clarity Consistency References">
         Scientific Presentation Guidelines
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/2025/07/29/General-guidelines.html" class="post-excerpt-image" aria-label="General tips for students">
+        <img src="/images/post-tutorial.jpg" alt="General tips for students" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/2025/07/29/General-guidelines.html">General tips for students</a>
+
+      <div class="post-info">
+  
+    
+    
+      
+      
+        <span data-tooltip="Author">
+          <i class="icon fa-solid fa-feather-pointed"></i>
+          <span>rlaplaza</span>
+        </span>
+      
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>July 29, 2025</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>July 30, 2025</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags">
+    
+      <a href="/blog?search=%22tag:%20tutorial%22" class="tag" data-tooltip='Show items with the tag "tutorial"'>
+        tutorial
+      </a>
+    
+      <a href="/blog?search=%22tag:%20guidelines%22" class="tag" data-tooltip='Show items with the tag "guidelines"'>
+        guidelines
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="General Guidelines for Master s and PhD Students1. PrinciplesScience is supposed to be demanding and hard, but also exciting and fun. If you only feel the bad parts, something is not right and we should fix it. Supportive Environment: Aim to create a positive workplace that supports everyone s professional and personal goals Diversity amp; Inclusion: Excellence is independent of background; diverse perspectives in gender, race, ethnicity, orientation, economic status, and other identities are essential for innovation and community wellbeing Addressing Bias: Everyone has implicit biases that can cause unintentional harm; we must acknowledge them, work to correct them, and be willing to admit mistakes Direct Communication: Group members are encouraged to discuss concerns privately with me, and I will always try my best to listen empathetically2. Wellness, Work Hours, and ExpectationsSombody once said that researchers have total flexibility to choose which 60 hours of the week they want to work. Of course, this is a joke at least for me , but flexibility can indeed be a blessing or a curse. Some pointers: Work-Life Balance: Flexibility in academia is a feature use it wisely overwork productivity Remote Work: Most tasks e.g., writing, reading, coding can be done remotely and or asynchronously, and you can and should use this to your advantage Core Hours: Aim to be in the office from 9 5 for collaboration and social interaction, otherwise you will miss a lot of the fun Workload: No expectation to work evenings weekends, if you feel like you have to, we need to discuss Rhythms: Expect ups and downs depending on deadlines, take breaks when needed and communicate proactively Support Resources: Effective equality platform Human resources help Sick Days: Prioritize health, always3. Holidays and VacationAs above, working longer hours or without a break is probably not very efficient for anyone. Science is hard work and most people are able to do just a few hours of mentally demanding work per day. Luckily, there is always some other boring, crappy thing to do for a few more hours. My advice is to try and make those few hours that matter really effective, so: Take Your Time Off: Fully use your entitled vacation and institute holidays Notification: Inform me in advance if you are not going to be around for whatever reason Conference Travel: You re encouraged to extend conferences with vacation if feasible4. Defining Research ProjectsA PhD is not a sequential set of tasks that must be completed in order. However, funding often works that way. You will normally have a main project that will be co-designed based on your skills and interests and the available funding constraints . If you want to bring up some side-project, here are some pointers: Balance: Assess novelty, risk, and impact Decision Gates: Use go no-go milestones to steer project directions Goal Setting: Short-term: achievable within weeks months Long-term: achievable over semesters Visionary: dream-level 5 20 year impact framing Publication Path: Each project should have a clear motivation and audience Efficient Use of Time: Prioritize projects with the potential for meaningful impact Collaborations: Strongly encouraged both within and beyond the lab Literature Deep Dives: Crucial for framing and scoping a successful project Project Selection Philosophy: See Michael Fischbach on Choosing Problems5. Documenting WorkWe must adhere to the FAIR principles in our research. Documenting what we do and how we do it is part of it. If done smartly, it does not take much time Why: Proper documentation supports reproducibility, collaboration, and eventual publications or patents Format: Use electronic notebooks e.g., OneNote, Notion Backup: SACO CSIC 100 Gb , other cloud storage providers, GitHub, local NAS Version Control: Use private GitHub repos for all code-based projects File Naming Convention: Use: YYYY MM DD lt;Name gt; or YYYY MM DD HH mm lt;Name gt; for frequent drafts Further Reading: How to Record Research Notes6. LiteratureStaying on top of the relevant literature is essential for any research project: Responsibility: You are expected to actively monitor the state-of-the-art in your area Avoid redundancy: Familiarize yourself with existing work to ensure your project is novel Communication: Share interesting papers with the group Summarize: When possible, summarize main results with bullet points to spark discussion Google Scholar Alerts: Set up alerts for keywords and authors relevant to your field Guide Reference Manager: Use tools like Zotero to organize references and export BibTeX entries directly to Overleaf Journal Clubs: Consider forming small groups to review papers informally Skimming ToCs: Skim table of contents from key journals">
+        General Guidelines for Master’s and PhD Students
 
       </p>
     </div>
