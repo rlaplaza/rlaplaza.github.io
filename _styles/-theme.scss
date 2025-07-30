@@ -4,7 +4,7 @@
 // colors
 [data-dark="false"] {
   --primary: #2ba673;
-  --secondary: #7dd3fc;
+  --secondary: #30ba81;
   --text: #000000;
   --background: #ffffff;
   --background-alt: #fafafa;
@@ -15,7 +15,7 @@
 }
 [data-dark="true"] {
   --primary: #2ba673;
-  --secondary: #075985;
+  --secondary: #1d6e4c;
   --text: #ffffff;
   --background: #181818;
   --background-alt: #1c1c1c;
@@ -27,10 +27,10 @@
 
 :root {
   // font families
-  --title: "Barlow", sans-serif;
-  --heading: "Barlow", sans-serif;
-  --body: "Barlow", sans-serif;
-  --code: "Roboto Mono", monospace;
+  --title: "Bitcount", sans-serif;
+  --heading: "Fira Sans", sans-serif;
+  --body: "Fira Sans", sans-serif;
+  --code: "Fira Code", monospace;
 
   // font sizes
   --large: 1.2rem;
