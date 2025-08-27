@@ -28,9 +28,10 @@ tags: tutorial, guidelines
 * **Why?**: See [reasons to use conda](https://edcarp.github.io/introduction-to-conda-for-data-scientists/aio/index.html)
 * **Dependency Management**: Always use dependency managers like [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) or [uv](https://docs.astral.sh/uv/) for Python package management, or [Docker containers](https://docs.docker.com/get-started/overview/) for complex multi-language dependencies to ensure reproducible environments
 * **Environment Documentation**: Maintain clear documentation of all software dependencies, versions, and system requirements necessary to reproduce your computational environment, at least once the project is done and other people are supposed to use it (including me!)
+* **HPC**: In HPC machines, package management can be a bit more convoluted, so do not hesitate to ask me and/or the sysadmin if you struggle
 
 ## Collaboration & Continuous Learning
-* **Knowledge Sharing**: Actively contribute to and consult the [group's code-tips repository](https://github.com/rlaplaza-lab/code-tips), which serves as a living collection of useful resources, helpful packages, and development tools
+* **Knowledge Sharing**: Actively contribute to and consult the [group's code-tips repository](https://github.com/rlaplaza-lab/code_tips) and [utility-scripts](https://github.com/rlaplaza-lab/utility_scripts), which serve as a living collection of useful resources, helpful packages, and development tools
 * **Ask for Help**: Don't hesitate to seek guidance from group members on development workflows, GitHub usage, or any coding challenges—everyone learns these skills over time
 * **Workflow Optimization**: Trust your instincts when thinking "there must be a better way to do this" — there usually is, and the group can help you find it
 
