@@ -633,6 +633,11 @@
   
 
   
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>August 27, 2025</span>
+    </span>
+  
 </div>
 
 
@@ -705,6 +710,11 @@
   
 
   
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>August 27, 2025</span>
+    </span>
+  
 </div>
 
 
@@ -729,7 +739,7 @@
 
       
       
-      <p data-search="Basic Git amp; GitHub Guide for Scientific ProjectsAboutThis guide is for beginners who are new to Git and GitHub. It walks you through the process of setting up Git on your computer, creating a GitHub account, learning basic commands, and joining a GitHub organization e.g., rlaplaza-lab .Step 1: Create a GitHub Account Go to https: github.com Click Sign up Choose a username, enter your email, and create a secure password Verify your email and follow the on-screen instructionsStep 2: Install GitOn macOSUse Homebrew:brew install gitOn Ubuntu Debiansudo apt updatesudo apt install gitOn WindowsDownload from the official site: https: git-scm.com download winFollow the installer with default settings.Step 3: Set Up GitOpen your terminal or Git Bash and configure Git with your name and email:git config --global user.name Your Full Name git config --global user.email your email.com You can check the configuration with:git config --listStep 4: Generate an SSH Key Optional but Recommended This allows you to securely connect to GitHub.ssh-keygen -t ed25519 -C your email.com Then add your key to the SSH agent:eval ssh-agent -s ssh-add .ssh id ed25519Copy your SSH public key:cat .ssh id ed25519.pubGo to GitHub SSH settings, click New SSH key , and paste the key there.Step 5: Request Access to rlaplaza-lab Contact Ruben and share your GitHub username They will invite you to the rlaplaza-lab GitHub organization Accept the invitation via email or at https: github.com orgs rlaplaza-labStep 6: Clone a RepositoryOnce you have access to a repository, you can clone it to your computer:git clone git github.com:rlaplaza-lab project-name.gitOr with HTTPS:git clone https: github.com rlaplaza-lab project-name.gitStep 7: Basic Git CommandsCheck project statusgit statusAdd changes to stagingStaging is a temporary location that stores the changes you are going to do to the repository kinda . Adding changes to staging is necessary to let git know that the changes you made are things you want to change in the repo.git add filename.pyOr add everything:git add .Commit changes with a messageA commit is a snapshot of the repository kinda . Once you have all the changes you want added in staging , you make a commit with all those.git commit -m Describe your changes clearly Push changes to GitHubNow, we can put our commit in the original repo upstream branch .git pushPull latest changes from GitHubWe can also get the latest commit from the upstream branch. Of course, it is possible to change the branch we push and pull from, but we dont cover it here.git pullStep 8: Best Practices Commit often with clear messages Use branches for new features or experiments: git checkout -b new-feature Keep your main or master branch clean Pull often to avoid conflicts Document your code and changes in a README.md or CHANGELOG.mdResources Introduction to Github by the excellent Prof. Ayers Git Book free GitHub Docs Git Cheat Sheet Oh My Git Game Learn Git by playing GitHub Student Developer Pack Free tools for students">
+      <p data-search="Basic Git amp; GitHub Guide for Scientific ProjectsAboutThis guide is for beginners who are new to Git and GitHub. It walks you through the process of setting up Git on your computer, creating a GitHub account, learning basic commands, and joining a GitHub organization e.g., rlaplaza-lab . In the near future, it will probably be helpful to do the same in the supercomputers you use as well.Step 1: Create a GitHub Account Go to https: github.com Click Sign up Choose a username, enter your email, and create a secure password Verify your email and follow the on-screen instructionsStep 2: Install GitOn macOSUse Homebrew:brew install gitOn Ubuntu Debiansudo apt updatesudo apt install gitOn WindowsDownload from the official site: https: git-scm.com download winFollow the installer with default settings.Step 3: Set Up GitOpen your terminal or Git Bash and configure Git with your name and email:git config --global user.name Your Full Name git config --global user.email your email.com You can check the configuration with:git config --listStep 4: Generate an SSH Key Optional but Recommended This allows you to securely connect to GitHub.ssh-keygen -t ed25519 -C your email.com Then add your key to the SSH agent:eval ssh-agent -s ssh-add .ssh id ed25519Copy your SSH public key:cat .ssh id ed25519.pubGo to GitHub SSH settings, click New SSH key , and paste the key there.Step 5: Request Access to rlaplaza-lab Contact Ruben and share your GitHub username They will invite you to the rlaplaza-lab GitHub organization Accept the invitation via email or at https: github.com orgs rlaplaza-labStep 6: Clone a RepositoryOnce you have access to a repository, you can clone it to your computer:git clone git github.com:rlaplaza-lab project-name.gitOr with HTTPS:git clone https: github.com rlaplaza-lab project-name.gitStep 7: Basic Git CommandsCheck project statusgit statusAdd changes to stagingStaging is a temporary location that stores the changes you are going to do to the repository kinda . Adding changes to staging is necessary to let git know that the changes you made are things you want to change in the repo.git add filename.pyOr add everything:git add .Commit changes with a messageA commit is a snapshot of the repository kinda . Once you have all the changes you want added in staging , you make a commit with all those.git commit -m Describe your changes clearly Push changes to GitHubNow, we can put our commit in the original repo upstream branch .git pushPull latest changes from GitHubWe can also get the latest commit from the upstream branch. Of course, it is possible to change the branch we push and pull from, but we dont cover it here.git pullStep 8: Best Practices Commit often with clear messages Use branches for new features or experiments: git checkout -b new-feature Keep your main or master branch clean Pull often to avoid conflicts Document your code and changes in a README.md or CHANGELOG.mdResources Introduction to Github by the excellent Prof. Ayers Git Book free GitHub Docs Git Cheat Sheet Oh My Git Game Learn Git by playing GitHub Student Developer Pack Free tools for students">
         Basic Git &amp; GitHub Guide for Scientific Projects
 
       </p>
@@ -777,6 +787,11 @@
   
 
   
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>August 27, 2025</span>
+    </span>
+  
 </div>
 
 
@@ -801,7 +816,7 @@
 
       
       
-      <p data-search="Coding Practices GuidelinesFoundation amp; Learning Resources Software Carpentry Fundamentals: Master basic coding practices through Software Carpentry and Coderefinery workshops, covering Unix shell commands, Git version control, and essential Python programming skills. Any time spent learning is well spent Scientific Computing Scripting: Develop proficiency in scripting for scientific computing using resources from the NSF MolSSI group s comprehensive Python tutorials Deep Learning Education: Utilize d2l.ai resources for comprehensive deep learning fundamentals, including their preliminaries section and appendix of essential tools Command Line Editors: Gain familiarity with standard editors like Vim, Emacs, or Nano to facilitate efficient editing and remote cluster work; MIT s IAP Missing Semester class provides excellent guidance on these tools and other essential development utilities Every Day Life: I recommend using a good IDE, such as VSCode, which also has python tutorials and integration with LLMs. Whatever tools you choose to use every day, you should get to know in depth Python Development Standards Code Style amp; Quality: We do most of our coding in python. Adhere to PEP 8 guidelines for Python code formatting and use automated tools like Pylint, Google s yapf, black, or Sublime Text s AutoPEP8 to maintain consistent style standards Type Safety: Ideally, implement optional type hints to improve code readability and help others understand function signatures and variable types more easily Style Guide Compliance: Follow Google s comprehensive Python style guide for professional-quality code structure and documentation practicesProject Structure amp; Organization Beyond Notebooks: While Jupyter notebooks are excellent for experimental analysis and tutorials, prioritize well-organized, documented codebases for rigorous testing and reproducible research using frameworks like cookiecutter-data-science templates or dl-chem-101 Repository Management: Utilize private repositories for continuous work backup Code Publication: Before open-sourcing code, thoroughly audit repositories to remove proprietary information, passwords, or private data; consider creating clean repositories for finalized code publication in the group s GitHub organizationReproducibility amp; Environment Management Why : See reasons to use conda Dependency Management: Always use dependency managers like Conda or uv for Python package management, or Docker containers for complex multi-language dependencies to ensure reproducible environments Environment Documentation: Maintain clear documentation of all software dependencies, versions, and system requirements necessary to reproduce your computational environment, at least once the project is done and other people are supposed to use it including me Collaboration amp; Continuous Learning Knowledge Sharing: Actively contribute to and consult the group s code-tips repository, which serves as a living collection of useful resources, helpful packages, and development tools Ask for Help: Don t hesitate to seek guidance from group members on development workflows, GitHub usage, or any coding challenges everyone learns these skills over time Workflow Optimization: Trust your instincts when thinking there must be a better way to do this there usually is, and the group can help you find itModern Development Tools AI-Assisted Coding: Embrace large language model assistants like GitHub Copilot for code generation, while maintaining responsibility for understanding, testing, and validating all generated code Code Accountability: Ensure you can explain and verify any AI-generated code through appropriate testing and remain fully accountable for the final software productResources Advanced bash course by the fantastic Michael Herbst">
+      <p data-search="Coding Practices GuidelinesFoundation amp; Learning Resources Software Carpentry Fundamentals: Master basic coding practices through Software Carpentry and Coderefinery workshops, covering Unix shell commands, Git version control, and essential Python programming skills. Any time spent learning is well spent Scientific Computing Scripting: Develop proficiency in scripting for scientific computing using resources from the NSF MolSSI group s comprehensive Python tutorials Deep Learning Education: Utilize d2l.ai resources for comprehensive deep learning fundamentals, including their preliminaries section and appendix of essential tools Command Line Editors: Gain familiarity with standard editors like Vim, Emacs, or Nano to facilitate efficient editing and remote cluster work; MIT s IAP Missing Semester class provides excellent guidance on these tools and other essential development utilities Every Day Life: I recommend using a good IDE, such as VSCode, which also has python tutorials and integration with LLMs. Whatever tools you choose to use every day, you should get to know in depth Python Development Standards Code Style amp; Quality: We do most of our coding in python. Adhere to PEP 8 guidelines for Python code formatting and use automated tools like Pylint, Google s yapf, black, or Sublime Text s AutoPEP8 to maintain consistent style standards Type Safety: Ideally, implement optional type hints to improve code readability and help others understand function signatures and variable types more easily Style Guide Compliance: Follow Google s comprehensive Python style guide for professional-quality code structure and documentation practicesProject Structure amp; Organization Beyond Notebooks: While Jupyter notebooks are excellent for experimental analysis and tutorials, prioritize well-organized, documented codebases for rigorous testing and reproducible research using frameworks like cookiecutter-data-science templates or dl-chem-101 Repository Management: Utilize private repositories for continuous work backup Code Publication: Before open-sourcing code, thoroughly audit repositories to remove proprietary information, passwords, or private data; consider creating clean repositories for finalized code publication in the group s GitHub organizationReproducibility amp; Environment Management Why : See reasons to use conda Dependency Management: Always use dependency managers like Conda or uv for Python package management, or Docker containers for complex multi-language dependencies to ensure reproducible environments Environment Documentation: Maintain clear documentation of all software dependencies, versions, and system requirements necessary to reproduce your computational environment, at least once the project is done and other people are supposed to use it including me HPC: In HPC machines, package management can be a bit more convoluted, so do not hesitate to ask me and or the sysadmin if you struggleCollaboration amp; Continuous Learning Knowledge Sharing: Actively contribute to and consult the group s code-tips repository and utility-scripts, which serve as a living collection of useful resources, helpful packages, and development tools Ask for Help: Don t hesitate to seek guidance from group members on development workflows, GitHub usage, or any coding challenges everyone learns these skills over time Workflow Optimization: Trust your instincts when thinking there must be a better way to do this there usually is, and the group can help you find itModern Development Tools AI-Assisted Coding: Embrace large language model assistants like GitHub Copilot for code generation, while maintaining responsibility for understanding, testing, and validating all generated code Code Accountability: Ensure you can explain and verify any AI-generated code through appropriate testing and remain fully accountable for the final software productResources Advanced bash course by the fantastic Michael Herbst">
         Coding Practices Guidelines
 
       </p>
@@ -851,7 +866,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>July 30, 2025</span>
+      <span>August 27, 2025</span>
     </span>
   
 </div>
@@ -928,7 +943,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>July 30, 2025</span>
+      <span>August 27, 2025</span>
     </span>
   
 </div>
@@ -1005,7 +1020,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>July 30, 2025</span>
+      <span>August 27, 2025</span>
     </span>
   
 </div>
