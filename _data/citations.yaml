@@ -63,6 +63,20 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
+- id: doi:10.1039/D5SC03184B
+  title: Generative design of singlet fission materials leveraging a fragment-oriented
+    database
+  authors:
+  - Thanapat Worakul
+  - "Rub\xE9n Laplaza"
+  - J. Terence Blaskovits
+  - "Cl\xE9mence Corminboeuf"
+  publisher: Chemical Science
+  date: '2025-01-01'
+  link: https://doi.org/g93n9h
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1021/jacs.4c13279
   title: "Enantiospecific Synthesis of Planar Chiral Rhodium and Iridium Cyclopentadienyl\
     \ Complexes: Enabling Streamlined and Computer-Guided Access to Highly Selective\
