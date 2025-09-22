@@ -21,7 +21,7 @@ tags: tutorial, guidelines
 
 ## Project Structure & Organization
 * **Beyond Notebooks**: While Jupyter notebooks are excellent for experimental analysis and tutorials, prioritize well-organized, documented codebases for rigorous testing and reproducible research using frameworks like [cookiecutter-data-science templates](https://github.com/drivendata/cookiecutter-data-science) or [dl-chem-101](https://github.com/rociomer/dl-chem-101)
-* **Repository Management**: Utilize private repositories for continuous work backup
+* **Repository Management**: Utilize private repositories for continuous backups (this will save your ass at some point, I swear!)
 * **Code Publication**: Before open-sourcing code, thoroughly audit repositories to remove proprietary information, passwords, or private data; consider creating clean repositories for finalized code publication in the [group's GitHub organization](https://github.com/rlaplaza-lab)
 
 ## Reproducibility & Environment Management
@@ -42,7 +42,8 @@ tags: tutorial, guidelines
 ## Resources
 
 - [Advanced bash course](https://github.com/mfherbst/bash-course) by the fantastic [Michael Herbst](https://michael-herbst.com/)
-
+- [An intermediate-level python tutorial for machine learning](https://github.com/cod3licious/python_tutorial) by the fantastic [Franziska Horn](https://franziskahorn.de/)
+- [A higher-level set of exercises in machine learning](https://github.com/cod3licious/ml_exercises) and a full book on the topic
 
 ---
 
