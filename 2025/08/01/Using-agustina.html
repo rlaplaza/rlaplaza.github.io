@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2025-09-23T13:41:53+00:00">
+  <meta property="og:updated_time" content="2025-09-23T13:46:12+00:00">
   <meta property="article:published_time" content="2025-08-01T00:00:00+00:00">
-  <meta property="article:modified_time" content="2025-09-23T13:41:53+00:00">
-  <meta name="revised" content="2025-09-23T13:41:53+00:00">
+  <meta property="article:modified_time" content="2025-09-23T13:46:12+00:00">
+  <meta name="revised" content="2025-09-23T13:46:12+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Using Agustina" },
       "datePublished": "2025-08-01T00:00:00+00:00",
-      "dateModified": "2025-09-23T13:41:53+00:00",
+      "dateModified": "2025-09-23T13:46:12+00:00",
     
     "name": "Using Agustina",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
@@ -574,14 +574,14 @@
 <p>The main documentation of Agustina is <a href="https://doc--publica-bifi-es.translate.goog/agustina/manual_agustina.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp">here</a>, which includes account creation and basic usage. Remember that any changes you do to your <code class="language-plaintext highlighter-rouge">.bashrc</code> will be applied once you create a new terminal or run <code class="language-plaintext highlighter-rouge">source .bashrc</code>.</p>
 
 <ul>
-  <li>Like most HPC centers, Agustina requires users to connect from a local network for security reasons. In other centers you must use a VPN. In Agustina, you can ssh to the login node (<code class="language-plaintext highlighter-rouge">agustina.bifi.unizar.es</code><code class="language-plaintext highlighter-rouge">) through a bridge node (</code><code class="language-plaintext highlighter-rouge">bridge.bifi.unizar.es</code><code class="language-plaintext highlighter-rouge">). Setting up these aliases in your </code><code class="language-plaintext highlighter-rouge">.bashrc</code>` file will be useful:</li>
+  <li>Like most HPC centers, Agustina requires users to connect from a local network for security reasons. In other centers you must use a VPN. In Agustina, you can ssh to the login node (<code class="language-plaintext highlighter-rouge">agustina.bifi.unizar.es</code>) through a bridge node (<code class="language-plaintext highlighter-rouge">bridge.bifi.unizar.es</code>). Setting up these aliases in your <code class="language-plaintext highlighter-rouge">.bashrc</code> file will be useful:</li>
 </ul>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>alias tob='ssh -X username@bridge.bifi.unizar.es'
 alias toa='ssh -J username@bridge.bifi.unizar.es username@agustina.bifi.unizar.es'
 </code></pre></div></div>
 
-<p>That way you can jump over bridge to access Agustina using simply <code class="language-plaintext highlighter-rouge">toa</code>. i</p>
+<p>That way you can jump over bridge to access Agustina using simply <code class="language-plaintext highlighter-rouge">toa</code>.</p>
 
 <ul>
   <li>Once in Agustina, you will notice that the command line interface is very plain. To improve it, you can set up a few extras in your <code class="language-plaintext highlighter-rouge">.bashrc</code> file (in your Agustina user home!):</li>
