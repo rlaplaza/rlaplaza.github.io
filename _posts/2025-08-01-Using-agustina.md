@@ -46,7 +46,7 @@ You can follow the instructions in the documentation [here](https://doc--publica
 Personally, I added these to my ```.bashrc``` as well:
 
 ```
-module load anaconda/2025
+module load anaconda/2025 > /dev/null # This avoids errors with scp and rsync with host jumping
 export CONDA_PKGS_DIRS=/fs/agustina/$(whoami)/.conda-pkgs
 mkdir -p /fs/agustina/$(whoami)/conda-env
 # To activate or create envs, we now need --prefix=/fs/agustina/$(whoami)/conda-env/my-conda-env-name
