@@ -11,14 +11,14 @@ Agustina is a High Performance Computing (HPC) center. There are many such cente
 
 The main documentation of Agustina is [here](https://doc--publica-bifi-es.translate.goog/agustina/manual_agustina.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp), which includes account creation and basic usage. Remember that any changes you do to your ```.bashrc``` will be applied once you create a new terminal or run ```source .bashrc```.
 
-* Like most HPC centers, Agustina requires users to connect from a local network for security reasons. In other centers you must use a VPN. In Agustina, you can ssh to the login node (``agustina.bifi.unizar.es```) through a bridge node (```bridge.bifi.unizar.es```). Setting up these aliases in your ```.bashrc``` file will be useful:
+* Like most HPC centers, Agustina requires users to connect from a local network for security reasons. In other centers you must use a VPN. In Agustina, you can ssh to the login node (```agustina.bifi.unizar.es```) through a bridge node (```bridge.bifi.unizar.es```). Setting up these aliases in your ```.bashrc``` file will be useful:
 
 ```
 alias tob='ssh -X username@bridge.bifi.unizar.es'
 alias toa='ssh -J username@bridge.bifi.unizar.es username@agustina.bifi.unizar.es'
 ```
 
-That way you can jump over bridge to access Agustina using simply ```toa```. i
+That way you can jump over bridge to access Agustina using simply ```toa```. 
 
 * Once in Agustina, you will notice that the command line interface is very plain. To improve it, you can set up a few extras in your ```.bashrc``` file (in your Agustina user home!):
 
