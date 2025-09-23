@@ -50,6 +50,8 @@ module load anaconda/2025
 export CONDA_PKGS_DIRS=/fs/agustina/$(whoami)/.conda-pkgs
 mkdir -p /fs/agustina/$(whoami)/conda-env
 # To activate or create envs, we now need --prefix=/fs/agustina/$(whoami)/conda-env/my-conda-env-name
+# ... other lines you may need
+export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 ```
 
 The space you have in your ```/home``` in Agustina is small, so your conda envs should be stored in ```/fs/agustina/username/conda-env/``` (some packages are very big!). Since typing the full path to activate an env is a pain in the derriere, you can add that location to let conda figure out aliases.  
