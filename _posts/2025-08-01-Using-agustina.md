@@ -43,7 +43,16 @@ Now you can use the scripts from this directory in your command line. You can ch
 
 You can follow the instructions in the documentation [here](https://doc--publica-bifi-es.translate.goog/agustina/anaconda.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp). 
 
-As you can see, the space you have in your ```/home``` in Agustina is small, so your conda envs should be stored in ```/fs/agustina/username/conda-env/```. Since typing the full path to activate an env is a pain in the derriere, you can add that location to let conda figure out aliases.  
+Personally, I added these to my ```.bashrc``` as well:
+
+```
+module load anaconda/2025
+export CONDA_PKGS_DIRS=/fs/agustina/$(whoami)/.conda-pkgs
+mkdir -p /fs/agustina/$(whoami)/conda-env
+# To activate or create envs, we now need --prefix=/fs/agustina/$(whoami)/conda-env/my-conda-env-name
+```
+
+The space you have in your ```/home``` in Agustina is small, so your conda envs should be stored in ```/fs/agustina/username/conda-env/``` (some packages are very big!). Since typing the full path to activate an env is a pain in the derriere, you can add that location to let conda figure out aliases.  
 
 ```
 conda config --append envs_dirs /fs/agustina/username/conda-env/
