@@ -171,8 +171,8 @@
   plugin: orcid.py
   file: orcid.yaml
 - id: doi:10.1021/jacs.4c01890
-  title: Engineering Frustrated Lewis Pair Active Sites in Porous Organic Scaffolds
-    for Catalytic CO<sub>2</sub> Hydrogenation
+  title: "Engineering Frustrated Lewis Pair Active Sites in Porous Organic Scaffolds\
+    \ for Catalytic CO\n                    <sub>2</sub>\n                    Hydrogenation"
   authors:
   - Shubhajit Das
   - Ruben Laplaza
@@ -397,8 +397,8 @@
   plugin: orcid.py
   file: orcid.yaml
 - id: doi:10.1039/D2CP03544H
-  title: "Helical <i>versus</i> linear Jahn\u2013Teller distortions in allene and\
-    \ spiropentadiene radical cations"
+  title: "Helical\n                    <i>versus</i>\n                    linear Jahn\u2013\
+    Teller distortions in allene and spiropentadiene radical cations"
   authors:
   - Marc H. Garner
   - Ruben Laplaza
@@ -440,8 +440,8 @@
   plugin: orcid.py
   file: orcid.yaml
 - id: doi:10.1002/jcc.26459
-  title: 'Orbital energies and nuclear forces in <scp>DFT</scp>: Interpretation and
-    validation'
+  title: "Orbital energies and nuclear forces in\n                    <scp>DFT</scp>\n\
+    \                    : Interpretation and validation"
   authors:
   - "Rub\xE9n Laplaza"
   - "Carlos C\xE1rdenas"
