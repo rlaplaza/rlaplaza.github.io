@@ -7,7 +7,15 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-wrench" %}Projects
 
-We will list all of our projects here in the future.
+## National grants
+
+- DE LA INTELIGENCIA ARTIFICIAL A LA CATALISIS: DISEÑANDO NUEVOS ELECTROCATALIZADORES BASADOS EN CLUSTERES DE METALES DE TRANSICION. Grant PID2024-159030NA-I00 funded by MICIU/AEI/10.13039/501100011033 and by ERDF/EU.
+
+![image](/images/MICIU+Cofinanciado+AEI.jpg)
+
+## International grants
+
+We will updte as necessary.
 
 {% comment %} 
 
