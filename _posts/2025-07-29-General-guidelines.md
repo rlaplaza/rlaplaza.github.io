@@ -18,7 +18,7 @@ Science is supposed to be demanding and hard, but also exciting and fun. If you 
 
 ## 2. Wellness, Work Hours, and Expectations
 
-Sombody once said that researchers have total flexibility to choose which 60 hours of the week they want to work. Of course, this is a joke (at least for me!), but flexibility can indeed be a blessing or a curse. Some pointers:
+Somebody once said that researchers have total flexibility to choose which 60 hours of the week they want to work. Of course, this is a joke (at least for me!), but flexibility can indeed be a blessing or a curse. Some pointers:
 
 - **Work-Life Balance**: Flexibility in academia is a feature — use it wisely (overwork ≠ productivity)
 - **Remote Work**: Most tasks (e.g., writing, reading, coding) can be done remotely and/or asynchronously, and you can and should use this to your advantage
