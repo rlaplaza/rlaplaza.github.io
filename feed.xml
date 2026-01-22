@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-01-07T15:21:53+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-01-07T15:17:46+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-01-22T14:29:58+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-01-22T14:27:21+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
 
 <p>Agustina is a High Performance Computing (HPC) center. There are many such centers in the world (a list of the most powerful supercomputers is available in the <a href="https://top500.org/">Top500</a>, in case you are curious).</p>
 
@@ -26,7 +26,7 @@ alias wqm="watch squeue --format=\'%.18i %.9P %.30j %.8u %.8T %.10M %.9l %.6D %R
   <li>Next step is setting up github and git. To start, go to your <a href="https://github.com/settings/keys">github keys</a> setting and then generate a new ssh key in Agustina and add it to your account following <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh">the instructions</a>.</li>
 </ul>
 
-<p>Once that is done, you can get the lab’s utility scripts from the <a href="https://github.com/rlaplaza-lab/utility_scripts">group organization page</a>, assuming you have asked for permissions. Clone this directory to a directory (I put it in <code class="language-plaintext highlighter-rouge">/home/username/Software/</code>) and add the directory to your path in <code class="language-plaintext highlighter-rouge">.bashrc</code> :</p>
+<p>Once that is done, you can get the lab’s utility scripts from the <a href="https://github.com/rlaplaza-lab/utility_scripts">group organization page</a>, assuming you have asked for permissions. Clone this directory to a directory (I put it in <code class="language-plaintext highlighter-rouge">/home/username/Software/</code>) and add the directory to your path in <code class="language-plaintext highlighter-rouge">.bashrc</code>:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export PATH="/home/username/Software/utility_scripts:$PATH"
 </code></pre></div></div>
@@ -58,7 +58,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 
 <p>You can now activate envs using their names directly.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-01-07T15:17:46+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-01-22T14:27:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
 
 <h2 id="foundation--learning-resources">Foundation &amp; Learning Resources</h2>
 <ul>
@@ -112,7 +112,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
   <li><a href="https://github.com/cod3licious/ml_exercises">A higher-level set of exercises in machine learning</a> and a full book on the topic</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-01-07T15:17:46+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-01-22T14:27:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
 
 <h2 id="about">About</h2>
 
@@ -282,7 +282,7 @@ ssh-add ~/.ssh/id_ed25519
   <li><a href="https://education.github.com/pack">GitHub Student Developer Pack</a> – Free tools for students</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Writing tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Writing-tips.html" rel="alternate" type="text/html" title="Writing tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-01-07T15:17:46+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Writing-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Writing-tips.html"><![CDATA[<h1 id="scientific-paper-writing-guidelines">Scientific Paper Writing Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Writing tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Writing-tips.html" rel="alternate" type="text/html" title="Writing tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-01-22T14:27:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Writing-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Writing-tips.html"><![CDATA[<h1 id="scientific-paper-writing-guidelines">Scientific Paper Writing Guidelines</h1>
 
 <h2 id="about">About</h2>
 
@@ -535,7 +535,7 @@ ssh-add ~/.ssh/id_ed25519
   <li><a href="https://stackoverflow.com/questions/44970010/axes-class-set-explicitly-size-width-height-of-axes-in-given-units">Multipanel figures</a></li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Paper Writing Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">General tips for students</title><link href="https://rlaplaza.github.io/2025/07/29/General-guidelines.html" rel="alternate" type="text/html" title="General tips for students" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-01-07T15:17:46+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/General-guidelines</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/General-guidelines.html"><![CDATA[<h1 id="general-guidelines-for-masters-and-phd-students">General Guidelines for Master’s and PhD Students</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Paper Writing Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">General tips for students</title><link href="https://rlaplaza.github.io/2025/07/29/General-guidelines.html" rel="alternate" type="text/html" title="General tips for students" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-01-22T14:27:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/General-guidelines</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/General-guidelines.html"><![CDATA[<h1 id="general-guidelines-for-masters-and-phd-students">General Guidelines for Master’s and PhD Students</h1>
 
 <h2 id="1-principles">1. Principles</h2>
 
@@ -550,7 +550,7 @@ ssh-add ~/.ssh/id_ed25519
 
 <h2 id="2-wellness-work-hours-and-expectations">2. Wellness, Work Hours, and Expectations</h2>
 
-<p>Sombody once said that researchers have total flexibility to choose which 60 hours of the week they want to work. Of course, this is a joke (at least for me!), but flexibility can indeed be a blessing or a curse. Some pointers:</p>
+<p>Somebody once said that researchers have total flexibility to choose which 60 hours of the week they want to work. Of course, this is a joke (at least for me!), but flexibility can indeed be a blessing or a curse. Some pointers:</p>
 
 <ul>
   <li><strong>Work-Life Balance</strong>: Flexibility in academia is a feature — use it wisely (overwork ≠ productivity)</li>
@@ -627,7 +627,7 @@ ssh-add ~/.ssh/id_ed25519
   <li><strong>Skimming ToCs</strong>: Skim table of contents from key journals</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[General Guidelines for Master’s and PhD Students]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Presentation tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html" rel="alternate" type="text/html" title="Presentation tips and tricks" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-01-07T15:17:46+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/Presentation-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html"><![CDATA[<h1 id="scientific-presentation-guidelines">Scientific Presentation Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[General Guidelines for Master’s and PhD Students]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Presentation tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html" rel="alternate" type="text/html" title="Presentation tips and tricks" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-01-22T14:27:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/Presentation-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html"><![CDATA[<h1 id="scientific-presentation-guidelines">Scientific Presentation Guidelines</h1>
 
 <h2 id="about">About</h2>
 
@@ -791,10 +791,460 @@ ssh-add ~/.ssh/id_ed25519
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Clarity</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Consistency</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />References</li>
-</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Presentation Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hello!</title><link href="https://rlaplaza.github.io/2025/07/26/Hello-world.html" rel="alternate" type="text/html" title="Hello!" /><published>2025-07-26T00:00:00+00:00</published><updated>2026-01-07T15:17:46+00:00</updated><id>https://rlaplaza.github.io/2025/07/26/Hello-world</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/26/Hello-world.html"><![CDATA[<p>Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.</p>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Presentation Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hello!</title><link href="https://rlaplaza.github.io/2025/07/26/Hello-world.html" rel="alternate" type="text/html" title="Hello!" /><published>2025-07-26T00:00:00+00:00</published><updated>2026-01-22T14:27:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/26/Hello-world</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/26/Hello-world.html"><![CDATA[<p>Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.</p>
 
 <p>Seville feels like the kind of city that gets under your skin and refuses to let go. You’ve got one of Europe’s most stunning historic centers right at your doorstep - the cathedral, the Alcázar, those winding medieval streets that seem to lead somewhere magical every time. The food scene is incredible, not just tourist-trap restaurants but real neighborhood bars where locals gather for tapas and conversation that stretches late into the night. The weather means you can actually enjoy outdoor life most of the year, and there’s this infectious energy going on. I guess if you know you know.</p>
 
 <p>Yes, it can get crowded, and the summers are intense, but they say once you experience that perfect Seville evening you understand why people fall completely in love with this place.</p>
 
-<p>Well, simply put, I hope to revisit this short memo in a few years and contrast my impressions then. I also hope to have some science to discuss by then. Exciting things are coming!</p>]]></content><author><name>rlaplaza</name></author><category term="random," /><category term="chemistry," /><category term="computational" /><summary type="html"><![CDATA[Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-1.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-1.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>Well, simply put, I hope to revisit this short memo in a few years and contrast my impressions then. I also hope to have some science to discuss by then. Exciting things are coming!</p>]]></content><author><name>rlaplaza</name></author><category term="random," /><category term="chemistry," /><category term="computational" /><summary type="html"><![CDATA[Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-1.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-1.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Tips and Troubleshooting Guide</title><link href="https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Tips and Troubleshooting Guide" /><published>2025-01-22T00:00:00+00:00</published><updated>2026-01-22T14:27:21+00:00</updated><id>https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-tips-and-troubleshooting-guide">Gaussian Tips and Troubleshooting Guide</h1>
+
+<p>This guide compiles common errors encountered when running Gaussian calculations and provides practical solutions. Whether you’re optimizing geometries, computing frequencies, or running excited-state calculations, these tips should help you navigate the most frequent issues.</p>
+
+<blockquote>
+  <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to quickly find specific error messages. This guide is inspired by and builds upon resources from the computational chemistry community, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="memory-and-resource-issues">Memory and Resource Issues</h2>
+
+<h3 id="insufficient-memory-errors">Insufficient Memory Errors</h3>
+
+<p><strong>Common Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CISAX needs XXXXX more words of memory</code></li>
+  <li><code class="language-plaintext highlighter-rouge">XXXXX words are not enough for AlAXAO</code></li>
+  <li><code class="language-plaintext highlighter-rouge">galloc: could not allocate memory</code></li>
+  <li><code class="language-plaintext highlighter-rouge">malloc failed: Resource temporarily unavailable</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li><strong>Increase memory allocation</strong>: Use the <code class="language-plaintext highlighter-rouge">%mem</code> directive at the top of your input file:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%mem=8GB
+</code></pre></div>    </div>
+    <p>Note: Gaussian actually uses about 1 GB more than specified, so set <code class="language-plaintext highlighter-rouge">%mem</code> to at least 1 GB less than your job script’s memory allocation.</p>
+  </li>
+  <li><strong>Reduce CPU cores</strong>: If memory is limited, reduce the number of processors:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%nprocshared=4
+</code></pre></div>    </div>
+    <p>This reduces memory requirements per core.</p>
+  </li>
+  <li><strong>Check job script settings</strong>: Ensure your job submission script (SLURM, PBS, etc.) allocates sufficient memory:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#SBATCH --mem=16G  # Should be ~1GB more than %mem</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="geometry-optimization-issues">Geometry Optimization Issues</h2>
+
+<h3 id="optimization-not-converging">Optimization Not Converging</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Number of steps exceeded, NStep= 100</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Delta-x Convergence NOT Met</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Maximum of *** iterations exceeded in RedStp</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li><strong>Increase maximum cycles</strong>: Add <code class="language-plaintext highlighter-rouge">opt=maxcycle=n</code> where n is 2-3 times the current number of steps:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt=calcfc opt=maxcycle=200
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Try different optimization methods</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">opt=RFO</code> - Rational Function Optimization</li>
+      <li><code class="language-plaintext highlighter-rouge">opt=GDIIS</code> - Geometry Direct Inversion in Iterative Subspace</li>
+      <li><code class="language-plaintext highlighter-rouge">opt=GEDIIS</code> - Geometry Energy-Direct Inversion in Iterative Subspace</li>
+    </ul>
+  </li>
+  <li><strong>Switch coordinate system</strong>: If Z-matrix fails, try Cartesian coordinates:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opt=cartesian
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Check initial geometry</strong>: Verify your starting structure is reasonable. Use molecular visualization software (GaussView, Avogadro) to inspect the geometry.</p>
+  </li>
+  <li><strong>Modify symmetry</strong>: Sometimes reducing symmetry helps:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># symm=loose
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="transition-state-optimization-issues">Transition State Optimization Issues</h3>
+
+<p><strong>Error Message:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Wrong number of Negative eigenvalues: Desired= 1 Actual= 4</code></li>
+</ul>
+
+<p><strong>Solution:</strong>
+If you’re optimizing a transition state but get multiple negative frequencies, use:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opt=(ts,noeigen)
+</code></pre></div></div>
+<p>This skips the eigenvalue check. However, always verify your final structure has exactly one imaginary frequency!</p>
+
+<hr />
+
+<h2 id="frequency-calculation-issues">Frequency Calculation Issues</h2>
+
+<h3 id="frequency-calculation-errors">Frequency Calculation Errors</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Error in INITNF</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Linear search skipped for unknown reason</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Inconsistency: ModMin= N Eigenvalue= MM</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+    <p><strong>Ensure optimization converged</strong>: Frequency calculations require a fully optimized geometry. Check that your optimization completed successfully.</p>
+  </li>
+  <li><strong>Use <code class="language-plaintext highlighter-rouge">freq=readfc</code></strong>: If you have a checkpoint file with force constants:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># freq=readfc
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Recalculate from scratch</strong>: Sometimes it’s best to re-optimize and then compute frequencies in a single job:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt freq
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="scf-convergence-issues">SCF Convergence Issues</h2>
+
+<h3 id="scf-not-converging">SCF Not Converging</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Convergence failure -- run terminated</code></li>
+  <li><code class="language-plaintext highlighter-rouge">SCF Done:  E(RB3LYP) =  ...  A.U. after   50 cycles</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li><strong>Use convergence aids</strong>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scf=(conver=8,xqc)
+</code></pre></div>    </div>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">conver=8</code> sets tighter convergence criteria</li>
+      <li><code class="language-plaintext highlighter-rouge">xqc</code> uses quadratic convergence</li>
+    </ul>
+  </li>
+  <li><strong>Try different initial guess</strong>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>guess=mix
+guess=huckel
+guess=read  # from checkpoint file
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Use damping</strong>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scf=(conver=8,damp)
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Check for problematic systems</strong>:
+    <ul>
+      <li>Open-shell systems may need <code class="language-plaintext highlighter-rouge">stable=opt</code></li>
+      <li>Systems with near-degeneracies may need different methods</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="post-hf-method-convergence">Post-HF Method Convergence</h2>
+
+<h3 id="ccsdccsdt-not-converging">CCSD/CCSD(T) Not Converging</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Error termination via Lnk1e in l913.exe</code> (after CCSD iterations)</li>
+  <li>Large amplitudes in the output</li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li><strong>Increase maximum cycles</strong>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ccsd(t,maxcyc=100)
+</code></pre></div>    </div>
+    <p>Default is 50 cycles.</p>
+  </li>
+  <li>
+    <p><strong>Check convergence trend</strong>: Look at the <code class="language-plaintext highlighter-rouge">DE(Corr)</code> values in the output. If they’re converging (approaching a stable value), increasing cycles should help.</p>
+  </li>
+  <li><strong>Verify reference state</strong>: Ensure your HF reference is reasonable. Try:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stable=opt
+</code></pre></div>    </div>
+    <p>before the CCSD calculation.</p>
+  </li>
+  <li><strong>Try different basis set</strong>: Sometimes a smaller or different basis set helps establish convergence.</li>
+</ol>
+
+<hr />
+
+<h2 id="file-and-io-errors">File and I/O Errors</h2>
+
+<h3 id="disk-space-issues">Disk Space Issues</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Erroneous write. write 122880 instead of 4239360</code></li>
+  <li><code class="language-plaintext highlighter-rouge">writwa: No space left on device</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Erroneous write during file extend</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li><strong>Check disk space</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">df</span> <span class="nt">-h</span>
+<span class="nb">du</span> <span class="nt">-sh</span> ~/scratch/
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Clean up scratch directory</strong>: Remove old checkpoint files and temporary files.</p>
+  </li>
+  <li>
+    <p><strong>Use smaller basis set</strong>: For very large calculations, consider using a smaller basis set or reducing system size.</p>
+  </li>
+  <li><strong>Set scratch directory</strong>: Ensure <code class="language-plaintext highlighter-rouge">GAUSS_SCRDIR</code> points to a directory with sufficient space:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">GAUSS_SCRDIR</span><span class="o">=</span>/path/to/large/disk/scratch
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="checkpoint-file-issues">Checkpoint File Issues</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Error termination in NtrErr: Operation on file out of range</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Error imposing constraints</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+    <p><strong>Regenerate checkpoint file</strong>: The checkpoint file may be corrupted or incomplete. Re-run the calculation that generates the needed data.</p>
+  </li>
+  <li>
+    <p><strong>Don’t rely on incomplete checkpoints</strong>: If a previous job failed or was killed, don’t try to read from its checkpoint file.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="input-file-errors">Input File Errors</h2>
+
+<h3 id="z-matrix-and-coordinate-errors">Z-Matrix and Coordinate Errors</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">End of file in Zsymb</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Found a string as input</code></li>
+  <li><code class="language-plaintext highlighter-rouge">There are no atoms in this input structure</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Symbol not found in Z-matrix</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Variable index is out of range</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Determination of dummy atom variables in z-matrix conversion failed</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+    <p><strong>Check input format</strong>: Ensure proper spacing and formatting in your Z-matrix or Cartesian coordinates.</p>
+  </li>
+  <li><strong>Use Cartesian coordinates</strong>: If Z-matrix conversion fails, switch to Cartesian:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt=cartesian
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Verify atom definitions</strong>: Check that all atoms are properly defined and variables are correctly referenced.</p>
+  </li>
+  <li><strong>Use GaussView or similar</strong>: Generate input files using molecular visualization software to avoid formatting errors.</li>
+</ol>
+
+<hr />
+
+<h2 id="method-specific-issues">Method-Specific Issues</h2>
+
+<h3 id="dft-functional-limitations">DFT Functional Limitations</h3>
+
+<p><strong>Error Message:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">No func 3rd derivs with HSE</code> (or similar for other functionals)</li>
+</ul>
+
+<p><strong>Explanation:</strong>
+Some functionals don’t support third-order derivatives needed for hyperpolarizability calculations.</p>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li><strong>For polarizability only</strong>: Use <code class="language-plaintext highlighter-rouge">polar=Numerical</code>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># polar=Numerical
+</code></pre></div>    </div>
+    <p>This calculates polarizability α but may fail for hyperpolarizability β.</p>
+  </li>
+  <li>
+    <p><strong>Use different functional</strong>: Switch to a functional that supports third-order derivatives (most standard functionals do).</p>
+  </li>
+  <li><strong>Check output</strong>: Sometimes the desired property (e.g., α) is calculated before the error occurs, so check earlier in the output file.</li>
+</ol>
+
+<hr />
+
+<h2 id="system-and-permission-errors">System and Permission Errors</h2>
+
+<h3 id="gaussian-installation-issues">Gaussian Installation Issues</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Files in the Gaussian directory are world accessible. This must be fixed.</code></li>
+  <li><code class="language-plaintext highlighter-rouge">failed to open execfile</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li><strong>Fix permissions</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> <span class="nt">-R</span> 750 /path/to/Gaussian
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Check Linda vs. OpenMP</strong>: If using <code class="language-plaintext highlighter-rouge">nprocl</code>, ensure your system supports Linda. Otherwise, use <code class="language-plaintext highlighter-rouge">nprocshared</code>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%nprocshared=8  # instead of nprocl
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Verify environment variables</strong>: Check that <code class="language-plaintext highlighter-rouge">g09root</code> or <code class="language-plaintext highlighter-rouge">g16root</code> and <code class="language-plaintext highlighter-rouge">GAUSS_EXEDIR</code> are set correctly.</li>
+</ol>
+
+<hr />
+
+<h2 id="general-best-practices">General Best Practices</h2>
+
+<h3 id="input-file-organization">Input File Organization</h3>
+
+<ol>
+  <li><strong>Always include route section</strong>: Start with <code class="language-plaintext highlighter-rouge">#</code> followed by method and keywords</li>
+  <li><strong>Use title line</strong>: Provide a descriptive title</li>
+  <li><strong>Specify charge and multiplicity</strong>: Essential for proper calculation</li>
+  <li><strong>Use checkpoint files</strong>: Include <code class="language-plaintext highlighter-rouge">%chk=filename.chk</code> for recovery</li>
+</ol>
+
+<h3 id="example-well-structured-input">Example Well-Structured Input:</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%mem=8GB
+%nprocshared=4
+%chk=water_opt.chk
+# opt freq b3lyp/6-31g(d)
+
+Water optimization
+
+0 1
+O    0.000000    0.000000    0.117300
+H    0.000000    0.757200   -0.469200
+H    0.000000   -0.757200   -0.469200
+</code></pre></div></div>
+
+<h3 id="monitoring-calculations">Monitoring Calculations</h3>
+
+<ol>
+  <li><strong>Watch output in real-time</strong>: Use <code class="language-plaintext highlighter-rouge">tail -f</code> to monitor progress:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tail</span> <span class="nt">-f</span> jobname.log
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Check for convergence</strong>: Look for “Optimization completed” or “Normal termination”</p>
+  </li>
+  <li><strong>Save intermediate results</strong>: Use checkpoint files to restart or extract data</li>
+</ol>
+
+<h3 id="performance-tips">Performance Tips</h3>
+
+<ol>
+  <li><strong>Use appropriate basis sets</strong>: Don’t use larger basis sets than necessary</li>
+  <li><strong>Parallelize wisely</strong>: More cores don’t always mean faster (memory trade-off)</li>
+  <li><strong>Use efficient methods</strong>: Consider <code class="language-plaintext highlighter-rouge">opt=calcfc</code> to calculate force constants once</li>
+  <li><strong>Chain calculations</strong>: Use <code class="language-plaintext highlighter-rouge">geom=allcheck</code> to continue from previous calculations</li>
+</ol>
+
+<hr />
+
+<h2 id="quick-reference-common-fixes">Quick Reference: Common Fixes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Problem</th>
+      <th>Quick Fix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Out of memory</td>
+      <td>Increase <code class="language-plaintext highlighter-rouge">%mem</code> or decrease <code class="language-plaintext highlighter-rouge">%nprocshared</code></td>
+    </tr>
+    <tr>
+      <td>Optimization not converging</td>
+      <td>Add <code class="language-plaintext highlighter-rouge">opt=maxcycle=200</code> or try <code class="language-plaintext highlighter-rouge">opt=RFO</code></td>
+    </tr>
+    <tr>
+      <td>SCF not converging</td>
+      <td>Add <code class="language-plaintext highlighter-rouge">scf=(conver=8,xqc)</code> or <code class="language-plaintext highlighter-rouge">scf=damp</code></td>
+    </tr>
+    <tr>
+      <td>Multiple negative frequencies</td>
+      <td>Use <code class="language-plaintext highlighter-rouge">opt=(ts,noeigen)</code> but verify result</td>
+    </tr>
+    <tr>
+      <td>Disk space error</td>
+      <td>Clean scratch directory or use smaller basis</td>
+    </tr>
+    <tr>
+      <td>Checkpoint file error</td>
+      <td>Regenerate checkpoint from scratch</td>
+    </tr>
+    <tr>
+      <td>Z-matrix error</td>
+      <td>Switch to <code class="language-plaintext highlighter-rouge">opt=cartesian</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="additional-resources">Additional Resources</h2>
+
+<ul>
+  <li><a href="https://gaussian.com/">Gaussian Official Documentation</a></li>
+  <li><a href="https://gaussian.com/man/">Gaussian User’s Reference</a></li>
+  <li><a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s Gaussian Error Guide</a></li>
+  <li><a href="https://github.com/CrawfordGroup/ProgrammingProjects">Crawford Group Computational Chemistry Resources</a></li>
+</ul>
+
+<hr />
+
+<h2 id="getting-help">Getting Help</h2>
+
+<p>If you encounter errors not covered here:</p>
+
+<ol>
+  <li><strong>Check the full output file</strong>: Errors often have context earlier in the file</li>
+  <li><strong>Search error messages</strong>: Many errors are documented online</li>
+  <li><strong>Consult colleagues</strong>: Often someone has seen the same issue</li>
+  <li><strong>Gaussian support</strong>: For licensed users, contact Gaussian Inc. support</li>
+</ol>
+
+<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Tips and Troubleshooting Guide]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

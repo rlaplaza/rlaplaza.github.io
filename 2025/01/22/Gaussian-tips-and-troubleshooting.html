@@ -43,21 +43,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Using Agustina | rlaplaza and crew</title>
+<title>Gaussian Tips and Troubleshooting Guide | rlaplaza and crew</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="Using Agustina">
+<meta name="title" content="Gaussian Tips and Troubleshooting Guide">
 <meta name="description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 
-<meta property="og:title" content="Using Agustina">
+<meta property="og:title" content="Gaussian Tips and Troubleshooting Guide">
 <meta property="og:site_title" content="rlaplaza and crew">
 <meta property="og:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="og:url" content="https://rlaplaza.github.io">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="Using Agustina">
+<meta property="twitter:title" content="Gaussian Tips and Troubleshooting Guide">
 <meta property="twitter:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="twitter:url" content="https://rlaplaza.github.io">
 <meta property="twitter:card" content="summary_large_image">
@@ -67,7 +67,7 @@
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
   <meta property="og:updated_time" content="2026-01-22T14:27:21+00:00">
-  <meta property="article:published_time" content="2025-08-01T00:00:00+00:00">
+  <meta property="article:published_time" content="2025-01-22T00:00:00+00:00">
   <meta property="article:modified_time" content="2026-01-22T14:27:21+00:00">
   <meta name="revised" content="2026-01-22T14:27:21+00:00">
 
@@ -77,13 +77,13 @@
     "@context": "https://schema.org",
     
       "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "Using Agustina" },
-      "datePublished": "2025-08-01T00:00:00+00:00",
+      "author": { "@type": "Person", "name": "Gaussian Tips and Troubleshooting Guide" },
+      "datePublished": "2025-01-22T00:00:00+00:00",
       "dateModified": "2026-01-22T14:27:21+00:00",
     
-    "name": "Using Agustina",
+    "name": "Gaussian Tips and Troubleshooting Guide",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
-    "headline": "Using Agustina",
+    "headline": "Gaussian Tips and Troubleshooting Guide",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -504,7 +504,7 @@
 -->
 
 
-<h1 class="center">Using Agustina</h1>
+<h1 class="center">Gaussian Tips and Troubleshooting Guide</h1>
 
 <div class="post-info">
   
@@ -526,7 +526,7 @@
   
     <span data-tooltip="Originally published on">
       <i class="icon fa-regular fa-calendar"></i>
-      <span>August 01, 2025</span>
+      <span>January 22, 2025</span>
     </span>
   
 
@@ -548,8 +548,16 @@
         tutorial
       </a>
     
-      <a href="/blog?search=%22tag:%20guidelines%22" class="tag" data-tooltip='Show items with the tag "guidelines"'>
-        guidelines
+      <a href="/blog?search=%22tag:%20computational-chemistry%22" class="tag" data-tooltip='Show items with the tag "computational-chemistry"'>
+        computational-chemistry
+      </a>
+    
+      <a href="/blog?search=%22tag:%20gaussian%22" class="tag" data-tooltip='Show items with the tag "gaussian"'>
+        gaussian
+      </a>
+    
+      <a href="/blog?search=%22tag:%20troubleshooting%22" class="tag" data-tooltip='Show items with the tag "troubleshooting"'>
+        troubleshooting
       </a>
     
   </div>
@@ -567,67 +575,528 @@
 -->
 
 
-<h1 id="using-agustina">Using Agustina</h1>
+<h1 id="gaussian-tips-and-troubleshooting-guide">Gaussian Tips and Troubleshooting Guide</h1>
 
-<p>Agustina is a High Performance Computing (HPC) center. There are many such centers in the world (a list of the most powerful supercomputers is available in the <a href="https://top500.org/">Top500</a>, in case you are curious).</p>
+<p>This guide compiles common errors encountered when running Gaussian calculations and provides practical solutions. Whether you’re optimizing geometries, computing frequencies, or running excited-state calculations, these tips should help you navigate the most frequent issues.</p>
 
-<p>The main documentation of Agustina is <a href="https://doc--publica-bifi-es.translate.goog/agustina/manual_agustina.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp">here</a>, which includes account creation and basic usage. Remember that any changes you do to your <code class="language-plaintext highlighter-rouge">.bashrc</code> will be applied once you create a new terminal or run <code class="language-plaintext highlighter-rouge">source .bashrc</code>.</p>
-
-<ul>
-  <li>Like most HPC centers, Agustina requires users to connect from a local network for security reasons. In other centers you must use a VPN. In Agustina, you can ssh to the login node (<code class="language-plaintext highlighter-rouge">agustina.bifi.unizar.es</code>) through a bridge node (<code class="language-plaintext highlighter-rouge">bridge.bifi.unizar.es</code>). Setting up these aliases in your <code class="language-plaintext highlighter-rouge">.bashrc</code> file will be useful:</li>
-</ul>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>alias tob='ssh -X username@bridge.bifi.unizar.es'
-alias toa='ssh -J username@bridge.bifi.unizar.es username@agustina.bifi.unizar.es'
-</code></pre></div></div>
-
-<p>That way you can jump over bridge to access Agustina using simply <code class="language-plaintext highlighter-rouge">toa</code>.</p>
-
-<ul>
-  <li>Once in Agustina, you will notice that the command line interface is very plain. To improve it, you can set up a few extras in your <code class="language-plaintext highlighter-rouge">.bashrc</code> file (in your Agustina user home!):</li>
-</ul>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export PS1="\[\e[31m\][\[\e[m\]\[\e[33m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\]\[\e[31m\]]\[\e[m\]:\[\e[33;40m\]\w\[\e[m\]\[\e[40m\] \[\e[m\]\[\e[32;40m\]\\$\[\e[m\] "
-alias wqm="watch squeue --format=\'%.18i %.9P %.30j %.8u %.8T %.10M %.9l %.6D %R\' -u username"
-</code></pre></div></div>
-
-<ul>
-  <li>Next step is setting up github and git. To start, go to your <a href="https://github.com/settings/keys">github keys</a> setting and then generate a new ssh key in Agustina and add it to your account following <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh">the instructions</a>.</li>
-</ul>
-
-<p>Once that is done, you can get the lab’s utility scripts from the <a href="https://github.com/rlaplaza-lab/utility_scripts">group organization page</a>, assuming you have asked for permissions. Clone this directory to a directory (I put it in <code class="language-plaintext highlighter-rouge">/home/username/Software/</code>) and add the directory to your path in <code class="language-plaintext highlighter-rouge">.bashrc</code>:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export PATH="/home/username/Software/utility_scripts:$PATH"
-</code></pre></div></div>
-
-<p>Now you can use the scripts from this directory in your command line. You can check usage by reading the scripts or, in general, using the help flag, e.g.:</p>
-
-<p><code class="language-plaintext highlighter-rouge">subconda.sh -h</code></p>
-
-<ul>
-  <li>The next step is setting up <code class="language-plaintext highlighter-rouge">conda</code> or some other package manager.</li>
-</ul>
-
-<p>You can follow the instructions in the documentation <a href="https://doc--publica-bifi-es.translate.goog/agustina/anaconda.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp">here</a>.</p>
-
-<p>Personally, I added these to my <code class="language-plaintext highlighter-rouge">.bashrc</code> as well:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module load anaconda/2025 &gt; /dev/null # This avoids errors with scp and rsync with host jumping
-export CONDA_PKGS_DIRS=/fs/agustina/$(whoami)/.conda-pkgs
-mkdir -p /fs/agustina/$(whoami)/conda-env
-# To activate or create envs, we now need --prefix=/fs/agustina/$(whoami)/conda-env/my-conda-env-name
-# ... other lines you may need
-export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
-</code></pre></div></div>
-
-<p>The space you have in your <code class="language-plaintext highlighter-rouge">/home</code> in Agustina is small, so your conda envs should be stored in <code class="language-plaintext highlighter-rouge">/fs/agustina/username/conda-env/</code> (some packages are very big!). Since typing the full path to activate an env is a pain in the derriere, you can add that location to let conda figure out aliases.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda config --append envs_dirs /fs/agustina/username/conda-env/
-</code></pre></div></div>
-
-<p>You can now activate envs using their names directly.</p>
+<blockquote>
+  <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to quickly find specific error messages. This guide is inspired by and builds upon resources from the computational chemistry community, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
+</blockquote>
 
 <hr>
+
+<h2 id="memory-and-resource-issues">Memory and Resource Issues</h2>
+
+<h3 id="insufficient-memory-errors">Insufficient Memory Errors</h3>
+
+<p><strong>Common Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CISAX needs XXXXX more words of memory</code></li>
+  <li><code class="language-plaintext highlighter-rouge">XXXXX words are not enough for AlAXAO</code></li>
+  <li><code class="language-plaintext highlighter-rouge">galloc: could not allocate memory</code></li>
+  <li><code class="language-plaintext highlighter-rouge">malloc failed: Resource temporarily unavailable</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+<strong>Increase memory allocation</strong>: Use the <code class="language-plaintext highlighter-rouge">%mem</code> directive at the top of your input file:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>%mem=8GB
+</code></pre></div>    </div>
+    <p>Note: Gaussian actually uses about 1 GB more than specified, so set <code class="language-plaintext highlighter-rouge">%mem</code> to at least 1 GB less than your job script’s memory allocation.</p>
+  </li>
+  <li>
+<strong>Reduce CPU cores</strong>: If memory is limited, reduce the number of processors:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>%nprocshared=4
+</code></pre></div>    </div>
+    <p>This reduces memory requirements per core.</p>
+  </li>
+  <li>
+<strong>Check job script settings</strong>: Ensure your job submission script (SLURM, PBS, etc.) allocates sufficient memory:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c">#SBATCH --mem=16G  # Should be ~1GB more than %mem</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr>
+
+<h2 id="geometry-optimization-issues">Geometry Optimization Issues</h2>
+
+<h3 id="optimization-not-converging">Optimization Not Converging</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Number of steps exceeded, NStep= 100</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Delta-x Convergence NOT Met</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Maximum of *** iterations exceeded in RedStp</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+<strong>Increase maximum cycles</strong>: Add <code class="language-plaintext highlighter-rouge">opt=maxcycle=n</code> where n is 2-3 times the current number of steps:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># opt=calcfc opt=maxcycle=200
+</code></pre></div>    </div>
+  </li>
+  <li>
+<strong>Try different optimization methods</strong>:
+    <ul>
+      <li>
+<code class="language-plaintext highlighter-rouge">opt=RFO</code> - Rational Function Optimization</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">opt=GDIIS</code> - Geometry Direct Inversion in Iterative Subspace</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">opt=GEDIIS</code> - Geometry Energy-Direct Inversion in Iterative Subspace</li>
+    </ul>
+  </li>
+  <li>
+<strong>Switch coordinate system</strong>: If Z-matrix fails, try Cartesian coordinates:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>opt=cartesian
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Check initial geometry</strong>: Verify your starting structure is reasonable. Use molecular visualization software (GaussView, Avogadro) to inspect the geometry.</p>
+  </li>
+  <li>
+<strong>Modify symmetry</strong>: Sometimes reducing symmetry helps:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># symm=loose
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="transition-state-optimization-issues">Transition State Optimization Issues</h3>
+
+<p><strong>Error Message:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Wrong number of Negative eigenvalues: Desired= 1 Actual= 4</code></li>
+</ul>
+
+<p><strong>Solution:</strong>
+If you’re optimizing a transition state but get multiple negative frequencies, use:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opt=(ts,noeigen)
+</code></pre></div></div>
+<p>This skips the eigenvalue check. However, always verify your final structure has exactly one imaginary frequency!</p>
+
+<hr>
+
+<h2 id="frequency-calculation-issues">Frequency Calculation Issues</h2>
+
+<h3 id="frequency-calculation-errors">Frequency Calculation Errors</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Error in INITNF</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Linear search skipped for unknown reason</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Inconsistency: ModMin= N Eigenvalue= MM</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+    <p><strong>Ensure optimization converged</strong>: Frequency calculations require a fully optimized geometry. Check that your optimization completed successfully.</p>
+  </li>
+  <li>
+<strong>Use <code class="language-plaintext highlighter-rouge">freq=readfc</code></strong>: If you have a checkpoint file with force constants:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># freq=readfc
+</code></pre></div>    </div>
+  </li>
+  <li>
+<strong>Recalculate from scratch</strong>: Sometimes it’s best to re-optimize and then compute frequencies in a single job:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># opt freq
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr>
+
+<h2 id="scf-convergence-issues">SCF Convergence Issues</h2>
+
+<h3 id="scf-not-converging">SCF Not Converging</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Convergence failure -- run terminated</code></li>
+  <li><code class="language-plaintext highlighter-rouge">SCF Done:  E(RB3LYP) =  ...  A.U. after   50 cycles</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+<strong>Use convergence aids</strong>:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>scf=(conver=8,xqc)
+</code></pre></div>    </div>
+    <ul>
+      <li>
+<code class="language-plaintext highlighter-rouge">conver=8</code> sets tighter convergence criteria</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">xqc</code> uses quadratic convergence</li>
+    </ul>
+  </li>
+  <li>
+<strong>Try different initial guess</strong>:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>guess=mix
+guess=huckel
+guess=read  # from checkpoint file
+</code></pre></div>    </div>
+  </li>
+  <li>
+<strong>Use damping</strong>:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>scf=(conver=8,damp)
+</code></pre></div>    </div>
+  </li>
+  <li>
+<strong>Check for problematic systems</strong>:
+    <ul>
+      <li>Open-shell systems may need <code class="language-plaintext highlighter-rouge">stable=opt</code>
+</li>
+      <li>Systems with near-degeneracies may need different methods</li>
+    </ul>
+  </li>
+</ol>
+
+<hr>
+
+<h2 id="post-hf-method-convergence">Post-HF Method Convergence</h2>
+
+<h3 id="ccsdccsdt-not-converging">CCSD/CCSD(T) Not Converging</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">Error termination via Lnk1e in l913.exe</code> (after CCSD iterations)</li>
+  <li>Large amplitudes in the output</li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+<strong>Increase maximum cycles</strong>:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>ccsd(t,maxcyc=100)
+</code></pre></div>    </div>
+    <p>Default is 50 cycles.</p>
+  </li>
+  <li>
+    <p><strong>Check convergence trend</strong>: Look at the <code class="language-plaintext highlighter-rouge">DE(Corr)</code> values in the output. If they’re converging (approaching a stable value), increasing cycles should help.</p>
+  </li>
+  <li>
+<strong>Verify reference state</strong>: Ensure your HF reference is reasonable. Try:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>stable=opt
+</code></pre></div>    </div>
+    <p>before the CCSD calculation.</p>
+  </li>
+  <li>
+<strong>Try different basis set</strong>: Sometimes a smaller or different basis set helps establish convergence.</li>
+</ol>
+
+<hr>
+
+<h2 id="file-and-io-errors">File and I/O Errors</h2>
+
+<h3 id="disk-space-issues">Disk Space Issues</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Erroneous write. write 122880 instead of 4239360</code></li>
+  <li><code class="language-plaintext highlighter-rouge">writwa: No space left on device</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Erroneous write during file extend</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+<strong>Check disk space</strong>:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">df</span> <span class="nt">-h</span>
+<span class="nb">du</span> <span class="nt">-sh</span> ~/scratch/
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Clean up scratch directory</strong>: Remove old checkpoint files and temporary files.</p>
+  </li>
+  <li>
+    <p><strong>Use smaller basis set</strong>: For very large calculations, consider using a smaller basis set or reducing system size.</p>
+  </li>
+  <li>
+<strong>Set scratch directory</strong>: Ensure <code class="language-plaintext highlighter-rouge">GAUSS_SCRDIR</code> points to a directory with sufficient space:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">GAUSS_SCRDIR</span><span class="o">=</span>/path/to/large/disk/scratch
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="checkpoint-file-issues">Checkpoint File Issues</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Error termination in NtrErr: Operation on file out of range</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Error imposing constraints</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+    <p><strong>Regenerate checkpoint file</strong>: The checkpoint file may be corrupted or incomplete. Re-run the calculation that generates the needed data.</p>
+  </li>
+  <li>
+    <p><strong>Don’t rely on incomplete checkpoints</strong>: If a previous job failed or was killed, don’t try to read from its checkpoint file.</p>
+  </li>
+</ol>
+
+<hr>
+
+<h2 id="input-file-errors">Input File Errors</h2>
+
+<h3 id="z-matrix-and-coordinate-errors">Z-Matrix and Coordinate Errors</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">End of file in Zsymb</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Found a string as input</code></li>
+  <li><code class="language-plaintext highlighter-rouge">There are no atoms in this input structure</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Symbol not found in Z-matrix</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Variable index is out of range</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Determination of dummy atom variables in z-matrix conversion failed</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+    <p><strong>Check input format</strong>: Ensure proper spacing and formatting in your Z-matrix or Cartesian coordinates.</p>
+  </li>
+  <li>
+<strong>Use Cartesian coordinates</strong>: If Z-matrix conversion fails, switch to Cartesian:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># opt=cartesian
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Verify atom definitions</strong>: Check that all atoms are properly defined and variables are correctly referenced.</p>
+  </li>
+  <li>
+<strong>Use GaussView or similar</strong>: Generate input files using molecular visualization software to avoid formatting errors.</li>
+</ol>
+
+<hr>
+
+<h2 id="method-specific-issues">Method-Specific Issues</h2>
+
+<h3 id="dft-functional-limitations">DFT Functional Limitations</h3>
+
+<p><strong>Error Message:</strong></p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">No func 3rd derivs with HSE</code> (or similar for other functionals)</li>
+</ul>
+
+<p><strong>Explanation:</strong>
+Some functionals don’t support third-order derivatives needed for hyperpolarizability calculations.</p>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+<strong>For polarizability only</strong>: Use <code class="language-plaintext highlighter-rouge">polar=Numerical</code>:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># polar=Numerical
+</code></pre></div>    </div>
+    <p>This calculates polarizability α but may fail for hyperpolarizability β.</p>
+  </li>
+  <li>
+    <p><strong>Use different functional</strong>: Switch to a functional that supports third-order derivatives (most standard functionals do).</p>
+  </li>
+  <li>
+<strong>Check output</strong>: Sometimes the desired property (e.g., α) is calculated before the error occurs, so check earlier in the output file.</li>
+</ol>
+
+<hr>
+
+<h2 id="system-and-permission-errors">System and Permission Errors</h2>
+
+<h3 id="gaussian-installation-issues">Gaussian Installation Issues</h3>
+
+<p><strong>Error Messages:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Files in the Gaussian directory are world accessible. This must be fixed.</code></li>
+  <li><code class="language-plaintext highlighter-rouge">failed to open execfile</code></li>
+</ul>
+
+<p><strong>Solutions:</strong></p>
+
+<ol>
+  <li>
+<strong>Fix permissions</strong>:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> <span class="nt">-R</span> 750 /path/to/Gaussian
+</code></pre></div>    </div>
+  </li>
+  <li>
+<strong>Check Linda vs. OpenMP</strong>: If using <code class="language-plaintext highlighter-rouge">nprocl</code>, ensure your system supports Linda. Otherwise, use <code class="language-plaintext highlighter-rouge">nprocshared</code>:
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>%nprocshared=8  # instead of nprocl
+</code></pre></div>    </div>
+  </li>
+  <li>
+<strong>Verify environment variables</strong>: Check that <code class="language-plaintext highlighter-rouge">g09root</code> or <code class="language-plaintext highlighter-rouge">g16root</code> and <code class="language-plaintext highlighter-rouge">GAUSS_EXEDIR</code> are set correctly.</li>
+</ol>
+
+<hr>
+
+<h2 id="general-best-practices">General Best Practices</h2>
+
+<h3 id="input-file-organization">Input File Organization</h3>
+
+<ol>
+  <li>
+<strong>Always include route section</strong>: Start with <code class="language-plaintext highlighter-rouge">#</code> followed by method and keywords</li>
+  <li>
+<strong>Use title line</strong>: Provide a descriptive title</li>
+  <li>
+<strong>Specify charge and multiplicity</strong>: Essential for proper calculation</li>
+  <li>
+<strong>Use checkpoint files</strong>: Include <code class="language-plaintext highlighter-rouge">%chk=filename.chk</code> for recovery</li>
+</ol>
+
+<h3 id="example-well-structured-input">Example Well-Structured Input:</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%mem=8GB
+%nprocshared=4
+%chk=water_opt.chk
+# opt freq b3lyp/6-31g(d)
+
+Water optimization
+
+0 1
+O    0.000000    0.000000    0.117300
+H    0.000000    0.757200   -0.469200
+H    0.000000   -0.757200   -0.469200
+</code></pre></div></div>
+
+<h3 id="monitoring-calculations">Monitoring Calculations</h3>
+
+<ol>
+  <li>
+<strong>Watch output in real-time</strong>: Use <code class="language-plaintext highlighter-rouge">tail -f</code> to monitor progress:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">tail</span> <span class="nt">-f</span> jobname.log
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Check for convergence</strong>: Look for “Optimization completed” or “Normal termination”</p>
+  </li>
+  <li>
+<strong>Save intermediate results</strong>: Use checkpoint files to restart or extract data</li>
+</ol>
+
+<h3 id="performance-tips">Performance Tips</h3>
+
+<ol>
+  <li>
+<strong>Use appropriate basis sets</strong>: Don’t use larger basis sets than necessary</li>
+  <li>
+<strong>Parallelize wisely</strong>: More cores don’t always mean faster (memory trade-off)</li>
+  <li>
+<strong>Use efficient methods</strong>: Consider <code class="language-plaintext highlighter-rouge">opt=calcfc</code> to calculate force constants once</li>
+  <li>
+<strong>Chain calculations</strong>: Use <code class="language-plaintext highlighter-rouge">geom=allcheck</code> to continue from previous calculations</li>
+</ol>
+
+<hr>
+
+<h2 id="quick-reference-common-fixes">Quick Reference: Common Fixes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Problem</th>
+      <th>Quick Fix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Out of memory</td>
+      <td>Increase <code class="language-plaintext highlighter-rouge">%mem</code> or decrease <code class="language-plaintext highlighter-rouge">%nprocshared</code>
+</td>
+    </tr>
+    <tr>
+      <td>Optimization not converging</td>
+      <td>Add <code class="language-plaintext highlighter-rouge">opt=maxcycle=200</code> or try <code class="language-plaintext highlighter-rouge">opt=RFO</code>
+</td>
+    </tr>
+    <tr>
+      <td>SCF not converging</td>
+      <td>Add <code class="language-plaintext highlighter-rouge">scf=(conver=8,xqc)</code> or <code class="language-plaintext highlighter-rouge">scf=damp</code>
+</td>
+    </tr>
+    <tr>
+      <td>Multiple negative frequencies</td>
+      <td>Use <code class="language-plaintext highlighter-rouge">opt=(ts,noeigen)</code> but verify result</td>
+    </tr>
+    <tr>
+      <td>Disk space error</td>
+      <td>Clean scratch directory or use smaller basis</td>
+    </tr>
+    <tr>
+      <td>Checkpoint file error</td>
+      <td>Regenerate checkpoint from scratch</td>
+    </tr>
+    <tr>
+      <td>Z-matrix error</td>
+      <td>Switch to <code class="language-plaintext highlighter-rouge">opt=cartesian</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2 id="additional-resources">Additional Resources</h2>
+
+<ul>
+  <li><a href="https://gaussian.com/">Gaussian Official Documentation</a></li>
+  <li><a href="https://gaussian.com/man/">Gaussian User’s Reference</a></li>
+  <li><a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s Gaussian Error Guide</a></li>
+  <li><a href="https://github.com/CrawfordGroup/ProgrammingProjects">Crawford Group Computational Chemistry Resources</a></li>
+</ul>
+
+<hr>
+
+<h2 id="getting-help">Getting Help</h2>
+
+<p>If you encounter errors not covered here:</p>
+
+<ol>
+  <li>
+<strong>Check the full output file</strong>: Errors often have context earlier in the file</li>
+  <li>
+<strong>Search error messages</strong>: Many errors are documented online</li>
+  <li>
+<strong>Consult colleagues</strong>: Often someone has seen the same issue</li>
+  <li>
+<strong>Gaussian support</strong>: For licensed users, contact Gaussian Inc. support</li>
+</ol>
+
+<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>
   </section>
 
   
@@ -645,13 +1114,13 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 <div class="post-nav">
   <span>
     
-      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
-      <a href="/2025/07/30/Writing-tips.html">
-        Writing tips and tricks
-      </a>
-    
   </span>
   <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/2025/07/26/Hello-world.html">
+        Hello!
+      </a>
     
   </span>
 </div>
