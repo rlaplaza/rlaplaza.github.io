@@ -580,6 +580,36 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
+- id: doi:10.26434/chemrxiv.7215269.v2
+  title: "The \u2018Inverted Bond\u2019 revisited. Analysis of \u2018in silico\u2019\
+    \ models and of [1.1.1]Propellane using Orbital Forces"
+  authors:
+  - "Rub\xE9n Laplaza"
+  - "Julia Contreras-Garc\xEDa"
+  - Franck Fuster
+  - "Franc\u0327ois Volatron"
+  - Patrick Chaquin
+  publisher: American Chemical Society (ACS)
+  date: '2019-07-30'
+  link: https://doi.org/hbkx9d
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.26434/chemrxiv.7215269.v3
+  title: "The \u2018Inverted Bond\u2019 revisited. Analysis of \u2018in silico\u2019\
+    \ models and of [1.1.1]Propellane using Orbital Forces"
+  authors:
+  - "Rub\xE9n Laplaza"
+  - "Julia Contreras-Garc\xEDa"
+  - Franck Fuster
+  - "Franc\u0327ois Volatron"
+  - Patrick Chaquin
+  publisher: American Chemical Society (ACS)
+  date: '2019-07-30'
+  link: https://doi.org/g5566h
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1089/ars.2018.7658
   title: Redox- and Ligand Binding-Dependent Conformational Ensembles in the Human
     Apoptosis-Inducing Factor Regulate Its Pro-Life and Cell Death Functions
