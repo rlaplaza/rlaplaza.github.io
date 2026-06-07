@@ -1,5 +1,81 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
+- id: doi:10.26434/chemrxiv.15004091/v1
+  title: Feature Selection in Multivariate Linear Regression Models for Data-Efficient
+    Reaction Optimization
+  authors:
+  - Alexandre A. Schoepfer
+  - Ruben Laplaza
+  - Jerome Waser
+  - Clemence Corminboeuf
+  publisher: American Chemical Society (ACS)
+  date: '2026-06-01'
+  link: https://doi.org/hb6vpm
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/cssc.70688
+  title: 'Enhancing Catalyst Stability for Magnetically Induced Aqueous Catalysis:
+    Functionalization with a Hydrosoluble Zwitterionic Amidinate Ligand'
+  authors:
+  - "Jos\xE9 Aceituno"
+  - "Adri\xE1n S\xE1nchez"
+  - "Jaime Mazar\xEDo"
+  - "Rub\xE9n Laplaza"
+  - Bruno Chaudret
+  - "Sergio Rojas\u2010Buzo"
+  - "Luis M. Mart\xEDnez\u2010Prieto"
+  publisher: ChemSusChem
+  date: '2026-05-12'
+  link: https://doi.org/hb4n8x
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.26434/chemrxiv-2025-j38bv/v2
+  title: Benchmarking physics-inspired machine learning models for transition metal
+    complexes with diverse charge and spin states
+  authors:
+  - Yuri Cho
+  - Ksenia R. Briling
+  - Yannick Calvino Alonso
+  - "Rub\xE9n Laplaza"
+  - Clemence Corminboeuf
+  publisher: American Chemical Society (ACS)
+  date: '2026-04-21'
+  link: https://doi.org/hbzks4
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/D5DD00571J
+  title: Benchmarking physics-inspired machine learning models for transition metal
+    complexes with diverse charge and spin states
+  authors:
+  - Yuri Cho
+  - Ksenia R. Briling
+  - Yannick Calvino Alonso
+  - Ruben Laplaza
+  - Clemence Corminboeuf
+  publisher: Digital Discovery
+  date: '2026-01-01'
+  link: https://doi.org/hb3fqq
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/d5sc09530a
+  title: "Inverse design of frustrated Lewis pairs for direct catalytic CO\n     \
+    \               <sub>2</sub>\n                    hydrogenation: refining and\
+    \ expanding design rules"
+  authors:
+  - Shubhajit Das
+  - Ruben Laplaza
+  - Thanapat Worakul
+  - "Cl\xE9mence Corminboeuf"
+  publisher: Chemical Science
+  date: '2026-01-01'
+  link: https://doi.org/hbrs86
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1088/2632-2153/adcd38
   title: Integer linear programming for unsupervised training set selection in molecular
     machine learning
@@ -30,21 +106,6 @@
   publisher: ACS Catalysis
   date: '2025-04-18'
   link: https://doi.org/g9vdnk
-  orcid: 0000-0001-6315-4398
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1002/anie.202415056
-  title: "Inverse Design of Singlet\u2010Fission Materials with Uncertainty\u2010\
-    Controlled Genetic Optimization"
-  authors:
-  - Luca Schaufelberger
-  - J. Terence Blaskovits
-  - Ruben Laplaza
-  - Kjell Jorner
-  - Clemence Corminboeuf
-  publisher: Angewandte Chemie International Edition
-  date: '2024-11-11'
-  link: https://doi.org/g9vdnm
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
@@ -112,21 +173,6 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.26434/chemrxiv-2024-xzlt9
-  title: Inverse Design of Singlet Fission Materials with Uncertainty-Controlled Genetic
-    Optimization
-  authors:
-  - Luca Schaufelberger
-  - J. Terence Blaskovits
-  - "Rub\xE9n Laplaza"
-  - Kjell Jorner
-  - Clemence Corminboeuf
-  publisher: American Chemical Society (ACS)
-  date: '2024-08-07'
-  link: https://doi.org/gt6rxj
-  orcid: 0000-0001-6315-4398
-  plugin: orcid.py
-  file: orcid.yaml
 - id: doi:10.1021/acs.jpclett.4c01657
   title: Overcoming the Pitfalls of Computing Reaction Selectivity from Ensembles
     of Transition States
@@ -184,33 +230,63 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1002/adma.202305602
-  title: "Data\u2010Driven Discovery of Organic Electronic Materials Enabled by Hybrid\
-    \ Top\u2010Down/Bottom\u2010Up Design"
+- id: doi:10.1039/d4sc04401k
+  title: Assessment of fine-tuned large language models for real-world chemistry and
+    material science applications
   authors:
-  - J. Terence Blaskovits
-  - Ruben Laplaza
-  - Sergi Vela
-  - "Cl\xE9mence Corminboeuf"
-  publisher: Advanced Materials
-  date: '2023-11-23'
-  link: https://doi.org/g9vdnv
-  orcid: 0000-0001-6315-4398
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1039/D3SC06208B
-  title: A genetic optimization strategy with generality in asymmetric organocatalysis
-    as a primary target
-  authors:
-  - Simone Gallarati
-  - Puck van Gerwen
-  - Ruben Laplaza
-  - Lucien Brey
-  - Alexander Makaveev
+  - Joren Van Herck
+  - "Mar\xEDa Victoria Gil"
+  - Kevin Maik Jablonka
+  - Alex Abrudan
+  - Andy S. Anker
+  - Mehrdad Asgari
+  - Ben Blaiszik
+  - Antonio Buffo
+  - Leander Choudhury
   - Clemence Corminboeuf
+  - Hilal Daglar
+  - Amir Mohammad Elahi
+  - Ian T. Foster
+  - Susana Garcia
+  - Matthew Garvin
+  - Guillaume Godin
+  - Lydia L. Good
+  - Jianan Gu
+  - "No\xE9mie Xiao Hu"
+  - Xin Jin
+  - Tanja Junkers
+  - Seda Keskin
+  - Tuomas P. J. Knowles
+  - Ruben Laplaza
+  - Michele Lessona
+  - Sauradeep Majumdar
+  - Hossein Mashhadimoslem
+  - Ruaraidh D. McIntosh
+  - Seyed Mohamad Moosavi
+  - "Beatriz Mouri\xF1o"
+  - Francesca Nerli
+  - Covadonga Pevida
+  - Neda Poudineh
+  - Mahyar Rajabi-Kochi
+  - Kadi L. Saar
+  - Fahimeh Hooriabad Saboor
+  - Morteza Sagharichiha
+  - K. J. Schmidt
+  - Jiale Shi
+  - Elena Simone
+  - Dennis Svatunek
+  - Marco Taddei
+  - Igor Tetko
+  - Domonkos Tolnai
+  - Sahar Vahdatifar
+  - Jonathan Whitmer
+  - D. C. Florian Wieland
+  - "Regine Willumeit-R\xF6mer"
+  - "Andreas Z\xFCttel"
+  - Berend Smit
   publisher: Chemical Science
-  date: '2024-01-01'
-  link: https://doi.org/g9vdnw
+  date: '2025-01-01'
+  link: https://doi.org/hbp93s
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
@@ -241,17 +317,17 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1088/2632-2153/acee43
-  title: "Reply to Comment on \u2018Physics-based representations for machine learning\
-    \ properties of chemical reactions\u2019"
+- id: doi:10.1002/adma.202305602
+  title: "Data\u2010Driven Discovery of Organic Electronic Materials Enabled by Hybrid\
+    \ Top\u2010Down/Bottom\u2010Up Design"
   authors:
-  - Puck van Gerwen
-  - Matthew D Wodrich
+  - J. Terence Blaskovits
   - Ruben Laplaza
-  - Clemence Corminboeuf
-  publisher: 'Machine Learning: Science and Technology'
-  date: '2023-10-06'
-  link: https://doi.org/g9vdn2
+  - Sergi Vela
+  - "Cl\xE9mence Corminboeuf"
+  publisher: Advanced Materials
+  date: '2023-11-23'
+  link: https://doi.org/g9vdnv
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
@@ -269,17 +345,19 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.2533/chimia.2023.39
-  title: Genetic Algorithms for the Discovery of Homogeneous Catalysts
+- id: doi:10.26434/chemrxiv-2023-4nxt8
+  title: A Genetic Optimization Strategy with Generality in Asymmetric Organocatalysis
+    as Primary Target
   authors:
   - Simone Gallarati
-  - Puck Van Gerwen
-  - Alexandre A. Schoepfer
+  - Puck van Gerwen
   - Ruben Laplaza
+  - Lucien Brey
+  - Alexander Makaveev
   - Clemence Corminboeuf
-  publisher: CHIMIA
-  date: '2023-02-22'
-  link: https://doi.org/g9vdn4
+  publisher: American Chemical Society (ACS)
+  date: '2023-11-16'
+  link: https://doi.org/hbp93v
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
@@ -299,58 +377,46 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1002/wcms.1604
-  title: Machine intelligence for chemical reaction space
+- id: doi:10.2533/chimia.2023.39
+  title: Genetic Algorithms for the Discovery of Homogeneous Catalysts
   authors:
-  - Philippe Schwaller
-  - Alain C. Vaucher
-  - Ruben Laplaza
-  - Charlotte Bunne
-  - Andreas Krause
-  - Clemence Corminboeuf
-  - Teodoro Laino
-  publisher: WIREs Computational Molecular Science
-  date: '2022-03-07'
-  link: https://doi.org/gpzmgb
-  orcid: 0000-0001-6315-4398
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1038/s41524-022-00874-9
-  title: 'cell2mol: encoding chemistry to interpret crystallographic data'
-  authors:
-  - Sergi Vela
-  - Ruben Laplaza
-  - Yuri Cho
-  - "Cl\xE9mence Corminboeuf"
-  publisher: npj Computational Materials
-  date: '2022-08-31'
-  link: https://doi.org/g9vdn6
-  orcid: 0000-0001-6315-4398
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1002/ange.202202727
-  title: Mapping Active Site Geometry to Activity in Immobilized Frustrated Lewis
-    Pair Catalysts
-  authors:
-  - Shubhajit Das
-  - Ruben Laplaza
-  - J. Terence Blaskovits
-  - "Cl\xE9mence Corminboeuf"
-  publisher: Angewandte Chemie
-  date: '2022-05-05'
-  link: https://doi.org/g9vdn7
-  orcid: 0000-0001-6315-4398
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1002/cmtd.202100107
-  title: Genetic Optimization of Homogeneous Catalysts
-  authors:
-  - Ruben Laplaza
   - Simone Gallarati
+  - Puck Van Gerwen
+  - Alexandre A. Schoepfer
+  - Ruben Laplaza
   - Clemence Corminboeuf
-  publisher: "Chemistry\u2013Methods"
-  date: '2022-03-04'
-  link: https://doi.org/hsnw
+  publisher: CHIMIA
+  date: '2023-02-22'
+  link: https://doi.org/g9vdn4
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1088/2632-2153/acee43
+  title: "Reply to Comment on \u2018Physics-based representations for machine learning\
+    \ properties of chemical reactions\u2019"
+  authors:
+  - Puck van Gerwen
+  - Matthew D Wodrich
+  - Ruben Laplaza
+  - Clemence Corminboeuf
+  publisher: 'Machine Learning: Science and Technology'
+  date: '2023-10-06'
+  link: https://doi.org/g9vdn2
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1021/acs.jcim.3c00271
+  title: 'The NCIWEB Server: A Novel Implementation of the Noncovalent Interactions
+    Index for Biomolecular Systems'
+  authors:
+  - Trinidad Novoa
+  - "Rub\xE9n Laplaza"
+  - Francesca Peccati
+  - Franck Fuster
+  - "Julia Contreras-Garc\xEDa"
+  publisher: Journal of Chemical Information and Modeling
+  date: '2023-08-04'
+  link: https://doi.org/hbp93x
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
@@ -368,7 +434,43 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1016/j.comptc.2021.113505
+- id: doi:10.1002/9783527829941.ch18
+  title: Chemical Information
+  authors:
+  - "Rub\xE9n Laplaza"
+  - "Julen Mun\xE1rriz"
+  - "Julia Contreras\u2010Garc\xEDa"
+  publisher: Conceptual Density Functional Theory
+  date: '2022-04-15'
+  link: https://doi.org/hbp93z
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1038/s41596-022-00726-2
+  title: Constructing and interpreting volcano plots and activity maps to navigate
+    homogeneous catalyst landscapes
+  authors:
+  - "Rub\xE9n Laplaza"
+  - Shubhajit Das
+  - Matthew D. Wodrich
+  - "Cl\xE9mence Corminboeuf"
+  publisher: Nature Protocols
+  date: '2022-08-17'
+  link: https://doi.org/gqn5hz
+  orcid: 0000-0001-6315-4398
+  plugin: sources.py
+  file: sources.yaml
+  type: paper
+  description: A tutorial plus software package to construct volcano plots easily!
+    Developed at LCMD in EPFL.
+  image: https://media.springernature.com/w440/springer-static/cover-hires/journal/41596/17/11
+  buttons:
+  - type: source
+    text: Get volcanic!
+    link: https://github.com/lcmd-epfl/volcanic
+  tags:
+  - open science
+- id: doi:10.1016/J.COMPTC.2021.113505
   title: "Dependence of hydrocarbon sigma CC bond strength on bond angles: The concepts\
     \ of \u201Cinverted\u201D, \u201Cdirect\u201D and \u201Csuperdirect\u201D bonds"
   authors:
@@ -383,7 +485,19 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1039/D2QO00550F
+- id: doi:10.1002/cmtd.202100107
+  title: Genetic Optimization of Homogeneous Catalysts
+  authors:
+  - Ruben Laplaza
+  - Simone Gallarati
+  - Clemence Corminboeuf
+  publisher: "Chemistry\u2013Methods"
+  date: '2022-03-04'
+  link: https://doi.org/hsnw
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/d2qo00550f
   title: Harvesting the fragment-based nature of bifunctional organocatalysts to enhance
     their activity
   authors:
@@ -406,6 +520,50 @@
   publisher: Physical Chemistry Chemical Physics
   date: '2022-01-01'
   link: https://doi.org/g9vdpb
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/wcms.1604
+  title: Machine intelligence for chemical reaction space
+  authors:
+  - Philippe Schwaller
+  - Alain C. Vaucher
+  - Ruben Laplaza
+  - Charlotte Bunne
+  - Andreas Krause
+  - Clemence Corminboeuf
+  - Teodoro Laino
+  publisher: WIREs Computational Molecular Science
+  date: '2022-03-07'
+  link: https://doi.org/gpzmgb
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/anie.202202727
+  title: Mapping Active Site Geometry to Activity in Immobilized Frustrated Lewis
+    Pair Catalysts
+  authors:
+  - Shubhajit Das
+  - Ruben Laplaza
+  - J. Terence Blaskovits
+  - "Cl\xE9mence Corminboeuf"
+  publisher: Angewandte Chemie International Edition
+  date: '2022-05-05'
+  link: https://doi.org/hbp932
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/d2cp01517j
+  title: New venues in electron density analysis
+  authors:
+  - Bruno Landeros-Rivera
+  - Miguel Gallegos
+  - "Julen Mun\xE1rriz"
+  - "Rub\xE9n Laplaza"
+  - "Julia Contreras-Garc\xEDa"
+  publisher: Physical Chemistry Chemical Physics
+  date: '2022-01-01'
+  link: https://doi.org/hbp933
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
@@ -439,6 +597,46 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
+- id: doi:10.1038/s41524-022-00874-9
+  title: 'cell2mol: encoding chemistry to interpret crystallographic data'
+  authors:
+  - Sergi Vela
+  - Ruben Laplaza
+  - Yuri Cho
+  - "Cl\xE9mence Corminboeuf"
+  publisher: npj Computational Materials
+  date: '2022-08-31'
+  link: https://doi.org/g9vdn6
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000761714400116
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000761714400116
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/WCMS.1497
+  title: <scp>NCIPLOT</scp>and the analysis of noncovalent interactions using the
+    reduced density gradient
+  authors:
+  - "Rub\xE9n Laplaza"
+  - Francesca Peccati
+  - Roberto A. Boto
+  - Chaoyu Quan
+  - Alessandra Carbone
+  - "Jean\u2010Philip Piquemal"
+  - Yvon Maday
+  - "Julia Contreras\u2010Garc\xEDa"
+  publisher: WIREs Computational Molecular Science
+  date: '2020-08-24'
+  link: https://doi.org/gjs832
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1002/jcc.26459
   title: "Orbital energies and nuclear forces in\n                    <scp>DFT</scp>\n\
     \                    : Interpretation and validation"
@@ -454,24 +652,7 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1107/S010876732109560X
-  title: 'NCI-ELMO: towards a more quantitative description of non-covalent interactions
-    in macromolecules'
-  authors:
-  - Erna Katharina Wieduwilt
-  - "Rub\xE9n Laplaza"
-  - Giovanni Macetti
-  - David Arias-Olivares
-  - Francesca Peccati
-  - "Julia Contreras-Garc\xEDa"
-  - Alessandro Genoni
-  publisher: Acta Crystallographica Section A Foundations and Advances
-  date: '2021-08-14'
-  link: https://doi.org/g9vdpf
-  orcid: 0000-0001-6315-4398
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1039/D1SC00482D
+- id: doi:10.1039/d1sc00482d
   title: Reaction-based machine learning representations for predicting the enantioselectivity
     of organocatalysts
   authors:
@@ -484,6 +665,19 @@
   publisher: Chemical Science
   date: '2021-01-01'
   link: https://doi.org/gkmwfq
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1515/9783110660074-014
+  title: 14 Visualizing non-covalent interactions with NCIPLOT
+  authors:
+  - "Rub\xE9n Laplaza"
+  - Francesca Peccati
+  - David Arias-Olivares
+  - "Julia Contreras-Garc\xEDa"
+  publisher: Complementary Bonding Analysis
+  date: '2021-04-06'
+  link: https://doi.org/hbp934
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
@@ -504,20 +698,13 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1021/acs.jctc.0c00063
-  title: 'NCIPLOT4: Fast, Robust, and Quantitative Analysis of Noncovalent Interactions'
+- id: doi:10.70675/2513c9a4z1237z4094zb531zaacad33907b8
+  title: Semiquantitative bond models from quantum chemical topology
   authors:
-  - Roberto A. Boto
-  - Francesca Peccati
-  - "Rub\xE9n Laplaza"
-  - Chaoyu Quan
-  - Alessandra Carbone
-  - Jean-Philip Piquemal
-  - Yvon Maday
-  - "Julia Contreras-Garc\u0131\u0301a"
-  publisher: Journal of Chemical Theory and Computation
-  date: '2020-05-29'
-  link: https://doi.org/gjs83v
+  - "Rube\u0301n Laplaza"
+  publisher: "Agence Bibliographique de l'Enseignement Sup\xE9rieur"
+  date: ''
+  link: https://doi.org/hbv4fg
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
@@ -549,21 +736,37 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1002/wcms.1497
-  title: <scp>NCIPLOT</scp>and the analysis of noncovalent interactions using the
-    reduced density gradient
+- id: doi:10.26434/chemrxiv.9831536.v2
+  title: 'NCIPLOT4: A New Step Towards a Fast Quantification of Noncovalent Interactions'
   authors:
-  - "Rub\xE9n Laplaza"
+  - Roberto Boto
   - Francesca Peccati
+  - "Rub\xE9n Laplaza"
+  - chaoyu quan
+  - Alessandra Carbone
+  - Jean-Philip Piquemal
+  - Yvon Maday
+  - "Julia Contreras-Garc\xEDa"
+  publisher: American Chemical Society (ACS)
+  date: '2020-01-27'
+  link: https://doi.org/hbp935
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1021/ACS.JCTC.0C00063
+  title: 'NCIPLOT4: Fast, Robust, and Quantitative Analysis of Noncovalent Interactions'
+  authors:
   - Roberto A. Boto
+  - Francesca Peccati
+  - "Rub\xE9n Laplaza"
   - Chaoyu Quan
   - Alessandra Carbone
-  - "Jean\u2010Philip Piquemal"
+  - Jean-Philip Piquemal
   - Yvon Maday
-  - "Julia Contreras\u2010Garc\xEDa"
-  publisher: WIREs Computational Molecular Science
-  date: '2020-08-24'
-  link: https://doi.org/gjs832
+  - "Julia Contreras-Garc\u0131\u0301a"
+  publisher: Journal of Chemical Theory and Computation
+  date: '2020-05-29'
+  link: https://doi.org/gjs83v
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
@@ -577,67 +780,6 @@
   publisher: Physical Chemistry Chemical Physics
   date: '2020-01-01'
   link: https://doi.org/g9vdpk
-  orcid: 0000-0001-6315-4398
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.26434/chemrxiv.7215269.v2
-  title: "The \u2018Inverted Bond\u2019 revisited. Analysis of \u2018in silico\u2019\
-    \ models and of [1.1.1]Propellane using Orbital Forces"
-  authors:
-  - "Rub\xE9n Laplaza"
-  - "Julia Contreras-Garc\xEDa"
-  - Franck Fuster
-  - "Franc\u0327ois Volatron"
-  - Patrick Chaquin
-  publisher: American Chemical Society (ACS)
-  date: '2019-07-30'
-  link: https://doi.org/hbkx9d
-  orcid: 0000-0001-6315-4398
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.26434/chemrxiv.7215269.v3
-  title: "The \u2018Inverted Bond\u2019 revisited. Analysis of \u2018in silico\u2019\
-    \ models and of [1.1.1]Propellane using Orbital Forces"
-  authors:
-  - "Rub\xE9n Laplaza"
-  - "Julia Contreras-Garc\xEDa"
-  - Franck Fuster
-  - "Franc\u0327ois Volatron"
-  - Patrick Chaquin
-  publisher: American Chemical Society (ACS)
-  date: '2019-07-30'
-  link: https://doi.org/g5566h
-  orcid: 0000-0001-6315-4398
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1089/ars.2018.7658
-  title: Redox- and Ligand Binding-Dependent Conformational Ensembles in the Human
-    Apoptosis-Inducing Factor Regulate Its Pro-Life and Cell Death Functions
-  authors:
-  - Raquel Villanueva
-  - Silvia Romero-Tamayo
-  - Ruben Laplaza
-  - "Juan Mart\xEDnez-Olivan"
-  - "Adri\xE1n Vel\xE1zquez-Campoy"
-  - Javier Sancho
-  - Patricia Ferreira
-  - Milagros Medina
-  publisher: Antioxidants &amp; Redox Signaling
-  date: '2019-06-20'
-  link: https://doi.org/g9vdpm
-  orcid: 0000-0001-6315-4398
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1021/acs.jpcc.8b10510
-  title: 'Overcoming Distrust in Solid State Simulations: Adding Error Bars to Computational
-    Data'
-  authors:
-  - Francesca Peccati
-  - "Rub\xE9n Laplaza"
-  - "Julia Contreras-Garc\xEDa"
-  publisher: The Journal of Physical Chemistry C
-  date: '2019-01-28'
-  link: https://doi.org/g9sfhq
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
@@ -678,26 +820,38 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1021/acs.inorgchem.8b01464
-  title: Proteasome versus Thioredoxin Reductase Competition as Possible Biological
-    Targets in Antitumor Mixed Thiolate-Dithiocarbamate Gold(III) Complexes
+- id: doi:10.1021/ACS.JPCC.8B10510
+  title: 'Overcoming Distrust in Solid State Simulations: Adding Error Bars to Computational
+    Data'
   authors:
-  - Javier Quero
-  - Silvia Cabello
-  - Teresa Fuertes
-  - "In\xE9s M\xE1rmol"
-  - Ruben Laplaza
-  - Victor Polo
-  - "M. Concepci\xF3n Gimeno"
-  - "M. Jes\xFAs Rodriguez-Yoldi"
-  - Elena Cerrada
-  publisher: Inorganic Chemistry
-  date: '2018-08-17'
-  link: https://doi.org/gd9gth
+  - Francesca Peccati
+  - "Rub\xE9n Laplaza"
+  - "Julia Contreras-Garc\xEDa"
+  publisher: The Journal of Physical Chemistry C
+  date: '2019-01-28'
+  link: https://doi.org/g9sfhq
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.3390/molecules23010029
+- id: doi:10.1089/ARS.2018.7658
+  title: Redox- and Ligand Binding-Dependent Conformational Ensembles in the Human
+    Apoptosis-Inducing Factor Regulate Its Pro-Life and Cell Death Functions
+  authors:
+  - Raquel Villanueva
+  - Silvia Romero-Tamayo
+  - Ruben Laplaza
+  - "Juan Mart\xEDnez-Olivan"
+  - "Adri\xE1n Vel\xE1zquez-Campoy"
+  - Javier Sancho
+  - Patricia Ferreira
+  - Milagros Medina
+  publisher: Antioxidants &amp; Redox Signaling
+  date: '2019-05-03'
+  link: https://doi.org/g9vdpm
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.3390/MOLECULES23010029
   title: Identification of Inhibitors Targeting Ferredoxin-NADP+ Reductase from the
     Xanthomonas citri subsp. citri Phytopathogenic Bacteria
   authors:
@@ -717,26 +871,22 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1038/s41596-022-00726-2
-  title: Constructing and interpreting volcano plots and activity maps to navigate
-    homogeneous catalyst landscapes
+- id: doi:10.1021/ACS.INORGCHEM.8B01464
+  title: Proteasome versus Thioredoxin Reductase Competition as Possible Biological
+    Targets in Antitumor Mixed Thiolate-Dithiocarbamate Gold(III) Complexes
   authors:
-  - "Rub\xE9n Laplaza"
-  - Shubhajit Das
-  - Matthew D. Wodrich
-  - "Cl\xE9mence Corminboeuf"
-  publisher: Nature Protocols
-  date: '2022-08-17'
-  link: https://doi.org/gqn5hz
-  type: paper
-  description: A tutorial plus software package to construct volcano plots easily!
-    Developed at LCMD in EPFL.
-  image: https://media.springernature.com/w440/springer-static/cover-hires/journal/41596/17/11
-  buttons:
-  - type: source
-    text: Get volcanic!
-    link: https://github.com/lcmd-epfl/volcanic
-  tags:
-  - open science
-  plugin: sources.py
-  file: sources.yaml
+  - Javier Quero
+  - Silvia Cabello
+  - Teresa Fuertes
+  - "In\xE9s M\xE1rmol"
+  - Ruben Laplaza
+  - Victor Polo
+  - "M. Concepci\xF3n Gimeno"
+  - "M. Jes\xFAs Rodriguez-Yoldi"
+  - Elena Cerrada
+  publisher: Inorganic Chemistry
+  date: '2018-08-17'
+  link: https://doi.org/gd9gth
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
