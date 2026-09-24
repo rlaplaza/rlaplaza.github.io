@@ -1,5 +1,34 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
+- id: doi:10.1021/acssuschemeng.6c06444
+  title: Hydrosoluble Betaine-Stabilized CuRu Bimetallic Nanoparticles for the Aqueous
+    Semi-Hydrogenation of Alkynols
+  authors:
+  - "Adri\xE1n S\xE1nchez"
+  - "Jaime Mazar\xEDo"
+  - "Rub\xE9n Laplaza"
+  - Sergio Rojas-Buzo
+  - "Luis M. Mart\xEDnez-Prieto"
+  publisher: ACS Sustainable Chemistry &amp; Engineering
+  date: '2026-09-16'
+  link: https://doi.org/hcj8sb
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/chem.71022
+  title: 'The Future of Foundation Machine Learning Potentials and DFT in Homogeneous
+    Catalysis: Competition or Synergy?'
+  authors:
+  - Maxime Ferrer
+  - Julen Munarriz
+  - Thijs Stuyver
+  - Ruben Laplaza
+  publisher: "Chemistry \u2013 A European Journal"
+  date: '2026-04-18'
+  link: https://doi.org/hb9kfm
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.26434/chemrxiv.15004091/v1
   title: Feature Selection in Multivariate Linear Regression Models for Data-Efficient
     Reaction Optimization
@@ -620,8 +649,8 @@
   plugin: orcid.py
   file: orcid.yaml
 - id: doi:10.1002/WCMS.1497
-  title: <scp>NCIPLOT</scp>and the analysis of noncovalent interactions using the
-    reduced density gradient
+  title: "<scp>NCIPLOT</scp>\n                    and the analysis of noncovalent\
+    \ interactions using the reduced density gradient"
   authors:
   - "Rub\xE9n Laplaza"
   - Francesca Peccati
