@@ -1,4 +1,5 @@
 ---
+
 title: Linux Sysadmin Basics
 image: images/post-tutorial.jpg
 author: rlaplaza
@@ -55,7 +56,7 @@ To add this permanently, put the line in `~/.bashrc`. After saving the file, loa
 source ~/.bashrc
 ```
 
-The [Using Agustina](/2025/08/01/using-agustina.html) guide shows practical examples of `.bashrc` aliases, SSH jump hosts, prompt customization, and `PATH` settings for an HPC system. It is a useful next step once the basic idea is familiar.
+The [Using Agustina](/2025/08/01/using-agustina.html) guide shows practical examples of `.bashrc` aliases, SSH jump hosts, prompt customization, and `PATH` settings for an HPC system. It is a useful next step once the basic idea is familiar. For editing files like this directly from the terminal, a classic option is `vim`; see the [Vi and Vim Basics](/2026/01/22/vi-and-vim-basics.html) guide for the essentials: modes, editing, visual blocks, and `vimdiff`.
 
 Be careful when modifying `.bashrc`. A syntax error can make every new shell print an error, and a badly constructed `PATH` can make commands difficult to find. Before making a substantial change, keep a backup:
 
@@ -79,6 +80,34 @@ export PATH="$HOME/bin:$PATH"
 ```
 
 Putting the `export` line in `.bashrc` makes the change apply to future interactive Bash shells. Avoid replacing `PATH` with a single directory: the existing value is what lets the shell find standard commands.
+
+## Executing Bash scripts
+
+A Bash script is a text file containing commands that the shell can run in sequence. The first line is called a **shebang**. It tells the operating system which interpreter should run the file:
+
+```bash
+#!/usr/bin/env bash
+
+echo "Hello from Bash"
+printf 'Working directory: %s\n' "$PWD"
+```
+
+Save this as `hello.sh`. You can run it by passing the file to Bash directly:
+
+```bash
+bash hello.sh
+```
+
+You can also make the file executable and run it by its path. The `u+x` mode adds execute permission for the file's owner:
+
+```bash
+chmod u+x hello.sh
+./hello.sh
+```
+
+The `./` matters: it means "run the file in the current directory." Linux usually does not search the current directory automatically when looking through `PATH`. This avoids accidentally running a file in the current directory when you intended to run a system command with the same name.
+
+Use `ls -l hello.sh` to inspect its permissions. If you receive a "Permission denied" error, check that the file is executable and that you are running the intended file. `bash hello.sh` does not require the executable bit because Bash is being asked to read the file explicitly.
 
 ## Basic commands
 
@@ -127,6 +156,8 @@ You can also ask many commands for a short usage summary:
 cp --help
 ```
 
+When a file needs to be edited directly from the shell instead of a GUI editor, `vim` is the standard choice on Linux systems. The [Vi and Vim Basics](/2026/01/22/vi-and-vim-basics.html) guide is a quick reference for the most common commands and workflows.
+
 The [Basic Git and GitHub Guide](/2025/07/30/git-tips.html) builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.
 
 ## Looking at running processes with `top`
@@ -164,6 +195,8 @@ When working on a machine you do not fully control:
 
 The [General Guidelines for Master's and PhD Students](/2025/07/29/general-guidelines.html) expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.
 
+The [Vi and Vim Basics](/2026/01/22/vi-and-vim-basics.html) guide is the practical companion for the quick editing commands you will use every time you change a shell config file or small script on a remote system.
+
 ## Further reading
 
 Once these basics feel comfortable, the following sources provide more detail:
@@ -172,6 +205,7 @@ Once these basics feel comfortable, the following sources provide more detail:
 * The [GNU Coreutils manual](https://www.gnu.org/software/coreutils/manual/coreutils.html) documents many everyday file and text commands.
 * [The Linux man-pages project](https://www.kernel.org/doc/man-pages/) provides detailed manual-page documentation.
 * The [procps-ng project](https://gitlab.com/procps-ng/procps) provides tools including `top` and `ps`.
+* [Vi and Vim Basics](/2026/01/22/vi-and-vim-basics.html) explains the core editor commands, visual block editing, and `vimdiff` for quick terminal-based comparisons.
 * [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) has excellent lessons on the shell, command-line tools, editors, and remote work.
 
 ---
