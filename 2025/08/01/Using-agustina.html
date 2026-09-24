@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-01-22T14:27:21+00:00">
+  <meta property="og:updated_time" content="2026-09-24T12:39:32+00:00">
   <meta property="article:published_time" content="2025-08-01T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-01-22T14:27:21+00:00">
-  <meta name="revised" content="2026-01-22T14:27:21+00:00">
+  <meta property="article:modified_time" content="2026-09-24T12:39:32+00:00">
+  <meta name="revised" content="2026-09-24T12:39:32+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Using Agustina" },
       "datePublished": "2025-08-01T00:00:00+00:00",
-      "dateModified": "2026-01-22T14:27:21+00:00",
+      "dateModified": "2026-09-24T12:39:32+00:00",
     
     "name": "Using Agustina",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
@@ -533,7 +533,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>January 22, 2026</span>
+      <span>September 24, 2026</span>
     </span>
   
 </div>
@@ -584,7 +584,21 @@ alias toa='ssh -J username@bridge.bifi.unizar.es username@agustina.bifi.unizar.e
 <p>That way you can jump over bridge to access Agustina using simply <code class="language-plaintext highlighter-rouge">toa</code>.</p>
 
 <ul>
-  <li>Once in Agustina, you will notice that the command line interface is very plain. To improve it, you can set up a few extras in your <code class="language-plaintext highlighter-rouge">.bashrc</code> file (in your Agustina user home!):</li>
+  <li>
+    <p>For Windows users, the usual choice is PuTTY. The Agustina documentation describes the same login pattern: users can connect directly with <code class="language-plaintext highlighter-rouge">ssh username@agustina.bifi.unizar.es</code> if the firewall allows it, or use the bridge node with <code class="language-plaintext highlighter-rouge">ssh username@bridge.bifi.unizar.es</code> and then <code class="language-plaintext highlighter-rouge">ssh username@agustina.bifi.unizar.es</code> once you are inside the bridge. In PuTTY, this means:</p>
+
+    <ol>
+      <li>Open PuTTY and set the hostname to <code class="language-plaintext highlighter-rouge">username@bridge.bifi.unizar.es</code> if you are going through the bridge.</li>
+      <li>Save the session with a memorable name and click <code class="language-plaintext highlighter-rouge">Open</code>.</li>
+      <li>Log in with your Agustina username and password.</li>
+      <li>Once you are on the bridge, run <code class="language-plaintext highlighter-rouge">ssh username@agustina.bifi.unizar.es</code> to reach the login node.</li>
+    </ol>
+
+    <p>If you are connecting directly and your IP is already authorized by the firewall, you can simply set the hostname to <code class="language-plaintext highlighter-rouge">username@agustina.bifi.unizar.es</code> instead. For file transfers, PuTTY’s companion tools (<code class="language-plaintext highlighter-rouge">pscp</code> / <code class="language-plaintext highlighter-rouge">psftp</code>) or a graphical client like WinSCP are often the easiest alternatives to <code class="language-plaintext highlighter-rouge">scp</code> and <code class="language-plaintext highlighter-rouge">rsync</code>.</p>
+  </li>
+  <li>
+    <p>Once in Agustina, you will notice that the command line interface is very plain. To improve it, you can set up a few extras in your <code class="language-plaintext highlighter-rouge">.bashrc</code> file (in your Agustina user home!):</p>
+  </li>
 </ul>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export PS1="\[\e[31m\][\[\e[m\]\[\e[33m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\]\[\e[31m\]]\[\e[m\]:\[\e[33;40m\]\w\[\e[m\]\[\e[40m\] \[\e[m\]\[\e[32;40m\]\\$\[\e[m\] "
@@ -603,6 +617,41 @@ alias wqm="watch squeue --format=\'%.18i %.9P %.30j %.8u %.8T %.10M %.9l %.6D %R
 <p>Now you can use the scripts from this directory in your command line. You can check usage by reading the scripts or, in general, using the help flag, e.g.:</p>
 
 <p><code class="language-plaintext highlighter-rouge">subconda.sh -h</code></p>
+
+<ul>
+  <li>The group also provides a small set of job-submission helpers for Agustina in the <code class="language-plaintext highlighter-rouge">utility_scripts</code> repository. The relevant files live under <code class="language-plaintext highlighter-rouge">utility_scripts/agustina/</code>, and the two most useful ones are <code class="language-plaintext highlighter-rouge">suborca.sh</code> and <code class="language-plaintext highlighter-rouge">subconda.sh</code>. In practice, I clone the repository to a stable location, add the <code class="language-plaintext highlighter-rouge">agustina/</code> folder to <code class="language-plaintext highlighter-rouge">PATH</code>, and then use the wrappers from anywhere:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/rlaplaza-lab/utility_scripts.git ~/utility_scripts
+printf '\nexport PATH="$HOME/utility_scripts/agustina:$PATH"\n' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre></div></div>
+
+<p>After that, you can inspect the built-in usage text:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>suborca.sh -h
+subconda.sh -h
+</code></pre></div></div>
+
+<p>The idea is simple: the wrapper creates a <code class="language-plaintext highlighter-rouge">sbatch</code> job script for you, sets the job resources, activates the chosen environment, runs the job, and writes the logs under a <code class="language-plaintext highlighter-rouge">slurm_logs/</code> folder next to your input files. This saves a lot of boilerplate and reduces the chance of forgetting the <code class="language-plaintext highlighter-rouge">--account</code> project or a required environment module.</p>
+
+<p><code class="language-plaintext highlighter-rouge">suborca.sh</code> is meant for ORCA jobs. A typical example is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>suborca.sh -n 4 -m 16000 my_calculation.inp
+suborca.sh -n 8 -m 32000 -p agustina_thin my_calculation.inp
+</code></pre></div></div>
+
+<p>This will submit an ORCA input file, defaulting to the resources described in the input (<code class="language-plaintext highlighter-rouge">%PAL nprocs</code>, <code class="language-plaintext highlighter-rouge">%MaxCore</code>) whenever possible. If your input file does not include those directives, you should set them explicitly in the <code class="language-plaintext highlighter-rouge">.inp</code> file or use the <code class="language-plaintext highlighter-rouge">-n</code> and <code class="language-plaintext highlighter-rouge">-m</code> flags carefully. The script also has a <code class="language-plaintext highlighter-rouge">-d</code> dry-run option, which is useful to inspect the generated SLURM script before submitting it. One thing to keep in mind: the script uses a default project account value (currently <code class="language-plaintext highlighter-rouge">molcat</code> in the local copy), so if your project is different, edit that variable near the top of the script before submitting.</p>
+
+<p><code class="language-plaintext highlighter-rouge">subconda.sh</code> is the equivalent helper for Python jobs that should run inside a specific Conda environment. Typical usage is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>subconda.sh -e my_env -n 4 -m 16000 my_script.py
+subconda.sh -e my_env -n 8 -m 32000 -p agustina_thin my_script.py arg1 arg2
+</code></pre></div></div>
+
+<p>The script loads <code class="language-plaintext highlighter-rouge">anaconda/2025</code>, activates the requested environment, sets a good default for <code class="language-plaintext highlighter-rouge">OMP_NUM_THREADS</code> and related variables, and runs the Python job in a temporary scratch directory by default. This is especially handy when your project writes many files, because it keeps the job isolated and then copies the results back to the submission directory. If you want to stay in place instead of using scratch, add <code class="language-plaintext highlighter-rouge">-s</code>.</p>
+
+<p>The job submission scripts are a convenience layer around <code class="language-plaintext highlighter-rouge">sbatch</code>, not a replacement for understanding SLURM. The key ideas are still the same: choose the correct project account, request enough memory and CPUs, and keep a close eye on your <code class="language-plaintext highlighter-rouge">slurm_logs</code> outputs when debugging a failed run.</p>
 
 <ul>
   <li>The next step is setting up <code class="language-plaintext highlighter-rouge">conda</code> or some other package manager.</li>
@@ -652,6 +701,11 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
     
   </span>
   <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/2026/01/22/linux-sysadmin-basics.html">
+        Linux Sysadmin Basics
+      </a>
     
   </span>
 </div>

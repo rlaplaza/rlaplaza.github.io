@@ -43,21 +43,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Coding tips and tricks | rlaplaza and crew</title>
+<title>Linux Sysadmin Basics | rlaplaza and crew</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="Coding tips and tricks">
+<meta name="title" content="Linux Sysadmin Basics">
 <meta name="description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 
-<meta property="og:title" content="Coding tips and tricks">
+<meta property="og:title" content="Linux Sysadmin Basics">
 <meta property="og:site_title" content="rlaplaza and crew">
 <meta property="og:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="og:url" content="https://rlaplaza.github.io">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="Coding tips and tricks">
+<meta property="twitter:title" content="Linux Sysadmin Basics">
 <meta property="twitter:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="twitter:url" content="https://rlaplaza.github.io">
 <meta property="twitter:card" content="summary_large_image">
@@ -67,7 +67,7 @@
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
   <meta property="og:updated_time" content="2026-09-24T12:39:32+00:00">
-  <meta property="article:published_time" content="2025-07-30T00:00:00+00:00">
+  <meta property="article:published_time" content="2026-01-22T00:00:00+00:00">
   <meta property="article:modified_time" content="2026-09-24T12:39:32+00:00">
   <meta name="revised" content="2026-09-24T12:39:32+00:00">
 
@@ -77,13 +77,13 @@
     "@context": "https://schema.org",
     
       "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "Coding tips and tricks" },
-      "datePublished": "2025-07-30T00:00:00+00:00",
+      "author": { "@type": "Person", "name": "Linux Sysadmin Basics" },
+      "datePublished": "2026-01-22T00:00:00+00:00",
       "dateModified": "2026-09-24T12:39:32+00:00",
     
-    "name": "Coding tips and tricks",
+    "name": "Linux Sysadmin Basics",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
-    "headline": "Coding tips and tricks",
+    "headline": "Linux Sysadmin Basics",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -504,7 +504,7 @@
 -->
 
 
-<h1 class="center">Coding tips and tricks</h1>
+<h1 class="center">Linux Sysadmin Basics</h1>
 
 <div class="post-info">
   
@@ -526,7 +526,7 @@
   
     <span data-tooltip="Originally published on">
       <i class="icon fa-regular fa-calendar"></i>
-      <span>July 30, 2025</span>
+      <span>January 22, 2026</span>
     </span>
   
 
@@ -552,6 +552,18 @@
         guidelines
       </a>
     
+      <a href="/blog?search=%22tag:%20linux%22" class="tag" data-tooltip='Show items with the tag "linux"'>
+        linux
+      </a>
+    
+      <a href="/blog?search=%22tag:%20bash%22" class="tag" data-tooltip='Show items with the tag "bash"'>
+        bash
+      </a>
+    
+      <a href="/blog?search=%22tag:%20sysadmin%22" class="tag" data-tooltip='Show items with the tag "sysadmin"'>
+        sysadmin
+      </a>
+    
   </div>
   </section>
 
@@ -567,92 +579,224 @@
 -->
 
 
-<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
+<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
 
-<h2 id="foundation--learning-resources">Foundation &amp; Learning Resources</h2>
+<p>If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.</p>
+
+<p>This is a short introduction to the pieces you will use every day. For a broader learning path, see the <a href="/2025/07/30/coding-tips.html">Coding Practices Guidelines</a>, especially its sections on Unix shell commands, remote cluster work, and reproducible projects.</p>
+
+<h2 id="the-shell-and-your-home-directory">The shell and your home directory</h2>
+
+<p>When you open a terminal, you are usually running a shell such as Bash. The shell reads your commands, expands variables, starts programs, and keeps track of your current directory.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$HOME</code> is an environment variable containing the path to your home directory. It is normally the place where your personal files and configuration live. The <code class="language-plaintext highlighter-rouge">$</code> means “expand this variable”; the directory itself is usually written as <code class="language-plaintext highlighter-rouge">HOME</code> without the dollar sign.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">"</span>
+<span class="nb">pwd
+cd</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">"</span>
+<span class="nb">pwd</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">pwd</code> prints the working directory. <code class="language-plaintext highlighter-rouge">cd</code> changes it, and <code class="language-plaintext highlighter-rouge">cd</code> without an argument returns you to <code class="language-plaintext highlighter-rouge">$HOME</code>. The tilde is a shorter spelling of your home directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~
+<span class="nb">cd</span> ~/projects
+</code></pre></div></div>
+
+<p>Do not confuse <code class="language-plaintext highlighter-rouge">$HOME</code> with the directory where a program happens to be installed. Your home directory belongs to your user account, while system software may live under locations such as <code class="language-plaintext highlighter-rouge">/usr/bin</code> or <code class="language-plaintext highlighter-rouge">/opt</code>.</p>
+
+<h2 id="what-is-bashrc">What is <code class="language-plaintext highlighter-rouge">.bashrc</code>?</h2>
+
+<p><code class="language-plaintext highlighter-rouge">.bashrc</code> is a hidden configuration file in your home directory. Bash reads it when it starts an interactive non-login shell. It is commonly used for aliases, the command prompt, shell options, and additions to your <code class="language-plaintext highlighter-rouge">PATH</code>.</p>
+
+<p>You can inspect the file without editing it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>less ~/.bashrc
+</code></pre></div></div>
+
+<p>An alias gives a short name to a command you use often. For example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">ll</span><span class="o">=</span><span class="s1">'ls -lah'</span>
+</code></pre></div></div>
+
+<p>To add this permanently, put the line in <code class="language-plaintext highlighter-rouge">~/.bashrc</code>. After saving the file, load it into the current shell:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.bashrc
+</code></pre></div></div>
+
+<p>The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> guide shows practical examples of <code class="language-plaintext highlighter-rouge">.bashrc</code> aliases, SSH jump hosts, prompt customization, and <code class="language-plaintext highlighter-rouge">PATH</code> settings for an HPC system. It is a useful next step once the basic idea is familiar.</p>
+
+<p>Be careful when modifying <code class="language-plaintext highlighter-rouge">.bashrc</code>. A syntax error can make every new shell print an error, and a badly constructed <code class="language-plaintext highlighter-rouge">PATH</code> can make commands difficult to find. Before making a substantial change, keep a backup:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> ~/.bashrc ~/.bashrc.backup
+</code></pre></div></div>
+
+<h3 id="the-path-variable">The <code class="language-plaintext highlighter-rouge">PATH</code> variable</h3>
+
+<p><code class="language-plaintext highlighter-rouge">PATH</code> is a colon-separated list of directories where the shell looks for executable commands. This command shows its current value:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s1">'%s\n'</span> <span class="s2">"</span><span class="nv">$PATH</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>If you keep your own scripts in <code class="language-plaintext highlighter-rouge">~/bin</code>, you can add that directory while preserving the existing path:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/bin"</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>Putting the <code class="language-plaintext highlighter-rouge">export</code> line in <code class="language-plaintext highlighter-rouge">.bashrc</code> makes the change apply to future interactive Bash shells. Avoid replacing <code class="language-plaintext highlighter-rouge">PATH</code> with a single directory: the existing value is what lets the shell find standard commands.</p>
+
+<h2 id="basic-commands">Basic commands</h2>
+
+<p>These commands cover much of the daily work of navigating and inspecting a Linux system:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ls</code></td>
+      <td>List files and directories</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cd</code></td>
+      <td>Change directory</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pwd</code></td>
+      <td>Print the current directory</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mkdir</code></td>
+      <td>Create a directory</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cp</code></td>
+      <td>Copy a file or directory</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mv</code></td>
+      <td>Move or rename a file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">rm</code></td>
+      <td>Remove a file or directory</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">less</code></td>
+      <td>Read a text file one screen at a time</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">man</code></td>
+      <td>Read a command’s manual page</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A small example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> ~/practice/notes
+<span class="nb">cd</span> ~/practice
+<span class="nb">printf</span> <span class="s1">'%s\n'</span> <span class="s1">'first note'</span> <span class="o">&gt;</span> notes/example.txt
+less notes/example.txt
+<span class="nb">cp </span>notes/example.txt notes/example-copy.txt
+<span class="nb">mv </span>notes/example-copy.txt notes/renamed-note.txt
+<span class="nb">ls</span> <span class="nt">-l</span> notes
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">&gt;</code> operator writes output to a file and replaces that file if it already exists. Use <code class="language-plaintext highlighter-rouge">&gt;&gt;</code> to append instead. Quoting paths is a good habit because it also works when a path contains spaces:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>less <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/path with spaces/notes.txt"</span>
+</code></pre></div></div>
+
+<p>Read commands before running them, especially commands involving <code class="language-plaintext highlighter-rouge">rm</code>. Removing a file is not the same as moving it to a recycle bin, and <code class="language-plaintext highlighter-rouge">rm -r</code> can remove entire directory trees. When you are unsure what a command does, start with its manual page:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>man <span class="nb">cp
+</span>man <span class="nb">rm</span>
+</code></pre></div></div>
+
+<p>You can also ask many commands for a short usage summary:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">--help</span>
+</code></pre></div></div>
+
+<p>The <a href="/2025/07/30/git-tips.html">Basic Git and GitHub Guide</a> builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.</p>
+
+<h2 id="looking-at-running-processes-with-top">Looking at running processes with <code class="language-plaintext highlighter-rouge">top</code>
+</h2>
+
+<p><code class="language-plaintext highlighter-rouge">top</code> is a terminal program that gives you a changing view of running processes and system resources. Start it with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>top
+</code></pre></div></div>
+
+<p>Useful keys while <code class="language-plaintext highlighter-rouge">top</code> is running include:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">q</code></td>
+      <td>Quit <code class="language-plaintext highlighter-rouge">top</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">P</code></td>
+      <td>Sort by CPU usage</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">M</code></td>
+      <td>Sort by memory usage</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1</code></td>
+      <td>Show individual CPU statistics</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>At first, use <code class="language-plaintext highlighter-rouge">top</code> for observation. Look for processes consuming an unusual amount of CPU or memory, and notice the load and memory summaries at the top of the display. Do not terminate a process just because it appears in the list: first identify which user started it, what command it represents, and whether it belongs to an important job.</p>
+
+<p>On a shared server or HPC system, your institution may provide additional monitoring commands or a scheduler such as SLURM. The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> post describes job helpers and log locations for that environment. For another example of useful monitoring habits, the <a href="/2025/01/22/gaussian-tips-and-troubleshooting.html">Gaussian Tips and Troubleshooting Guide</a> discusses reading complete output, following logs with <code class="language-plaintext highlighter-rouge">tail -f</code>, and checking available disk space.</p>
+
+<h2 id="good-first-habits">Good first habits</h2>
+
+<p>When working on a machine you do not fully control:</p>
+
+<ol>
+  <li>Know where you are with <code class="language-plaintext highlighter-rouge">pwd</code> before creating or moving files.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">$HOME</code> and other variables instead of copying long paths by hand.</li>
+  <li>Read help or manual pages before using unfamiliar options.</li>
+  <li>Keep code, input files, and results organized in predictable directories.</li>
+  <li>Check logs and error messages before repeating a failed command.</li>
+  <li>Keep important work backed up and under version control.</li>
+  <li>Record the commands, software versions, and environment needed to reproduce a result.</li>
+</ol>
+
+<p>The <a href="/2025/07/29/general-guidelines.html">General Guidelines for Master’s and PhD Students</a> expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.</p>
+
+<h2 id="further-reading">Further reading</h2>
+
+<p>Once these basics feel comfortable, the following sources provide more detail:</p>
+
 <ul>
   <li>
-<strong>Software Carpentry Fundamentals</strong>: Master basic coding practices through <a href="https://software-carpentry.org/lessons/">Software Carpentry</a> and <a href="https://coderefinery.org/">Coderefinery</a> workshops, covering Unix shell commands, Git version control, and essential Python programming skills. Any time spent learning is well spent!</li>
+<a href="https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html">Bash startup files</a> explains when Bash reads files such as <code class="language-plaintext highlighter-rouge">.bashrc</code>.</li>
+  <li>The <a href="https://www.gnu.org/software/coreutils/manual/coreutils.html">GNU Coreutils manual</a> documents many everyday file and text commands.</li>
   <li>
-<strong>Beginner-friendly roadmap</strong>: If you are starting from zero, the most useful CodeRefinery lessons are usually: <a href="https://coderefinery.github.io/git-intro/">Introduction to version control</a> for Git and GitHub basics, <a href="https://coderefinery.github.io/git-collaborative/">Collaborative distributed version control</a> for branching and pull requests, <a href="https://coderefinery.github.io/reproducible-research/">Reproducible research</a> for environments and documentation, <a href="https://coderefinery.github.io/testing/">Automated testing</a> for safer code changes, and <a href="https://coderefinery.github.io/modular-type-along/">Modular code development type-along</a> for keeping projects maintainable as they grow.</li>
+<a href="https://www.kernel.org/doc/man-pages/">The Linux man-pages project</a> provides detailed manual-page documentation.</li>
+  <li>The <a href="https://gitlab.com/procps-ng/procps">procps-ng project</a> provides tools including <code class="language-plaintext highlighter-rouge">top</code> and <code class="language-plaintext highlighter-rouge">ps</code>.</li>
   <li>
-<strong>Scientific Computing Scripting</strong>: Develop proficiency in scripting for scientific computing using resources from the <a href="https://education.molssi.org/python_scripting_cms/aio/index.html">NSF MolSSI group’s comprehensive Python tutorials</a>
-</li>
-  <li>
-<strong>Deep Learning Education</strong>: Utilize <a href="https://d2l.ai">d2l.ai resources</a> for comprehensive deep learning fundamentals, including their preliminaries section and appendix of essential tools</li>
-  <li>
-<strong>Command Line Editors</strong>: Gain familiarity with standard editors like Vim, Emacs, or Nano to facilitate efficient editing and remote cluster work; <a href="https://missing.csail.mit.edu">MIT’s IAP “Missing Semester” class</a> provides excellent guidance on these tools and other essential development utilities</li>
-  <li>
-<strong>Every Day Life</strong>: I recommend using a good IDE, such as VSCode, which also has <a href="https://code.visualstudio.com/docs/python/python-tutorial">python tutorials</a> and integration with LLMs. Whatever tools you choose to use every day, you should get to know <em>in depth!</em>
-</li>
-  <li>
-<strong>Concrete rookie path</strong>: A realistic sequence is to start with a shell crash course, then Git/GitHub, then a small reproducible project, then testing and modularization. In CodeRefinery terms, that means moving from the basic Git lessons to the reproducible research and testing materials before attempting larger research pipelines or HPC workflows.</li>
-</ul>
-
-<h2 id="python-development-standards">Python Development Standards</h2>
-<ul>
-  <li>
-<strong>Code Style &amp; Quality</strong>: We do most of our coding in python. Adhere to <a href="https://realpython.com/python-pep8/">PEP 8 guidelines</a> for Python code formatting and use automated tools like Pylint, Google’s yapf, black, or Sublime Text’s AutoPEP8 to maintain consistent style standards</li>
-  <li>
-<strong>Type Safety</strong>: Ideally, implement <a href="https://docs.python.org/3/library/typing.html">optional type hints</a> to improve code readability and help others understand function signatures and variable types more easily</li>
-  <li>
-<strong>Style Guide Compliance</strong>: Follow <a href="http://google.github.io/styleguide/pyguide.html">Google’s comprehensive Python style guide</a> for professional-quality code structure and documentation practices</li>
-</ul>
-
-<h2 id="project-structure--organization">Project Structure &amp; Organization</h2>
-<ul>
-  <li>
-<strong>Beyond Notebooks</strong>: While Jupyter notebooks are excellent for experimental analysis and tutorials, prioritize well-organized, documented codebases for rigorous testing and reproducible research using frameworks like <a href="https://github.com/drivendata/cookiecutter-data-science">cookiecutter-data-science templates</a> or <a href="https://github.com/rociomer/dl-chem-101">dl-chem-101</a>
-</li>
-  <li>
-<strong>Repository Management</strong>: Utilize private repositories for continuous backups (this will save your ass at some point, I swear!)</li>
-  <li>
-<strong>Code Publication</strong>: Before open-sourcing code, thoroughly audit repositories to remove proprietary information, passwords, or private data; consider creating clean repositories for finalized code publication in the <a href="https://github.com/rlaplaza-lab">group’s GitHub organization</a>
-</li>
-</ul>
-
-<h2 id="reproducibility--environment-management">Reproducibility &amp; Environment Management</h2>
-<ul>
-  <li>
-<strong>Why?</strong>: See <a href="https://edcarp.github.io/introduction-to-conda-for-data-scientists/aio/index.html">reasons to use conda</a>
-</li>
-  <li>
-<strong>Dependency Management</strong>: Always use dependency managers like <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html">Conda</a> or <a href="https://docs.astral.sh/uv/">uv</a> for Python package management, or <a href="https://docs.docker.com/get-started/overview/">Docker containers</a> for complex multi-language dependencies to ensure reproducible environments</li>
-  <li>
-<strong>Environment Documentation</strong>: Maintain clear documentation of all software dependencies, versions, and system requirements necessary to reproduce your computational environment, at least once the project is done and other people are supposed to use it (including me!)</li>
-  <li>
-<strong>HPC</strong>: In HPC machines, package management can be a bit more convoluted, so do not hesitate to ask me and/or the sysadmin if you struggle</li>
-</ul>
-
-<h2 id="collaboration--continuous-learning">Collaboration &amp; Continuous Learning</h2>
-<ul>
-  <li>
-<strong>Knowledge Sharing</strong>: Actively contribute to and consult the <a href="https://github.com/rlaplaza-lab/code_tips">group’s code-tips repository</a> and <a href="https://github.com/rlaplaza-lab/utility_scripts">utility-scripts</a>, which serve as a living collection of useful resources, helpful packages, and development tools</li>
-  <li>
-<strong>Ask for Help</strong>: Don’t hesitate to seek guidance from group members on development workflows, GitHub usage, or any coding challenges—everyone learns these skills over time</li>
-  <li>
-<strong>Workflow Optimization</strong>: Trust your instincts when thinking “there must be a better way to do this” — there usually is, and the group can help you find it</li>
-</ul>
-
-<h2 id="modern-development-tools">Modern Development Tools</h2>
-<ul>
-  <li>
-<strong>AI-Assisted Coding</strong>: Embrace large language model assistants like GitHub Copilot for code generation, while maintaining responsibility for understanding, testing, and validating all generated code</li>
-  <li>
-<strong>Code Accountability</strong>: Ensure you can explain and verify any AI-generated code through appropriate testing and remain fully accountable for the final software product</li>
-</ul>
-
-<h2 id="resources">Resources</h2>
-
-<ul>
-  <li>
-<a href="https://github.com/mfherbst/bash-course">Advanced bash course</a> by the fantastic <a href="https://michael-herbst.com/">Michael Herbst</a>
-</li>
-  <li>
-<a href="https://github.com/cod3licious/python_tutorial">An intermediate-level python tutorial for machine learning</a> by the fantastic <a href="https://franziskahorn.de/">Franziska Horn</a>
-</li>
-  <li>
-<a href="https://github.com/cod3licious/ml_exercises">A higher-level set of exercises in machine learning</a> and a full book on the topic</li>
+<a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has excellent lessons on the shell, command-line tools, editors, and remote work.</li>
 </ul>
 
 <hr>
@@ -674,17 +818,12 @@
   <span>
     
       <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
-      <a href="/2025/07/29/Presentation-tips.html">
-        Presentation tips and tricks
+      <a href="/2025/08/01/Using-agustina.html">
+        Using Agustina
       </a>
     
   </span>
   <span>
-    
-      Next post <i class="icon fa-solid fa-angle-right"></i><br>
-      <a href="/2025/07/30/Git-tips.html">
-        Git tips and tricks
-      </a>
     
   </span>
 </div>
