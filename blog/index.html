@@ -585,6 +585,10 @@
         troubleshooting
       </a>
     
+      <a href="/blog/?search=%22tag:%20orca%22" class="tag" data-tooltip='Show items with the tag "orca"'>
+        orca
+      </a>
+    
       <a href="/blog/?search=%22tag:%20random%22" class="tag" data-tooltip='Show items with the tag "random"'>
         random
       </a>
@@ -609,6 +613,14 @@
         bash
       </a>
     
+      <a href="/blog/?search=%22tag:%20vim%22" class="tag" data-tooltip='Show items with the tag "vim"'>
+        vim
+      </a>
+    
+      <a href="/blog/?search=%22tag:%20vi%22" class="tag" data-tooltip='Show items with the tag "vi"'>
+        vi
+      </a>
+    
       <a href="/blog/?search=%22tag:%20sysadmin%22" class="tag" data-tooltip='Show items with the tag "sysadmin"'>
         sysadmin
       </a>
@@ -618,6 +630,99 @@
 <div class="search-info"></div>
 
 <h3 id="2026">2026</h3>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/2026/01/22/Vi-and-vim-basics.html" class="post-excerpt-image" aria-label="Vi and Vim Basics">
+        <img src="/images/post-tutorial.jpg" alt="Vi and Vim Basics" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/2026/01/22/Vi-and-vim-basics.html">Vi and Vim Basics</a>
+
+      <div class="post-info">
+  
+    
+    
+      
+      
+        <span data-tooltip="Author">
+          <i class="icon fa-solid fa-feather-pointed"></i>
+          <span>rlaplaza</span>
+        </span>
+      
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>January 22, 2026</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 24, 2026</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags">
+    
+      <a href="/blog?search=%22tag:%20tutorial%22" class="tag" data-tooltip='Show items with the tag "tutorial"'>
+        tutorial
+      </a>
+    
+      <a href="/blog?search=%22tag:%20guidelines%22" class="tag" data-tooltip='Show items with the tag "guidelines"'>
+        guidelines
+      </a>
+    
+      <a href="/blog?search=%22tag:%20linux%22" class="tag" data-tooltip='Show items with the tag "linux"'>
+        linux
+      </a>
+    
+      <a href="/blog?search=%22tag:%20bash%22" class="tag" data-tooltip='Show items with the tag "bash"'>
+        bash
+      </a>
+    
+      <a href="/blog?search=%22tag:%20vim%22" class="tag" data-tooltip='Show items with the tag "vim"'>
+        vim
+      </a>
+    
+      <a href="/blog?search=%22tag:%20vi%22" class="tag" data-tooltip='Show items with the tag "vi"'>
+        vi
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Vi and Vim BasicsIf you work on a Linux machine, a remote server, or an HPC system, you will eventually need to edit a configuration file, a shell script, or a short note in the terminal. vi and vim are classic tools for exactly that. They are usually installed on Unix-like systems, they work well over SSH, and they do not require a graphical interface.This short guide is meant to be practical. It complements the Linux Sysadmin Basics article and the Coding Practices Guidelines, especially the parts about shell work, remote systems, and command-line tooling.What are vi and vim vi is the traditional Unix text editor. vim Vi Improved is the modern, more feature-rich version that is installed on many systems today. In practice, the commands are nearly the same, so learning one means you are already well on your way to using both.Linux servers and cluster login nodes often provide only terminal editors, which is why vim remains useful even if you prefer VS Code or another GUI editor for local work.Opening, saving, and quittingOpen a file:vim .bashrcYou are usually in Normal mode when the editor starts. Normal mode is where you move around and run commands. Press i to enter Insert mode and type text. Press Esc to go back to Normal mode.The most important commands are:i Enter Insert modeEsc Leave Insert mode:w Save the current file:q Quit:wq Save and quit:q Quit without savingA beginner habit worth keeping is: whenever you want to execute a normal-mode command, make sure you are not in Insert mode.Basic motion and editingUse the arrow keys or the classic movement keys:h j k l Move left, down, up, and rightw Move to the next wordb Move to the previous word0 Move to the beginning of the line Move to the end of the lineG Go to the end of the filegg Go to the beginning of the file word Search forward for a wordn Repeat the search forwardN Repeat the search backwardCommon editing commands:x Delete the character under the cursordd Delete the current linedw Delete the current wordyy Copy the current linep Paste after the cursorP Paste before the cursoru UndoCtrl-r RedoThe editing workflow is simple:vim notes.txtThen: Move to the right place with h, j, k, l, or the arrow keys. Press i to insert text. Type what you need. Press Esc. Use :w to save or :wq to save and quit.Visual mode and block editingvim is especially handy for editing blocks of text. The main visual modes are:v Character-wise visual selectionV Line-wise visual selectionCtrl-v Block-wise visual selectionOnce you select a block, you can do things such as:d Delete the selectiony Copy the selection gt; Shift the block right indent lt; Shift the block left dedent This is useful when aligning configuration blocks, editing repeated patterns, or changing a series of similar lines. For example, you might indent several lines in a shell script or add a comment prefix to a set of configuration entries.The block-selection mode is one of the features that makes vim feel surprisingly powerful once you get used to it.Search and replaceSearch is often the fastest way to move through a file: PATHnThis searches for PATH and jumps to the next match. To replace text throughout a file:: s old new gThis replaces every occurrence of old with new in the whole file. If you want confirmation for each change, use:: s old new gcThis is especially useful when editing config files or scripts where names or paths need to be updated consistently.vimdiff for comparing filesvimdiff is a very useful tool for reviewing changes between two versions of a file. For example:vimdiff file1.txt file2.txtYou will see both files side by side, and vimdiff highlights the differences. Some useful commands are: c Jump to the next difference c Jump to the previous differencedo Diff obtain: copy from the other filedp Diff put: copy to the other fileThis is a great tool for checking changes in config files, scripts, or results from different runs. If you are debugging a parameter change or reconciling versions, it is much faster than manually diffing text in a shell.Editing configuration filesThe configuration files you will edit most often are .bashrc, .config ..., or other user-level settings. A typical workflow is:vim .bashrcThen add or adjust an alias, a PATH export, or a shell option. After saving the file, reload it in the current shell:source .bashrcThis is exactly the kind of task that vim is made for: quick edits on remote systems without needing a graphical editor.Good first habitsStart small. Learn only the commands you need most often: open and close a file move around insert text save search quit without saving when neededDo not try to memorize every vim command at once. A few workflows become second nature quickly, and then the editor starts to feel much less intimidating.Useful resourcesThe best places to continue learning are: The Missing Semester of Your CS Education has a great introduction to shell tools and terminal editors. Vim s built-in help is the definitive reference. vimtutor is the best built-in primer for beginners. Run it with:vimtutor The Linux Sysadmin Basics article covers shell setup, environment variables, and remote work habits that go well with vim. The Using Agustina guide is a practical example of editing shell configuration files in an HPC workflow.Once you know the basics, vim becomes one of the most useful tools in a Linux workflow: it is fast, flexible, and available almost everywhere.">
+        Vi and Vim Basics
+
+      </p>
+    </div>
+  </div>
+</div>
 
 <div class="post-excerpt-container">
   <div class="post-excerpt">
@@ -700,7 +805,7 @@
 
       
       
-      <p data-search="Linux Sysadmin BasicsIf you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.This is a short introduction to the pieces you will use every day. For a broader learning path, see the Coding Practices Guidelines, especially its sections on Unix shell commands, remote cluster work, and reproducible projects.The shell and your home directoryWhen you open a terminal, you are usually running a shell such as Bash. The shell reads your commands, expands variables, starts programs, and keeps track of your current directory. HOME is an environment variable containing the path to your home directory. It is normally the place where your personal files and configuration live. The means expand this variable ; the directory itself is usually written as HOME without the dollar sign.echo HOME pwdcd HOME pwdpwd prints the working directory. cd changes it, and cd without an argument returns you to HOME. The tilde is a shorter spelling of your home directory:cd cd projectsDo not confuse HOME with the directory where a program happens to be installed. Your home directory belongs to your user account, while system software may live under locations such as usr bin or opt.What is .bashrc .bashrc is a hidden configuration file in your home directory. Bash reads it when it starts an interactive non-login shell. It is commonly used for aliases, the command prompt, shell options, and additions to your PATH.You can inspect the file without editing it:less .bashrcAn alias gives a short name to a command you use often. For example:alias ll ls -lah To add this permanently, put the line in .bashrc. After saving the file, load it into the current shell:source .bashrcThe Using Agustina guide shows practical examples of .bashrc aliases, SSH jump hosts, prompt customization, and PATH settings for an HPC system. It is a useful next step once the basic idea is familiar.Be careful when modifying .bashrc. A syntax error can make every new shell print an error, and a badly constructed PATH can make commands difficult to find. Before making a substantial change, keep a backup:cp .bashrc .bashrc.backupThe PATH variablePATH is a colon-separated list of directories where the shell looks for executable commands. This command shows its current value:printf s n PATH If you keep your own scripts in bin, you can add that directory while preserving the existing path:mkdir -p HOME bin export PATH HOME bin: PATH Putting the export line in .bashrc makes the change apply to future interactive Bash shells. Avoid replacing PATH with a single directory: the existing value is what lets the shell find standard commands.Basic commandsThese commands cover much of the daily work of navigating and inspecting a Linux system: Command Purpose ls List files and directories cd Change directory pwd Print the current directory mkdir Create a directory cp Copy a file or directory mv Move or rename a file rm Remove a file or directory less Read a text file one screen at a time man Read a command s manual page A small example:mkdir -p practice notescd practiceprintf s n first note gt; notes example.txtless notes example.txtcp notes example.txt notes example-copy.txtmv notes example-copy.txt notes renamed-note.txtls -l notesThe gt; operator writes output to a file and replaces that file if it already exists. Use gt; gt; to append instead. Quoting paths is a good habit because it also works when a path contains spaces:less HOME path with spaces notes.txt Read commands before running them, especially commands involving rm. Removing a file is not the same as moving it to a recycle bin, and rm -r can remove entire directory trees. When you are unsure what a command does, start with its manual page:man cpman rmYou can also ask many commands for a short usage summary:cp --helpThe Basic Git and GitHub Guide builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.Looking at running processes with toptop is a terminal program that gives you a changing view of running processes and system resources. Start it with:topUseful keys while top is running include: Key Action q Quit top P Sort by CPU usage M Sort by memory usage 1 Show individual CPU statistics At first, use top for observation. Look for processes consuming an unusual amount of CPU or memory, and notice the load and memory summaries at the top of the display. Do not terminate a process just because it appears in the list: first identify which user started it, what command it represents, and whether it belongs to an important job.On a shared server or HPC system, your institution may provide additional monitoring commands or a scheduler such as SLURM. The Using Agustina post describes job helpers and log locations for that environment. For another example of useful monitoring habits, the Gaussian Tips and Troubleshooting Guide discusses reading complete output, following logs with tail -f, and checking available disk space.Good first habitsWhen working on a machine you do not fully control: Know where you are with pwd before creating or moving files. Use HOME and other variables instead of copying long paths by hand. Read help or manual pages before using unfamiliar options. Keep code, input files, and results organized in predictable directories. Check logs and error messages before repeating a failed command. Keep important work backed up and under version control. Record the commands, software versions, and environment needed to reproduce a result.The General Guidelines for Master s and PhD Students expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.Further readingOnce these basics feel comfortable, the following sources provide more detail: Bash startup files explains when Bash reads files such as .bashrc. The GNU Coreutils manual documents many everyday file and text commands. The Linux man-pages project provides detailed manual-page documentation. The procps-ng project provides tools including top and ps. The Missing Semester of Your CS Education has excellent lessons on the shell, command-line tools, editors, and remote work.">
+      <p data-search="Linux Sysadmin BasicsIf you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.This is a short introduction to the pieces you will use every day. For a broader learning path, see the Coding Practices Guidelines, especially its sections on Unix shell commands, remote cluster work, and reproducible projects.The shell and your home directoryWhen you open a terminal, you are usually running a shell such as Bash. The shell reads your commands, expands variables, starts programs, and keeps track of your current directory. HOME is an environment variable containing the path to your home directory. It is normally the place where your personal files and configuration live. The means expand this variable ; the directory itself is usually written as HOME without the dollar sign.echo HOME pwdcd HOME pwdpwd prints the working directory. cd changes it, and cd without an argument returns you to HOME. The tilde is a shorter spelling of your home directory:cd cd projectsDo not confuse HOME with the directory where a program happens to be installed. Your home directory belongs to your user account, while system software may live under locations such as usr bin or opt.What is .bashrc .bashrc is a hidden configuration file in your home directory. Bash reads it when it starts an interactive non-login shell. It is commonly used for aliases, the command prompt, shell options, and additions to your PATH.You can inspect the file without editing it:less .bashrcAn alias gives a short name to a command you use often. For example:alias ll ls -lah To add this permanently, put the line in .bashrc. After saving the file, load it into the current shell:source .bashrcThe Using Agustina guide shows practical examples of .bashrc aliases, SSH jump hosts, prompt customization, and PATH settings for an HPC system. It is a useful next step once the basic idea is familiar. For editing files like this directly from the terminal, a classic option is vim; see the Vi and Vim Basics guide for the essentials: modes, editing, visual blocks, and vimdiff.Be careful when modifying .bashrc. A syntax error can make every new shell print an error, and a badly constructed PATH can make commands difficult to find. Before making a substantial change, keep a backup:cp .bashrc .bashrc.backupThe PATH variablePATH is a colon-separated list of directories where the shell looks for executable commands. This command shows its current value:printf s n PATH If you keep your own scripts in bin, you can add that directory while preserving the existing path:mkdir -p HOME bin export PATH HOME bin: PATH Putting the export line in .bashrc makes the change apply to future interactive Bash shells. Avoid replacing PATH with a single directory: the existing value is what lets the shell find standard commands.Executing Bash scriptsA Bash script is a text file containing commands that the shell can run in sequence. The first line is called a shebang. It tells the operating system which interpreter should run the file: usr bin env bashecho Hello from Bash printf Working directory: s n PWD Save this as hello.sh. You can run it by passing the file to Bash directly:bash hello.shYou can also make the file executable and run it by its path. The u x mode adds execute permission for the file s owner:chmod u x hello.sh. hello.shThe . matters: it means run the file in the current directory. Linux usually does not search the current directory automatically when looking through PATH. This avoids accidentally running a file in the current directory when you intended to run a system command with the same name.Use ls -l hello.sh to inspect its permissions. If you receive a Permission denied error, check that the file is executable and that you are running the intended file. bash hello.sh does not require the executable bit because Bash is being asked to read the file explicitly.Basic commandsThese commands cover much of the daily work of navigating and inspecting a Linux system: Command Purpose ls List files and directories cd Change directory pwd Print the current directory mkdir Create a directory cp Copy a file or directory mv Move or rename a file rm Remove a file or directory less Read a text file one screen at a time man Read a command s manual page A small example:mkdir -p practice notescd practiceprintf s n first note gt; notes example.txtless notes example.txtcp notes example.txt notes example-copy.txtmv notes example-copy.txt notes renamed-note.txtls -l notesThe gt; operator writes output to a file and replaces that file if it already exists. Use gt; gt; to append instead. Quoting paths is a good habit because it also works when a path contains spaces:less HOME path with spaces notes.txt Read commands before running them, especially commands involving rm. Removing a file is not the same as moving it to a recycle bin, and rm -r can remove entire directory trees. When you are unsure what a command does, start with its manual page:man cpman rmYou can also ask many commands for a short usage summary:cp --helpWhen a file needs to be edited directly from the shell instead of a GUI editor, vim is the standard choice on Linux systems. The Vi and Vim Basics guide is a quick reference for the most common commands and workflows.The Basic Git and GitHub Guide builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.Looking at running processes with toptop is a terminal program that gives you a changing view of running processes and system resources. Start it with:topUseful keys while top is running include: Key Action q Quit top P Sort by CPU usage M Sort by memory usage 1 Show individual CPU statistics At first, use top for observation. Look for processes consuming an unusual amount of CPU or memory, and notice the load and memory summaries at the top of the display. Do not terminate a process just because it appears in the list: first identify which user started it, what command it represents, and whether it belongs to an important job.On a shared server or HPC system, your institution may provide additional monitoring commands or a scheduler such as SLURM. The Using Agustina post describes job helpers and log locations for that environment. For another example of useful monitoring habits, the Gaussian Tips and Troubleshooting Guide discusses reading complete output, following logs with tail -f, and checking available disk space.Good first habitsWhen working on a machine you do not fully control: Know where you are with pwd before creating or moving files. Use HOME and other variables instead of copying long paths by hand. Read help or manual pages before using unfamiliar options. Keep code, input files, and results organized in predictable directories. Check logs and error messages before repeating a failed command. Keep important work backed up and under version control. Record the commands, software versions, and environment needed to reproduce a result.The General Guidelines for Master s and PhD Students expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.The Vi and Vim Basics guide is the practical companion for the quick editing commands you will use every time you change a shell config file or small script on a remote system.Further readingOnce these basics feel comfortable, the following sources provide more detail: Bash startup files explains when Bash reads files such as .bashrc. The GNU Coreutils manual documents many everyday file and text commands. The Linux man-pages project provides detailed manual-page documentation. The procps-ng project provides tools including top and ps. Vi and Vim Basics explains the core editor commands, visual block editing, and vimdiff for quick terminal-based comparisons. The Missing Semester of Your CS Education has excellent lessons on the shell, command-line tools, editors, and remote work.">
         Linux Sysadmin Basics
 
       </p>
@@ -1332,6 +1437,91 @@
       
       <p data-search="Gaussian Tips and Troubleshooting GuideThis guide compiles common errors encountered when running Gaussian calculations and provides practical solutions. Whether you re optimizing geometries, computing frequencies, or running excited-state calculations, these tips should help you navigate the most frequent issues. Tip: Use your browser s search function Ctrl F Cmd F to quickly find specific error messages. This guide is inspired by and builds upon resources from the computational chemistry community, particularly Zhe Wang s comprehensive error guide.Memory and Resource IssuesInsufficient Memory ErrorsCommon Error Messages: CISAX needs XXXXX more words of memory XXXXX words are not enough for AlAXAO galloc: could not allocate memory malloc failed: Resource temporarily unavailableSolutions: Increase memory allocation: Use the mem directive at the top of your input file: mem 8GB Note: Gaussian actually uses about 1 GB more than specified, so set mem to at least 1 GB less than your job script s memory allocation. Reduce CPU cores: If memory is limited, reduce the number of processors: nprocshared 4 This reduces memory requirements per core. Check job script settings: Ensure your job submission script SLURM, PBS, etc. allocates sufficient memory: SBATCH --mem 16G Should be 1GB more than mem Geometry Optimization IssuesOptimization Not ConvergingError Messages: Number of steps exceeded, NStep 100 Delta-x Convergence NOT Met Maximum of iterations exceeded in RedStpSolutions: Increase maximum cycles: Add opt maxcycle n where n is 2-3 times the current number of steps: opt calcfc opt maxcycle 200 Try different optimization methods: opt RFO - Rational Function Optimization opt GDIIS - Geometry Direct Inversion in Iterative Subspace opt GEDIIS - Geometry Energy-Direct Inversion in Iterative Subspace Switch coordinate system: If Z-matrix fails, try Cartesian coordinates: opt cartesian Check initial geometry: Verify your starting structure is reasonable. Use molecular visualization software GaussView, Avogadro to inspect the geometry. Modify symmetry: Sometimes reducing symmetry helps: symm loose Transition State Optimization IssuesError Message: Wrong number of Negative eigenvalues: Desired 1 Actual 4Solution:If you re optimizing a transition state but get multiple negative frequencies, use:opt ts,noeigen This skips the eigenvalue check. However, always verify your final structure has exactly one imaginary frequency Frequency Calculation IssuesFrequency Calculation ErrorsError Messages: Error in INITNF Linear search skipped for unknown reason Inconsistency: ModMin N Eigenvalue MMSolutions: Ensure optimization converged: Frequency calculations require a fully optimized geometry. Check that your optimization completed successfully. Use freq readfc: If you have a checkpoint file with force constants: freq readfc Recalculate from scratch: Sometimes it s best to re-optimize and then compute frequencies in a single job: opt freq SCF Convergence IssuesSCF Not ConvergingError Messages: Convergence failure -- run terminated SCF Done: E RB3LYP ... A.U. after 50 cyclesSolutions: Use convergence aids: scf conver 8,xqc conver 8 sets tighter convergence criteria xqc uses quadratic convergence Try different initial guess: guess mixguess huckelguess read from checkpoint file Use damping: scf conver 8,damp Check for problematic systems: Open-shell systems may need stable opt Systems with near-degeneracies may need different methods Post-HF Method ConvergenceCCSD CCSD T Not ConvergingError Messages: Error termination via Lnk1e in l913.exe after CCSD iterations Large amplitudes in the outputSolutions: Increase maximum cycles: ccsd t,maxcyc 100 Default is 50 cycles. Check convergence trend: Look at the DE Corr values in the output. If they re converging approaching a stable value , increasing cycles should help. Verify reference state: Ensure your HF reference is reasonable. Try: stable opt before the CCSD calculation. Try different basis set: Sometimes a smaller or different basis set helps establish convergence.File and I O ErrorsDisk Space IssuesError Messages: Erroneous write. write 122880 instead of 4239360 writwa: No space left on device Erroneous write during file extendSolutions: Check disk space: df -hdu -sh scratch Clean up scratch directory: Remove old checkpoint files and temporary files. Use smaller basis set: For very large calculations, consider using a smaller basis set or reducing system size. Set scratch directory: Ensure GAUSS SCRDIR points to a directory with sufficient space: export GAUSS SCRDIR path to large disk scratch Checkpoint File IssuesError Messages: Error termination in NtrErr: Operation on file out of range Error imposing constraintsSolutions: Regenerate checkpoint file: The checkpoint file may be corrupted or incomplete. Re-run the calculation that generates the needed data. Don t rely on incomplete checkpoints: If a previous job failed or was killed, don t try to read from its checkpoint file. Input File ErrorsZ-Matrix and Coordinate ErrorsError Messages: End of file in Zsymb Found a string as input There are no atoms in this input structure Symbol not found in Z-matrix Variable index is out of range Determination of dummy atom variables in z-matrix conversion failedSolutions: Check input format: Ensure proper spacing and formatting in your Z-matrix or Cartesian coordinates. Use Cartesian coordinates: If Z-matrix conversion fails, switch to Cartesian: opt cartesian Verify atom definitions: Check that all atoms are properly defined and variables are correctly referenced. Use GaussView or similar: Generate input files using molecular visualization software to avoid formatting errors.Method-Specific IssuesDFT Functional LimitationsError Message: No func 3rd derivs with HSE or similar for other functionals Explanation:Some functionals don t support third-order derivatives needed for hyperpolarizability calculations.Solutions: For polarizability only: Use polar Numerical: polar Numerical This calculates polarizability α but may fail for hyperpolarizability β. Use different functional: Switch to a functional that supports third-order derivatives most standard functionals do . Check output: Sometimes the desired property e.g., α is calculated before the error occurs, so check earlier in the output file.System and Permission ErrorsGaussian Installation IssuesError Messages: Files in the Gaussian directory are world accessible. This must be fixed. failed to open execfileSolutions: Fix permissions: chmod -R 750 path to Gaussian Check Linda vs. OpenMP: If using nprocl, ensure your system supports Linda. Otherwise, use nprocshared: nprocshared 8 instead of nprocl Verify environment variables: Check that g09root or g16root and GAUSS EXEDIR are set correctly.General Best PracticesInput File Organization Always include route section: Start with followed by method and keywords Use title line: Provide a descriptive title Specify charge and multiplicity: Essential for proper calculation Use checkpoint files: Include chk filename.chk for recoveryExample Well-Structured Input: mem 8GB nprocshared 4 chk water opt.chk opt freq b3lyp 6-31g d Water optimization0 1O 0.000000 0.000000 0.117300H 0.000000 0.757200 -0.469200H 0.000000 -0.757200 -0.469200Monitoring Calculations Watch output in real-time: Use tail -f to monitor progress: tail -f jobname.log Check for convergence: Look for Optimization completed or Normal termination Save intermediate results: Use checkpoint files to restart or extract dataPerformance Tips Use appropriate basis sets: Don t use larger basis sets than necessary Parallelize wisely: More cores don t always mean faster memory trade-off Use efficient methods: Consider opt calcfc to calculate force constants once Chain calculations: Use geom allcheck to continue from previous calculationsQuick Reference: Common Fixes Problem Quick Fix Out of memory Increase mem or decrease nprocshared Optimization not converging Add opt maxcycle 200 or try opt RFO SCF not converging Add scf conver 8,xqc or scf damp Multiple negative frequencies Use opt ts,noeigen but verify result Disk space error Clean scratch directory or use smaller basis Checkpoint file error Regenerate checkpoint from scratch Z-matrix error Switch to opt cartesian Additional Resources Gaussian Official Documentation Gaussian User s Reference Zhe Wang s Gaussian Error Guide Crawford Group Computational Chemistry ResourcesGetting HelpIf you encounter errors not covered here: Check the full output file: Errors often have context earlier in the file Search error messages: Many errors are documented online Consult colleagues: Often someone has seen the same issue Gaussian support: For licensed users, contact Gaussian Inc. supportRemember: Computational chemistry calculations can be finicky. When in doubt, start simpler smaller basis set, fewer atoms and work your way up">
         Gaussian Tips and Troubleshooting Guide
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/2025/01/22/ORCA-tips-and-troubleshooting.html" class="post-excerpt-image" aria-label="ORCA Tips and Troubleshooting Guide">
+        <img src="/images/post-tutorial.jpg" alt="ORCA Tips and Troubleshooting Guide" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/2025/01/22/ORCA-tips-and-troubleshooting.html">ORCA Tips and Troubleshooting Guide</a>
+
+      <div class="post-info">
+  
+    
+    
+      
+      
+        <span data-tooltip="Author">
+          <i class="icon fa-solid fa-feather-pointed"></i>
+          <span>rlaplaza</span>
+        </span>
+      
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>January 22, 2025</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 24, 2026</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags">
+    
+      <a href="/blog?search=%22tag:%20tutorial%22" class="tag" data-tooltip='Show items with the tag "tutorial"'>
+        tutorial
+      </a>
+    
+      <a href="/blog?search=%22tag:%20computational-chemistry%22" class="tag" data-tooltip='Show items with the tag "computational-chemistry"'>
+        computational-chemistry
+      </a>
+    
+      <a href="/blog?search=%22tag:%20orca%22" class="tag" data-tooltip='Show items with the tag "orca"'>
+        orca
+      </a>
+    
+      <a href="/blog?search=%22tag:%20troubleshooting%22" class="tag" data-tooltip='Show items with the tag "troubleshooting"'>
+        troubleshooting
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="ORCA Tips and Troubleshooting GuideThis guide compiles common ORCA issues encountered in routine electronic-structure work and offers practical fixes. It follows the same spirit as the Gaussian guide, but the advice below is rooted in the official ORCA FAQ and manuals rather than in forum folklore or anecdotal advice. Tip: Use your browser s search function Ctrl F Cmd F to jump to the relevant error text. The ORCA FAQ and the SCF geometry sections of the manual are the best and most reliable reference points for troubleshooting.Memory and Resource Issues Please increase MaxCore Common symptom: ORCA aborts with a message similar to Please increase MaxCoreWhat the official guide says:The ORCA FAQ states that the SCF may need more memory than the user-specified MaxCore and that newer ORCA versions estimate the memory requirement early in the calculation. If the estimate is larger than MaxCore but smaller than 2 MaxCore, ORCA gives a warning and continues. If it is larger than 2 MaxCore, the job aborts. The FAQ also notes that MaxCore is the memory dedicated to each process, not the total job memory.Practical fixes: Increase the per-process memory in the job script or launch command. Reduce the number of MPI processes if memory per process is too low. Re-check whether the job is overcommitted on memory.Example: def2-TZVP TightSCF maxcore 2000SCF Convergence IssuesSCF does not convergeCommon symptoms: the energy oscillates or drifts for many cycles the calculation reaches many iterations without stabilizing the orbital gradient remains largeWhat the official guide says:The ORCA SCF convergence chapter explains that convergence is a major practical issue in quantum chemistry. It documents convergence tolerances, damping, level shifting, DIIS, and the TRAH algorithm. It also notes that if the integral accuracy is worse than the SCF tolerance, a direct SCF calculation cannot converge properly.Practical fixes: Start with a more robust SCF level: TightSCF or SlowConv Use damping or level shifting early in a difficult calculation: scf CNVDamp true DampFac 0.7 DampErr 0.001end Increase the maximum number of SCF cycles if needed. For hard cases, allow the automatic TRAH fallback: scf AutoTRAH trueend The SCF manual specifically states that TRAH is useful when the conventional SCF procedures struggle.Open-shell or near-degenerate systemsCommon symptoms: convergence stalls for radicals or transition-metal complexes the SCF oscillates between qualitatively different solutions the result is numerically stable but chemically questionableWhat the official guide says:The ORCA FAQ and SCF section emphasize that open-shell systems, especially transition-metal complexes, can be difficult. The guidance recommends checking S 2, UCO overlaps, and spin populations to confirm that the solution is meaningful.Practical fixes: Confirm the charge and multiplicity are chemically reasonable. Try a better initial guess. Use a more restrictive convergence setting for difficult electronic structures. Inspect the resulting electronic structure rather than trusting a converged number blindly.Geometry Optimization IssuesOptimization stalls or fails to convergeCommon symptoms: the optimizer cycles without reaching a stable structure the job keeps stepping but never satisfies geometry thresholds a structure appears optimized but is still badly distortedWhat the official guide says:The ORCA geometry optimization chapter explains that optimization can be difficult even when the underlying method is valid. It also notes that floppy structures with many rotations around single bonds or soft dihedral modes are especially challenging. The manual describes the role of the initial Hessian, step type, and coordinate system in convergence.Practical fixes: geom MaxIter 50 Step qn Trust 0.3 coordsys redundant cartfallback trueend Check the starting geometry. Use a better initial Hessian or a more suitable coordinate system. If the optimization is problematic, revisit the starting structure instead of assuming the failure is purely numerical.Transition state optimization fails or follows the wrong modeCommon symptoms: the calculation converges to a minimum instead of a transition state the optimizer identifies the wrong reaction coordinate multiple negative modes remainWhat the official guide says:The ORCA geometry optimization section explains that TS optimization is a separate problem: it maximizes the energy along one Hessian eigenmode while minimizing along the others. It also discusses TS Mode, Hessian updates, and relaxed scans for TS optimization.Practical fixes: OptTS geom TS Mode M 0 end Calc Hess true Recalc Hess 5end Use an explicit TS setup. Use a relaxed surface scan to locate the relevant reaction coordinate before TS optimization. Confirm that the final structure has exactly one imaginary mode.Atoms merge into each other during optimizationCommon symptom: neighboring atoms collapse into one another during optimizationWhat the official guide says:The ORCA FAQ explicitly states that this usually occurs due to a poor or wrong initial molecular-orbital guess or a bad basis-set definition on the relevant atoms. The advice is to check the basis set on the problematic atoms and then the corresponding MOs.This is a good example of an ORCA-specific issue: the problem is not a generic optimizer bug, but a quality-of-initial-guess and basis-definition issue.Frequency Calculation IssuesFrequencies fail when the wavefunction is not convergedCommon symptoms: the job stops before printing a frequency analysis a frequency calculation fails just after a geometry optimization the Hessian is not trusted because the SCF never reached a stable stateWhat the official guide says:The SCF chapter is explicit: properties and numerical calculations, including NumGrad and NumFreq, are not performed on non-converged wavefunctions.Practical fixes: Ensure the SCF is converged before asking for frequencies. Use a tight SCF and a well-converged geometry before Freq. If necessary, optimize first and then compute frequencies in the same workflow: B3LYP def2-TZVP Opt Freq File and I O ProblemsMOREAD says that no orbitals were found in the .gbw fileCommon symptom: ORCA reports that no orbitals are found when using MOREADWhat the official guide says:The ORCA FAQ explains that ORCA writes the .gbw file immediately after reading the geometry and basis set information. If a stale .gbw file with the same basename remains in the working directory, it can be overwritten or interfere with the current calculation. The recommendation is to rename the old file before rerunning.Practical fix:mv oldjob.gbw oldjob.gbw.oldOld inputs stop working after a version upgradeCommon symptom: a working input from an older ORCA version fails after installing a new versionWhat the official guide says:The FAQ explicitly states that keywords and defaults may change between ORCA versions, and the same input may give slightly different results or fail entirely. The recommendation is to consult the current manual and release notes instead of assuming the old input remains valid.Installation and Launch IssuesORCA is installed but the program does not startCommon symptoms: the shell cannot find the ORCA executable the binary appears installed but no calculation starts the job exits immediately without writing outputWhat the official guide says:The FAQ explains that ORCA is invoked from the command line on all platforms and gives the standard launch pattern: lt;full orca binary folder path gt; orca example.inp gt; example.outIt also explains the installation process for Linux macOS: the .run installer is made executable with chmod a x, followed by execution of the installation script.Practical fixes: Verify that the ORCA executable is on PATH. Check that the working directory is the one expected by the script. Run a minimal test calculation before moving to a large job.A good ORCA triage checklist Check the SCF convergence before trusting gradients, Hessians, or frequencies. If ORCA says Please increase MaxCore, confirm that the limit is per process. For difficult systems, first try TightSCF, damping, or AutoTRAH. For TS optimizations, verify the Hessian and reaction mode. For MOREAD, ensure stale .gbw files are not colliding with the new job. If the input was written for an older version, re-check the current manual before debugging deeper.Sources ORCA FAQ: https: www.faccts.de docs orca 6.0 manual contents faq.html ORCA SCF convergence: https: www.faccts.de docs orca 6.0 manual contents detailed scfconv.html ORCA geometry optimization: https: www.faccts.de docs orca 6.0 manual contents detailed geomopt.html ORCA installation and startup: https: www.faccts.de docs orca 6.0 manual contents faq.htmlThese are the official ORCA documentation pages used as the verified basis for the advice above.">
+        ORCA Tips and Troubleshooting Guide
 
       </p>
     </div>

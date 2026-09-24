@@ -43,21 +43,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Git tips and tricks | rlaplaza and crew</title>
+<title>Vi and Vim Basics | rlaplaza and crew</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="Git tips and tricks">
+<meta name="title" content="Vi and Vim Basics">
 <meta name="description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 
-<meta property="og:title" content="Git tips and tricks">
+<meta property="og:title" content="Vi and Vim Basics">
 <meta property="og:site_title" content="rlaplaza and crew">
 <meta property="og:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="og:url" content="https://rlaplaza.github.io">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="Git tips and tricks">
+<meta property="twitter:title" content="Vi and Vim Basics">
 <meta property="twitter:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="twitter:url" content="https://rlaplaza.github.io">
 <meta property="twitter:card" content="summary_large_image">
@@ -67,7 +67,7 @@
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
   <meta property="og:updated_time" content="2026-09-24T15:10:01+00:00">
-  <meta property="article:published_time" content="2025-07-30T00:00:00+00:00">
+  <meta property="article:published_time" content="2026-01-22T00:00:00+00:00">
   <meta property="article:modified_time" content="2026-09-24T15:10:01+00:00">
   <meta name="revised" content="2026-09-24T15:10:01+00:00">
 
@@ -77,13 +77,13 @@
     "@context": "https://schema.org",
     
       "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "Git tips and tricks" },
-      "datePublished": "2025-07-30T00:00:00+00:00",
+      "author": { "@type": "Person", "name": "Vi and Vim Basics" },
+      "datePublished": "2026-01-22T00:00:00+00:00",
       "dateModified": "2026-09-24T15:10:01+00:00",
     
-    "name": "Git tips and tricks",
+    "name": "Vi and Vim Basics",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
-    "headline": "Git tips and tricks",
+    "headline": "Vi and Vim Basics",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -504,7 +504,7 @@
 -->
 
 
-<h1 class="center">Git tips and tricks</h1>
+<h1 class="center">Vi and Vim Basics</h1>
 
 <div class="post-info">
   
@@ -526,7 +526,7 @@
   
     <span data-tooltip="Originally published on">
       <i class="icon fa-regular fa-calendar"></i>
-      <span>July 30, 2025</span>
+      <span>January 22, 2026</span>
     </span>
   
 
@@ -552,6 +552,22 @@
         guidelines
       </a>
     
+      <a href="/blog?search=%22tag:%20linux%22" class="tag" data-tooltip='Show items with the tag "linux"'>
+        linux
+      </a>
+    
+      <a href="/blog?search=%22tag:%20bash%22" class="tag" data-tooltip='Show items with the tag "bash"'>
+        bash
+      </a>
+    
+      <a href="/blog?search=%22tag:%20vim%22" class="tag" data-tooltip='Show items with the tag "vim"'>
+        vim
+      </a>
+    
+      <a href="/blog?search=%22tag:%20vi%22" class="tag" data-tooltip='Show items with the tag "vi"'>
+        vi
+      </a>
+    
   </div>
   </section>
 
@@ -567,189 +583,192 @@
 -->
 
 
-<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
+<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
 
-<h2 id="about">About</h2>
+<p>If you work on a Linux machine, a remote server, or an HPC system, you will eventually need to edit a configuration file, a shell script, or a short note in the terminal. <code class="language-plaintext highlighter-rouge">vi</code> and <code class="language-plaintext highlighter-rouge">vim</code> are classic tools for exactly that. They are usually installed on Unix-like systems, they work well over SSH, and they do not require a graphical interface.</p>
 
-<p>This guide is for <strong>beginners</strong> who are new to Git and GitHub. It walks you through the process of setting up Git on your computer, creating a GitHub account, learning basic commands, and joining a GitHub organization (e.g., <a href="https://github.com/rlaplaza-lab">rlaplaza-lab</a>). In the near future, it will probably be helpful to do the same in the supercomputers you use as well.</p>
+<p>This short guide is meant to be practical. It complements the <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a> article and the <a href="/2025/07/30/coding-tips.html">Coding Practices Guidelines</a>, especially the parts about shell work, remote systems, and command-line tooling.</p>
 
-<hr>
+<h2 id="what-are-vi-and-vim">What are <code class="language-plaintext highlighter-rouge">vi</code> and <code class="language-plaintext highlighter-rouge">vim</code>?</h2>
 
-<h2 id="step-1-create-a-github-account">Step 1: Create a GitHub Account</h2>
+<p><code class="language-plaintext highlighter-rouge">vi</code> is the traditional Unix text editor. <code class="language-plaintext highlighter-rouge">vim</code> (“Vi Improved”) is the modern, more feature-rich version that is installed on many systems today. In practice, the commands are nearly the same, so learning one means you are already well on your way to using both.</p>
+
+<p>Linux servers and cluster login nodes often provide only terminal editors, which is why <code class="language-plaintext highlighter-rouge">vim</code> remains useful even if you prefer VS Code or another GUI editor for local work.</p>
+
+<h2 id="opening-saving-and-quitting">Opening, saving, and quitting</h2>
+
+<p>Open a file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim ~/.bashrc
+</code></pre></div></div>
+
+<p>You are usually in Normal mode when the editor starts. Normal mode is where you move around and run commands. Press <code class="language-plaintext highlighter-rouge">i</code> to enter Insert mode and type text. Press <code class="language-plaintext highlighter-rouge">Esc</code> to go back to Normal mode.</p>
+
+<p>The most important commands are:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">i</span>        Enter Insert <span class="k">mode</span>
+Esc      Leave Insert <span class="k">mode</span>
+<span class="p">:</span><span class="k">w</span>       Save the current <span class="k">file</span>
+<span class="p">:</span><span class="k">q</span>       Quit
+<span class="p">:</span><span class="k">wq</span>      Save <span class="nb">and</span> <span class="k">quit</span>
+<span class="p">:</span><span class="k">q</span><span class="p">!</span>      Quit without saving
+</code></pre></div></div>
+
+<p>A beginner habit worth keeping is: whenever you want to execute a normal-mode command, make sure you are not in Insert mode.</p>
+
+<h2 id="basic-motion-and-editing">Basic motion and editing</h2>
+
+<p>Use the arrow keys or the classic movement keys:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">h</span> <span class="k">j</span> <span class="k">k</span> <span class="k">l</span>   Move <span class="k">left</span><span class="p">,</span> down<span class="p">,</span> <span class="k">up</span><span class="p">,</span> <span class="nb">and</span> <span class="k">right</span>
+<span class="k">w</span>        Move <span class="k">to</span> the <span class="k">next</span> word
+<span class="k">b</span>        Move <span class="k">to</span> the <span class="k">previous</span> word
+<span class="m">0</span>        Move <span class="k">to</span> the beginning of the <span class="nb">line</span>
+$        Move <span class="k">to</span> the end of the <span class="nb">line</span>
+G        Go <span class="k">to</span> the end of the <span class="k">file</span>
+gg       Go <span class="k">to</span> the beginning of the <span class="k">file</span>
+/word    Search forward <span class="k">for</span> <span class="k">a</span> word
+<span class="k">n</span>        Repeat the <span class="nb">search</span> forward
+N        Repeat the <span class="nb">search</span> backward
+</code></pre></div></div>
+
+<p>Common editing commands:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">x</span>        Delete the character under the <span class="nb">cursor</span>
+dd       Delete the current <span class="nb">line</span>
+dw       Delete the current word
+yy       Copy the current <span class="nb">line</span>
+<span class="k">p</span>        Paste after the <span class="nb">cursor</span>
+P        Paste before the <span class="nb">cursor</span>
+<span class="k">u</span>        Undo
+Ctrl<span class="p">-</span><span class="k">r</span>   Redo
+</code></pre></div></div>
+
+<p>The editing workflow is simple:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim notes.txt
+</code></pre></div></div>
+
+<p>Then:</p>
 
 <ol>
-  <li>Go to <a href="https://github.com">https://github.com</a>
-</li>
-  <li>Click <strong>Sign up</strong>
-</li>
-  <li>Choose a <strong>username</strong>, enter your <strong>email</strong>, and create a <strong>secure password</strong>
-</li>
-  <li>Verify your email and follow the on-screen instructions</li>
+  <li>Move to the right place with <code class="language-plaintext highlighter-rouge">h</code>, <code class="language-plaintext highlighter-rouge">j</code>, <code class="language-plaintext highlighter-rouge">k</code>, <code class="language-plaintext highlighter-rouge">l</code>, or the arrow keys.</li>
+  <li>Press <code class="language-plaintext highlighter-rouge">i</code> to insert text.</li>
+  <li>Type what you need.</li>
+  <li>Press <code class="language-plaintext highlighter-rouge">Esc</code>.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">:w</code> to save or <code class="language-plaintext highlighter-rouge">:wq</code> to save and quit.</li>
 </ol>
 
-<hr>
+<h2 id="visual-mode-and-block-editing">Visual mode and block editing</h2>
 
-<h2 id="step-2-install-git">Step 2: Install Git</h2>
+<p><code class="language-plaintext highlighter-rouge">vim</code> is especially handy for editing blocks of text. The main visual modes are:</p>
 
-<h3 id="on-macos">On macOS</h3>
-
-<p>Use <a href="https://brew.sh/">Homebrew</a>:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>git
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">v</span>        Character<span class="p">-</span>wise <span class="k">visual</span> <span class="nb">selection</span>
+V        Line<span class="p">-</span>wise <span class="k">visual</span> <span class="nb">selection</span>
+Ctrl<span class="p">-</span><span class="k">v</span>   Block<span class="p">-</span>wise <span class="k">visual</span> <span class="nb">selection</span>
 </code></pre></div></div>
 
-<h3 id="on-ubuntudebian">On Ubuntu/Debian</h3>
+<p>Once you select a block, you can do things such as:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
-<span class="nb">sudo </span>apt <span class="nb">install </span>git
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">d</span>        Delete the <span class="nb">selection</span>
+<span class="k">y</span>        Copy the <span class="nb">selection</span>
+<span class="p">&gt;</span>        Shift the block <span class="k">right</span> <span class="p">(</span><span class="nb">indent</span><span class="p">)</span>
+<span class="p">&lt;</span>        Shift the block <span class="k">left</span> <span class="p">(</span>dedent<span class="p">)</span>
 </code></pre></div></div>
 
-<h3 id="on-windows">On Windows</h3>
+<p>This is useful when aligning configuration blocks, editing repeated patterns, or changing a series of similar lines. For example, you might indent several lines in a shell script or add a comment prefix to a set of configuration entries.</p>
 
-<p>Download from the official site: <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p>
+<p>The block-selection mode is one of the features that makes <code class="language-plaintext highlighter-rouge">vim</code> feel surprisingly powerful once you get used to it.</p>
 
-<p>Follow the installer with default settings.</p>
+<h2 id="search-and-replace">Search and replace</h2>
 
-<hr>
+<p>Search is often the fastest way to move through a file:</p>
 
-<h2 id="step-3-set-up-git">Step 3: Set Up Git</h2>
-
-<p>Open your terminal or Git Bash and configure Git with your name and email:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> user.name <span class="s2">"Your Full Name"</span>
-git config <span class="nt">--global</span> user.email <span class="s2">"your@email.com"</span>
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/PATH
+<span class="k">n</span>
 </code></pre></div></div>
 
-<p>You can check the configuration with:</p>
+<p>This searches for <code class="language-plaintext highlighter-rouge">PATH</code> and jumps to the next match. To replace text throughout a file:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--list</span>
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">:</span>%s<span class="sr">/old/</span><span class="k">new</span>/<span class="k">g</span>
 </code></pre></div></div>
 
-<hr>
+<p>This replaces every occurrence of <code class="language-plaintext highlighter-rouge">old</code> with <code class="language-plaintext highlighter-rouge">new</code> in the whole file. If you want confirmation for each change, use:</p>
 
-<h2 id="step-4-generate-an-ssh-key-optional-but-recommended">Step 4: Generate an SSH Key (Optional but Recommended)</h2>
-
-<p>This allows you to securely connect to GitHub.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> ed25519 <span class="nt">-C</span> <span class="s2">"your@email.com"</span>
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">:</span>%s<span class="sr">/old/</span><span class="k">new</span>/gc
 </code></pre></div></div>
 
-<p>Then add your key to the SSH agent:</p>
+<p>This is especially useful when editing config files or scripts where names or paths need to be updated consistently.</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">eval</span> <span class="s2">"</span><span class="si">$(</span>ssh-agent <span class="nt">-s</span><span class="si">)</span><span class="s2">"</span>
-ssh-add ~/.ssh/id_ed25519
+<h2 id="vimdiff-for-comparing-files">
+<code class="language-plaintext highlighter-rouge">vimdiff</code> for comparing files</h2>
+
+<p><code class="language-plaintext highlighter-rouge">vimdiff</code> is a very useful tool for reviewing changes between two versions of a file. For example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vimdiff file1.txt file2.txt
 </code></pre></div></div>
 
-<p>Copy your SSH public key:</p>
+<p>You will see both files side by side, and <code class="language-plaintext highlighter-rouge">vimdiff</code> highlights the differences. Some useful commands are:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> ~/.ssh/id_ed25519.pub
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">]</span><span class="k">c</span>       Jump <span class="k">to</span> the <span class="k">next</span> difference
+<span class="p">[</span><span class="k">c</span>       Jump <span class="k">to</span> the <span class="k">previous</span> difference
+<span class="k">do</span>       Diff obtain<span class="p">:</span> <span class="k">copy</span> from the other <span class="k">file</span>
+<span class="k">dp</span>       Diff <span class="k">put</span><span class="p">:</span> <span class="k">copy</span> <span class="k">to</span> the other <span class="k">file</span>
 </code></pre></div></div>
 
-<p>Go to <a href="https://github.com/settings/keys">GitHub SSH settings</a>, click <strong>“New SSH key”</strong>, and paste the key there.</p>
+<p>This is a great tool for checking changes in config files, scripts, or results from different runs. If you are debugging a parameter change or reconciling versions, it is much faster than manually diffing text in a shell.</p>
 
-<hr>
+<h2 id="editing-configuration-files">Editing configuration files</h2>
 
-<h2 id="step-5-request-access-to-rlaplaza-lab">Step 5: Request Access to <code class="language-plaintext highlighter-rouge">rlaplaza-lab</code>
-</h2>
+<p>The configuration files you will edit most often are <code class="language-plaintext highlighter-rouge">~/.bashrc</code>, <code class="language-plaintext highlighter-rouge">~/.config/...</code>, or other user-level settings. A typical workflow is:</p>
 
-<ol>
-  <li>Contact Ruben and <strong>share your GitHub username</strong>
-</li>
-  <li>They will invite you to the <a href="https://github.com/rlaplaza-lab">rlaplaza-lab GitHub organization</a>
-</li>
-  <li>Accept the invitation via email or at <a href="https://github.com/orgs/rlaplaza-lab">https://github.com/orgs/rlaplaza-lab</a>
-</li>
-</ol>
-
-<hr>
-
-<h2 id="step-6-clone-a-repository">Step 6: Clone a Repository</h2>
-
-<p>Once you have access to a repository, you can <strong>clone</strong> it to your computer:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:rlaplaza-lab/project-name.git
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim ~/.bashrc
 </code></pre></div></div>
 
-<p>Or with HTTPS:</p>
+<p>Then add or adjust an alias, a <code class="language-plaintext highlighter-rouge">PATH</code> export, or a shell option. After saving the file, reload it in the current shell:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/rlaplaza-lab/project-name.git
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.bashrc
 </code></pre></div></div>
 
-<hr>
+<p>This is exactly the kind of task that <code class="language-plaintext highlighter-rouge">vim</code> is made for: quick edits on remote systems without needing a graphical editor.</p>
 
-<h2 id="step-7-basic-git-commands">Step 7: Basic Git Commands</h2>
+<h2 id="good-first-habits">Good first habits</h2>
 
-<h3 id="check-project-status">Check project status</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status
-</code></pre></div></div>
-
-<h3 id="add-changes-to-staging">Add changes to staging</h3>
-
-<p>Staging is a temporary location that stores the changes you are going to do to the repository (kinda!). Adding changes to staging is necessary to let git know that the changes you made are things you want to change in the repo.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add filename.py
-</code></pre></div></div>
-<p>Or add everything:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
-</code></pre></div></div>
-
-<h3 id="commit-changes-with-a-message">Commit changes with a message</h3>
-
-<p>A commit is a snapshot of the repository (kinda!). Once you have all the changes you want added (in staging), you make a commit with all those.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Describe your changes clearly"</span>
-</code></pre></div></div>
-
-<h3 id="push-changes-to-github">Push changes to GitHub</h3>
-
-<p>Now, we can put our commit in the original repo (upstream branch).</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
-</code></pre></div></div>
-
-<h3 id="pull-latest-changes-from-github">Pull latest changes from GitHub</h3>
-
-<p>We can also get the latest commit from the upstream branch. Of course, it is possible to change the branch we push and pull from, but we dont cover it here.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
-</code></pre></div></div>
-
-<hr>
-
-<h2 id="step-8-best-practices">Step 8: Best Practices</h2>
+<p>Start small. Learn only the commands you need most often:</p>
 
 <ul>
-  <li>Commit often with <strong>clear messages</strong>
-</li>
-  <li>Use <strong>branches</strong> for new features or experiments:
-    <div class="language-sh highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> new-feature
-</code></pre></div>    </div>
-  </li>
-  <li>Keep your <code class="language-plaintext highlighter-rouge">main</code> or <code class="language-plaintext highlighter-rouge">master</code> branch clean</li>
-  <li>Pull often to avoid conflicts</li>
-  <li>Document your code and changes in a <code class="language-plaintext highlighter-rouge">README.md</code> or <code class="language-plaintext highlighter-rouge">CHANGELOG.md</code>
-</li>
+  <li>open and close a file</li>
+  <li>move around</li>
+  <li>insert text</li>
+  <li>save</li>
+  <li>search</li>
+  <li>quit without saving when needed</li>
 </ul>
 
-<hr>
+<p>Do not try to memorize every <code class="language-plaintext highlighter-rouge">vim</code> command at once. A few workflows become second nature quickly, and then the editor starts to feel much less intimidating.</p>
 
-<h2 id="resources">Resources</h2>
+<h2 id="useful-resources">Useful resources</h2>
+
+<p>The best places to continue learning are:</p>
 
 <ul>
   <li>
-<a href="https://github.com/PaulWAyers/skills-introduction-to-github">Introduction to Github</a> by the excellent <a href="https://www.chemistry.mcmaster.ca/ayers/index.html">Prof. Ayers</a>
-</li>
-  <li><a href="https://git-scm.com/book/en/v2">Git Book (free)</a></li>
-  <li><a href="https://docs.github.com/en">GitHub Docs</a></li>
-  <li><a href="https://education.github.com/git-cheat-sheet-education.pdf">Git Cheat Sheet</a></li>
+<a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has a great introduction to shell tools and terminal editors.</li>
   <li>
-<a href="https://ohmygit.org/">Oh My Git! Game</a> – Learn Git by playing</li>
+<a href="https://vimhelp.org/">Vim’s built-in help</a> is the definitive reference.</li>
   <li>
-<a href="https://education.github.com/pack">GitHub Student Developer Pack</a> – Free tools for students</li>
+<code class="language-plaintext highlighter-rouge">vimtutor</code> is the best built-in primer for beginners. Run it with:</li>
 </ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vimtutor
+</code></pre></div></div>
+
+<ul>
+  <li>The <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a> article covers shell setup, environment variables, and remote work habits that go well with <code class="language-plaintext highlighter-rouge">vim</code>.</li>
+  <li>The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> guide is a practical example of editing shell configuration files in an HPC workflow.</li>
+</ul>
+
+<p>Once you know the basics, <code class="language-plaintext highlighter-rouge">vim</code> becomes one of the most useful tools in a Linux workflow: it is fast, flexible, and available almost everywhere.</p>
 
 <hr>
   </section>
@@ -770,16 +789,16 @@ ssh-add ~/.ssh/id_ed25519
   <span>
     
       <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
-      <a href="/2025/07/30/Coding-tips.html">
-        Coding tips and tricks
+      <a href="/2025/08/01/Using-agustina.html">
+        Using Agustina
       </a>
     
   </span>
   <span>
     
       Next post <i class="icon fa-solid fa-angle-right"></i><br>
-      <a href="/2025/07/30/Writing-tips.html">
-        Writing tips and tricks
+      <a href="/2026/01/22/linux-sysadmin-basics.html">
+        Linux Sysadmin Basics
       </a>
     
   </span>

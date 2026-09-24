@@ -43,21 +43,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Git tips and tricks | rlaplaza and crew</title>
+<title>ORCA Tips and Troubleshooting Guide | rlaplaza and crew</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="Git tips and tricks">
+<meta name="title" content="ORCA Tips and Troubleshooting Guide">
 <meta name="description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 
-<meta property="og:title" content="Git tips and tricks">
+<meta property="og:title" content="ORCA Tips and Troubleshooting Guide">
 <meta property="og:site_title" content="rlaplaza and crew">
 <meta property="og:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="og:url" content="https://rlaplaza.github.io">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="Git tips and tricks">
+<meta property="twitter:title" content="ORCA Tips and Troubleshooting Guide">
 <meta property="twitter:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="twitter:url" content="https://rlaplaza.github.io">
 <meta property="twitter:card" content="summary_large_image">
@@ -67,7 +67,7 @@
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
   <meta property="og:updated_time" content="2026-09-24T15:10:01+00:00">
-  <meta property="article:published_time" content="2025-07-30T00:00:00+00:00">
+  <meta property="article:published_time" content="2025-01-22T00:00:00+00:00">
   <meta property="article:modified_time" content="2026-09-24T15:10:01+00:00">
   <meta name="revised" content="2026-09-24T15:10:01+00:00">
 
@@ -77,13 +77,13 @@
     "@context": "https://schema.org",
     
       "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "Git tips and tricks" },
-      "datePublished": "2025-07-30T00:00:00+00:00",
+      "author": { "@type": "Person", "name": "ORCA Tips and Troubleshooting Guide" },
+      "datePublished": "2025-01-22T00:00:00+00:00",
       "dateModified": "2026-09-24T15:10:01+00:00",
     
-    "name": "Git tips and tricks",
+    "name": "ORCA Tips and Troubleshooting Guide",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
-    "headline": "Git tips and tricks",
+    "headline": "ORCA Tips and Troubleshooting Guide",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -504,7 +504,7 @@
 -->
 
 
-<h1 class="center">Git tips and tricks</h1>
+<h1 class="center">ORCA Tips and Troubleshooting Guide</h1>
 
 <div class="post-info">
   
@@ -526,7 +526,7 @@
   
     <span data-tooltip="Originally published on">
       <i class="icon fa-regular fa-calendar"></i>
-      <span>July 30, 2025</span>
+      <span>January 22, 2025</span>
     </span>
   
 
@@ -548,8 +548,16 @@
         tutorial
       </a>
     
-      <a href="/blog?search=%22tag:%20guidelines%22" class="tag" data-tooltip='Show items with the tag "guidelines"'>
-        guidelines
+      <a href="/blog?search=%22tag:%20computational-chemistry%22" class="tag" data-tooltip='Show items with the tag "computational-chemistry"'>
+        computational-chemistry
+      </a>
+    
+      <a href="/blog?search=%22tag:%20orca%22" class="tag" data-tooltip='Show items with the tag "orca"'>
+        orca
+      </a>
+    
+      <a href="/blog?search=%22tag:%20troubleshooting%22" class="tag" data-tooltip='Show items with the tag "troubleshooting"'>
+        troubleshooting
       </a>
     
   </div>
@@ -567,191 +575,300 @@
 -->
 
 
-<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
+<h1 id="orca-tips-and-troubleshooting-guide">ORCA Tips and Troubleshooting Guide</h1>
 
-<h2 id="about">About</h2>
+<p>This guide compiles common ORCA issues encountered in routine electronic-structure work and offers practical fixes. It follows the same spirit as the Gaussian guide, but the advice below is rooted in the official ORCA FAQ and manuals rather than in forum folklore or anecdotal advice.</p>
 
-<p>This guide is for <strong>beginners</strong> who are new to Git and GitHub. It walks you through the process of setting up Git on your computer, creating a GitHub account, learning basic commands, and joining a GitHub organization (e.g., <a href="https://github.com/rlaplaza-lab">rlaplaza-lab</a>). In the near future, it will probably be helpful to do the same in the supercomputers you use as well.</p>
-
-<hr>
-
-<h2 id="step-1-create-a-github-account">Step 1: Create a GitHub Account</h2>
-
-<ol>
-  <li>Go to <a href="https://github.com">https://github.com</a>
-</li>
-  <li>Click <strong>Sign up</strong>
-</li>
-  <li>Choose a <strong>username</strong>, enter your <strong>email</strong>, and create a <strong>secure password</strong>
-</li>
-  <li>Verify your email and follow the on-screen instructions</li>
-</ol>
+<blockquote>
+  <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to jump to the relevant error text. The ORCA FAQ and the SCF/geometry sections of the manual are the best and most reliable reference points for troubleshooting.</p>
+</blockquote>
 
 <hr>
 
-<h2 id="step-2-install-git">Step 2: Install Git</h2>
+<h2 id="memory-and-resource-issues">Memory and Resource Issues</h2>
 
-<h3 id="on-macos">On macOS</h3>
+<h3 id="please-increase-maxcore">“Please increase MaxCore”</h3>
 
-<p>Use <a href="https://brew.sh/">Homebrew</a>:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>git
-</code></pre></div></div>
-
-<h3 id="on-ubuntudebian">On Ubuntu/Debian</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
-<span class="nb">sudo </span>apt <span class="nb">install </span>git
-</code></pre></div></div>
-
-<h3 id="on-windows">On Windows</h3>
-
-<p>Download from the official site: <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p>
-
-<p>Follow the installer with default settings.</p>
-
-<hr>
-
-<h2 id="step-3-set-up-git">Step 3: Set Up Git</h2>
-
-<p>Open your terminal or Git Bash and configure Git with your name and email:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> user.name <span class="s2">"Your Full Name"</span>
-git config <span class="nt">--global</span> user.email <span class="s2">"your@email.com"</span>
-</code></pre></div></div>
-
-<p>You can check the configuration with:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--list</span>
-</code></pre></div></div>
-
-<hr>
-
-<h2 id="step-4-generate-an-ssh-key-optional-but-recommended">Step 4: Generate an SSH Key (Optional but Recommended)</h2>
-
-<p>This allows you to securely connect to GitHub.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> ed25519 <span class="nt">-C</span> <span class="s2">"your@email.com"</span>
-</code></pre></div></div>
-
-<p>Then add your key to the SSH agent:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">eval</span> <span class="s2">"</span><span class="si">$(</span>ssh-agent <span class="nt">-s</span><span class="si">)</span><span class="s2">"</span>
-ssh-add ~/.ssh/id_ed25519
-</code></pre></div></div>
-
-<p>Copy your SSH public key:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> ~/.ssh/id_ed25519.pub
-</code></pre></div></div>
-
-<p>Go to <a href="https://github.com/settings/keys">GitHub SSH settings</a>, click <strong>“New SSH key”</strong>, and paste the key there.</p>
-
-<hr>
-
-<h2 id="step-5-request-access-to-rlaplaza-lab">Step 5: Request Access to <code class="language-plaintext highlighter-rouge">rlaplaza-lab</code>
-</h2>
-
-<ol>
-  <li>Contact Ruben and <strong>share your GitHub username</strong>
-</li>
-  <li>They will invite you to the <a href="https://github.com/rlaplaza-lab">rlaplaza-lab GitHub organization</a>
-</li>
-  <li>Accept the invitation via email or at <a href="https://github.com/orgs/rlaplaza-lab">https://github.com/orgs/rlaplaza-lab</a>
-</li>
-</ol>
-
-<hr>
-
-<h2 id="step-6-clone-a-repository">Step 6: Clone a Repository</h2>
-
-<p>Once you have access to a repository, you can <strong>clone</strong> it to your computer:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:rlaplaza-lab/project-name.git
-</code></pre></div></div>
-
-<p>Or with HTTPS:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/rlaplaza-lab/project-name.git
-</code></pre></div></div>
-
-<hr>
-
-<h2 id="step-7-basic-git-commands">Step 7: Basic Git Commands</h2>
-
-<h3 id="check-project-status">Check project status</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status
-</code></pre></div></div>
-
-<h3 id="add-changes-to-staging">Add changes to staging</h3>
-
-<p>Staging is a temporary location that stores the changes you are going to do to the repository (kinda!). Adding changes to staging is necessary to let git know that the changes you made are things you want to change in the repo.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add filename.py
-</code></pre></div></div>
-<p>Or add everything:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
-</code></pre></div></div>
-
-<h3 id="commit-changes-with-a-message">Commit changes with a message</h3>
-
-<p>A commit is a snapshot of the repository (kinda!). Once you have all the changes you want added (in staging), you make a commit with all those.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Describe your changes clearly"</span>
-</code></pre></div></div>
-
-<h3 id="push-changes-to-github">Push changes to GitHub</h3>
-
-<p>Now, we can put our commit in the original repo (upstream branch).</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
-</code></pre></div></div>
-
-<h3 id="pull-latest-changes-from-github">Pull latest changes from GitHub</h3>
-
-<p>We can also get the latest commit from the upstream branch. Of course, it is possible to change the branch we push and pull from, but we dont cover it here.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
-</code></pre></div></div>
-
-<hr>
-
-<h2 id="step-8-best-practices">Step 8: Best Practices</h2>
-
+<p><strong>Common symptom:</strong></p>
 <ul>
-  <li>Commit often with <strong>clear messages</strong>
+  <li>ORCA aborts with a message similar to <code class="language-plaintext highlighter-rouge">Please increase MaxCore</code>
 </li>
-  <li>Use <strong>branches</strong> for new features or experiments:
-    <div class="language-sh highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> new-feature
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The ORCA FAQ states that the SCF may need more memory than the user-specified <code class="language-plaintext highlighter-rouge">MaxCore</code> and that newer ORCA versions estimate the memory requirement early in the calculation. If the estimate is larger than <code class="language-plaintext highlighter-rouge">MaxCore</code> but smaller than <code class="language-plaintext highlighter-rouge">2*MaxCore</code>, ORCA gives a warning and continues. If it is larger than <code class="language-plaintext highlighter-rouge">2*MaxCore</code>, the job aborts. The FAQ also notes that <code class="language-plaintext highlighter-rouge">MaxCore</code> is the memory dedicated to each process, not the total job memory.</p>
+
+<p><strong>Practical fixes:</strong></p>
+
+<ol>
+  <li>Increase the per-process memory in the job script or launch command.</li>
+  <li>Reduce the number of MPI processes if memory per process is too low.</li>
+  <li>Re-check whether the job is overcommitted on memory.</li>
+</ol>
+
+<p>Example:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! def2-TZVP TightSCF
+%maxcore 2000
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="scf-convergence-issues">SCF Convergence Issues</h2>
+
+<h3 id="scf-does-not-converge">SCF does not converge</h3>
+
+<p><strong>Common symptoms:</strong></p>
+<ul>
+  <li>the energy oscillates or drifts for many cycles</li>
+  <li>the calculation reaches many iterations without stabilizing</li>
+  <li>the orbital gradient remains large</li>
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The ORCA SCF convergence chapter explains that convergence is a major practical issue in quantum chemistry. It documents convergence tolerances, damping, level shifting, DIIS, and the TRAH algorithm. It also notes that if the integral accuracy is worse than the SCF tolerance, a direct SCF calculation cannot converge properly.</p>
+
+<p><strong>Practical fixes:</strong></p>
+
+<ol>
+  <li>Start with a more robust SCF level:
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>! TightSCF
+</code></pre></div>    </div>
+    <p>or</p>
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>! SlowConv
 </code></pre></div>    </div>
   </li>
-  <li>Keep your <code class="language-plaintext highlighter-rouge">main</code> or <code class="language-plaintext highlighter-rouge">master</code> branch clean</li>
-  <li>Pull often to avoid conflicts</li>
-  <li>Document your code and changes in a <code class="language-plaintext highlighter-rouge">README.md</code> or <code class="language-plaintext highlighter-rouge">CHANGELOG.md</code>
-</li>
+  <li>Use damping or level shifting early in a difficult calculation:
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>%scf
+  CNVDamp true
+  DampFac 0.7
+  DampErr 0.001
+end
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Increase the maximum number of SCF cycles if needed.</p>
+  </li>
+  <li>For hard cases, allow the automatic TRAH fallback:
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>%scf
+  AutoTRAH true
+end
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>The SCF manual specifically states that TRAH is useful when the conventional SCF procedures struggle.</p>
+
+<h3 id="open-shell-or-near-degenerate-systems">Open-shell or near-degenerate systems</h3>
+
+<p><strong>Common symptoms:</strong></p>
+<ul>
+  <li>convergence stalls for radicals or transition-metal complexes</li>
+  <li>the SCF oscillates between qualitatively different solutions</li>
+  <li>the result is numerically stable but chemically questionable</li>
 </ul>
+
+<p><strong>What the official guide says:</strong>
+The ORCA FAQ and SCF section emphasize that open-shell systems, especially transition-metal complexes, can be difficult. The guidance recommends checking <code class="language-plaintext highlighter-rouge">S^2</code>, UCO overlaps, and spin populations to confirm that the solution is meaningful.</p>
+
+<p><strong>Practical fixes:</strong></p>
+
+<ol>
+  <li>Confirm the charge and multiplicity are chemically reasonable.</li>
+  <li>Try a better initial guess.</li>
+  <li>Use a more restrictive convergence setting for difficult electronic structures.</li>
+  <li>Inspect the resulting electronic structure rather than trusting a “converged” number blindly.</li>
+</ol>
 
 <hr>
 
-<h2 id="resources">Resources</h2>
+<h2 id="geometry-optimization-issues">Geometry Optimization Issues</h2>
+
+<h3 id="optimization-stalls-or-fails-to-converge">Optimization stalls or fails to converge</h3>
+
+<p><strong>Common symptoms:</strong></p>
+<ul>
+  <li>the optimizer cycles without reaching a stable structure</li>
+  <li>the job keeps stepping but never satisfies geometry thresholds</li>
+  <li>a structure appears optimized but is still badly distorted</li>
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The ORCA geometry optimization chapter explains that optimization can be difficult even when the underlying method is valid. It also notes that floppy structures with many rotations around single bonds or soft dihedral modes are especially challenging. The manual describes the role of the initial Hessian, step type, and coordinate system in convergence.</p>
+
+<p><strong>Practical fixes:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%geom
+  MaxIter 50
+  Step qn
+  Trust 0.3
+  coordsys redundant
+  cartfallback true
+end
+</code></pre></div></div>
+
+<ol>
+  <li>Check the starting geometry.</li>
+  <li>Use a better initial Hessian or a more suitable coordinate system.</li>
+  <li>If the optimization is problematic, revisit the starting structure instead of assuming the failure is purely numerical.</li>
+</ol>
+
+<h3 id="transition-state-optimization-fails-or-follows-the-wrong-mode">Transition state optimization fails or follows the wrong mode</h3>
+
+<p><strong>Common symptoms:</strong></p>
+<ul>
+  <li>the calculation converges to a minimum instead of a transition state</li>
+  <li>the optimizer identifies the wrong reaction coordinate</li>
+  <li>multiple negative modes remain</li>
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The ORCA geometry optimization section explains that TS optimization is a separate problem: it maximizes the energy along one Hessian eigenmode while minimizing along the others. It also discusses <code class="language-plaintext highlighter-rouge">TS_Mode</code>, Hessian updates, and relaxed scans for TS optimization.</p>
+
+<p><strong>Practical fixes:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! OptTS
+%geom
+  TS_Mode {M 0} end
+  Calc_Hess true
+  Recalc_Hess 5
+end
+</code></pre></div></div>
+
+<ol>
+  <li>Use an explicit TS setup.</li>
+  <li>Use a relaxed surface scan to locate the relevant reaction coordinate before TS optimization.</li>
+  <li>Confirm that the final structure has exactly one imaginary mode.</li>
+</ol>
+
+<h3 id="atoms-merge-into-each-other-during-optimization">Atoms merge into each other during optimization</h3>
+
+<p><strong>Common symptom:</strong></p>
+<ul>
+  <li>neighboring atoms collapse into one another during optimization</li>
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The ORCA FAQ explicitly states that this usually occurs due to a poor or wrong initial molecular-orbital guess or a bad basis-set definition on the relevant atoms. The advice is to check the basis set on the problematic atoms and then the corresponding MOs.</p>
+
+<p>This is a good example of an ORCA-specific issue: the problem is not a generic optimizer bug, but a quality-of-initial-guess and basis-definition issue.</p>
+
+<hr>
+
+<h2 id="frequency-calculation-issues">Frequency Calculation Issues</h2>
+
+<h3 id="frequencies-fail-when-the-wavefunction-is-not-converged">Frequencies fail when the wavefunction is not converged</h3>
+
+<p><strong>Common symptoms:</strong></p>
+<ul>
+  <li>the job stops before printing a frequency analysis</li>
+  <li>a frequency calculation fails just after a geometry optimization</li>
+  <li>the Hessian is not trusted because the SCF never reached a stable state</li>
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The SCF chapter is explicit: properties and numerical calculations, including <code class="language-plaintext highlighter-rouge">NumGrad</code> and <code class="language-plaintext highlighter-rouge">NumFreq</code>, are not performed on non-converged wavefunctions.</p>
+
+<p><strong>Practical fixes:</strong></p>
+
+<ol>
+  <li>Ensure the SCF is converged before asking for frequencies.</li>
+  <li>Use a tight SCF and a well-converged geometry before <code class="language-plaintext highlighter-rouge">Freq</code>.</li>
+  <li>If necessary, optimize first and then compute frequencies in the same workflow:
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>! B3LYP def2-TZVP Opt Freq
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr>
+
+<h2 id="file-and-io-problems">File and I/O Problems</h2>
+
+<h3 id="moread-says-that-no-orbitals-were-found-in-the-gbw-file">MOREAD says that no orbitals were found in the .gbw file</h3>
+
+<p><strong>Common symptom:</strong></p>
+<ul>
+  <li>ORCA reports that no orbitals are found when using <code class="language-plaintext highlighter-rouge">MOREAD</code>
+</li>
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The ORCA FAQ explains that ORCA writes the <code class="language-plaintext highlighter-rouge">.gbw</code> file immediately after reading the geometry and basis set information. If a stale <code class="language-plaintext highlighter-rouge">.gbw</code> file with the same basename remains in the working directory, it can be overwritten or interfere with the current calculation. The recommendation is to rename the old file before rerunning.</p>
+
+<p><strong>Practical fix:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv </span>oldjob.gbw oldjob.gbw.old
+</code></pre></div></div>
+
+<h3 id="old-inputs-stop-working-after-a-version-upgrade">Old inputs stop working after a version upgrade</h3>
+
+<p><strong>Common symptom:</strong></p>
+<ul>
+  <li>a working input from an older ORCA version fails after installing a new version</li>
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The FAQ explicitly states that keywords and defaults may change between ORCA versions, and the same input may give slightly different results or fail entirely. The recommendation is to consult the current manual and release notes instead of assuming the old input remains valid.</p>
+
+<hr>
+
+<h2 id="installation-and-launch-issues">Installation and Launch Issues</h2>
+
+<h3 id="orca-is-installed-but-the-program-does-not-start">ORCA is installed but the program does not start</h3>
+
+<p><strong>Common symptoms:</strong></p>
+<ul>
+  <li>the shell cannot find the ORCA executable</li>
+  <li>the binary appears installed but no calculation starts</li>
+  <li>the job exits immediately without writing output</li>
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The FAQ explains that ORCA is invoked from the command line on all platforms and gives the standard launch pattern:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;full orca binary folder path&gt;/orca example.inp <span class="o">&gt;</span> example.out
+</code></pre></div></div>
+
+<p>It also explains the installation process for Linux/macOS: the <code class="language-plaintext highlighter-rouge">.run</code> installer is made executable with <code class="language-plaintext highlighter-rouge">chmod a+x</code>, followed by execution of the installation script.</p>
+
+<p><strong>Practical fixes:</strong></p>
+
+<ol>
+  <li>Verify that the ORCA executable is on <code class="language-plaintext highlighter-rouge">PATH</code>.</li>
+  <li>Check that the working directory is the one expected by the script.</li>
+  <li>Run a minimal test calculation before moving to a large job.</li>
+</ol>
+
+<hr>
+
+<h2 id="a-good-orca-triage-checklist">A good ORCA triage checklist</h2>
 
 <ul>
-  <li>
-<a href="https://github.com/PaulWAyers/skills-introduction-to-github">Introduction to Github</a> by the excellent <a href="https://www.chemistry.mcmaster.ca/ayers/index.html">Prof. Ayers</a>
-</li>
-  <li><a href="https://git-scm.com/book/en/v2">Git Book (free)</a></li>
-  <li><a href="https://docs.github.com/en">GitHub Docs</a></li>
-  <li><a href="https://education.github.com/git-cheat-sheet-education.pdf">Git Cheat Sheet</a></li>
-  <li>
-<a href="https://ohmygit.org/">Oh My Git! Game</a> – Learn Git by playing</li>
-  <li>
-<a href="https://education.github.com/pack">GitHub Student Developer Pack</a> – Free tools for students</li>
+  <li>Check the SCF convergence before trusting gradients, Hessians, or frequencies.</li>
+  <li>If ORCA says “Please increase MaxCore,” confirm that the limit is per process.</li>
+  <li>For difficult systems, first try <code class="language-plaintext highlighter-rouge">TightSCF</code>, damping, or <code class="language-plaintext highlighter-rouge">AutoTRAH</code>.</li>
+  <li>For TS optimizations, verify the Hessian and reaction mode.</li>
+  <li>For <code class="language-plaintext highlighter-rouge">MOREAD</code>, ensure stale <code class="language-plaintext highlighter-rouge">.gbw</code> files are not colliding with the new job.</li>
+  <li>If the input was written for an older version, re-check the current manual before debugging deeper.</li>
 </ul>
 
 <hr>
+
+<h2 id="sources">Sources</h2>
+
+<ul>
+  <li>ORCA FAQ: https://www.faccts.de/docs/orca/6.0/manual/contents/faq.html</li>
+  <li>ORCA SCF convergence: https://www.faccts.de/docs/orca/6.0/manual/contents/detailed/scfconv.html</li>
+  <li>ORCA geometry optimization: https://www.faccts.de/docs/orca/6.0/manual/contents/detailed/geomopt.html</li>
+  <li>ORCA installation and startup: https://www.faccts.de/docs/orca/6.0/manual/contents/faq.html</li>
+</ul>
+
+<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>
   </section>
 
   
@@ -770,16 +887,16 @@ ssh-add ~/.ssh/id_ed25519
   <span>
     
       <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
-      <a href="/2025/07/30/Coding-tips.html">
-        Coding tips and tricks
+      <a href="/2025/01/22/Gaussian-tips-and-troubleshooting.html">
+        Gaussian Tips and Troubleshooting Guide
       </a>
     
   </span>
   <span>
     
       Next post <i class="icon fa-solid fa-angle-right"></i><br>
-      <a href="/2025/07/30/Writing-tips.html">
-        Writing tips and tricks
+      <a href="/2025/07/26/Hello-world.html">
+        Hello!
       </a>
     
   </span>

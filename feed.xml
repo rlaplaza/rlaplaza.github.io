@@ -1,4 +1,187 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-09-24T12:42:09+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-09-24T12:39:32+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-09-24T15:11:50+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-09-24T15:10:01+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
+
+<p>If you work on a Linux machine, a remote server, or an HPC system, you will eventually need to edit a configuration file, a shell script, or a short note in the terminal. <code class="language-plaintext highlighter-rouge">vi</code> and <code class="language-plaintext highlighter-rouge">vim</code> are classic tools for exactly that. They are usually installed on Unix-like systems, they work well over SSH, and they do not require a graphical interface.</p>
+
+<p>This short guide is meant to be practical. It complements the <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a> article and the <a href="/2025/07/30/coding-tips.html">Coding Practices Guidelines</a>, especially the parts about shell work, remote systems, and command-line tooling.</p>
+
+<h2 id="what-are-vi-and-vim">What are <code class="language-plaintext highlighter-rouge">vi</code> and <code class="language-plaintext highlighter-rouge">vim</code>?</h2>
+
+<p><code class="language-plaintext highlighter-rouge">vi</code> is the traditional Unix text editor. <code class="language-plaintext highlighter-rouge">vim</code> (“Vi Improved”) is the modern, more feature-rich version that is installed on many systems today. In practice, the commands are nearly the same, so learning one means you are already well on your way to using both.</p>
+
+<p>Linux servers and cluster login nodes often provide only terminal editors, which is why <code class="language-plaintext highlighter-rouge">vim</code> remains useful even if you prefer VS Code or another GUI editor for local work.</p>
+
+<h2 id="opening-saving-and-quitting">Opening, saving, and quitting</h2>
+
+<p>Open a file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim ~/.bashrc
+</code></pre></div></div>
+
+<p>You are usually in Normal mode when the editor starts. Normal mode is where you move around and run commands. Press <code class="language-plaintext highlighter-rouge">i</code> to enter Insert mode and type text. Press <code class="language-plaintext highlighter-rouge">Esc</code> to go back to Normal mode.</p>
+
+<p>The most important commands are:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">i</span>        Enter Insert <span class="k">mode</span>
+Esc      Leave Insert <span class="k">mode</span>
+<span class="p">:</span><span class="k">w</span>       Save the current <span class="k">file</span>
+<span class="p">:</span><span class="k">q</span>       Quit
+<span class="p">:</span><span class="k">wq</span>      Save <span class="nb">and</span> <span class="k">quit</span>
+<span class="p">:</span><span class="k">q</span><span class="p">!</span>      Quit without saving
+</code></pre></div></div>
+
+<p>A beginner habit worth keeping is: whenever you want to execute a normal-mode command, make sure you are not in Insert mode.</p>
+
+<h2 id="basic-motion-and-editing">Basic motion and editing</h2>
+
+<p>Use the arrow keys or the classic movement keys:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">h</span> <span class="k">j</span> <span class="k">k</span> <span class="k">l</span>   Move <span class="k">left</span><span class="p">,</span> down<span class="p">,</span> <span class="k">up</span><span class="p">,</span> <span class="nb">and</span> <span class="k">right</span>
+<span class="k">w</span>        Move <span class="k">to</span> the <span class="k">next</span> word
+<span class="k">b</span>        Move <span class="k">to</span> the <span class="k">previous</span> word
+<span class="m">0</span>        Move <span class="k">to</span> the beginning of the <span class="nb">line</span>
+$        Move <span class="k">to</span> the end of the <span class="nb">line</span>
+G        Go <span class="k">to</span> the end of the <span class="k">file</span>
+gg       Go <span class="k">to</span> the beginning of the <span class="k">file</span>
+/word    Search forward <span class="k">for</span> <span class="k">a</span> word
+<span class="k">n</span>        Repeat the <span class="nb">search</span> forward
+N        Repeat the <span class="nb">search</span> backward
+</code></pre></div></div>
+
+<p>Common editing commands:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">x</span>        Delete the character under the <span class="nb">cursor</span>
+dd       Delete the current <span class="nb">line</span>
+dw       Delete the current word
+yy       Copy the current <span class="nb">line</span>
+<span class="k">p</span>        Paste after the <span class="nb">cursor</span>
+P        Paste before the <span class="nb">cursor</span>
+<span class="k">u</span>        Undo
+Ctrl<span class="p">-</span><span class="k">r</span>   Redo
+</code></pre></div></div>
+
+<p>The editing workflow is simple:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim notes.txt
+</code></pre></div></div>
+
+<p>Then:</p>
+
+<ol>
+  <li>Move to the right place with <code class="language-plaintext highlighter-rouge">h</code>, <code class="language-plaintext highlighter-rouge">j</code>, <code class="language-plaintext highlighter-rouge">k</code>, <code class="language-plaintext highlighter-rouge">l</code>, or the arrow keys.</li>
+  <li>Press <code class="language-plaintext highlighter-rouge">i</code> to insert text.</li>
+  <li>Type what you need.</li>
+  <li>Press <code class="language-plaintext highlighter-rouge">Esc</code>.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">:w</code> to save or <code class="language-plaintext highlighter-rouge">:wq</code> to save and quit.</li>
+</ol>
+
+<h2 id="visual-mode-and-block-editing">Visual mode and block editing</h2>
+
+<p><code class="language-plaintext highlighter-rouge">vim</code> is especially handy for editing blocks of text. The main visual modes are:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">v</span>        Character<span class="p">-</span>wise <span class="k">visual</span> <span class="nb">selection</span>
+V        Line<span class="p">-</span>wise <span class="k">visual</span> <span class="nb">selection</span>
+Ctrl<span class="p">-</span><span class="k">v</span>   Block<span class="p">-</span>wise <span class="k">visual</span> <span class="nb">selection</span>
+</code></pre></div></div>
+
+<p>Once you select a block, you can do things such as:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">d</span>        Delete the <span class="nb">selection</span>
+<span class="k">y</span>        Copy the <span class="nb">selection</span>
+<span class="p">&gt;</span>        Shift the block <span class="k">right</span> <span class="p">(</span><span class="nb">indent</span><span class="p">)</span>
+<span class="p">&lt;</span>        Shift the block <span class="k">left</span> <span class="p">(</span>dedent<span class="p">)</span>
+</code></pre></div></div>
+
+<p>This is useful when aligning configuration blocks, editing repeated patterns, or changing a series of similar lines. For example, you might indent several lines in a shell script or add a comment prefix to a set of configuration entries.</p>
+
+<p>The block-selection mode is one of the features that makes <code class="language-plaintext highlighter-rouge">vim</code> feel surprisingly powerful once you get used to it.</p>
+
+<h2 id="search-and-replace">Search and replace</h2>
+
+<p>Search is often the fastest way to move through a file:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/PATH
+<span class="k">n</span>
+</code></pre></div></div>
+
+<p>This searches for <code class="language-plaintext highlighter-rouge">PATH</code> and jumps to the next match. To replace text throughout a file:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">:</span>%s<span class="sr">/old/</span><span class="k">new</span>/<span class="k">g</span>
+</code></pre></div></div>
+
+<p>This replaces every occurrence of <code class="language-plaintext highlighter-rouge">old</code> with <code class="language-plaintext highlighter-rouge">new</code> in the whole file. If you want confirmation for each change, use:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">:</span>%s<span class="sr">/old/</span><span class="k">new</span>/gc
+</code></pre></div></div>
+
+<p>This is especially useful when editing config files or scripts where names or paths need to be updated consistently.</p>
+
+<h2 id="vimdiff-for-comparing-files"><code class="language-plaintext highlighter-rouge">vimdiff</code> for comparing files</h2>
+
+<p><code class="language-plaintext highlighter-rouge">vimdiff</code> is a very useful tool for reviewing changes between two versions of a file. For example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vimdiff file1.txt file2.txt
+</code></pre></div></div>
+
+<p>You will see both files side by side, and <code class="language-plaintext highlighter-rouge">vimdiff</code> highlights the differences. Some useful commands are:</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">]</span><span class="k">c</span>       Jump <span class="k">to</span> the <span class="k">next</span> difference
+<span class="p">[</span><span class="k">c</span>       Jump <span class="k">to</span> the <span class="k">previous</span> difference
+<span class="k">do</span>       Diff obtain<span class="p">:</span> <span class="k">copy</span> from the other <span class="k">file</span>
+<span class="k">dp</span>       Diff <span class="k">put</span><span class="p">:</span> <span class="k">copy</span> <span class="k">to</span> the other <span class="k">file</span>
+</code></pre></div></div>
+
+<p>This is a great tool for checking changes in config files, scripts, or results from different runs. If you are debugging a parameter change or reconciling versions, it is much faster than manually diffing text in a shell.</p>
+
+<h2 id="editing-configuration-files">Editing configuration files</h2>
+
+<p>The configuration files you will edit most often are <code class="language-plaintext highlighter-rouge">~/.bashrc</code>, <code class="language-plaintext highlighter-rouge">~/.config/...</code>, or other user-level settings. A typical workflow is:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim ~/.bashrc
+</code></pre></div></div>
+
+<p>Then add or adjust an alias, a <code class="language-plaintext highlighter-rouge">PATH</code> export, or a shell option. After saving the file, reload it in the current shell:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.bashrc
+</code></pre></div></div>
+
+<p>This is exactly the kind of task that <code class="language-plaintext highlighter-rouge">vim</code> is made for: quick edits on remote systems without needing a graphical editor.</p>
+
+<h2 id="good-first-habits">Good first habits</h2>
+
+<p>Start small. Learn only the commands you need most often:</p>
+
+<ul>
+  <li>open and close a file</li>
+  <li>move around</li>
+  <li>insert text</li>
+  <li>save</li>
+  <li>search</li>
+  <li>quit without saving when needed</li>
+</ul>
+
+<p>Do not try to memorize every <code class="language-plaintext highlighter-rouge">vim</code> command at once. A few workflows become second nature quickly, and then the editor starts to feel much less intimidating.</p>
+
+<h2 id="useful-resources">Useful resources</h2>
+
+<p>The best places to continue learning are:</p>
+
+<ul>
+  <li><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has a great introduction to shell tools and terminal editors.</li>
+  <li><a href="https://vimhelp.org/">Vim’s built-in help</a> is the definitive reference.</li>
+  <li><code class="language-plaintext highlighter-rouge">vimtutor</code> is the best built-in primer for beginners. Run it with:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vimtutor
+</code></pre></div></div>
+
+<ul>
+  <li>The <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a> article covers shell setup, environment variables, and remote work habits that go well with <code class="language-plaintext highlighter-rouge">vim</code>.</li>
+  <li>The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> guide is a practical example of editing shell configuration files in an HPC workflow.</li>
+</ul>
+
+<p>Once you know the basics, <code class="language-plaintext highlighter-rouge">vim</code> becomes one of the most useful tools in a Linux workflow: it is fast, flexible, and available almost everywhere.</p>
+
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-09-24T15:10:01+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
 
 <p>If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.</p>
 
@@ -43,7 +226,7 @@ cd</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2"
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.bashrc
 </code></pre></div></div>
 
-<p>The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> guide shows practical examples of <code class="language-plaintext highlighter-rouge">.bashrc</code> aliases, SSH jump hosts, prompt customization, and <code class="language-plaintext highlighter-rouge">PATH</code> settings for an HPC system. It is a useful next step once the basic idea is familiar.</p>
+<p>The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> guide shows practical examples of <code class="language-plaintext highlighter-rouge">.bashrc</code> aliases, SSH jump hosts, prompt customization, and <code class="language-plaintext highlighter-rouge">PATH</code> settings for an HPC system. It is a useful next step once the basic idea is familiar. For editing files like this directly from the terminal, a classic option is <code class="language-plaintext highlighter-rouge">vim</code>; see the <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide for the essentials: modes, editing, visual blocks, and <code class="language-plaintext highlighter-rouge">vimdiff</code>.</p>
 
 <p>Be careful when modifying <code class="language-plaintext highlighter-rouge">.bashrc</code>. A syntax error can make every new shell print an error, and a badly constructed <code class="language-plaintext highlighter-rouge">PATH</code> can make commands difficult to find. Before making a substantial change, keep a backup:</p>
 
@@ -64,6 +247,31 @@ cd</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2"
 </code></pre></div></div>
 
 <p>Putting the <code class="language-plaintext highlighter-rouge">export</code> line in <code class="language-plaintext highlighter-rouge">.bashrc</code> makes the change apply to future interactive Bash shells. Avoid replacing <code class="language-plaintext highlighter-rouge">PATH</code> with a single directory: the existing value is what lets the shell find standard commands.</p>
+
+<h2 id="executing-bash-scripts">Executing Bash scripts</h2>
+
+<p>A Bash script is a text file containing commands that the shell can run in sequence. The first line is called a <strong>shebang</strong>. It tells the operating system which interpreter should run the file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env bash</span>
+
+<span class="nb">echo</span> <span class="s2">"Hello from Bash"</span>
+<span class="nb">printf</span> <span class="s1">'Working directory: %s\n'</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>Save this as <code class="language-plaintext highlighter-rouge">hello.sh</code>. You can run it by passing the file to Bash directly:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash hello.sh
+</code></pre></div></div>
+
+<p>You can also make the file executable and run it by its path. The <code class="language-plaintext highlighter-rouge">u+x</code> mode adds execute permission for the file’s owner:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>u+x hello.sh
+./hello.sh
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">./</code> matters: it means “run the file in the current directory.” Linux usually does not search the current directory automatically when looking through <code class="language-plaintext highlighter-rouge">PATH</code>. This avoids accidentally running a file in the current directory when you intended to run a system command with the same name.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">ls -l hello.sh</code> to inspect its permissions. If you receive a “Permission denied” error, check that the file is executable and that you are running the intended file. <code class="language-plaintext highlighter-rouge">bash hello.sh</code> does not require the executable bit because Bash is being asked to read the file explicitly.</p>
 
 <h2 id="basic-commands">Basic commands</h2>
 
@@ -143,6 +351,8 @@ less notes/example.txt
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">--help</span>
 </code></pre></div></div>
 
+<p>When a file needs to be edited directly from the shell instead of a GUI editor, <code class="language-plaintext highlighter-rouge">vim</code> is the standard choice on Linux systems. The <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide is a quick reference for the most common commands and workflows.</p>
+
 <p>The <a href="/2025/07/30/git-tips.html">Basic Git and GitHub Guide</a> builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.</p>
 
 <h2 id="looking-at-running-processes-with-top">Looking at running processes with <code class="language-plaintext highlighter-rouge">top</code></h2>
@@ -201,6 +411,8 @@ less notes/example.txt
 
 <p>The <a href="/2025/07/29/general-guidelines.html">General Guidelines for Master’s and PhD Students</a> expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.</p>
 
+<p>The <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide is the practical companion for the quick editing commands you will use every time you change a shell config file or small script on a remote system.</p>
+
 <h2 id="further-reading">Further reading</h2>
 
 <p>Once these basics feel comfortable, the following sources provide more detail:</p>
@@ -210,10 +422,11 @@ less notes/example.txt
   <li>The <a href="https://www.gnu.org/software/coreutils/manual/coreutils.html">GNU Coreutils manual</a> documents many everyday file and text commands.</li>
   <li><a href="https://www.kernel.org/doc/man-pages/">The Linux man-pages project</a> provides detailed manual-page documentation.</li>
   <li>The <a href="https://gitlab.com/procps-ng/procps">procps-ng project</a> provides tools including <code class="language-plaintext highlighter-rouge">top</code> and <code class="language-plaintext highlighter-rouge">ps</code>.</li>
+  <li><a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> explains the core editor commands, visual block editing, and <code class="language-plaintext highlighter-rouge">vimdiff</code> for quick terminal-based comparisons.</li>
   <li><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has excellent lessons on the shell, command-line tools, editors, and remote work.</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-09-24T12:39:32+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-09-24T15:10:01+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
 
 <p>Agustina is a High Performance Computing (HPC) center. There are many such centers in the world (a list of the most powerful supercomputers is available in the <a href="https://top500.org/">Top500</a>, in case you are curious).</p>
 
@@ -322,7 +535,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 
 <p>You can now activate envs using their names directly.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-09-24T12:39:32+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-09-24T15:10:01+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
 
 <h2 id="foundation--learning-resources">Foundation &amp; Learning Resources</h2>
 <ul>
@@ -378,7 +591,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
   <li><a href="https://github.com/cod3licious/ml_exercises">A higher-level set of exercises in machine learning</a> and a full book on the topic</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-09-24T12:39:32+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-09-24T15:10:01+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
 
 <h2 id="about">About</h2>
 
@@ -548,7 +761,7 @@ ssh-add ~/.ssh/id_ed25519
   <li><a href="https://education.github.com/pack">GitHub Student Developer Pack</a> – Free tools for students</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Writing tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Writing-tips.html" rel="alternate" type="text/html" title="Writing tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-09-24T12:39:32+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Writing-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Writing-tips.html"><![CDATA[<h1 id="scientific-paper-writing-guidelines">Scientific Paper Writing Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Writing tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Writing-tips.html" rel="alternate" type="text/html" title="Writing tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-09-24T15:10:01+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Writing-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Writing-tips.html"><![CDATA[<h1 id="scientific-paper-writing-guidelines">Scientific Paper Writing Guidelines</h1>
 
 <h2 id="about">About</h2>
 
@@ -801,7 +1014,7 @@ ssh-add ~/.ssh/id_ed25519
   <li><a href="https://stackoverflow.com/questions/44970010/axes-class-set-explicitly-size-width-height-of-axes-in-given-units">Multipanel figures</a></li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Paper Writing Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">General tips for students</title><link href="https://rlaplaza.github.io/2025/07/29/General-guidelines.html" rel="alternate" type="text/html" title="General tips for students" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-09-24T12:39:32+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/General-guidelines</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/General-guidelines.html"><![CDATA[<h1 id="general-guidelines-for-masters-and-phd-students">General Guidelines for Master’s and PhD Students</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Paper Writing Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">General tips for students</title><link href="https://rlaplaza.github.io/2025/07/29/General-guidelines.html" rel="alternate" type="text/html" title="General tips for students" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-09-24T15:10:01+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/General-guidelines</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/General-guidelines.html"><![CDATA[<h1 id="general-guidelines-for-masters-and-phd-students">General Guidelines for Master’s and PhD Students</h1>
 
 <h2 id="1-principles">1. Principles</h2>
 
@@ -893,7 +1106,7 @@ ssh-add ~/.ssh/id_ed25519
   <li><strong>Skimming ToCs</strong>: Skim table of contents from key journals</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[General Guidelines for Master’s and PhD Students]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Presentation tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html" rel="alternate" type="text/html" title="Presentation tips and tricks" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-09-24T12:39:32+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/Presentation-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html"><![CDATA[<h1 id="scientific-presentation-guidelines">Scientific Presentation Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[General Guidelines for Master’s and PhD Students]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Presentation tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html" rel="alternate" type="text/html" title="Presentation tips and tricks" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-09-24T15:10:01+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/Presentation-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html"><![CDATA[<h1 id="scientific-presentation-guidelines">Scientific Presentation Guidelines</h1>
 
 <h2 id="about">About</h2>
 
@@ -1057,13 +1270,13 @@ ssh-add ~/.ssh/id_ed25519
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Clarity</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Consistency</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />References</li>
-</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Presentation Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hello!</title><link href="https://rlaplaza.github.io/2025/07/26/Hello-world.html" rel="alternate" type="text/html" title="Hello!" /><published>2025-07-26T00:00:00+00:00</published><updated>2026-09-24T12:39:32+00:00</updated><id>https://rlaplaza.github.io/2025/07/26/Hello-world</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/26/Hello-world.html"><![CDATA[<p>Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.</p>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Presentation Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hello!</title><link href="https://rlaplaza.github.io/2025/07/26/Hello-world.html" rel="alternate" type="text/html" title="Hello!" /><published>2025-07-26T00:00:00+00:00</published><updated>2026-09-24T15:10:01+00:00</updated><id>https://rlaplaza.github.io/2025/07/26/Hello-world</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/26/Hello-world.html"><![CDATA[<p>Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.</p>
 
 <p>Seville feels like the kind of city that gets under your skin and refuses to let go. You’ve got one of Europe’s most stunning historic centers right at your doorstep - the cathedral, the Alcázar, those winding medieval streets that seem to lead somewhere magical every time. The food scene is incredible, not just tourist-trap restaurants but real neighborhood bars where locals gather for tapas and conversation that stretches late into the night. The weather means you can actually enjoy outdoor life most of the year, and there’s this infectious energy going on. I guess if you know you know.</p>
 
 <p>Yes, it can get crowded, and the summers are intense, but they say once you experience that perfect Seville evening you understand why people fall completely in love with this place.</p>
 
-<p>Well, simply put, I hope to revisit this short memo in a few years and contrast my impressions then. I also hope to have some science to discuss by then. Exciting things are coming!</p>]]></content><author><name>rlaplaza</name></author><category term="random," /><category term="chemistry," /><category term="computational" /><summary type="html"><![CDATA[Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-1.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-1.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Tips and Troubleshooting Guide</title><link href="https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Tips and Troubleshooting Guide" /><published>2025-01-22T00:00:00+00:00</published><updated>2026-09-24T12:39:32+00:00</updated><id>https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-tips-and-troubleshooting-guide">Gaussian Tips and Troubleshooting Guide</h1>
+<p>Well, simply put, I hope to revisit this short memo in a few years and contrast my impressions then. I also hope to have some science to discuss by then. Exciting things are coming!</p>]]></content><author><name>rlaplaza</name></author><category term="random," /><category term="chemistry," /><category term="computational" /><summary type="html"><![CDATA[Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-1.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-1.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Tips and Troubleshooting Guide</title><link href="https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Tips and Troubleshooting Guide" /><published>2025-01-22T00:00:00+00:00</published><updated>2026-09-24T15:10:01+00:00</updated><id>https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-tips-and-troubleshooting-guide">Gaussian Tips and Troubleshooting Guide</h1>
 
 <p>This guide compiles common errors encountered when running Gaussian calculations and provides practical solutions. Whether you’re optimizing geometries, computing frequencies, or running excited-state calculations, these tips should help you navigate the most frequent issues.</p>
 

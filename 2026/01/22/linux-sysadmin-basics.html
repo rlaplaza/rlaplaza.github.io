@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-09-24T12:39:32+00:00">
+  <meta property="og:updated_time" content="2026-09-24T15:10:01+00:00">
   <meta property="article:published_time" content="2026-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-09-24T12:39:32+00:00">
-  <meta name="revised" content="2026-09-24T12:39:32+00:00">
+  <meta property="article:modified_time" content="2026-09-24T15:10:01+00:00">
+  <meta name="revised" content="2026-09-24T15:10:01+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Linux Sysadmin Basics" },
       "datePublished": "2026-01-22T00:00:00+00:00",
-      "dateModified": "2026-09-24T12:39:32+00:00",
+      "dateModified": "2026-09-24T15:10:01+00:00",
     
     "name": "Linux Sysadmin Basics",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
@@ -624,7 +624,7 @@ cd</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2"
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.bashrc
 </code></pre></div></div>
 
-<p>The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> guide shows practical examples of <code class="language-plaintext highlighter-rouge">.bashrc</code> aliases, SSH jump hosts, prompt customization, and <code class="language-plaintext highlighter-rouge">PATH</code> settings for an HPC system. It is a useful next step once the basic idea is familiar.</p>
+<p>The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> guide shows practical examples of <code class="language-plaintext highlighter-rouge">.bashrc</code> aliases, SSH jump hosts, prompt customization, and <code class="language-plaintext highlighter-rouge">PATH</code> settings for an HPC system. It is a useful next step once the basic idea is familiar. For editing files like this directly from the terminal, a classic option is <code class="language-plaintext highlighter-rouge">vim</code>; see the <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide for the essentials: modes, editing, visual blocks, and <code class="language-plaintext highlighter-rouge">vimdiff</code>.</p>
 
 <p>Be careful when modifying <code class="language-plaintext highlighter-rouge">.bashrc</code>. A syntax error can make every new shell print an error, and a badly constructed <code class="language-plaintext highlighter-rouge">PATH</code> can make commands difficult to find. Before making a substantial change, keep a backup:</p>
 
@@ -645,6 +645,31 @@ cd</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2"
 </code></pre></div></div>
 
 <p>Putting the <code class="language-plaintext highlighter-rouge">export</code> line in <code class="language-plaintext highlighter-rouge">.bashrc</code> makes the change apply to future interactive Bash shells. Avoid replacing <code class="language-plaintext highlighter-rouge">PATH</code> with a single directory: the existing value is what lets the shell find standard commands.</p>
+
+<h2 id="executing-bash-scripts">Executing Bash scripts</h2>
+
+<p>A Bash script is a text file containing commands that the shell can run in sequence. The first line is called a <strong>shebang</strong>. It tells the operating system which interpreter should run the file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env bash</span>
+
+<span class="nb">echo</span> <span class="s2">"Hello from Bash"</span>
+<span class="nb">printf</span> <span class="s1">'Working directory: %s\n'</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>Save this as <code class="language-plaintext highlighter-rouge">hello.sh</code>. You can run it by passing the file to Bash directly:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash hello.sh
+</code></pre></div></div>
+
+<p>You can also make the file executable and run it by its path. The <code class="language-plaintext highlighter-rouge">u+x</code> mode adds execute permission for the file’s owner:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>u+x hello.sh
+./hello.sh
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">./</code> matters: it means “run the file in the current directory.” Linux usually does not search the current directory automatically when looking through <code class="language-plaintext highlighter-rouge">PATH</code>. This avoids accidentally running a file in the current directory when you intended to run a system command with the same name.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">ls -l hello.sh</code> to inspect its permissions. If you receive a “Permission denied” error, check that the file is executable and that you are running the intended file. <code class="language-plaintext highlighter-rouge">bash hello.sh</code> does not require the executable bit because Bash is being asked to read the file explicitly.</p>
 
 <h2 id="basic-commands">Basic commands</h2>
 
@@ -724,6 +749,8 @@ less notes/example.txt
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">--help</span>
 </code></pre></div></div>
 
+<p>When a file needs to be edited directly from the shell instead of a GUI editor, <code class="language-plaintext highlighter-rouge">vim</code> is the standard choice on Linux systems. The <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide is a quick reference for the most common commands and workflows.</p>
+
 <p>The <a href="/2025/07/30/git-tips.html">Basic Git and GitHub Guide</a> builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.</p>
 
 <h2 id="looking-at-running-processes-with-top">Looking at running processes with <code class="language-plaintext highlighter-rouge">top</code>
@@ -784,6 +811,8 @@ less notes/example.txt
 
 <p>The <a href="/2025/07/29/general-guidelines.html">General Guidelines for Master’s and PhD Students</a> expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.</p>
 
+<p>The <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide is the practical companion for the quick editing commands you will use every time you change a shell config file or small script on a remote system.</p>
+
 <h2 id="further-reading">Further reading</h2>
 
 <p>Once these basics feel comfortable, the following sources provide more detail:</p>
@@ -795,6 +824,8 @@ less notes/example.txt
   <li>
 <a href="https://www.kernel.org/doc/man-pages/">The Linux man-pages project</a> provides detailed manual-page documentation.</li>
   <li>The <a href="https://gitlab.com/procps-ng/procps">procps-ng project</a> provides tools including <code class="language-plaintext highlighter-rouge">top</code> and <code class="language-plaintext highlighter-rouge">ps</code>.</li>
+  <li>
+<a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> explains the core editor commands, visual block editing, and <code class="language-plaintext highlighter-rouge">vimdiff</code> for quick terminal-based comparisons.</li>
   <li>
 <a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has excellent lessons on the shell, command-line tools, editors, and remote work.</li>
 </ul>
@@ -818,8 +849,8 @@ less notes/example.txt
   <span>
     
       <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
-      <a href="/2025/08/01/Using-agustina.html">
-        Using Agustina
+      <a href="/2026/01/22/Vi-and-vim-basics.html">
+        Vi and Vim Basics
       </a>
     
   </span>
