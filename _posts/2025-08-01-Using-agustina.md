@@ -102,7 +102,8 @@ conda init
 module load anaconda/2025 > /dev/null # This avoids errors with scp and rsync with host jumping
 export CONDA_PKGS_DIRS=/fs/agustina/$(whoami)/.conda-pkgs
 export PIP_CACHE_DIR=/fs/agustina/$(whoami)/.pip-cache
-mkdir -p /fs/agustina/$(whoami)/conda-env /fs/agustina/$(whoami)/.pip-cache
+export FAIRCHEM_CACHE_DIR=/fs/agustina/$(whoami)/cache
+mkdir -p /fs/agustina/$(whoami)/conda-env /fs/agustina/$(whoami)/.pip-cache /fs/agustina/$(whoami)/cache
 # To activate or create envs, we now need --prefix=/fs/agustina/$(whoami)/conda-env/my-conda-env-name
 # ... other lines you may need
 export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
@@ -110,7 +111,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 
 Log out and log back in. On the next login you should see `(base)` near your prompt, which confirms that the module load and `conda init` are both working.
 
-The space you have in your `/home` in Agustina is small, so your conda envs, conda package cache, and pip cache should live under `/fs/agustina/username/` (some packages are very big!). Since typing the full path to activate an env is a pain in the derriere, you can add that location to let conda figure out aliases.
+The space you have in your `/home` in Agustina is small, so your conda envs, conda package cache, pip cache, and application caches (for example FairChem) should live under `/fs/agustina/username/` (some packages are very big!). Since typing the full path to activate an env is a pain in the derriere, you can add that location to let conda figure out aliases.
 
 ```
 conda config --append envs_dirs /fs/agustina/username/conda-env/
