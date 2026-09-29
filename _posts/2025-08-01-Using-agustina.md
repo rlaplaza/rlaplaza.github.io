@@ -89,7 +89,14 @@ The job submission scripts are a convenience layer around `sbatch`, not a replac
 
 You can follow the instructions in the documentation [here](https://doc--publica-bifi-es.translate.goog/agustina/anaconda.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp).
 
-Personally, I added these to my `.bashrc` as well:
+The first time you use conda on Agustina, do **not** jump straight to editing `.bashrc`. Load the module interactively and initialize conda in your shell first:
+
+```
+module load anaconda/2025
+conda init
+```
+
+`conda init` modifies your `.bashrc` so conda can activate environments automatically. Only after that one-time step should you add the usual convenience lines (module load on login, package cache path, env directory, and so on). Personally, I added these:
 
 ```
 module load anaconda/2025 > /dev/null # This avoids errors with scp and rsync with host jumping
@@ -99,6 +106,8 @@ mkdir -p /fs/agustina/$(whoami)/conda-env
 # ... other lines you may need
 export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 ```
+
+Log out and log back in. On the next login you should see `(base)` near your prompt, which confirms that the module load and `conda init` are both working.
 
 The space you have in your `/home` in Agustina is small, so your conda envs should be stored in `/fs/agustina/username/conda-env/` (some packages are very big!). Since typing the full path to activate an env is a pain in the derriere, you can add that location to let conda figure out aliases.
 
