@@ -119,6 +119,14 @@ conda config --append envs_dirs /fs/agustina/username/conda-env/
 
 You can now activate envs using their names directly.
 
+If downloads or HTTPS calls fail with certificate / SSL errors (for example `CERTIFICATE_VERIFY_FAILED` from `pip`, `requests`, or similar tools), conda’s OpenSSL is often not finding a usable CA bundle. As a workaround, add this to your `.bashrc` as well (after the `module load` / conda lines so `python` resolves correctly):
+
+```
+export SSL_CERT_FILE="$(python -m certifi)"
+```
+
+Then open a new shell (or `source ~/.bashrc`) and retry. You need the `certifi` package in the Python that runs at login (usually the base conda env).
+
 ---
 
 
