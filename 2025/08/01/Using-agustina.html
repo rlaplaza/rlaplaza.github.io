@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-09-29T14:49:12+00:00">
+  <meta property="og:updated_time" content="2026-09-30T08:58:06+00:00">
   <meta property="article:published_time" content="2025-08-01T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-09-29T14:49:12+00:00">
-  <meta name="revised" content="2026-09-29T14:49:12+00:00">
+  <meta property="article:modified_time" content="2026-09-30T08:58:06+00:00">
+  <meta name="revised" content="2026-09-30T08:58:06+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Using Agustina" },
       "datePublished": "2025-08-01T00:00:00+00:00",
-      "dateModified": "2026-09-29T14:49:12+00:00",
+      "dateModified": "2026-09-30T08:58:06+00:00",
     
     "name": "Using Agustina",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
@@ -533,7 +533,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>September 29, 2026</span>
+      <span>September 30, 2026</span>
     </span>
   
 </div>
@@ -685,6 +685,13 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 </code></pre></div></div>
 
 <p>You can now activate envs using their names directly.</p>
+
+<p>If downloads or HTTPS calls fail with certificate / SSL errors (for example <code class="language-plaintext highlighter-rouge">CERTIFICATE_VERIFY_FAILED</code> from <code class="language-plaintext highlighter-rouge">pip</code>, <code class="language-plaintext highlighter-rouge">requests</code>, or similar tools), conda’s OpenSSL is often not finding a usable CA bundle. As a workaround, add this to your <code class="language-plaintext highlighter-rouge">.bashrc</code> as well (after the <code class="language-plaintext highlighter-rouge">module load</code> / conda lines so <code class="language-plaintext highlighter-rouge">python</code> resolves correctly):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export SSL_CERT_FILE="$(python -m certifi)"
+</code></pre></div></div>
+
+<p>Then open a new shell (or <code class="language-plaintext highlighter-rouge">source ~/.bashrc</code>) and retry. You need the <code class="language-plaintext highlighter-rouge">certifi</code> package in the Python that runs at login (usually the base conda env).</p>
 
 <hr>
   </section>
