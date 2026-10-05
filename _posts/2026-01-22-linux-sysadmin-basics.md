@@ -10,7 +10,7 @@ tags: tutorial, guidelines, linux, bash, sysadmin
 
 If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.
 
-This is a short introduction to the pieces you will use every day. For a broader learning path, see the [Coding Practices Guidelines](/2025/07/30/coding-tips.html), especially its sections on Unix shell commands, remote cluster work, and reproducible projects. If you are setting up Python on your own machine next, the [Local Conda and VS Code Setup](/2026/10/05/local-conda-and-vscode-setup.html) guide assumes only this level of terminal comfort.
+This is a short introduction to the pieces you will use every day. For a broader learning path, see the [Coding Practices Guidelines](/2025/07/30/Coding-tips.html), especially its sections on Unix shell commands, remote cluster work, and reproducible projects. If you are setting up Python on your own machine next, the [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html) guide assumes only this level of terminal comfort.
 
 ## The shell and your home directory
 
@@ -56,7 +56,7 @@ To add this permanently, put the line in `~/.bashrc`. After saving the file, loa
 source ~/.bashrc
 ```
 
-The [Using Agustina](/2025/08/01/using-agustina.html) guide shows practical examples of `.bashrc` aliases, SSH jump hosts, prompt customization, and `PATH` settings for an HPC system. It is a useful next step once the basic idea is familiar. For editing files like this directly from the terminal, a classic option is `vim`; see the [Vi and Vim Basics](/2026/01/22/vi-and-vim-basics.html) guide for the essentials: modes, editing, visual blocks, and `vimdiff`.
+The [Using Agustina](/2025/08/01/Using-agustina.html) guide shows practical examples of `.bashrc` aliases, SSH jump hosts, prompt customization, and `PATH` settings for an HPC system. It is a useful next step once the basic idea is familiar. For editing files like this directly from the terminal, a classic option is `vim`; see the [Vi and Vim Basics](/2026/01/22/Vi-and-vim-basics.html) guide for the essentials: modes, editing, visual blocks, and `vimdiff`.
 
 Be careful when modifying `.bashrc`. A syntax error can make every new shell print an error, and a badly constructed `PATH` can make commands difficult to find. Before making a substantial change, keep a backup:
 
@@ -156,7 +156,7 @@ You can also ask many commands for a short usage summary:
 cp --help
 ```
 
-When a file needs to be edited directly from the shell instead of a GUI editor, `vim` is the standard choice on Linux systems. The [Vi and Vim Basics](/2026/01/22/vi-and-vim-basics.html) guide is a quick reference for the most common commands and workflows.
+When a file needs to be edited directly from the shell instead of a GUI editor, `vim` is the standard choice on Linux systems. The [Vi and Vim Basics](/2026/01/22/Vi-and-vim-basics.html) guide is a quick reference for the most common commands and workflows.
 
 The [Basic Git and GitHub Guide](/2025/07/30/git-tips.html) builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.
 
@@ -179,7 +179,7 @@ Useful keys while `top` is running include:
 
 At first, use `top` for observation. Look for processes consuming an unusual amount of CPU or memory, and notice the load and memory summaries at the top of the display. Do not terminate a process just because it appears in the list: first identify which user started it, what command it represents, and whether it belongs to an important job.
 
-On a shared server or HPC system, your institution may provide additional monitoring commands or a scheduler such as SLURM. The [Using Agustina](/2025/08/01/using-agustina.html) post describes job helpers and log locations for that environment. For another example of useful monitoring habits, the [Gaussian Tips and Troubleshooting Guide](/2025/01/22/gaussian-tips-and-troubleshooting.html) discusses reading complete output, following logs with `tail -f`, and checking available disk space.
+On a shared server or HPC system, your institution may provide additional monitoring commands or a scheduler such as SLURM. The [Using Agustina](/2025/08/01/Using-agustina.html) post describes job helpers and log locations for that environment. For another example of useful monitoring habits, the [Gaussian Tips and Troubleshooting Guide](/2025/01/22/Gaussian-tips-and-troubleshooting.html) discusses reading complete output, following logs with `tail -f`, and checking available disk space.
 
 ## Good first habits
 
@@ -195,7 +195,7 @@ When working on a machine you do not fully control:
 
 The [General Guidelines for Master's and PhD Students](/2025/07/29/general-guidelines.html) expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.
 
-The [Vi and Vim Basics](/2026/01/22/vi-and-vim-basics.html) guide is the practical companion for the quick editing commands you will use every time you change a shell config file or small script on a remote system.
+The [Vi and Vim Basics](/2026/01/22/Vi-and-vim-basics.html) guide is the practical companion for the quick editing commands you will use every time you change a shell config file or small script on a remote system.
 
 ## Further reading
 
@@ -205,8 +205,8 @@ Once these basics feel comfortable, the following sources provide more detail:
 * The [GNU Coreutils manual](https://www.gnu.org/software/coreutils/manual/coreutils.html) documents many everyday file and text commands.
 * [The Linux man-pages project](https://www.kernel.org/doc/man-pages/) provides detailed manual-page documentation.
 * The [procps-ng project](https://gitlab.com/procps-ng/procps) provides tools including `top` and `ps`.
-* [Vi and Vim Basics](/2026/01/22/vi-and-vim-basics.html) explains the core editor commands, visual block editing, and `vimdiff` for quick terminal-based comparisons.
-* [Local Conda and VS Code Setup](/2026/10/05/local-conda-and-vscode-setup.html) is the next practical step if you want Python environments on your laptop.
+* [Vi and Vim Basics](/2026/01/22/Vi-and-vim-basics.html) explains the core editor commands, visual block editing, and `vimdiff` for quick terminal-based comparisons.
+* [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html) is the next practical step if you want Python environments on your laptop.
 * [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) has excellent lessons on the shell, command-line tools, editors, and remote work.
 
 ---

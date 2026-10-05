@@ -13,7 +13,7 @@ tags: tutorial, guidelines
 * **Scientific Computing Scripting**: Develop proficiency in scripting for scientific computing using resources from the [NSF MolSSI group's comprehensive Python tutorials](https://education.molssi.org/python_scripting_cms/aio/index.html)
 * **Deep Learning Education**: Utilize [d2l.ai resources](https://d2l.ai) for comprehensive deep learning fundamentals, including their preliminaries section and appendix of essential tools
 * **Command Line Editors**: Gain familiarity with standard editors like Vim, Emacs, or Nano to facilitate efficient editing and remote cluster work; [MIT's IAP "Missing Semester" class](https://missing.csail.mit.edu) provides excellent guidance on these tools and other essential development utilities
-* **Every Day Life**: I recommend using a good IDE, such as VSCode, which also has [python tutorials](https://code.visualstudio.com/docs/python/python-tutorial) and integration with LLMs. Whatever tools you choose to use every day, you should get to know *in depth!* If you still need to install Miniconda and wire VS Code to a Conda environment on your laptop, start with the [Local Conda and VS Code Setup](/2026/10/05/local-conda-and-vscode-setup.html) guide.
+* **Every Day Life**: I recommend using a good IDE, such as VSCode, which also has [python tutorials](https://code.visualstudio.com/docs/python/python-tutorial) and integration with LLMs. Whatever tools you choose to use every day, you should get to know *in depth!* If you still need to install Miniconda and wire VS Code to a Conda environment on your laptop, start with the [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html) guide.
 * **Concrete rookie path**: A realistic sequence is to start with a shell crash course, then Git/GitHub, then a small reproducible project, then testing and modularization. In CodeRefinery terms, that means moving from the basic Git lessons to the reproducible research and testing materials before attempting larger research pipelines or HPC workflows.
 
 ## Python Development Standards
@@ -28,10 +28,10 @@ tags: tutorial, guidelines
 
 ## Reproducibility & Environment Management
 * **Why?**: See [reasons to use conda](https://edcarp.github.io/introduction-to-conda-for-data-scientists/aio/index.html)
-* **Local first setup**: For a gentle, step-by-step laptop install of Miniconda, VS Code, and a project environment, follow [Local Conda and VS Code Setup](/2026/10/05/local-conda-and-vscode-setup.html)
+* **Local first setup**: For a gentle, step-by-step laptop install of Miniconda, VS Code, and a project environment, follow [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html)
 * **Dependency Management**: Always use dependency managers like [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) or [uv](https://docs.astral.sh/uv/) for Python package management, or [Docker containers](https://docs.docker.com/get-started/overview/) for complex multi-language dependencies to ensure reproducible environments
 * **Environment Documentation**: Maintain clear documentation of all software dependencies, versions, and system requirements necessary to reproduce your computational environment, at least once the project is done and other people are supposed to use it (including me!)
-* **HPC**: In HPC machines, package management can be a bit more convoluted, so do not hesitate to ask me and/or the sysadmin if you struggle. On Agustina specifically, see [Using Agustina](/2025/08/01/using-agustina.html)
+* **HPC**: In HPC machines, package management can be a bit more convoluted, so do not hesitate to ask me and/or the sysadmin if you struggle. On Agustina specifically, see [Using Agustina](/2025/08/01/Using-agustina.html)
 
 ## Collaboration & Continuous Learning
 * **Knowledge Sharing**: Actively contribute to and consult the [group's code-tips repository](https://github.com/rlaplaza-lab/code_tips) and [utility-scripts](https://github.com/rlaplaza-lab/utility_scripts), which serve as a living collection of useful resources, helpful packages, and development tools

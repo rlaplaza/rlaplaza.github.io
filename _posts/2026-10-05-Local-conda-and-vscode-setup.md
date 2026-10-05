@@ -16,7 +16,7 @@ By the end you should be able to:
 3. Install packages into that environment only (not into the whole computer).
 4. Select that environment as the Python interpreter in VS Code and run a small script.
 
-If terminal commands feel unfamiliar, skim the [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html) post first. For broader coding habits and why environments matter, see the [Coding Practices Guidelines](/2025/07/30/coding-tips.html). Once you need Conda on the cluster rather than on your laptop, continue with [Using Agustina](/2025/08/01/using-agustina.html).
+If terminal commands feel unfamiliar, skim the [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html) post first. For broader coding habits and why environments matter, see the [Coding Practices Guidelines](/2025/07/30/Coding-tips.html). Once you need Conda on the cluster rather than on your laptop, continue with [Using Agustina](/2025/08/01/Using-agustina.html).
 
 ## 1. Open a terminal
 
@@ -274,8 +274,8 @@ You now have a local workflow: terminal → Conda environment → packages → V
 Suggested next steps:
 
 1. Follow a short Conda tutorial to practice creating environments, exporting them, and understanding channels: [Introduction to Conda for Data Scientists](https://edcarp.github.io/introduction-to-conda-for-data-scientists/aio/index.html).
-2. Read the reproducibility section in the [Coding Practices Guidelines](/2025/07/30/coding-tips.html), then continue with the linked Python learning resources there.
-3. When you move work to the cluster, use [Using Agustina](/2025/08/01/using-agustina.html) for module-based Conda, storage paths, and job helpers such as `subconda.sh`.
+2. Read the reproducibility section in the [Coding Practices Guidelines](/2025/07/30/Coding-tips.html), then continue with the linked Python learning resources there.
+3. When you move work to the cluster, use [Using Agustina](/2025/08/01/Using-agustina.html) for module-based Conda, storage paths, and job helpers such as `subconda.sh`.
 4. If shell navigation still feels shaky, revisit [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html).
 
 Keep one habit from day one: activate the correct environment before installing packages or running project code. If the prompt does not show `(myenv)`, pause and activate first.

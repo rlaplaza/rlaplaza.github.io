@@ -87,7 +87,7 @@ The job submission scripts are a convenience layer around `sbatch`, not a replac
 
 * The next step is setting up `conda` or some other package manager.
 
-If you have never used Conda on your own laptop, start with the gentle [Local Conda and VS Code Setup](/2026/10/05/local-conda-and-vscode-setup.html) guide first, then come back here for the cluster-specific pieces. On Agustina itself, follow the documentation [here](https://doc--publica-bifi-es.translate.goog/agustina/anaconda.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp).
+If you have never used Conda on your own laptop, start with the gentle [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html) guide first, then come back here for the cluster-specific pieces. On Agustina itself, follow the documentation [here](https://doc--publica-bifi-es.translate.goog/agustina/anaconda.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp).
 
 The first time you use conda on Agustina, do **not** jump straight to editing `.bashrc`. Load the module interactively and initialize conda in your shell first:
 
