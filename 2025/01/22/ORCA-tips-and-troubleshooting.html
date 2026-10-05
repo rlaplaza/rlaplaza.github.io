@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-10-05T08:16:36+00:00">
+  <meta property="og:updated_time" content="2026-10-05T08:27:15+00:00">
   <meta property="article:published_time" content="2025-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-10-05T08:16:36+00:00">
-  <meta name="revised" content="2026-10-05T08:16:36+00:00">
+  <meta property="article:modified_time" content="2026-10-05T08:27:15+00:00">
+  <meta name="revised" content="2026-10-05T08:27:15+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "ORCA Basics and Troubleshooting" },
       "datePublished": "2025-01-22T00:00:00+00:00",
-      "dateModified": "2026-10-05T08:16:36+00:00",
+      "dateModified": "2026-10-05T08:27:15+00:00",
     
     "name": "ORCA Basics and Troubleshooting",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
@@ -589,7 +589,7 @@
 
 <p>A minimal ORCA input has three pieces: a keyword line (method, basis, and job type), optional resource blocks, and a coordinate block with charge and multiplicity.</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP def2-SVP Opt Freq TightSCF
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-SVP Opt Freq TightSCF
 
 %pal
   nprocs 4
@@ -617,7 +617,26 @@ H   0.000000  -0.757200  -0.469200
   </li>
 </ul>
 
+<p>London dispersion is critical for organics, noncovalent contacts, and many reaction energetics, yet it is missing from most hybrid functionals (including bare B3LYP and PBE0). Add an empirical correction such as <code class="language-plaintext highlighter-rouge">D3BJ</code> or <code class="language-plaintext highlighter-rouge">D4</code>, or use a functional that already includes nonlocal correlation.</p>
+
 <p>For cluster submission helpers that read <code class="language-plaintext highlighter-rouge">%pal</code> / <code class="language-plaintext highlighter-rouge">%MaxCore</code> from the input, see <a href="/2025/08/01/Using-agustina.html">Using Agustina</a>.</p>
+
+<hr>
+
+<h2 id="recommended-functionals">Recommended functionals</h2>
+
+<p>Practical starting points in ORCA (always with dispersion unless the functional already includes it):</p>
+
+<ul>
+  <li>
+<strong>B3LYP-D3BJ</strong> or <strong>B3LYP-D4</strong> — still a useful everyday hybrid once dispersion is restored (<code class="language-plaintext highlighter-rouge">! B3LYP D3BJ …</code>).</li>
+  <li>
+<strong>PBE0-D3BJ</strong> or <strong>PBE0-D4</strong> — a solid global hybrid for many main-group problems (<code class="language-plaintext highlighter-rouge">! PBE0 D3BJ …</code>).</li>
+  <li>
+<strong>ωB97X-V</strong> — among the strongest hybrids in broad benchmarks; the VV10 nonlocal correlation covers dispersion, so do not add a separate <code class="language-plaintext highlighter-rouge">D3</code>/<code class="language-plaintext highlighter-rouge">D4</code> term. Caveat: ORCA does not provide an analytical Hessian for ωB97X-V yet, so geometry/TS work that needs second derivatives typically requires <code class="language-plaintext highlighter-rouge">NumFreq</code> (much more expensive).</li>
+</ul>
+
+<p>For a large, transparent comparison of dispersion-corrected DFAs on main-group thermochemistry, kinetics, and noncovalent interactions, see the <a href="https://doi.org/10.1039/C7CP04913C">GMTKN55 benchmark</a> (Goerigk et al., 2017).</p>
 
 <hr>
 
@@ -648,7 +667,7 @@ end
 
 <p>For a ground-state minimum, add <code class="language-plaintext highlighter-rouge">Opt</code> to the keyword line. A common pattern is to optimize and then compute frequencies in one job so you can confirm there are no imaginary modes:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP def2-SVP Opt Freq TightSCF
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-SVP Opt Freq TightSCF
 </code></pre></div></div>
 
 <p>Useful <code class="language-plaintext highlighter-rouge">%geom</code> controls when a structure is floppy or slow to settle:</p>
@@ -668,7 +687,7 @@ end
 
 <p>A transition state (TS) maximizes the energy along one Hessian mode and minimizes along the others. In ORCA that is <code class="language-plaintext highlighter-rouge">OptTS</code>, usually with an explicit Hessian and mode selection:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP def2-SVP OptTS Freq TightSCF
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-SVP OptTS Freq TightSCF
 
 %geom
   TS_Mode {M 0} end
@@ -718,7 +737,7 @@ The ORCA FAQ states that the SCF may need more memory than the user-specified <c
 
 <p>Example:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! def2-TZVP TightSCF
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-TZVP TightSCF
 %maxcore 2000
 </code></pre></div></div>
 
@@ -890,7 +909,7 @@ The SCF chapter is explicit: properties and numerical calculations, including <c
   <li>Use a tight SCF and a well-converged geometry before <code class="language-plaintext highlighter-rouge">Freq</code>.</li>
   <li>If necessary, optimize first and then compute frequencies in the same workflow:
     <div class="language-text highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>! B3LYP def2-TZVP Opt Freq
+<div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-TZVP Opt Freq
 </code></pre></div>    </div>
   </li>
 </ol>
