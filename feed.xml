@@ -1,4 +1,288 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-09-30T08:59:13+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-09-30T08:58:06+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-10-05T07:40:21+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Local Conda and VS Code Setup</title><link href="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html" rel="alternate" type="text/html" title="Local Conda and VS Code Setup" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-05T07:39:21+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html"><![CDATA[<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
+
+<p>This guide walks you through installing Miniconda and Visual Studio Code on your own computer, creating a dedicated Conda environment, installing packages inside it, and running Python from that environment in VS Code.</p>
+
+<p>By the end you should be able to:</p>
+
+<ol>
+  <li>Open a terminal and confirm that <code class="language-plaintext highlighter-rouge">conda</code> works.</li>
+  <li>Create and activate a named Conda environment.</li>
+  <li>Install packages into that environment only (not into the whole computer).</li>
+  <li>Select that environment as the Python interpreter in VS Code and run a small script.</li>
+</ol>
+
+<p>If terminal commands feel unfamiliar, skim the <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a> post first. For broader coding habits and why environments matter, see the <a href="/2025/07/30/coding-tips.html">Coding Practices Guidelines</a>. Once you need Conda on the cluster rather than on your laptop, continue with <a href="/2025/08/01/using-agustina.html">Using Agustina</a>.</p>
+
+<h2 id="1-open-a-terminal">1. Open a terminal</h2>
+
+<p>Use the native terminal for your operating system. Run the commands one line at a time, and wait for each one to finish before starting the next.</p>
+
+<h3 id="windows">Windows</h3>
+
+<p><strong>Very important:</strong> these Windows steps are for native Windows PowerShell. Do <strong>not</strong> use a WSL (Ubuntu) terminal for this guide.</p>
+
+<ol>
+  <li>Open the Windows Search bar.</li>
+  <li>Search for <code class="language-plaintext highlighter-rouge">Windows PowerShell</code>.</li>
+  <li>Open it.</li>
+</ol>
+
+<p>Continue with the Windows instructions in section 2.</p>
+
+<h3 id="macos">macOS</h3>
+
+<ol>
+  <li>Open Spotlight search (or look under Applications → Utilities).</li>
+  <li>Type <code class="language-plaintext highlighter-rouge">Terminal</code> and open it.</li>
+</ol>
+
+<p>Continue with the macOS instructions in section 2.</p>
+
+<h3 id="linux">Linux</h3>
+
+<p><strong>Very important:</strong> these Linux steps are for a normal Linux machine. Do <strong>not</strong> use a WSL (Ubuntu) terminal inside Windows for this guide.</p>
+
+<ol>
+  <li>Open Activities (or press <code class="language-plaintext highlighter-rouge">Ctrl + Alt + T</code> on many distributions).</li>
+  <li>Search for <code class="language-plaintext highlighter-rouge">Terminal</code> and open it.</li>
+</ol>
+
+<p>Continue with the Linux instructions in section 2.</p>
+
+<h2 id="2-install-miniconda">2. Install Miniconda</h2>
+
+<p>Miniconda is a small installer for Conda. Conda manages Python versions and packages in separate environments so projects do not interfere with each other.</p>
+
+<ol>
+  <li>Open the official Miniconda quickstart page: <a href="https://www.anaconda.com/docs/getting-started/miniconda/install">Miniconda install instructions</a>.</li>
+  <li>Open the <strong>Quickstart install instructions</strong> tab.</li>
+  <li>Select your operating system.</li>
+  <li>Follow <strong>all</strong> of the steps they show for your OS. Do <strong>not</strong> stop after the first download command. Run each suggested command carefully, line by line.</li>
+</ol>
+
+<p>When the install finishes, close the terminal and open a <strong>new</strong> one. Then check that Conda is available:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nt">--version</span>
+</code></pre></div></div>
+
+<p>You should see a version number. If the command is not found, reopen the terminal once more. On Windows, prefer the <strong>Anaconda Prompt</strong> application after install if PowerShell still cannot find <code class="language-plaintext highlighter-rouge">conda</code>.</p>
+
+<h3 id="windows-11-tip-download-path-access-denied">Windows 11 tip: download path access denied</h3>
+
+<p>During Miniconda install on Windows 11, PowerShell may fail with an error like:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Invoke-WebRequest : Access to the path 'C:\windows\system32\Miniconda3-latest-Windows-x86_64.exe' is denied.
+</code></pre></div></div>
+
+<p>That usually means the download tried to write into a protected folder. Fix it by moving to your home directory first:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cd</span><span class="w"> </span><span class="bp">$HOME</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Then rerun the Miniconda quickstart commands from the official page, starting again from the download step.</p>
+
+<h2 id="3-install-visual-studio-code">3. Install Visual Studio Code</h2>
+
+<h3 id="31-download-vs-code">3.1. Download VS Code</h3>
+
+<p>Download and install Visual Studio Code from the official site: <a href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a>.</p>
+
+<p>Choose the installer that matches your operating system and accept the default options unless you have a reason not to.</p>
+
+<h3 id="32-install-useful-extensions">3.2. Install useful extensions</h3>
+
+<ol>
+  <li>Open Visual Studio Code.</li>
+  <li>Click the Extensions icon in the left sidebar (four squares).</li>
+  <li>
+    <p>Search for and install each of these extensions:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Python</code> (published by Microsoft)</li>
+      <li><code class="language-plaintext highlighter-rouge">Jupyter</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Python Indent</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Rainbow CSV</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Prettier - Code formatter</code></li>
+    </ul>
+  </li>
+</ol>
+
+<p>The Python extension is the essential one for selecting a Conda environment and running scripts. The others are helpful defaults for notebooks, indentation, CSV files, and formatting.</p>
+
+<h2 id="4-create-a-simple-project-folder">4. Create a simple project folder</h2>
+
+<p>Before creating environments, make a short, simple folder for your work.</p>
+
+<ol>
+  <li>Create a folder called <code class="language-plaintext highlighter-rouge">Project</code> (or another short English name) on your computer.</li>
+  <li>Keep the full path short and simple.</li>
+</ol>
+
+<p><strong>Very important path rules</strong> (these avoid many beginner failures later):</p>
+
+<ol>
+  <li>Do <strong>not</strong> put the folder inside OneDrive or another cloud-synced folder.</li>
+  <li>Do <strong>not</strong> bury it under a very long chain of directories.</li>
+  <li>Prefer unaccented English letters (<code class="language-plaintext highlighter-rouge">A–Z</code>, <code class="language-plaintext highlighter-rouge">a–z</code>), numbers, and underscores <code class="language-plaintext highlighter-rouge">_</code> in folder names. Avoid accents, spaces, and punctuation when you can.</li>
+</ol>
+
+<p>Good examples:</p>
+
+<ul>
+  <li>Windows: <code class="language-plaintext highlighter-rouge">C:\Users\jv\Desktop\Project</code></li>
+  <li>macOS / Linux: <code class="language-plaintext highlighter-rouge">~/Project</code> or <code class="language-plaintext highlighter-rouge">~/Desktop/Project</code></li>
+</ul>
+
+<p>Open that folder in VS Code with <strong>File → Open Folder…</strong>.</p>
+
+<h2 id="5-create-and-use-a-conda-environment">5. Create and use a Conda environment</h2>
+
+<p>A Conda environment is an isolated workspace with its own Python and packages. Create one environment per project (or per course) instead of installing everything into <code class="language-plaintext highlighter-rouge">base</code>.</p>
+
+<h3 id="51-open-the-right-terminal">5.1. Open the right terminal</h3>
+
+<ul>
+  <li><strong>Windows:</strong> after installing Miniconda, open <strong>Anaconda Prompt</strong> (recommended) or a new PowerShell window where <code class="language-plaintext highlighter-rouge">conda --version</code> already works.</li>
+  <li><strong>macOS / Linux:</strong> open a normal terminal as in section 1.</li>
+</ul>
+
+<h3 id="52-go-to-your-project-folder">5.2. Go to your project folder</h3>
+
+<p>Use <code class="language-plaintext highlighter-rouge">cd</code> to enter the folder you created. Examples:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Windows example</span>
+<span class="nb">cd </span>C:<span class="se">\U</span>sers<span class="se">\j</span>v<span class="se">\D</span>esktop<span class="se">\P</span>roject
+
+<span class="c"># macOS / Linux example</span>
+<span class="nb">cd</span> ~/Project
+</code></pre></div></div>
+
+<p>Your prompt should show that you are inside that folder. If you are unsure, check the current directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># macOS / Linux</span>
+<span class="nb">pwd</span>
+
+<span class="c"># Windows PowerShell</span>
+<span class="nb">pwd</span>
+
+<span class="c"># Windows Anaconda Prompt (cmd): print the current folder</span>
+<span class="nb">cd</span>
+</code></pre></div></div>
+
+<p>You can also simply look at the path shown in the prompt.</p>
+
+<h3 id="53-create-the-environment">5.3. Create the environment</h3>
+
+<p>Create a new environment named <code class="language-plaintext highlighter-rouge">myenv</code> with Python 3.11 (any supported recent Python 3.x is fine; keep the name short):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-n</span> myenv <span class="nv">python</span><span class="o">=</span>3.11 <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>Activate it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate myenv
+</code></pre></div></div>
+
+<p>Your prompt should now start with <code class="language-plaintext highlighter-rouge">(myenv)</code>. That prefix means later <code class="language-plaintext highlighter-rouge">python</code> and <code class="language-plaintext highlighter-rouge">pip</code> commands use this environment, not the system Python.</p>
+
+<p>Check which Python you are using:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">--version</span>
+which python
+</code></pre></div></div>
+
+<p>On Windows Anaconda Prompt / PowerShell, use:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">python</span><span class="w"> </span><span class="nt">--version</span><span class="w">
+</span><span class="n">where</span><span class="w"> </span><span class="nx">python</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="54-install-packages-inside-the-environment">5.4. Install packages inside the environment</h3>
+
+<p>With <code class="language-plaintext highlighter-rouge">(myenv)</code> still active, install packages into <strong>this</strong> environment only.</p>
+
+<p>With Conda (preferred when a package is available on conda channels):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>numpy pandas <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>With pip (useful when a package is mainly distributed on PyPI):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> pip <span class="nb">install </span>requests
+</code></pre></div></div>
+
+<p>Using <code class="language-plaintext highlighter-rouge">python -m pip</code> is safer than bare <code class="language-plaintext highlighter-rouge">pip</code>, because it installs into the same Python that <code class="language-plaintext highlighter-rouge">python</code> currently points to.</p>
+
+<p>List what is installed:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda list
+</code></pre></div></div>
+
+<p>Deactivate when you are done:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda deactivate
+</code></pre></div></div>
+
+<p>To return to the project later:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate myenv
+</code></pre></div></div>
+
+<h2 id="6-run-python-from-this-environment-in-vs-code">6. Run Python from this environment in VS Code</h2>
+
+<ol>
+  <li>Open your <code class="language-plaintext highlighter-rouge">Project</code> folder in VS Code if it is not already open.</li>
+  <li>Open the Command Palette:
+    <ul>
+      <li>Windows / Linux: <code class="language-plaintext highlighter-rouge">Ctrl + Shift + P</code></li>
+      <li>macOS: <code class="language-plaintext highlighter-rouge">Cmd + Shift + P</code></li>
+    </ul>
+  </li>
+  <li>Type <code class="language-plaintext highlighter-rouge">Python: Select Interpreter</code> and choose that command.</li>
+  <li>Pick the interpreter that shows <code class="language-plaintext highlighter-rouge">myenv</code> (or the environment name you chose).</li>
+</ol>
+
+<p>If you do not see it yet:</p>
+
+<ol>
+  <li>Make sure you created and activated the environment successfully in a terminal.</li>
+  <li>Click the refresh icon in the interpreter list, or reload the VS Code window.</li>
+  <li>On Windows, restart VS Code after installing Miniconda if the list is empty.</li>
+</ol>
+
+<p>Create a small test file named <code class="language-plaintext highlighter-rouge">hello.py</code> in the project folder:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Hello from"</span><span class="p">,</span> <span class="n">sys</span><span class="p">.</span><span class="n">executable</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Run it in VS Code with the play button, or from a VS Code terminal after activating the environment:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate myenv
+python hello.py
+</code></pre></div></div>
+
+<p>The printed path should point inside your Conda environment, not to a system-wide Python. That is the check that you are running inside the delimited environment.</p>
+
+<p>You can also open a notebook (<code class="language-plaintext highlighter-rouge">.ipynb</code>) and choose the same <code class="language-plaintext highlighter-rouge">myenv</code> kernel in the kernel picker.</p>
+
+<h2 id="7-what-to-do-next">7. What to do next</h2>
+
+<p>You now have a local workflow: terminal → Conda environment → packages → VS Code interpreter → run Python.</p>
+
+<p>Suggested next steps:</p>
+
+<ol>
+  <li>Follow a short Conda tutorial to practice creating environments, exporting them, and understanding channels: <a href="https://edcarp.github.io/introduction-to-conda-for-data-scientists/aio/index.html">Introduction to Conda for Data Scientists</a>.</li>
+  <li>Read the reproducibility section in the <a href="/2025/07/30/coding-tips.html">Coding Practices Guidelines</a>, then continue with the linked Python learning resources there.</li>
+  <li>When you move work to the cluster, use <a href="/2025/08/01/using-agustina.html">Using Agustina</a> for module-based Conda, storage paths, and job helpers such as <code class="language-plaintext highlighter-rouge">subconda.sh</code>.</li>
+  <li>If shell navigation still feels shaky, revisit <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a>.</li>
+</ol>
+
+<p>Keep one habit from day one: activate the correct environment before installing packages or running project code. If the prompt does not show <code class="language-plaintext highlighter-rouge">(myenv)</code>, pause and activate first.</p>
+
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="python," /><category term="conda," /><category term="vscode" /><summary type="html"><![CDATA[Local Conda and VS Code Setup]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T07:39:21+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
 
 <p>If you work on a Linux machine, a remote server, or an HPC system, you will eventually need to edit a configuration file, a shell script, or a short note in the terminal. <code class="language-plaintext highlighter-rouge">vi</code> and <code class="language-plaintext highlighter-rouge">vim</code> are classic tools for exactly that. They are usually installed on Unix-like systems, they work well over SSH, and they do not require a graphical interface.</p>
 
@@ -181,11 +465,11 @@ Ctrl<span class="p">-</span><span class="k">v</span>   Block<span class="p">-</s
 
 <p>Once you know the basics, <code class="language-plaintext highlighter-rouge">vim</code> becomes one of the most useful tools in a Linux workflow: it is fast, flexible, and available almost everywhere.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-09-30T08:58:06+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T07:39:21+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
 
 <p>If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.</p>
 
-<p>This is a short introduction to the pieces you will use every day. For a broader learning path, see the <a href="/2025/07/30/coding-tips.html">Coding Practices Guidelines</a>, especially its sections on Unix shell commands, remote cluster work, and reproducible projects.</p>
+<p>This is a short introduction to the pieces you will use every day. For a broader learning path, see the <a href="/2025/07/30/coding-tips.html">Coding Practices Guidelines</a>, especially its sections on Unix shell commands, remote cluster work, and reproducible projects. If you are setting up Python on your own machine next, the <a href="/2026/10/05/local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> guide assumes only this level of terminal comfort.</p>
 
 <h2 id="the-shell-and-your-home-directory">The shell and your home directory</h2>
 
@@ -423,10 +707,11 @@ less notes/example.txt
   <li><a href="https://www.kernel.org/doc/man-pages/">The Linux man-pages project</a> provides detailed manual-page documentation.</li>
   <li>The <a href="https://gitlab.com/procps-ng/procps">procps-ng project</a> provides tools including <code class="language-plaintext highlighter-rouge">top</code> and <code class="language-plaintext highlighter-rouge">ps</code>.</li>
   <li><a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> explains the core editor commands, visual block editing, and <code class="language-plaintext highlighter-rouge">vimdiff</code> for quick terminal-based comparisons.</li>
+  <li><a href="/2026/10/05/local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> is the next practical step if you want Python environments on your laptop.</li>
   <li><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has excellent lessons on the shell, command-line tools, editors, and remote work.</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-09-30T08:58:06+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-10-05T07:39:21+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
 
 <p>Agustina is a High Performance Computing (HPC) center. There are many such centers in the world (a list of the most powerful supercomputers is available in the <a href="https://top500.org/">Top500</a>, in case you are curious).</p>
 
@@ -516,7 +801,7 @@ subconda.sh -e my_env -n 8 -m 32000 -p agustina_thin my_script.py arg1 arg2
   <li>The next step is setting up <code class="language-plaintext highlighter-rouge">conda</code> or some other package manager.</li>
 </ul>
 
-<p>You can follow the instructions in the documentation <a href="https://doc--publica-bifi-es.translate.goog/agustina/anaconda.html?_x_tr_sl=es&amp;_x_tr_tl=en&amp;_x_tr_hl=en&amp;_x_tr_pto=wapp">here</a>.</p>
+<p>If you have never used Conda on your own laptop, start with the gentle <a href="/2026/10/05/local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> guide first, then come back here for the cluster-specific pieces. On Agustina itself, follow the documentation <a href="https://doc--publica-bifi-es.translate.goog/agustina/anaconda.html?_x_tr_sl=es&amp;_x_tr_tl=en&amp;_x_tr_hl=en&amp;_x_tr_pto=wapp">here</a>.</p>
 
 <p>The first time you use conda on Agustina, do <strong>not</strong> jump straight to editing <code class="language-plaintext highlighter-rouge">.bashrc</code>. Load the module interactively and initialize conda in your shell first:</p>
 
@@ -552,7 +837,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 
 <p>Then open a new shell (or <code class="language-plaintext highlighter-rouge">source ~/.bashrc</code>) and retry. You need the <code class="language-plaintext highlighter-rouge">certifi</code> package in the Python that runs at login (usually the base conda env).</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-09-30T08:58:06+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T07:39:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
 
 <h2 id="foundation--learning-resources">Foundation &amp; Learning Resources</h2>
 <ul>
@@ -561,7 +846,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
   <li><strong>Scientific Computing Scripting</strong>: Develop proficiency in scripting for scientific computing using resources from the <a href="https://education.molssi.org/python_scripting_cms/aio/index.html">NSF MolSSI group’s comprehensive Python tutorials</a></li>
   <li><strong>Deep Learning Education</strong>: Utilize <a href="https://d2l.ai">d2l.ai resources</a> for comprehensive deep learning fundamentals, including their preliminaries section and appendix of essential tools</li>
   <li><strong>Command Line Editors</strong>: Gain familiarity with standard editors like Vim, Emacs, or Nano to facilitate efficient editing and remote cluster work; <a href="https://missing.csail.mit.edu">MIT’s IAP “Missing Semester” class</a> provides excellent guidance on these tools and other essential development utilities</li>
-  <li><strong>Every Day Life</strong>: I recommend using a good IDE, such as VSCode, which also has <a href="https://code.visualstudio.com/docs/python/python-tutorial">python tutorials</a> and integration with LLMs. Whatever tools you choose to use every day, you should get to know <em>in depth!</em></li>
+  <li><strong>Every Day Life</strong>: I recommend using a good IDE, such as VSCode, which also has <a href="https://code.visualstudio.com/docs/python/python-tutorial">python tutorials</a> and integration with LLMs. Whatever tools you choose to use every day, you should get to know <em>in depth!</em> If you still need to install Miniconda and wire VS Code to a Conda environment on your laptop, start with the <a href="/2026/10/05/local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> guide.</li>
   <li><strong>Concrete rookie path</strong>: A realistic sequence is to start with a shell crash course, then Git/GitHub, then a small reproducible project, then testing and modularization. In CodeRefinery terms, that means moving from the basic Git lessons to the reproducible research and testing materials before attempting larger research pipelines or HPC workflows.</li>
 </ul>
 
@@ -582,9 +867,10 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 <h2 id="reproducibility--environment-management">Reproducibility &amp; Environment Management</h2>
 <ul>
   <li><strong>Why?</strong>: See <a href="https://edcarp.github.io/introduction-to-conda-for-data-scientists/aio/index.html">reasons to use conda</a></li>
+  <li><strong>Local first setup</strong>: For a gentle, step-by-step laptop install of Miniconda, VS Code, and a project environment, follow <a href="/2026/10/05/local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a></li>
   <li><strong>Dependency Management</strong>: Always use dependency managers like <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html">Conda</a> or <a href="https://docs.astral.sh/uv/">uv</a> for Python package management, or <a href="https://docs.docker.com/get-started/overview/">Docker containers</a> for complex multi-language dependencies to ensure reproducible environments</li>
   <li><strong>Environment Documentation</strong>: Maintain clear documentation of all software dependencies, versions, and system requirements necessary to reproduce your computational environment, at least once the project is done and other people are supposed to use it (including me!)</li>
-  <li><strong>HPC</strong>: In HPC machines, package management can be a bit more convoluted, so do not hesitate to ask me and/or the sysadmin if you struggle</li>
+  <li><strong>HPC</strong>: In HPC machines, package management can be a bit more convoluted, so do not hesitate to ask me and/or the sysadmin if you struggle. On Agustina specifically, see <a href="/2025/08/01/using-agustina.html">Using Agustina</a></li>
 </ul>
 
 <h2 id="collaboration--continuous-learning">Collaboration &amp; Continuous Learning</h2>
@@ -608,7 +894,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
   <li><a href="https://github.com/cod3licious/ml_exercises">A higher-level set of exercises in machine learning</a> and a full book on the topic</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-09-30T08:58:06+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T07:39:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
 
 <h2 id="about">About</h2>
 
@@ -778,7 +1064,7 @@ ssh-add ~/.ssh/id_ed25519
   <li><a href="https://education.github.com/pack">GitHub Student Developer Pack</a> – Free tools for students</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Writing tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Writing-tips.html" rel="alternate" type="text/html" title="Writing tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-09-30T08:58:06+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Writing-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Writing-tips.html"><![CDATA[<h1 id="scientific-paper-writing-guidelines">Scientific Paper Writing Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Writing tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Writing-tips.html" rel="alternate" type="text/html" title="Writing tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T07:39:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Writing-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Writing-tips.html"><![CDATA[<h1 id="scientific-paper-writing-guidelines">Scientific Paper Writing Guidelines</h1>
 
 <h2 id="about">About</h2>
 
@@ -1031,7 +1317,7 @@ ssh-add ~/.ssh/id_ed25519
   <li><a href="https://stackoverflow.com/questions/44970010/axes-class-set-explicitly-size-width-height-of-axes-in-given-units">Multipanel figures</a></li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Paper Writing Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">General tips for students</title><link href="https://rlaplaza.github.io/2025/07/29/General-guidelines.html" rel="alternate" type="text/html" title="General tips for students" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-09-30T08:58:06+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/General-guidelines</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/General-guidelines.html"><![CDATA[<h1 id="general-guidelines-for-masters-and-phd-students">General Guidelines for Master’s and PhD Students</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Paper Writing Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">General tips for students</title><link href="https://rlaplaza.github.io/2025/07/29/General-guidelines.html" rel="alternate" type="text/html" title="General tips for students" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-10-05T07:39:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/General-guidelines</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/General-guidelines.html"><![CDATA[<h1 id="general-guidelines-for-masters-and-phd-students">General Guidelines for Master’s and PhD Students</h1>
 
 <h2 id="1-principles">1. Principles</h2>
 
@@ -1123,7 +1409,7 @@ ssh-add ~/.ssh/id_ed25519
   <li><strong>Skimming ToCs</strong>: Skim table of contents from key journals</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[General Guidelines for Master’s and PhD Students]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Presentation tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html" rel="alternate" type="text/html" title="Presentation tips and tricks" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-09-30T08:58:06+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/Presentation-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html"><![CDATA[<h1 id="scientific-presentation-guidelines">Scientific Presentation Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[General Guidelines for Master’s and PhD Students]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Presentation tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html" rel="alternate" type="text/html" title="Presentation tips and tricks" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-10-05T07:39:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/Presentation-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/Presentation-tips.html"><![CDATA[<h1 id="scientific-presentation-guidelines">Scientific Presentation Guidelines</h1>
 
 <h2 id="about">About</h2>
 
@@ -1287,460 +1573,10 @@ ssh-add ~/.ssh/id_ed25519
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Clarity</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Consistency</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />References</li>
-</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Presentation Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hello!</title><link href="https://rlaplaza.github.io/2025/07/26/Hello-world.html" rel="alternate" type="text/html" title="Hello!" /><published>2025-07-26T00:00:00+00:00</published><updated>2026-09-30T08:58:06+00:00</updated><id>https://rlaplaza.github.io/2025/07/26/Hello-world</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/26/Hello-world.html"><![CDATA[<p>Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.</p>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Presentation Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hello!</title><link href="https://rlaplaza.github.io/2025/07/26/Hello-world.html" rel="alternate" type="text/html" title="Hello!" /><published>2025-07-26T00:00:00+00:00</published><updated>2026-10-05T07:39:21+00:00</updated><id>https://rlaplaza.github.io/2025/07/26/Hello-world</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/26/Hello-world.html"><![CDATA[<p>Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.</p>
 
 <p>Seville feels like the kind of city that gets under your skin and refuses to let go. You’ve got one of Europe’s most stunning historic centers right at your doorstep - the cathedral, the Alcázar, those winding medieval streets that seem to lead somewhere magical every time. The food scene is incredible, not just tourist-trap restaurants but real neighborhood bars where locals gather for tapas and conversation that stretches late into the night. The weather means you can actually enjoy outdoor life most of the year, and there’s this infectious energy going on. I guess if you know you know.</p>
 
 <p>Yes, it can get crowded, and the summers are intense, but they say once you experience that perfect Seville evening you understand why people fall completely in love with this place.</p>
 
-<p>Well, simply put, I hope to revisit this short memo in a few years and contrast my impressions then. I also hope to have some science to discuss by then. Exciting things are coming!</p>]]></content><author><name>rlaplaza</name></author><category term="random," /><category term="chemistry," /><category term="computational" /><summary type="html"><![CDATA[Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-1.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-1.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Tips and Troubleshooting Guide</title><link href="https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Tips and Troubleshooting Guide" /><published>2025-01-22T00:00:00+00:00</published><updated>2026-09-30T08:58:06+00:00</updated><id>https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2025/01/22/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-tips-and-troubleshooting-guide">Gaussian Tips and Troubleshooting Guide</h1>
-
-<p>This guide compiles common errors encountered when running Gaussian calculations and provides practical solutions. Whether you’re optimizing geometries, computing frequencies, or running excited-state calculations, these tips should help you navigate the most frequent issues.</p>
-
-<blockquote>
-  <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to quickly find specific error messages. This guide is inspired by and builds upon resources from the computational chemistry community, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
-</blockquote>
-
-<hr />
-
-<h2 id="memory-and-resource-issues">Memory and Resource Issues</h2>
-
-<h3 id="insufficient-memory-errors">Insufficient Memory Errors</h3>
-
-<p><strong>Common Error Messages:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">CISAX needs XXXXX more words of memory</code></li>
-  <li><code class="language-plaintext highlighter-rouge">XXXXX words are not enough for AlAXAO</code></li>
-  <li><code class="language-plaintext highlighter-rouge">galloc: could not allocate memory</code></li>
-  <li><code class="language-plaintext highlighter-rouge">malloc failed: Resource temporarily unavailable</code></li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li><strong>Increase memory allocation</strong>: Use the <code class="language-plaintext highlighter-rouge">%mem</code> directive at the top of your input file:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%mem=8GB
-</code></pre></div>    </div>
-    <p>Note: Gaussian actually uses about 1 GB more than specified, so set <code class="language-plaintext highlighter-rouge">%mem</code> to at least 1 GB less than your job script’s memory allocation.</p>
-  </li>
-  <li><strong>Reduce CPU cores</strong>: If memory is limited, reduce the number of processors:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%nprocshared=4
-</code></pre></div>    </div>
-    <p>This reduces memory requirements per core.</p>
-  </li>
-  <li><strong>Check job script settings</strong>: Ensure your job submission script (SLURM, PBS, etc.) allocates sufficient memory:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#SBATCH --mem=16G  # Should be ~1GB more than %mem</span>
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<hr />
-
-<h2 id="geometry-optimization-issues">Geometry Optimization Issues</h2>
-
-<h3 id="optimization-not-converging">Optimization Not Converging</h3>
-
-<p><strong>Error Messages:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Number of steps exceeded, NStep= 100</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Delta-x Convergence NOT Met</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Maximum of *** iterations exceeded in RedStp</code></li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li><strong>Increase maximum cycles</strong>: Add <code class="language-plaintext highlighter-rouge">opt=maxcycle=n</code> where n is 2-3 times the current number of steps:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt=calcfc opt=maxcycle=200
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Try different optimization methods</strong>:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">opt=RFO</code> - Rational Function Optimization</li>
-      <li><code class="language-plaintext highlighter-rouge">opt=GDIIS</code> - Geometry Direct Inversion in Iterative Subspace</li>
-      <li><code class="language-plaintext highlighter-rouge">opt=GEDIIS</code> - Geometry Energy-Direct Inversion in Iterative Subspace</li>
-    </ul>
-  </li>
-  <li><strong>Switch coordinate system</strong>: If Z-matrix fails, try Cartesian coordinates:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opt=cartesian
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Check initial geometry</strong>: Verify your starting structure is reasonable. Use molecular visualization software (GaussView, Avogadro) to inspect the geometry.</p>
-  </li>
-  <li><strong>Modify symmetry</strong>: Sometimes reducing symmetry helps:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># symm=loose
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<h3 id="transition-state-optimization-issues">Transition State Optimization Issues</h3>
-
-<p><strong>Error Message:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Wrong number of Negative eigenvalues: Desired= 1 Actual= 4</code></li>
-</ul>
-
-<p><strong>Solution:</strong>
-If you’re optimizing a transition state but get multiple negative frequencies, use:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opt=(ts,noeigen)
-</code></pre></div></div>
-<p>This skips the eigenvalue check. However, always verify your final structure has exactly one imaginary frequency!</p>
-
-<hr />
-
-<h2 id="frequency-calculation-issues">Frequency Calculation Issues</h2>
-
-<h3 id="frequency-calculation-errors">Frequency Calculation Errors</h3>
-
-<p><strong>Error Messages:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Error in INITNF</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Linear search skipped for unknown reason</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Inconsistency: ModMin= N Eigenvalue= MM</code></li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li>
-    <p><strong>Ensure optimization converged</strong>: Frequency calculations require a fully optimized geometry. Check that your optimization completed successfully.</p>
-  </li>
-  <li><strong>Use <code class="language-plaintext highlighter-rouge">freq=readfc</code></strong>: If you have a checkpoint file with force constants:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># freq=readfc
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Recalculate from scratch</strong>: Sometimes it’s best to re-optimize and then compute frequencies in a single job:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt freq
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<hr />
-
-<h2 id="scf-convergence-issues">SCF Convergence Issues</h2>
-
-<h3 id="scf-not-converging">SCF Not Converging</h3>
-
-<p><strong>Error Messages:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Convergence failure -- run terminated</code></li>
-  <li><code class="language-plaintext highlighter-rouge">SCF Done:  E(RB3LYP) =  ...  A.U. after   50 cycles</code></li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li><strong>Use convergence aids</strong>:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scf=(conver=8,xqc)
-</code></pre></div>    </div>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">conver=8</code> sets tighter convergence criteria</li>
-      <li><code class="language-plaintext highlighter-rouge">xqc</code> uses quadratic convergence</li>
-    </ul>
-  </li>
-  <li><strong>Try different initial guess</strong>:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>guess=mix
-guess=huckel
-guess=read  # from checkpoint file
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Use damping</strong>:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scf=(conver=8,damp)
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Check for problematic systems</strong>:
-    <ul>
-      <li>Open-shell systems may need <code class="language-plaintext highlighter-rouge">stable=opt</code></li>
-      <li>Systems with near-degeneracies may need different methods</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h2 id="post-hf-method-convergence">Post-HF Method Convergence</h2>
-
-<h3 id="ccsdccsdt-not-converging">CCSD/CCSD(T) Not Converging</h3>
-
-<p><strong>Error Messages:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Error termination via Lnk1e in l913.exe</code> (after CCSD iterations)</li>
-  <li>Large amplitudes in the output</li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li><strong>Increase maximum cycles</strong>:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ccsd(t,maxcyc=100)
-</code></pre></div>    </div>
-    <p>Default is 50 cycles.</p>
-  </li>
-  <li>
-    <p><strong>Check convergence trend</strong>: Look at the <code class="language-plaintext highlighter-rouge">DE(Corr)</code> values in the output. If they’re converging (approaching a stable value), increasing cycles should help.</p>
-  </li>
-  <li><strong>Verify reference state</strong>: Ensure your HF reference is reasonable. Try:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stable=opt
-</code></pre></div>    </div>
-    <p>before the CCSD calculation.</p>
-  </li>
-  <li><strong>Try different basis set</strong>: Sometimes a smaller or different basis set helps establish convergence.</li>
-</ol>
-
-<hr />
-
-<h2 id="file-and-io-errors">File and I/O Errors</h2>
-
-<h3 id="disk-space-issues">Disk Space Issues</h3>
-
-<p><strong>Error Messages:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Erroneous write. write 122880 instead of 4239360</code></li>
-  <li><code class="language-plaintext highlighter-rouge">writwa: No space left on device</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Erroneous write during file extend</code></li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li><strong>Check disk space</strong>:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">df</span> <span class="nt">-h</span>
-<span class="nb">du</span> <span class="nt">-sh</span> ~/scratch/
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Clean up scratch directory</strong>: Remove old checkpoint files and temporary files.</p>
-  </li>
-  <li>
-    <p><strong>Use smaller basis set</strong>: For very large calculations, consider using a smaller basis set or reducing system size.</p>
-  </li>
-  <li><strong>Set scratch directory</strong>: Ensure <code class="language-plaintext highlighter-rouge">GAUSS_SCRDIR</code> points to a directory with sufficient space:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">GAUSS_SCRDIR</span><span class="o">=</span>/path/to/large/disk/scratch
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<h3 id="checkpoint-file-issues">Checkpoint File Issues</h3>
-
-<p><strong>Error Messages:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Error termination in NtrErr: Operation on file out of range</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Error imposing constraints</code></li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li>
-    <p><strong>Regenerate checkpoint file</strong>: The checkpoint file may be corrupted or incomplete. Re-run the calculation that generates the needed data.</p>
-  </li>
-  <li>
-    <p><strong>Don’t rely on incomplete checkpoints</strong>: If a previous job failed or was killed, don’t try to read from its checkpoint file.</p>
-  </li>
-</ol>
-
-<hr />
-
-<h2 id="input-file-errors">Input File Errors</h2>
-
-<h3 id="z-matrix-and-coordinate-errors">Z-Matrix and Coordinate Errors</h3>
-
-<p><strong>Error Messages:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">End of file in Zsymb</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Found a string as input</code></li>
-  <li><code class="language-plaintext highlighter-rouge">There are no atoms in this input structure</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Symbol not found in Z-matrix</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Variable index is out of range</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Determination of dummy atom variables in z-matrix conversion failed</code></li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li>
-    <p><strong>Check input format</strong>: Ensure proper spacing and formatting in your Z-matrix or Cartesian coordinates.</p>
-  </li>
-  <li><strong>Use Cartesian coordinates</strong>: If Z-matrix conversion fails, switch to Cartesian:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt=cartesian
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Verify atom definitions</strong>: Check that all atoms are properly defined and variables are correctly referenced.</p>
-  </li>
-  <li><strong>Use GaussView or similar</strong>: Generate input files using molecular visualization software to avoid formatting errors.</li>
-</ol>
-
-<hr />
-
-<h2 id="method-specific-issues">Method-Specific Issues</h2>
-
-<h3 id="dft-functional-limitations">DFT Functional Limitations</h3>
-
-<p><strong>Error Message:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">No func 3rd derivs with HSE</code> (or similar for other functionals)</li>
-</ul>
-
-<p><strong>Explanation:</strong>
-Some functionals don’t support third-order derivatives needed for hyperpolarizability calculations.</p>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li><strong>For polarizability only</strong>: Use <code class="language-plaintext highlighter-rouge">polar=Numerical</code>:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># polar=Numerical
-</code></pre></div>    </div>
-    <p>This calculates polarizability α but may fail for hyperpolarizability β.</p>
-  </li>
-  <li>
-    <p><strong>Use different functional</strong>: Switch to a functional that supports third-order derivatives (most standard functionals do).</p>
-  </li>
-  <li><strong>Check output</strong>: Sometimes the desired property (e.g., α) is calculated before the error occurs, so check earlier in the output file.</li>
-</ol>
-
-<hr />
-
-<h2 id="system-and-permission-errors">System and Permission Errors</h2>
-
-<h3 id="gaussian-installation-issues">Gaussian Installation Issues</h3>
-
-<p><strong>Error Messages:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Files in the Gaussian directory are world accessible. This must be fixed.</code></li>
-  <li><code class="language-plaintext highlighter-rouge">failed to open execfile</code></li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li><strong>Fix permissions</strong>:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> <span class="nt">-R</span> 750 /path/to/Gaussian
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Check Linda vs. OpenMP</strong>: If using <code class="language-plaintext highlighter-rouge">nprocl</code>, ensure your system supports Linda. Otherwise, use <code class="language-plaintext highlighter-rouge">nprocshared</code>:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%nprocshared=8  # instead of nprocl
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Verify environment variables</strong>: Check that <code class="language-plaintext highlighter-rouge">g09root</code> or <code class="language-plaintext highlighter-rouge">g16root</code> and <code class="language-plaintext highlighter-rouge">GAUSS_EXEDIR</code> are set correctly.</li>
-</ol>
-
-<hr />
-
-<h2 id="general-best-practices">General Best Practices</h2>
-
-<h3 id="input-file-organization">Input File Organization</h3>
-
-<ol>
-  <li><strong>Always include route section</strong>: Start with <code class="language-plaintext highlighter-rouge">#</code> followed by method and keywords</li>
-  <li><strong>Use title line</strong>: Provide a descriptive title</li>
-  <li><strong>Specify charge and multiplicity</strong>: Essential for proper calculation</li>
-  <li><strong>Use checkpoint files</strong>: Include <code class="language-plaintext highlighter-rouge">%chk=filename.chk</code> for recovery</li>
-</ol>
-
-<h3 id="example-well-structured-input">Example Well-Structured Input:</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%mem=8GB
-%nprocshared=4
-%chk=water_opt.chk
-# opt freq b3lyp/6-31g(d)
-
-Water optimization
-
-0 1
-O    0.000000    0.000000    0.117300
-H    0.000000    0.757200   -0.469200
-H    0.000000   -0.757200   -0.469200
-</code></pre></div></div>
-
-<h3 id="monitoring-calculations">Monitoring Calculations</h3>
-
-<ol>
-  <li><strong>Watch output in real-time</strong>: Use <code class="language-plaintext highlighter-rouge">tail -f</code> to monitor progress:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tail</span> <span class="nt">-f</span> jobname.log
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Check for convergence</strong>: Look for “Optimization completed” or “Normal termination”</p>
-  </li>
-  <li><strong>Save intermediate results</strong>: Use checkpoint files to restart or extract data</li>
-</ol>
-
-<h3 id="performance-tips">Performance Tips</h3>
-
-<ol>
-  <li><strong>Use appropriate basis sets</strong>: Don’t use larger basis sets than necessary</li>
-  <li><strong>Parallelize wisely</strong>: More cores don’t always mean faster (memory trade-off)</li>
-  <li><strong>Use efficient methods</strong>: Consider <code class="language-plaintext highlighter-rouge">opt=calcfc</code> to calculate force constants once</li>
-  <li><strong>Chain calculations</strong>: Use <code class="language-plaintext highlighter-rouge">geom=allcheck</code> to continue from previous calculations</li>
-</ol>
-
-<hr />
-
-<h2 id="quick-reference-common-fixes">Quick Reference: Common Fixes</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Problem</th>
-      <th>Quick Fix</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Out of memory</td>
-      <td>Increase <code class="language-plaintext highlighter-rouge">%mem</code> or decrease <code class="language-plaintext highlighter-rouge">%nprocshared</code></td>
-    </tr>
-    <tr>
-      <td>Optimization not converging</td>
-      <td>Add <code class="language-plaintext highlighter-rouge">opt=maxcycle=200</code> or try <code class="language-plaintext highlighter-rouge">opt=RFO</code></td>
-    </tr>
-    <tr>
-      <td>SCF not converging</td>
-      <td>Add <code class="language-plaintext highlighter-rouge">scf=(conver=8,xqc)</code> or <code class="language-plaintext highlighter-rouge">scf=damp</code></td>
-    </tr>
-    <tr>
-      <td>Multiple negative frequencies</td>
-      <td>Use <code class="language-plaintext highlighter-rouge">opt=(ts,noeigen)</code> but verify result</td>
-    </tr>
-    <tr>
-      <td>Disk space error</td>
-      <td>Clean scratch directory or use smaller basis</td>
-    </tr>
-    <tr>
-      <td>Checkpoint file error</td>
-      <td>Regenerate checkpoint from scratch</td>
-    </tr>
-    <tr>
-      <td>Z-matrix error</td>
-      <td>Switch to <code class="language-plaintext highlighter-rouge">opt=cartesian</code></td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h2 id="additional-resources">Additional Resources</h2>
-
-<ul>
-  <li><a href="https://gaussian.com/">Gaussian Official Documentation</a></li>
-  <li><a href="https://gaussian.com/man/">Gaussian User’s Reference</a></li>
-  <li><a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s Gaussian Error Guide</a></li>
-  <li><a href="https://github.com/CrawfordGroup/ProgrammingProjects">Crawford Group Computational Chemistry Resources</a></li>
-</ul>
-
-<hr />
-
-<h2 id="getting-help">Getting Help</h2>
-
-<p>If you encounter errors not covered here:</p>
-
-<ol>
-  <li><strong>Check the full output file</strong>: Errors often have context earlier in the file</li>
-  <li><strong>Search error messages</strong>: Many errors are documented online</li>
-  <li><strong>Consult colleagues</strong>: Often someone has seen the same issue</li>
-  <li><strong>Gaussian support</strong>: For licensed users, contact Gaussian Inc. support</li>
-</ol>
-
-<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Tips and Troubleshooting Guide]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>Well, simply put, I hope to revisit this short memo in a few years and contrast my impressions then. I also hope to have some science to discuss by then. Exciting things are coming!</p>]]></content><author><name>rlaplaza</name></author><category term="random," /><category term="chemistry," /><category term="computational" /><summary type="html"><![CDATA[Hey! I recently moved to Seville to start my group at the IIQ. Understandably, this is a fairly new experience for me. That said, this is a wonderful place to take this important step.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-1.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-1.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

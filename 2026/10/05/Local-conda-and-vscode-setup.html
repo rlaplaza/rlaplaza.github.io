@@ -43,21 +43,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Linux Sysadmin Basics | rlaplaza and crew</title>
+<title>Local Conda and VS Code Setup | rlaplaza and crew</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="Linux Sysadmin Basics">
+<meta name="title" content="Local Conda and VS Code Setup">
 <meta name="description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 
-<meta property="og:title" content="Linux Sysadmin Basics">
+<meta property="og:title" content="Local Conda and VS Code Setup">
 <meta property="og:site_title" content="rlaplaza and crew">
 <meta property="og:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="og:url" content="https://rlaplaza.github.io">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="Linux Sysadmin Basics">
+<meta property="twitter:title" content="Local Conda and VS Code Setup">
 <meta property="twitter:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="twitter:url" content="https://rlaplaza.github.io">
 <meta property="twitter:card" content="summary_large_image">
@@ -67,7 +67,7 @@
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
   <meta property="og:updated_time" content="2026-10-05T07:39:21+00:00">
-  <meta property="article:published_time" content="2026-01-22T00:00:00+00:00">
+  <meta property="article:published_time" content="2026-10-05T00:00:00+00:00">
   <meta property="article:modified_time" content="2026-10-05T07:39:21+00:00">
   <meta name="revised" content="2026-10-05T07:39:21+00:00">
 
@@ -77,13 +77,13 @@
     "@context": "https://schema.org",
     
       "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "Linux Sysadmin Basics" },
-      "datePublished": "2026-01-22T00:00:00+00:00",
+      "author": { "@type": "Person", "name": "Local Conda and VS Code Setup" },
+      "datePublished": "2026-10-05T00:00:00+00:00",
       "dateModified": "2026-10-05T07:39:21+00:00",
     
-    "name": "Linux Sysadmin Basics",
+    "name": "Local Conda and VS Code Setup",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
-    "headline": "Linux Sysadmin Basics",
+    "headline": "Local Conda and VS Code Setup",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -504,7 +504,7 @@
 -->
 
 
-<h1 class="center">Linux Sysadmin Basics</h1>
+<h1 class="center">Local Conda and VS Code Setup</h1>
 
 <div class="post-info">
   
@@ -526,15 +526,10 @@
   
     <span data-tooltip="Originally published on">
       <i class="icon fa-regular fa-calendar"></i>
-      <span>January 22, 2026</span>
+      <span>October 05, 2026</span>
     </span>
   
 
-  
-    <span data-tooltip="Last updated on">
-      <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>October 05, 2026</span>
-    </span>
   
 </div>
 
@@ -552,16 +547,16 @@
         guidelines
       </a>
     
-      <a href="/blog?search=%22tag:%20linux%22" class="tag" data-tooltip='Show items with the tag "linux"'>
-        linux
+      <a href="/blog?search=%22tag:%20python%22" class="tag" data-tooltip='Show items with the tag "python"'>
+        python
       </a>
     
-      <a href="/blog?search=%22tag:%20bash%22" class="tag" data-tooltip='Show items with the tag "bash"'>
-        bash
+      <a href="/blog?search=%22tag:%20conda%22" class="tag" data-tooltip='Show items with the tag "conda"'>
+        conda
       </a>
     
-      <a href="/blog?search=%22tag:%20sysadmin%22" class="tag" data-tooltip='Show items with the tag "sysadmin"'>
-        sysadmin
+      <a href="/blog?search=%22tag:%20vscode%22" class="tag" data-tooltip='Show items with the tag "vscode"'>
+        vscode
       </a>
     
   </div>
@@ -579,258 +574,296 @@
 -->
 
 
-<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
+<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
 
-<p>If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.</p>
+<p>This guide walks you through installing Miniconda and Visual Studio Code on your own computer, creating a dedicated Conda environment, installing packages inside it, and running Python from that environment in VS Code.</p>
 
-<p>This is a short introduction to the pieces you will use every day. For a broader learning path, see the <a href="/2025/07/30/coding-tips.html">Coding Practices Guidelines</a>, especially its sections on Unix shell commands, remote cluster work, and reproducible projects. If you are setting up Python on your own machine next, the <a href="/2026/10/05/local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> guide assumes only this level of terminal comfort.</p>
-
-<h2 id="the-shell-and-your-home-directory">The shell and your home directory</h2>
-
-<p>When you open a terminal, you are usually running a shell such as Bash. The shell reads your commands, expands variables, starts programs, and keeps track of your current directory.</p>
-
-<p><code class="language-plaintext highlighter-rouge">$HOME</code> is an environment variable containing the path to your home directory. It is normally the place where your personal files and configuration live. The <code class="language-plaintext highlighter-rouge">$</code> means “expand this variable”; the directory itself is usually written as <code class="language-plaintext highlighter-rouge">HOME</code> without the dollar sign.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">"</span>
-<span class="nb">pwd
-cd</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">"</span>
-<span class="nb">pwd</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">pwd</code> prints the working directory. <code class="language-plaintext highlighter-rouge">cd</code> changes it, and <code class="language-plaintext highlighter-rouge">cd</code> without an argument returns you to <code class="language-plaintext highlighter-rouge">$HOME</code>. The tilde is a shorter spelling of your home directory:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~
-<span class="nb">cd</span> ~/projects
-</code></pre></div></div>
-
-<p>Do not confuse <code class="language-plaintext highlighter-rouge">$HOME</code> with the directory where a program happens to be installed. Your home directory belongs to your user account, while system software may live under locations such as <code class="language-plaintext highlighter-rouge">/usr/bin</code> or <code class="language-plaintext highlighter-rouge">/opt</code>.</p>
-
-<h2 id="what-is-bashrc">What is <code class="language-plaintext highlighter-rouge">.bashrc</code>?</h2>
-
-<p><code class="language-plaintext highlighter-rouge">.bashrc</code> is a hidden configuration file in your home directory. Bash reads it when it starts an interactive non-login shell. It is commonly used for aliases, the command prompt, shell options, and additions to your <code class="language-plaintext highlighter-rouge">PATH</code>.</p>
-
-<p>You can inspect the file without editing it:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>less ~/.bashrc
-</code></pre></div></div>
-
-<p>An alias gives a short name to a command you use often. For example:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">ll</span><span class="o">=</span><span class="s1">'ls -lah'</span>
-</code></pre></div></div>
-
-<p>To add this permanently, put the line in <code class="language-plaintext highlighter-rouge">~/.bashrc</code>. After saving the file, load it into the current shell:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.bashrc
-</code></pre></div></div>
-
-<p>The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> guide shows practical examples of <code class="language-plaintext highlighter-rouge">.bashrc</code> aliases, SSH jump hosts, prompt customization, and <code class="language-plaintext highlighter-rouge">PATH</code> settings for an HPC system. It is a useful next step once the basic idea is familiar. For editing files like this directly from the terminal, a classic option is <code class="language-plaintext highlighter-rouge">vim</code>; see the <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide for the essentials: modes, editing, visual blocks, and <code class="language-plaintext highlighter-rouge">vimdiff</code>.</p>
-
-<p>Be careful when modifying <code class="language-plaintext highlighter-rouge">.bashrc</code>. A syntax error can make every new shell print an error, and a badly constructed <code class="language-plaintext highlighter-rouge">PATH</code> can make commands difficult to find. Before making a substantial change, keep a backup:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> ~/.bashrc ~/.bashrc.backup
-</code></pre></div></div>
-
-<h3 id="the-path-variable">The <code class="language-plaintext highlighter-rouge">PATH</code> variable</h3>
-
-<p><code class="language-plaintext highlighter-rouge">PATH</code> is a colon-separated list of directories where the shell looks for executable commands. This command shows its current value:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s1">'%s\n'</span> <span class="s2">"</span><span class="nv">$PATH</span><span class="s2">"</span>
-</code></pre></div></div>
-
-<p>If you keep your own scripts in <code class="language-plaintext highlighter-rouge">~/bin</code>, you can add that directory while preserving the existing path:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/bin"</span>
-<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
-</code></pre></div></div>
-
-<p>Putting the <code class="language-plaintext highlighter-rouge">export</code> line in <code class="language-plaintext highlighter-rouge">.bashrc</code> makes the change apply to future interactive Bash shells. Avoid replacing <code class="language-plaintext highlighter-rouge">PATH</code> with a single directory: the existing value is what lets the shell find standard commands.</p>
-
-<h2 id="executing-bash-scripts">Executing Bash scripts</h2>
-
-<p>A Bash script is a text file containing commands that the shell can run in sequence. The first line is called a <strong>shebang</strong>. It tells the operating system which interpreter should run the file:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env bash</span>
-
-<span class="nb">echo</span> <span class="s2">"Hello from Bash"</span>
-<span class="nb">printf</span> <span class="s1">'Working directory: %s\n'</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span>
-</code></pre></div></div>
-
-<p>Save this as <code class="language-plaintext highlighter-rouge">hello.sh</code>. You can run it by passing the file to Bash directly:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash hello.sh
-</code></pre></div></div>
-
-<p>You can also make the file executable and run it by its path. The <code class="language-plaintext highlighter-rouge">u+x</code> mode adds execute permission for the file’s owner:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>u+x hello.sh
-./hello.sh
-</code></pre></div></div>
-
-<p>The <code class="language-plaintext highlighter-rouge">./</code> matters: it means “run the file in the current directory.” Linux usually does not search the current directory automatically when looking through <code class="language-plaintext highlighter-rouge">PATH</code>. This avoids accidentally running a file in the current directory when you intended to run a system command with the same name.</p>
-
-<p>Use <code class="language-plaintext highlighter-rouge">ls -l hello.sh</code> to inspect its permissions. If you receive a “Permission denied” error, check that the file is executable and that you are running the intended file. <code class="language-plaintext highlighter-rouge">bash hello.sh</code> does not require the executable bit because Bash is being asked to read the file explicitly.</p>
-
-<h2 id="basic-commands">Basic commands</h2>
-
-<p>These commands cover much of the daily work of navigating and inspecting a Linux system:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Command</th>
-      <th>Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">ls</code></td>
-      <td>List files and directories</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">cd</code></td>
-      <td>Change directory</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">pwd</code></td>
-      <td>Print the current directory</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">mkdir</code></td>
-      <td>Create a directory</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">cp</code></td>
-      <td>Copy a file or directory</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">mv</code></td>
-      <td>Move or rename a file</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">rm</code></td>
-      <td>Remove a file or directory</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">less</code></td>
-      <td>Read a text file one screen at a time</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">man</code></td>
-      <td>Read a command’s manual page</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>A small example:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> ~/practice/notes
-<span class="nb">cd</span> ~/practice
-<span class="nb">printf</span> <span class="s1">'%s\n'</span> <span class="s1">'first note'</span> <span class="o">&gt;</span> notes/example.txt
-less notes/example.txt
-<span class="nb">cp </span>notes/example.txt notes/example-copy.txt
-<span class="nb">mv </span>notes/example-copy.txt notes/renamed-note.txt
-<span class="nb">ls</span> <span class="nt">-l</span> notes
-</code></pre></div></div>
-
-<p>The <code class="language-plaintext highlighter-rouge">&gt;</code> operator writes output to a file and replaces that file if it already exists. Use <code class="language-plaintext highlighter-rouge">&gt;&gt;</code> to append instead. Quoting paths is a good habit because it also works when a path contains spaces:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>less <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/path with spaces/notes.txt"</span>
-</code></pre></div></div>
-
-<p>Read commands before running them, especially commands involving <code class="language-plaintext highlighter-rouge">rm</code>. Removing a file is not the same as moving it to a recycle bin, and <code class="language-plaintext highlighter-rouge">rm -r</code> can remove entire directory trees. When you are unsure what a command does, start with its manual page:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>man <span class="nb">cp
-</span>man <span class="nb">rm</span>
-</code></pre></div></div>
-
-<p>You can also ask many commands for a short usage summary:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">--help</span>
-</code></pre></div></div>
-
-<p>When a file needs to be edited directly from the shell instead of a GUI editor, <code class="language-plaintext highlighter-rouge">vim</code> is the standard choice on Linux systems. The <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide is a quick reference for the most common commands and workflows.</p>
-
-<p>The <a href="/2025/07/30/git-tips.html">Basic Git and GitHub Guide</a> builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.</p>
-
-<h2 id="looking-at-running-processes-with-top">Looking at running processes with <code class="language-plaintext highlighter-rouge">top</code>
-</h2>
-
-<p><code class="language-plaintext highlighter-rouge">top</code> is a terminal program that gives you a changing view of running processes and system resources. Start it with:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>top
-</code></pre></div></div>
-
-<p>Useful keys while <code class="language-plaintext highlighter-rouge">top</code> is running include:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Key</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">q</code></td>
-      <td>Quit <code class="language-plaintext highlighter-rouge">top</code>
-</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">P</code></td>
-      <td>Sort by CPU usage</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">M</code></td>
-      <td>Sort by memory usage</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">1</code></td>
-      <td>Show individual CPU statistics</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>At first, use <code class="language-plaintext highlighter-rouge">top</code> for observation. Look for processes consuming an unusual amount of CPU or memory, and notice the load and memory summaries at the top of the display. Do not terminate a process just because it appears in the list: first identify which user started it, what command it represents, and whether it belongs to an important job.</p>
-
-<p>On a shared server or HPC system, your institution may provide additional monitoring commands or a scheduler such as SLURM. The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> post describes job helpers and log locations for that environment. For another example of useful monitoring habits, the <a href="/2025/01/22/gaussian-tips-and-troubleshooting.html">Gaussian Tips and Troubleshooting Guide</a> discusses reading complete output, following logs with <code class="language-plaintext highlighter-rouge">tail -f</code>, and checking available disk space.</p>
-
-<h2 id="good-first-habits">Good first habits</h2>
-
-<p>When working on a machine you do not fully control:</p>
+<p>By the end you should be able to:</p>
 
 <ol>
-  <li>Know where you are with <code class="language-plaintext highlighter-rouge">pwd</code> before creating or moving files.</li>
-  <li>Use <code class="language-plaintext highlighter-rouge">$HOME</code> and other variables instead of copying long paths by hand.</li>
-  <li>Read help or manual pages before using unfamiliar options.</li>
-  <li>Keep code, input files, and results organized in predictable directories.</li>
-  <li>Check logs and error messages before repeating a failed command.</li>
-  <li>Keep important work backed up and under version control.</li>
-  <li>Record the commands, software versions, and environment needed to reproduce a result.</li>
+  <li>Open a terminal and confirm that <code class="language-plaintext highlighter-rouge">conda</code> works.</li>
+  <li>Create and activate a named Conda environment.</li>
+  <li>Install packages into that environment only (not into the whole computer).</li>
+  <li>Select that environment as the Python interpreter in VS Code and run a small script.</li>
 </ol>
 
-<p>The <a href="/2025/07/29/general-guidelines.html">General Guidelines for Master’s and PhD Students</a> expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.</p>
+<p>If terminal commands feel unfamiliar, skim the <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a> post first. For broader coding habits and why environments matter, see the <a href="/2025/07/30/coding-tips.html">Coding Practices Guidelines</a>. Once you need Conda on the cluster rather than on your laptop, continue with <a href="/2025/08/01/using-agustina.html">Using Agustina</a>.</p>
 
-<p>The <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide is the practical companion for the quick editing commands you will use every time you change a shell config file or small script on a remote system.</p>
+<h2 id="1-open-a-terminal">1. Open a terminal</h2>
 
-<h2 id="further-reading">Further reading</h2>
+<p>Use the native terminal for your operating system. Run the commands one line at a time, and wait for each one to finish before starting the next.</p>
 
-<p>Once these basics feel comfortable, the following sources provide more detail:</p>
+<h3 id="windows">Windows</h3>
+
+<p><strong>Very important:</strong> these Windows steps are for native Windows PowerShell. Do <strong>not</strong> use a WSL (Ubuntu) terminal for this guide.</p>
+
+<ol>
+  <li>Open the Windows Search bar.</li>
+  <li>Search for <code class="language-plaintext highlighter-rouge">Windows PowerShell</code>.</li>
+  <li>Open it.</li>
+</ol>
+
+<p>Continue with the Windows instructions in section 2.</p>
+
+<h3 id="macos">macOS</h3>
+
+<ol>
+  <li>Open Spotlight search (or look under Applications → Utilities).</li>
+  <li>Type <code class="language-plaintext highlighter-rouge">Terminal</code> and open it.</li>
+</ol>
+
+<p>Continue with the macOS instructions in section 2.</p>
+
+<h3 id="linux">Linux</h3>
+
+<p><strong>Very important:</strong> these Linux steps are for a normal Linux machine. Do <strong>not</strong> use a WSL (Ubuntu) terminal inside Windows for this guide.</p>
+
+<ol>
+  <li>Open Activities (or press <code class="language-plaintext highlighter-rouge">Ctrl + Alt + T</code> on many distributions).</li>
+  <li>Search for <code class="language-plaintext highlighter-rouge">Terminal</code> and open it.</li>
+</ol>
+
+<p>Continue with the Linux instructions in section 2.</p>
+
+<h2 id="2-install-miniconda">2. Install Miniconda</h2>
+
+<p>Miniconda is a small installer for Conda. Conda manages Python versions and packages in separate environments so projects do not interfere with each other.</p>
+
+<ol>
+  <li>Open the official Miniconda quickstart page: <a href="https://www.anaconda.com/docs/getting-started/miniconda/install">Miniconda install instructions</a>.</li>
+  <li>Open the <strong>Quickstart install instructions</strong> tab.</li>
+  <li>Select your operating system.</li>
+  <li>Follow <strong>all</strong> of the steps they show for your OS. Do <strong>not</strong> stop after the first download command. Run each suggested command carefully, line by line.</li>
+</ol>
+
+<p>When the install finishes, close the terminal and open a <strong>new</strong> one. Then check that Conda is available:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nt">--version</span>
+</code></pre></div></div>
+
+<p>You should see a version number. If the command is not found, reopen the terminal once more. On Windows, prefer the <strong>Anaconda Prompt</strong> application after install if PowerShell still cannot find <code class="language-plaintext highlighter-rouge">conda</code>.</p>
+
+<h3 id="windows-11-tip-download-path-access-denied">Windows 11 tip: download path access denied</h3>
+
+<p>During Miniconda install on Windows 11, PowerShell may fail with an error like:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Invoke-WebRequest : Access to the path 'C:\windows\system32\Miniconda3-latest-Windows-x86_64.exe' is denied.
+</code></pre></div></div>
+
+<p>That usually means the download tried to write into a protected folder. Fix it by moving to your home directory first:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cd</span><span class="w"> </span><span class="bp">$HOME</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Then rerun the Miniconda quickstart commands from the official page, starting again from the download step.</p>
+
+<h2 id="3-install-visual-studio-code">3. Install Visual Studio Code</h2>
+
+<h3 id="31-download-vs-code">3.1. Download VS Code</h3>
+
+<p>Download and install Visual Studio Code from the official site: <a href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a>.</p>
+
+<p>Choose the installer that matches your operating system and accept the default options unless you have a reason not to.</p>
+
+<h3 id="32-install-useful-extensions">3.2. Install useful extensions</h3>
+
+<ol>
+  <li>Open Visual Studio Code.</li>
+  <li>Click the Extensions icon in the left sidebar (four squares).</li>
+  <li>
+    <p>Search for and install each of these extensions:</p>
+
+    <ul>
+      <li>
+<code class="language-plaintext highlighter-rouge">Python</code> (published by Microsoft)</li>
+      <li><code class="language-plaintext highlighter-rouge">Jupyter</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Python Indent</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Rainbow CSV</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Prettier - Code formatter</code></li>
+    </ul>
+  </li>
+</ol>
+
+<p>The Python extension is the essential one for selecting a Conda environment and running scripts. The others are helpful defaults for notebooks, indentation, CSV files, and formatting.</p>
+
+<h2 id="4-create-a-simple-project-folder">4. Create a simple project folder</h2>
+
+<p>Before creating environments, make a short, simple folder for your work.</p>
+
+<ol>
+  <li>Create a folder called <code class="language-plaintext highlighter-rouge">Project</code> (or another short English name) on your computer.</li>
+  <li>Keep the full path short and simple.</li>
+</ol>
+
+<p><strong>Very important path rules</strong> (these avoid many beginner failures later):</p>
+
+<ol>
+  <li>Do <strong>not</strong> put the folder inside OneDrive or another cloud-synced folder.</li>
+  <li>Do <strong>not</strong> bury it under a very long chain of directories.</li>
+  <li>Prefer unaccented English letters (<code class="language-plaintext highlighter-rouge">A–Z</code>, <code class="language-plaintext highlighter-rouge">a–z</code>), numbers, and underscores <code class="language-plaintext highlighter-rouge">_</code> in folder names. Avoid accents, spaces, and punctuation when you can.</li>
+</ol>
+
+<p>Good examples:</p>
+
+<ul>
+  <li>Windows: <code class="language-plaintext highlighter-rouge">C:\Users\jv\Desktop\Project</code>
+</li>
+  <li>macOS / Linux: <code class="language-plaintext highlighter-rouge">~/Project</code> or <code class="language-plaintext highlighter-rouge">~/Desktop/Project</code>
+</li>
+</ul>
+
+<p>Open that folder in VS Code with <strong>File → Open Folder…</strong>.</p>
+
+<h2 id="5-create-and-use-a-conda-environment">5. Create and use a Conda environment</h2>
+
+<p>A Conda environment is an isolated workspace with its own Python and packages. Create one environment per project (or per course) instead of installing everything into <code class="language-plaintext highlighter-rouge">base</code>.</p>
+
+<h3 id="51-open-the-right-terminal">5.1. Open the right terminal</h3>
 
 <ul>
   <li>
-<a href="https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html">Bash startup files</a> explains when Bash reads files such as <code class="language-plaintext highlighter-rouge">.bashrc</code>.</li>
-  <li>The <a href="https://www.gnu.org/software/coreutils/manual/coreutils.html">GNU Coreutils manual</a> documents many everyday file and text commands.</li>
+<strong>Windows:</strong> after installing Miniconda, open <strong>Anaconda Prompt</strong> (recommended) or a new PowerShell window where <code class="language-plaintext highlighter-rouge">conda --version</code> already works.</li>
   <li>
-<a href="https://www.kernel.org/doc/man-pages/">The Linux man-pages project</a> provides detailed manual-page documentation.</li>
-  <li>The <a href="https://gitlab.com/procps-ng/procps">procps-ng project</a> provides tools including <code class="language-plaintext highlighter-rouge">top</code> and <code class="language-plaintext highlighter-rouge">ps</code>.</li>
-  <li>
-<a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> explains the core editor commands, visual block editing, and <code class="language-plaintext highlighter-rouge">vimdiff</code> for quick terminal-based comparisons.</li>
-  <li>
-<a href="/2026/10/05/local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> is the next practical step if you want Python environments on your laptop.</li>
-  <li>
-<a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has excellent lessons on the shell, command-line tools, editors, and remote work.</li>
+<strong>macOS / Linux:</strong> open a normal terminal as in section 1.</li>
 </ul>
+
+<h3 id="52-go-to-your-project-folder">5.2. Go to your project folder</h3>
+
+<p>Use <code class="language-plaintext highlighter-rouge">cd</code> to enter the folder you created. Examples:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Windows example</span>
+<span class="nb">cd </span>C:<span class="se">\U</span>sers<span class="se">\j</span>v<span class="se">\D</span>esktop<span class="se">\P</span>roject
+
+<span class="c"># macOS / Linux example</span>
+<span class="nb">cd</span> ~/Project
+</code></pre></div></div>
+
+<p>Your prompt should show that you are inside that folder. If you are unsure, check the current directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># macOS / Linux</span>
+<span class="nb">pwd</span>
+
+<span class="c"># Windows PowerShell</span>
+<span class="nb">pwd</span>
+
+<span class="c"># Windows Anaconda Prompt (cmd): print the current folder</span>
+<span class="nb">cd</span>
+</code></pre></div></div>
+
+<p>You can also simply look at the path shown in the prompt.</p>
+
+<h3 id="53-create-the-environment">5.3. Create the environment</h3>
+
+<p>Create a new environment named <code class="language-plaintext highlighter-rouge">myenv</code> with Python 3.11 (any supported recent Python 3.x is fine; keep the name short):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-n</span> myenv <span class="nv">python</span><span class="o">=</span>3.11 <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>Activate it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate myenv
+</code></pre></div></div>
+
+<p>Your prompt should now start with <code class="language-plaintext highlighter-rouge">(myenv)</code>. That prefix means later <code class="language-plaintext highlighter-rouge">python</code> and <code class="language-plaintext highlighter-rouge">pip</code> commands use this environment, not the system Python.</p>
+
+<p>Check which Python you are using:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">--version</span>
+which python
+</code></pre></div></div>
+
+<p>On Windows Anaconda Prompt / PowerShell, use:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">python</span><span class="w"> </span><span class="nt">--version</span><span class="w">
+</span><span class="n">where</span><span class="w"> </span><span class="nx">python</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="54-install-packages-inside-the-environment">5.4. Install packages inside the environment</h3>
+
+<p>With <code class="language-plaintext highlighter-rouge">(myenv)</code> still active, install packages into <strong>this</strong> environment only.</p>
+
+<p>With Conda (preferred when a package is available on conda channels):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>numpy pandas <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>With pip (useful when a package is mainly distributed on PyPI):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> pip <span class="nb">install </span>requests
+</code></pre></div></div>
+
+<p>Using <code class="language-plaintext highlighter-rouge">python -m pip</code> is safer than bare <code class="language-plaintext highlighter-rouge">pip</code>, because it installs into the same Python that <code class="language-plaintext highlighter-rouge">python</code> currently points to.</p>
+
+<p>List what is installed:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda list
+</code></pre></div></div>
+
+<p>Deactivate when you are done:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda deactivate
+</code></pre></div></div>
+
+<p>To return to the project later:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate myenv
+</code></pre></div></div>
+
+<h2 id="6-run-python-from-this-environment-in-vs-code">6. Run Python from this environment in VS Code</h2>
+
+<ol>
+  <li>Open your <code class="language-plaintext highlighter-rouge">Project</code> folder in VS Code if it is not already open.</li>
+  <li>Open the Command Palette:
+    <ul>
+      <li>Windows / Linux: <code class="language-plaintext highlighter-rouge">Ctrl + Shift + P</code>
+</li>
+      <li>macOS: <code class="language-plaintext highlighter-rouge">Cmd + Shift + P</code>
+</li>
+    </ul>
+  </li>
+  <li>Type <code class="language-plaintext highlighter-rouge">Python: Select Interpreter</code> and choose that command.</li>
+  <li>Pick the interpreter that shows <code class="language-plaintext highlighter-rouge">myenv</code> (or the environment name you chose).</li>
+</ol>
+
+<p>If you do not see it yet:</p>
+
+<ol>
+  <li>Make sure you created and activated the environment successfully in a terminal.</li>
+  <li>Click the refresh icon in the interpreter list, or reload the VS Code window.</li>
+  <li>On Windows, restart VS Code after installing Miniconda if the list is empty.</li>
+</ol>
+
+<p>Create a small test file named <code class="language-plaintext highlighter-rouge">hello.py</code> in the project folder:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Hello from"</span><span class="p">,</span> <span class="n">sys</span><span class="p">.</span><span class="n">executable</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Run it in VS Code with the play button, or from a VS Code terminal after activating the environment:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate myenv
+python hello.py
+</code></pre></div></div>
+
+<p>The printed path should point inside your Conda environment, not to a system-wide Python. That is the check that you are running inside the delimited environment.</p>
+
+<p>You can also open a notebook (<code class="language-plaintext highlighter-rouge">.ipynb</code>) and choose the same <code class="language-plaintext highlighter-rouge">myenv</code> kernel in the kernel picker.</p>
+
+<h2 id="7-what-to-do-next">7. What to do next</h2>
+
+<p>You now have a local workflow: terminal → Conda environment → packages → VS Code interpreter → run Python.</p>
+
+<p>Suggested next steps:</p>
+
+<ol>
+  <li>Follow a short Conda tutorial to practice creating environments, exporting them, and understanding channels: <a href="https://edcarp.github.io/introduction-to-conda-for-data-scientists/aio/index.html">Introduction to Conda for Data Scientists</a>.</li>
+  <li>Read the reproducibility section in the <a href="/2025/07/30/coding-tips.html">Coding Practices Guidelines</a>, then continue with the linked Python learning resources there.</li>
+  <li>When you move work to the cluster, use <a href="/2025/08/01/using-agustina.html">Using Agustina</a> for module-based Conda, storage paths, and job helpers such as <code class="language-plaintext highlighter-rouge">subconda.sh</code>.</li>
+  <li>If shell navigation still feels shaky, revisit <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a>.</li>
+</ol>
+
+<p>Keep one habit from day one: activate the correct environment before installing packages or running project code. If the prompt does not show <code class="language-plaintext highlighter-rouge">(myenv)</code>, pause and activate first.</p>
 
 <hr>
   </section>
@@ -851,17 +884,12 @@ less notes/example.txt
   <span>
     
       <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
-      <a href="/2026/01/22/Vi-and-vim-basics.html">
-        Vi and Vim Basics
+      <a href="/2026/01/22/linux-sysadmin-basics.html">
+        Linux Sysadmin Basics
       </a>
     
   </span>
   <span>
-    
-      Next post <i class="icon fa-solid fa-angle-right"></i><br>
-      <a href="/2026/10/05/Local-conda-and-vscode-setup.html">
-        Local Conda and VS Code Setup
-      </a>
     
   </span>
 </div>
