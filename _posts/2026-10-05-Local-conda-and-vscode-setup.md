@@ -52,10 +52,14 @@ Continue with the Linux instructions in section 2.
 
 Miniconda is a small installer for Conda. Conda manages Python versions and packages in separate environments so projects do not interfere with each other.
 
-1. Open the official Miniconda quickstart page: [Miniconda install instructions](https://www.anaconda.com/docs/getting-started/miniconda/install).
-2. Open the **Quickstart install instructions** tab.
-3. Select your operating system.
-4. Follow **all** of the steps they show for your OS. Do **not** stop after the first download command. Run each suggested command carefully, line by line.
+1. Open the official install overview: [Installing Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/install).
+2. Choose the guide that matches your operating system **and** preferred method:
+   - **Windows beginners:** prefer the **Windows graphical installer** (point-and-click).
+   - **Windows command line:** use the Windows shell installer only if you are comfortable in PowerShell or Command Prompt.
+   - **macOS beginners:** prefer the **macOS graphical (`.pkg`) installer**.
+   - **macOS / Linux terminal:** use the terminal installer guide for your OS.
+3. Follow **all** of the steps on that page for your choice. Do **not** stop after the first download command. Run each suggested command carefully, line by line.
+4. When the installer asks whether to initialize Conda for your shell, choose **yes** (or leave the equivalent box checked).
 
 When the install finishes, close the terminal and open a **new** one. Then check that Conda is available:
 
@@ -65,21 +69,21 @@ conda --version
 
 You should see a version number. If the command is not found, reopen the terminal once more. On Windows, prefer the **Anaconda Prompt** application after install if PowerShell still cannot find `conda`.
 
-### Windows 11 tip: download path access denied
+### Windows tip: download path access denied
 
-During Miniconda install on Windows 11, PowerShell may fail with an error like:
+If you use the Windows shell installer and PowerShell fails with an error like:
 
 ```text
 Invoke-WebRequest : Access to the path 'C:\windows\system32\Miniconda3-latest-Windows-x86_64.exe' is denied.
 ```
 
-That usually means the download tried to write into a protected folder. Fix it by moving to your home directory first:
+that usually means the download tried to write into a protected folder. Fix it by moving to your home directory first:
 
 ```powershell
 cd $HOME
 ```
 
-Then rerun the Miniconda quickstart commands from the official page, starting again from the download step.
+Then rerun the download and install commands from the official Windows shell installer page, starting again from the download step. If this feels stressful, switch to the Windows graphical installer instead.
 
 ## 3. Install Visual Studio Code
 
@@ -136,25 +140,29 @@ A Conda environment is an isolated workspace with its own Python and packages. C
 
 Use `cd` to enter the folder you created. Examples:
 
-```bash
-# Windows example
+```powershell
+# Windows (Anaconda Prompt or PowerShell)
 cd C:\Users\jv\Desktop\Project
+```
 
-# macOS / Linux example
+```bash
+# macOS / Linux
 cd ~/Project
 ```
 
 Your prompt should show that you are inside that folder. If you are unsure, check the current directory:
 
-```bash
-# macOS / Linux
-pwd
-
+```powershell
 # Windows PowerShell
 pwd
 
-# Windows Anaconda Prompt (cmd): print the current folder
+# Windows Anaconda Prompt (cmd): prints the current folder
 cd
+```
+
+```bash
+# macOS / Linux
+pwd
 ```
 
 You can also simply look at the path shown in the prompt.
