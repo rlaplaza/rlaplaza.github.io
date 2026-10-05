@@ -7,7 +7,7 @@ tags: tutorial, computational-chemistry, orca, troubleshooting
 
 # ORCA Basics and Troubleshooting
 
-This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion [Gaussian Basics and Troubleshooting](/2026/01/01/Gaussian-tips-and-troubleshooting.html) guide covers the same topics for Gaussian. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.
+This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion [Gaussian Basics and Troubleshooting](/2026/01/01/Gaussian-tips-and-troubleshooting.html) guide covers the same topics for Gaussian. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see [SCF in Practice](/2026/10/05/SCF-in-practice.html). Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.
 
 > **Tip**: Use your browser's search function (Ctrl+F / Cmd+F) to jump to a specific error. The ORCA FAQ and the SCF/geometry sections of the manual are the best reference points for troubleshooting.
 
@@ -181,6 +181,8 @@ Example:
 ---
 
 ## SCF Convergence Issues
+
+For the conceptual background (guesses, DIIS, SOSCF, direct vs conventional integrals), see [SCF in Practice](/2026/10/05/SCF-in-practice.html). The recipes below are ORCA-specific.
 
 ### SCF does not converge
 
