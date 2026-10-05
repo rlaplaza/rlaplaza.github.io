@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-10-05T08:46:26+00:00">
+  <meta property="og:updated_time" content="2026-10-05T08:48:28+00:00">
   <meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-10-05T08:46:26+00:00">
-  <meta name="revised" content="2026-10-05T08:46:26+00:00">
+  <meta property="article:modified_time" content="2026-10-05T08:48:28+00:00">
+  <meta name="revised" content="2026-10-05T08:48:28+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Gaussian Basics and Troubleshooting" },
       "datePublished": "2026-01-01T00:00:00+00:00",
-      "dateModified": "2026-10-05T08:46:26+00:00",
+      "dateModified": "2026-10-05T08:48:28+00:00",
     
     "name": "Gaussian Basics and Troubleshooting",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
@@ -577,7 +577,7 @@
 
 <h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
 
-<p>This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a> guide covers the same topics for ORCA. The error catalog builds on community resources, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
+<p>This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a> guide covers the same topics for ORCA. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. The error catalog builds on community resources, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
 
 <blockquote>
   <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to quickly find specific error messages.</p>
@@ -866,6 +866,8 @@ If you’re optimizing a transition state but get multiple negative frequencies,
 <hr>
 
 <h2 id="scf-convergence-issues">SCF Convergence Issues</h2>
+
+<p>For the conceptual background (guesses, DIIS, SOSCF, direct vs conventional integrals), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. The recipes below are Gaussian-specific.</p>
 
 <h3 id="scf-not-converging">SCF Not Converging</h3>
 

@@ -43,21 +43,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>ORCA Basics and Troubleshooting | rlaplaza and crew</title>
+<title>SCF in Practice | rlaplaza and crew</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="ORCA Basics and Troubleshooting">
+<meta name="title" content="SCF in Practice">
 <meta name="description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 
-<meta property="og:title" content="ORCA Basics and Troubleshooting">
+<meta property="og:title" content="SCF in Practice">
 <meta property="og:site_title" content="rlaplaza and crew">
 <meta property="og:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="og:url" content="https://rlaplaza.github.io">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="ORCA Basics and Troubleshooting">
+<meta property="twitter:title" content="SCF in Practice">
 <meta property="twitter:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="twitter:url" content="https://rlaplaza.github.io">
 <meta property="twitter:card" content="summary_large_image">
@@ -67,7 +67,7 @@
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
   <meta property="og:updated_time" content="2026-10-05T08:48:28+00:00">
-  <meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+  <meta property="article:published_time" content="2026-10-05T00:00:00+00:00">
   <meta property="article:modified_time" content="2026-10-05T08:48:28+00:00">
   <meta name="revised" content="2026-10-05T08:48:28+00:00">
 
@@ -77,13 +77,13 @@
     "@context": "https://schema.org",
     
       "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "ORCA Basics and Troubleshooting" },
-      "datePublished": "2026-01-01T00:00:00+00:00",
+      "author": { "@type": "Person", "name": "SCF in Practice" },
+      "datePublished": "2026-10-05T00:00:00+00:00",
       "dateModified": "2026-10-05T08:48:28+00:00",
     
-    "name": "ORCA Basics and Troubleshooting",
+    "name": "SCF in Practice",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
-    "headline": "ORCA Basics and Troubleshooting",
+    "headline": "SCF in Practice",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -504,7 +504,7 @@
 -->
 
 
-<h1 class="center">ORCA Basics and Troubleshooting</h1>
+<h1 class="center">SCF in Practice</h1>
 
 <div class="post-info">
   
@@ -526,15 +526,10 @@
   
     <span data-tooltip="Originally published on">
       <i class="icon fa-regular fa-calendar"></i>
-      <span>January 01, 2026</span>
+      <span>October 05, 2026</span>
     </span>
   
 
-  
-    <span data-tooltip="Last updated on">
-      <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>October 05, 2026</span>
-    </span>
   
 </div>
 
@@ -552,12 +547,8 @@
         computational-chemistry
       </a>
     
-      <a href="/blog?search=%22tag:%20orca%22" class="tag" data-tooltip='Show items with the tag "orca"'>
-        orca
-      </a>
-    
-      <a href="/blog?search=%22tag:%20troubleshooting%22" class="tag" data-tooltip='Show items with the tag "troubleshooting"'>
-        troubleshooting
+      <a href="/blog?search=%22tag:%20scf%22" class="tag" data-tooltip='Show items with the tag "scf"'>
+        scf
       </a>
     
   </div>
@@ -575,461 +566,119 @@
 -->
 
 
-<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
+<h1 id="scf-in-practice">SCF in Practice</h1>
 
-<p>This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian Basics and Troubleshooting</a> guide covers the same topics for Gaussian. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.</p>
+<p>This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure as used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost, how integrals and XC grids enter, how jobs are started and converged, and what an analytical gradient costs relative to the energy. For program-specific keywords and failure recipes, see the <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA</a> and <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian</a> guides.</p>
 
-<blockquote>
-  <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to jump to a specific error. The ORCA FAQ and the SCF/geometry sections of the manual are the best reference points for troubleshooting.</p>
-</blockquote>
+<h2 id="what-the-scf-loop-is">What the SCF loop is</h2>
 
-<hr>
-
-<h2 id="basic-input-file">Basic input file</h2>
-
-<p>A minimal ORCA input has three pieces: a keyword line (method, basis, and job type), optional resource blocks, and a coordinate block with charge and multiplicity.</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-SVP Opt Freq TightSCF
-
-%pal
-  nprocs 4
-end
-
-%maxcore 2000
-
-* xyz 0 1
-O   0.000000   0.000000   0.117300
-H   0.000000   0.757200  -0.469200
-H   0.000000  -0.757200  -0.469200
-*
-</code></pre></div></div>
-
-<ul>
-  <li>The <code class="language-plaintext highlighter-rouge">!</code> line sets the electronic-structure method, basis set, and requested jobs (<code class="language-plaintext highlighter-rouge">Opt</code>, <code class="language-plaintext highlighter-rouge">Freq</code>, SCF tightness, and so on).</li>
-  <li>
-<code class="language-plaintext highlighter-rouge">%pal</code> and <code class="language-plaintext highlighter-rouge">%maxcore</code> control cores and memory (see the next section).</li>
-  <li>
-<code class="language-plaintext highlighter-rouge">* xyz charge mult</code> starts Cartesian coordinates; the block ends with a lone <code class="language-plaintext highlighter-rouge">*</code>.</li>
-  <li>Launch with the full path to the ORCA binary, for example:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>/path/to/orca water.inp <span class="o">&gt;</span> water.out
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<p>London dispersion is critical for organics, noncovalent contacts, and many reaction energetics, yet it is missing from most hybrid functionals (including bare B3LYP and PBE0). Add an empirical correction such as <code class="language-plaintext highlighter-rouge">D3BJ</code> or <code class="language-plaintext highlighter-rouge">D4</code>, or use a functional that already includes nonlocal correlation.</p>
-
-<p>For cluster submission helpers that read <code class="language-plaintext highlighter-rouge">%pal</code> / <code class="language-plaintext highlighter-rouge">%MaxCore</code> from the input, see <a href="/2025/08/01/Using-agustina.html">Using Agustina</a>.</p>
-
-<hr>
-
-<h2 id="recommended-functionals">Recommended functionals</h2>
-
-<p>Practical starting points in ORCA (always with dispersion unless the functional already includes it):</p>
-
-<ul>
-  <li>
-<strong>B3LYP-D3BJ</strong> or <strong>B3LYP-D4</strong> — still a useful everyday hybrid once dispersion is restored (<code class="language-plaintext highlighter-rouge">! B3LYP D3BJ …</code>).</li>
-  <li>
-<strong>PBE0-D3BJ</strong> or <strong>PBE0-D4</strong> — a solid global hybrid for many main-group problems (<code class="language-plaintext highlighter-rouge">! PBE0 D3BJ …</code>).</li>
-  <li>
-<strong>ωB97X-V</strong> — among the strongest hybrids in broad benchmarks; the VV10 nonlocal correlation covers dispersion, so do not add a separate <code class="language-plaintext highlighter-rouge">D3</code>/<code class="language-plaintext highlighter-rouge">D4</code> term. Caveat: ORCA does not provide an analytical Hessian for ωB97X-V yet, so geometry/TS work that needs second derivatives typically requires <code class="language-plaintext highlighter-rouge">NumFreq</code> (much more expensive).</li>
-</ul>
-
-<p>Useful DFT benchmark and method papers:</p>
-
-<ul>
-  <li>
-<a href="https://doi.org/10.1039/C7CP04913C">GMTKN55</a> (Goerigk et al., 2017) — large main-group thermochemistry, kinetics, and noncovalent-interaction benchmark of many dispersion-corrected DFAs.</li>
-  <li>
-<a href="https://doi.org/10.1002/wcms.30">Grimme, WIREs Comput. Mol. Sci. (2011)</a> — review of London dispersion corrections to DFT and why they matter beyond weakly bound dimers.</li>
-  <li>
-<a href="https://doi.org/10.1063/1.3382344">Grimme et al., J. Chem. Phys. (2010)</a> — DFT-D3 parametrization (the usual <code class="language-plaintext highlighter-rouge">D3</code>/<code class="language-plaintext highlighter-rouge">D3BJ</code> family used in everyday calculations).</li>
-  <li>
-<a href="https://doi.org/10.1039/C3CP54374A">Mardirossian and Head-Gordon, PCCP (2014)</a> — original ωB97X-V paper (range-separated hybrid with VV10 nonlocal correlation).</li>
-  <li>
-<a href="https://doi.org/10.1002/cphc.201100826">Goerigk et al., ChemPhysChem (2011)</a> — dispersion-corrected DFT on the S66/S66x8 noncovalent interaction sets.</li>
-</ul>
-
-<hr>
-
-<h2 id="recommended-basis-sets">Recommended basis sets</h2>
-
-<p>Prefer the Karlsruhe <strong>def2</strong> family for DFT work:</p>
-
-<ul>
-  <li>
-<strong>def2-SVP</strong> — economical split-valence polarized set for geometry optimizations, frequencies, and exploratory energetics.</li>
-  <li>
-<strong>def2-TZVP</strong> — triple-zeta polarized set for more converged single points or final energetics once the structure is settled.</li>
-</ul>
-
-<p>These sets were designed with DFT (and HF/MP2) in mind, are balanced across much of the periodic table, and pair heavier elements with Stuttgart effective core potentials so you do not need a separate all-electron treatment for most mid-to-late-row atoms. The examples in this guide use <code class="language-plaintext highlighter-rouge">def2-SVP</code> for routine jobs and <code class="language-plaintext highlighter-rouge">def2-TZVP</code> when a larger basis is illustrated.</p>
-
-<p>The original design and accuracy assessment across a large molecular test set is in <a href="https://doi.org/10.1039/B508541A">Weigend and Ahlrichs (2005)</a>.</p>
-
-<hr>
-
-<h2 id="parallelism-and-memory">Parallelism and memory</h2>
-
-<p>ORCA parallelizes with MPI. <code class="language-plaintext highlighter-rouge">%pal nprocs N</code> asks for <code class="language-plaintext highlighter-rouge">N</code> processes. <code class="language-plaintext highlighter-rouge">%maxcore</code> is the memory dedicated to <strong>each</strong> process (in MB), not the total for the job.</p>
-
-<p>Rough total memory:</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>total ≈ nprocs × maxcore
-</code></pre></div></div>
-
-<p>Match these to your scheduler allocation. If you request 8 processes and <code class="language-plaintext highlighter-rouge">%maxcore 2000</code>, plan on roughly 16 GB of RAM for ORCA alone, plus a little headroom for the OS and the queue. Oversubscribing (more processes than memory allows) is a common cause of <code class="language-plaintext highlighter-rouge">Please increase MaxCore</code> aborts—covered in the troubleshooting half below.</p>
-
-<p>Example that asks for 4 cores and 2 GB per process:</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%pal
-  nprocs 4
-end
-%maxcore 2000
-</code></pre></div></div>
-
-<p>If memory is tight, reduce <code class="language-plaintext highlighter-rouge">nprocs</code> before cutting the method or basis. More cores do not always help if each process is starved of memory.</p>
-
-<hr>
-
-<h2 id="optimizing-minima">Optimizing minima</h2>
-
-<p>For a ground-state minimum, add <code class="language-plaintext highlighter-rouge">Opt</code> to the keyword line. A common pattern is to optimize and then compute frequencies in one job so you can confirm there are no imaginary modes:</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-SVP Opt Freq TightSCF
-</code></pre></div></div>
-
-<p>Useful <code class="language-plaintext highlighter-rouge">%geom</code> controls when a structure is floppy or slow to settle:</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%geom
-  MaxIter 100
-  coordsys redundant
-  cartfallback true
-end
-</code></pre></div></div>
-
-<p>What “done” looks like: the optimization reports that the geometry has converged, the SCF is tight, and a subsequent frequency job shows <strong>zero</strong> imaginary frequencies for a true minimum. If the optimizer stalls or the structure looks chemically wrong, see the geometry sections in the troubleshooting half rather than blindly raising <code class="language-plaintext highlighter-rouge">MaxIter</code>.</p>
-
-<hr>
-
-<h2 id="optimizing-transition-states">Optimizing transition states</h2>
-
-<p>A transition state (TS) maximizes the energy along one Hessian mode and minimizes along the others. In ORCA that is <code class="language-plaintext highlighter-rouge">OptTS</code>, usually with an explicit Hessian and mode selection:</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-SVP OptTS Freq TightSCF
-
-%geom
-  TS_Mode {M 0} end
-  Calc_Hess true
-  Recalc_Hess 5
-end
-</code></pre></div></div>
-
-<p>Practical checklist:</p>
+<p>In HF and DFT, the electronic energy depends on the occupied molecular orbitals (or equivalently the density matrix). Those orbitals are eigenfunctions of an effective one-electron Hamiltonian—the Fock matrix in HF, the Kohn–Sham (KS) matrix in DFT—which itself depends on the density. The SCF procedure closes that loop:</p>
 
 <ol>
-  <li>Start from a good guess (often from a relaxed surface scan along the reaction coordinate).</li>
-  <li>Compute or refresh the Hessian (<code class="language-plaintext highlighter-rouge">Calc_Hess</code> / <code class="language-plaintext highlighter-rouge">Recalc_Hess</code>) so the optimizer follows the intended mode.</li>
-  <li>After convergence, run frequencies and confirm <strong>exactly one</strong> imaginary mode that matches the reaction coordinate.</li>
+  <li>Start from an initial density (or orbital guess).</li>
+  <li>Build the Fock/KS matrix from that density.</li>
+  <li>Diagonalize (or otherwise update orbitals) to get a new density.</li>
+  <li>Repeat until the density, energy, and orbital gradient stop changing within a chosen threshold.</li>
 </ol>
 
-<p>If the job collapses to a minimum or follows the wrong mode, the TS troubleshooting section below covers the usual next steps.</p>
+<p>Almost every downstream result—geometry steps, frequencies, and most molecular properties—assumes a converged SCF. A “finished” optimization with a poorly converged electronic structure is not trustworthy.</p>
 
-<p>When a calculation fails or behaves oddly, use the catalog below. Search for the error text or the symptom that matches your output.</p>
+<h2 id="cost-and-basis-set-scaling">Cost and basis-set scaling</h2>
 
-<hr>
+<p>Let (N) be the number of basis functions. The formal bottleneck for conventional HF is the two-electron repulsion integrals, which scale as (O(N^4)). In practice, integral screening and locality cut this down for large molecules, but the cost still rises steeply when you enlarge the basis (more functions per atom) or the system size.</p>
 
-<h2 id="troubleshooting-common-issues">Troubleshooting common issues</h2>
+<p>A few useful rules of thumb:</p>
 
-<hr>
-
-<h2 id="memory-and-resource-issues">Memory and Resource Issues</h2>
-
-<h3 id="please-increase-maxcore">“Please increase MaxCore”</h3>
-
-<p><strong>Common symptom:</strong></p>
 <ul>
-  <li>ORCA aborts with a message similar to <code class="language-plaintext highlighter-rouge">Please increase MaxCore</code>
-</li>
+  <li>Doubling the basis-set quality (e.g. double-ζ → triple-ζ) increases (N) and therefore each Fock build, often by more than a factor of two.</li>
+  <li>Hybrid DFT pays for Coulomb-like terms plus a fraction of exact (HF-like) exchange; exact exchange is usually the expensive piece compared with a pure GGA.</li>
+  <li>A larger basis also makes a bad initial guess more painful: each cycle is heavier, and you may need more cycles before DIIS or related accelerators settle.</li>
 </ul>
 
-<p><strong>What the official guide says:</strong>
-The ORCA FAQ states that the SCF may need more memory than the user-specified <code class="language-plaintext highlighter-rouge">MaxCore</code> and that newer ORCA versions estimate the memory requirement early in the calculation. If the estimate is larger than <code class="language-plaintext highlighter-rouge">MaxCore</code> but smaller than <code class="language-plaintext highlighter-rouge">2*MaxCore</code>, ORCA gives a warning and continues. If it is larger than <code class="language-plaintext highlighter-rouge">2*MaxCore</code>, the job aborts. The FAQ also notes that <code class="language-plaintext highlighter-rouge">MaxCore</code> is the memory dedicated to each process, not the total job memory.</p>
+<p>Memory and disk pressure grow with (N) as well, which is why how integrals are handled matters in practice.</p>
 
-<p><strong>Practical fixes:</strong></p>
+<h2 id="numerical-xc-grids">Numerical XC grids</h2>
 
-<ol>
-  <li>Increase the per-process memory in the job script or launch command.</li>
-  <li>Reduce the number of MPI processes if memory per process is too low.</li>
-  <li>Re-check whether the job is overcommitted on memory.</li>
-</ol>
+<p>In KS DFT, the exchange–correlation (XC) energy and potential are not evaluated as analytic AO integrals the way Coulomb and exact exchange are. Instead, the density (and its derivatives for GGAs and beyond) is sampled on a real-space quadrature grid—typically a union of atom-centered grids with radial and angular points—and the XC contribution is integrated numerically into the KS matrix <strong>every SCF cycle</strong>.</p>
 
-<p>Example:</p>
+<p>Practical consequences:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-TZVP TightSCF
-%maxcore 2000
-</code></pre></div></div>
-
-<hr>
-
-<h2 id="scf-convergence-issues">SCF Convergence Issues</h2>
-
-<p>For the conceptual background (guesses, DIIS, SOSCF, direct vs conventional integrals), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. The recipes below are ORCA-specific.</p>
-
-<h3 id="scf-does-not-converge">SCF does not converge</h3>
-
-<p><strong>Common symptoms:</strong></p>
 <ul>
-  <li>the energy oscillates or drifts for many cycles</li>
-  <li>the calculation reaches many iterations without stabilizing</li>
-  <li>the orbital gradient remains large</li>
+  <li>Grid work scales roughly with (number of grid points) × (basis functions that have appreciable weight at those points). Denser grids raise both cost and the numerical noise floor of the energy.</li>
+  <li>Grids are a DFT-specific cost channel, separate from whether AO integrals are stored on disk or recomputed.</li>
+  <li>Coarser grids are often acceptable early in the SCF; the final energy—and especially gradients—usually need a denser grid so that numerical noise does not masquerade as forces or stall a geometry optimization.</li>
+  <li>If two “identical” DFT jobs differ only in grid settings, small energy differences are expected; do not over-interpret microhartree changes across grid changes.</li>
 </ul>
 
-<p><strong>What the official guide says:</strong>
-The ORCA SCF convergence chapter explains that convergence is a major practical issue in quantum chemistry. It documents convergence tolerances, damping, level shifting, DIIS, and the TRAH algorithm. It also notes that if the integral accuracy is worse than the SCF tolerance, a direct SCF calculation cannot converge properly.</p>
+<h2 id="integrals-in-practice-conventional-vs-direct">Integrals in practice: conventional vs direct</h2>
 
-<p><strong>Practical fixes:</strong></p>
+<p>Two classical strategies exist for the AO two-electron integrals:</p>
 
-<ol>
-  <li>Start with a more robust SCF level:
-    <div class="language-text highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>! TightSCF
-</code></pre></div>    </div>
-    <p>or</p>
-    <div class="language-text highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>! SlowConv
-</code></pre></div>    </div>
-  </li>
-  <li>Use damping or level shifting early in a difficult calculation:
-    <div class="language-text highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>%scf
-  CNVDamp true
-  DampFac 0.7
-  DampErr 0.001
-end
-</code></pre></div>    </div>
-  </li>
+<ul>
   <li>
-    <p>Increase the maximum number of SCF cycles if needed.</p>
-  </li>
-  <li>For hard cases, allow the automatic TRAH fallback:
-    <div class="language-text highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>%scf
-  AutoTRAH true
-end
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<p>The SCF manual specifically states that TRAH is useful when the conventional SCF procedures struggle.</p>
-
-<h3 id="open-shell-or-near-degenerate-systems">Open-shell or near-degenerate systems</h3>
-
-<p><strong>Common symptoms:</strong></p>
-<ul>
-  <li>convergence stalls for radicals or transition-metal complexes</li>
-  <li>the SCF oscillates between qualitatively different solutions</li>
-  <li>the result is numerically stable but chemically questionable</li>
+<strong>Conventional (in-disk):</strong> compute integrals once, store them on disk, and read them back each SCF cycle. Throughput is then limited by disk space and I/O bandwidth. This can be attractive for small jobs with many SCF cycles when scratch storage is fast and large enough.</li>
+  <li>
+<strong>Direct:</strong> recompute integrals (or screened batches of them) every iteration instead of storing the full set. The trade-off shifts toward CPU (and memory for buffers), which is usually preferable once (N) is large enough that the integral file would be huge or the I/O would dominate.</li>
 </ul>
 
-<p><strong>What the official guide says:</strong>
-The ORCA FAQ and SCF section emphasize that open-shell systems, especially transition-metal complexes, can be difficult. The guidance recommends checking <code class="language-plaintext highlighter-rouge">S^2</code>, UCO overlaps, and spin populations to confirm that the solution is meaningful.</p>
+<p>Modern defaults lean toward direct (or semi-direct) SCF for anything beyond tiny calculations. Whatever the mode, the integral (and grid) accuracy must stay tighter than the SCF convergence threshold: you cannot converge the density below the noise in the Fock/KS matrix.</p>
 
-<p><strong>Practical fixes:</strong></p>
+<h2 id="initial-guesses">Initial guesses</h2>
 
-<ol>
-  <li>Confirm the charge and multiplicity are chemically reasonable.</li>
-  <li>Try a better initial guess.</li>
-  <li>Use a more restrictive convergence setting for difficult electronic structures.</li>
-  <li>Inspect the resulting electronic structure rather than trusting a “converged” number blindly.</li>
-</ol>
-
-<hr>
-
-<h2 id="geometry-optimization-issues">Geometry Optimization Issues</h2>
-
-<h3 id="optimization-stalls-or-fails-to-converge">Optimization stalls or fails to converge</h3>
-
-<p><strong>Common symptoms:</strong></p>
-<ul>
-  <li>the optimizer cycles without reaching a stable structure</li>
-  <li>the job keeps stepping but never satisfies geometry thresholds</li>
-  <li>a structure appears optimized but is still badly distorted</li>
-</ul>
-
-<p><strong>What the official guide says:</strong>
-The ORCA geometry optimization chapter explains that optimization can be difficult even when the underlying method is valid. It also notes that floppy structures with many rotations around single bonds or soft dihedral modes are especially challenging. The manual describes the role of the initial Hessian, step type, and coordinate system in convergence.</p>
-
-<p><strong>Practical fixes:</strong></p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%geom
-  MaxIter 50
-  Step qn
-  Trust 0.3
-  coordsys redundant
-  cartfallback true
-end
-</code></pre></div></div>
-
-<ol>
-  <li>Check the starting geometry.</li>
-  <li>Use a better initial Hessian or a more suitable coordinate system.</li>
-  <li>If the optimization is problematic, revisit the starting structure instead of assuming the failure is purely numerical.</li>
-</ol>
-
-<h3 id="transition-state-optimization-fails-or-follows-the-wrong-mode">Transition state optimization fails or follows the wrong mode</h3>
-
-<p><strong>Common symptoms:</strong></p>
-<ul>
-  <li>the calculation converges to a minimum instead of a transition state</li>
-  <li>the optimizer identifies the wrong reaction coordinate</li>
-  <li>multiple negative modes remain</li>
-</ul>
-
-<p><strong>What the official guide says:</strong>
-The ORCA geometry optimization section explains that TS optimization is a separate problem: it maximizes the energy along one Hessian eigenmode while minimizing along the others. It also discusses <code class="language-plaintext highlighter-rouge">TS_Mode</code>, Hessian updates, and relaxed scans for TS optimization.</p>
-
-<p><strong>Practical fixes:</strong></p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! OptTS
-%geom
-  TS_Mode {M 0} end
-  Calc_Hess true
-  Recalc_Hess 5
-end
-</code></pre></div></div>
-
-<ol>
-  <li>Use an explicit TS setup.</li>
-  <li>Use a relaxed surface scan to locate the relevant reaction coordinate before TS optimization.</li>
-  <li>Confirm that the final structure has exactly one imaginary mode.</li>
-</ol>
-
-<h3 id="atoms-merge-into-each-other-during-optimization">Atoms merge into each other during optimization</h3>
-
-<p><strong>Common symptom:</strong></p>
-<ul>
-  <li>neighboring atoms collapse into one another during optimization</li>
-</ul>
-
-<p><strong>What the official guide says:</strong>
-The ORCA FAQ explicitly states that this usually occurs due to a poor or wrong initial molecular-orbital guess or a bad basis-set definition on the relevant atoms. The advice is to check the basis set on the problematic atoms and then the corresponding MOs.</p>
-
-<p>This is a good example of an ORCA-specific issue: the problem is not a generic optimizer bug, but a quality-of-initial-guess and basis-definition issue.</p>
-
-<hr>
-
-<h2 id="frequency-calculation-issues">Frequency Calculation Issues</h2>
-
-<h3 id="frequencies-fail-when-the-wavefunction-is-not-converged">Frequencies fail when the wavefunction is not converged</h3>
-
-<p><strong>Common symptoms:</strong></p>
-<ul>
-  <li>the job stops before printing a frequency analysis</li>
-  <li>a frequency calculation fails just after a geometry optimization</li>
-  <li>the Hessian is not trusted because the SCF never reached a stable state</li>
-</ul>
-
-<p><strong>What the official guide says:</strong>
-The SCF chapter is explicit: properties and numerical calculations, including <code class="language-plaintext highlighter-rouge">NumGrad</code> and <code class="language-plaintext highlighter-rouge">NumFreq</code>, are not performed on non-converged wavefunctions.</p>
-
-<p><strong>Practical fixes:</strong></p>
-
-<ol>
-  <li>Ensure the SCF is converged before asking for frequencies.</li>
-  <li>Use a tight SCF and a well-converged geometry before <code class="language-plaintext highlighter-rouge">Freq</code>.</li>
-  <li>If necessary, optimize first and then compute frequencies in the same workflow:
-    <div class="language-text highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-TZVP Opt Freq
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<hr>
-
-<h2 id="file-and-io-problems">File and I/O Problems</h2>
-
-<h3 id="moread-says-that-no-orbitals-were-found-in-the-gbw-file">MOREAD says that no orbitals were found in the .gbw file</h3>
-
-<p><strong>Common symptom:</strong></p>
-<ul>
-  <li>ORCA reports that no orbitals are found when using <code class="language-plaintext highlighter-rouge">MOREAD</code>
-</li>
-</ul>
-
-<p><strong>What the official guide says:</strong>
-The ORCA FAQ explains that ORCA writes the <code class="language-plaintext highlighter-rouge">.gbw</code> file immediately after reading the geometry and basis set information. If a stale <code class="language-plaintext highlighter-rouge">.gbw</code> file with the same basename remains in the working directory, it can be overwritten or interfere with the current calculation. The recommendation is to rename the old file before rerunning.</p>
-
-<p><strong>Practical fix:</strong></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv </span>oldjob.gbw oldjob.gbw.old
-</code></pre></div></div>
-
-<h3 id="old-inputs-stop-working-after-a-version-upgrade">Old inputs stop working after a version upgrade</h3>
-
-<p><strong>Common symptom:</strong></p>
-<ul>
-  <li>a working input from an older ORCA version fails after installing a new version</li>
-</ul>
-
-<p><strong>What the official guide says:</strong>
-The FAQ explicitly states that keywords and defaults may change between ORCA versions, and the same input may give slightly different results or fail entirely. The recommendation is to consult the current manual and release notes instead of assuming the old input remains valid.</p>
-
-<hr>
-
-<h2 id="installation-and-launch-issues">Installation and Launch Issues</h2>
-
-<h3 id="orca-is-installed-but-the-program-does-not-start">ORCA is installed but the program does not start</h3>
-
-<p><strong>Common symptoms:</strong></p>
-<ul>
-  <li>the shell cannot find the ORCA executable</li>
-  <li>the binary appears installed but no calculation starts</li>
-  <li>the job exits immediately without writing output</li>
-</ul>
-
-<p><strong>What the official guide says:</strong>
-The FAQ explains that ORCA is invoked from the command line on all platforms and gives the standard launch pattern:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;full orca binary folder path&gt;/orca example.inp <span class="o">&gt;</span> example.out
-</code></pre></div></div>
-
-<p>It also explains the installation process for Linux/macOS: the <code class="language-plaintext highlighter-rouge">.run</code> installer is made executable with <code class="language-plaintext highlighter-rouge">chmod a+x</code>, followed by execution of the installation script.</p>
-
-<p><strong>Practical fixes:</strong></p>
-
-<ol>
-  <li>Verify that the ORCA executable is on <code class="language-plaintext highlighter-rouge">PATH</code>.</li>
-  <li>Check that the working directory is the one expected by the script.</li>
-  <li>Run a minimal test calculation before moving to a large job.</li>
-</ol>
-
-<hr>
-
-<h2 id="a-good-orca-triage-checklist">A good ORCA triage checklist</h2>
+<p>The first density decides how hard the early SCF cycles will be. Common options:</p>
 
 <ul>
-  <li>Check the SCF convergence before trusting gradients, Hessians, or frequencies.</li>
-  <li>If ORCA says “Please increase MaxCore,” confirm that the limit is per process.</li>
-  <li>For difficult systems, first try <code class="language-plaintext highlighter-rouge">TightSCF</code>, damping, or <code class="language-plaintext highlighter-rouge">AutoTRAH</code>.</li>
-  <li>For TS optimizations, verify the Hessian and reaction mode.</li>
-  <li>For <code class="language-plaintext highlighter-rouge">MOREAD</code>, ensure stale <code class="language-plaintext highlighter-rouge">.gbw</code> files are not colliding with the new job.</li>
-  <li>If the input was written for an older version, re-check the current manual before debugging deeper.</li>
+  <li>
+<strong>Core Hamiltonian / minimal Hückel-like guesses</strong> — cheap and often crude; fine for simple closed-shell organics, fragile for metals or open shells.</li>
+  <li>
+<strong>Superposition of atomic densities (SAD) and related atomic guesses</strong> — usually a much better starting density for molecules.</li>
+  <li>
+<strong>Reading orbitals from a previous calculation</strong> — often the best choice when the geometry or method changed only slightly (optimization steps, basis upgrades, or restarting a failed job).</li>
+  <li>
+<strong>Open-shell tricks</strong> — mixing HOMO/LUMO character or breaking α/β symmetry can help land on a broken-symmetry or diradicaloid solution instead of collapsing to a closed-shell state.</li>
 </ul>
 
-<hr>
+<p>A good guess often saves more wall time than raising the maximum number of cycles. A bad guess can send the SCF into oscillation between qualitatively different electronic structures.</p>
 
-<h2 id="sources">Sources</h2>
+<h2 id="getting-to-convergence">Getting to convergence</h2>
+
+<p>Plain Roothaan–Hall iteration (build Fock/KS → diagonalize → repeat) frequently oscillates: each new density overcorrects the previous one. Production codes therefore accelerate and stabilize the update:</p>
 
 <ul>
-  <li>ORCA FAQ: https://www.faccts.de/docs/orca/6.0/manual/contents/faq.html</li>
-  <li>ORCA SCF convergence: https://www.faccts.de/docs/orca/6.0/manual/contents/detailed/scfconv.html</li>
-  <li>ORCA geometry optimization: https://www.faccts.de/docs/orca/6.0/manual/contents/detailed/geomopt.html</li>
-  <li>ORCA installation and startup: https://www.faccts.de/docs/orca/6.0/manual/contents/faq.html</li>
+  <li>
+<strong>Damping and level shifting</strong> — mix old and new densities, or shift virtual levels, to damp oscillations early on.</li>
+  <li>
+<strong>DIIS (Direct Inversion in the Iterative Subspace)</strong> — store recent Fock/KS matrices and error vectors (e.g. the orbital gradient) and extrapolate a linear combination that drives the error toward zero. This is the workhorse accelerator for routine SCF.</li>
+  <li>
+<strong>SOSCF / second-order orbital optimization</strong> — treat orbital rotations more like a Newton step using an approximate orbital Hessian. Useful when DIIS stalls, especially for difficult open-shell or near-degenerate cases.</li>
+  <li>
+<strong>Quadratic or trust-region fallbacks</strong> — last-resort algorithms in some packages when standard DIIS/SOSCF paths fail.</li>
 </ul>
 
-<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>
+<p>A practical mental order of operations: start from a sensible guess, let DIIS (the usual default) work, add damping or level shift if the energy oscillates, and only then escalate to second-order or package-specific robust SCF modes. Tightening thresholds without fixing the electronic-structure problem mostly burns cycles.</p>
+
+<h2 id="analytical-scf-gradients">Analytical SCF gradients</h2>
+
+<p>Once the HF or DFT density is converged, nuclear gradients with respect to atomic coordinates can be evaluated <strong>analytically</strong>. That is much cheaper than numerical differentiation, which would require on the order of (3N_\mathrm{atoms}) extra energy calculations (or twice that for central differences).</p>
+
+<p>An analytical SCF gradient is typically on the order of <strong>one extra SCF-like step</strong> after convergence. The main pieces are:</p>
+
+<ul>
+  <li>derivatives of the AO integrals with respect to nuclear positions,</li>
+  <li>XC contributions on the grid, including grid-weight / grid-center derivative terms in DFT,</li>
+  <li>Pulay terms that appear because the basis functions move with the nuclei (basis-set incompleteness / atom-centered basis effects).</li>
+</ul>
+
+<p>Cost still tracks basis-set size in the same broad way as the energy: larger (N) means heavier derivative-integral and XC work. Gradients are also more sensitive to a loose SCF or a coarse XC grid than a rough single-point energy is—noisy forces slow or mislead geometry optimizations even when the energy looks “almost” converged.</p>
+
+<h2 id="where-to-go-next">Where to go next</h2>
+
+<p>For keyword-level SCF troubleshooting in the packages used in the group:</p>
+
+<ul>
+  <li><a href="/2026/01/01/ORCA-tips-and-troubleshooting.html#scf-convergence-issues">ORCA Basics and Troubleshooting — SCF Convergence Issues</a></li>
+  <li><a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html#scf-convergence-issues">Gaussian Basics and Troubleshooting — SCF Convergence Issues</a></li>
+</ul>
   </section>
 
   
@@ -1048,17 +697,12 @@ The FAQ explains that ORCA is invoked from the command line on all platforms and
   <span>
     
       <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
-      <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">
-        Gaussian Basics and Troubleshooting
+      <a href="/2026/10/05/Local-conda-and-vscode-setup.html">
+        Local Conda and VS Code Setup
       </a>
     
   </span>
   <span>
-    
-      Next post <i class="icon fa-solid fa-angle-right"></i><br>
-      <a href="/2026/01/22/Vi-and-vim-basics.html">
-        Vi and Vim Basics
-      </a>
     
   </span>
 </div>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-10-05T08:47:33+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Local Conda and VS Code Setup</title><link href="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html" rel="alternate" type="text/html" title="Local Conda and VS Code Setup" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-05T08:46:26+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html"><![CDATA[<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-10-05T08:49:29+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Local Conda and VS Code Setup</title><link href="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html" rel="alternate" type="text/html" title="Local Conda and VS Code Setup" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-05T08:48:28+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html"><![CDATA[<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
 
 <p>This guide walks you through installing Miniconda and Visual Studio Code on your own computer, creating a dedicated Conda environment, installing packages inside it, and running Python from that environment in VS Code.</p>
 
@@ -291,7 +291,109 @@ python hello.py
 
 <p>Keep one habit from day one: activate the correct environment before installing packages or running project code. If the prompt does not show <code class="language-plaintext highlighter-rouge">(myenv)</code>, pause and activate first.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="python," /><category term="conda," /><category term="vscode" /><summary type="html"><![CDATA[Local Conda and VS Code Setup]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T08:46:26+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="python," /><category term="conda," /><category term="vscode" /><summary type="html"><![CDATA[Local Conda and VS Code Setup]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SCF in Practice</title><link href="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html" rel="alternate" type="text/html" title="SCF in Practice" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-05T08:48:28+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/SCF-in-practice</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html"><![CDATA[<h1 id="scf-in-practice">SCF in Practice</h1>
+
+<p>This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure as used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost, how integrals and XC grids enter, how jobs are started and converged, and what an analytical gradient costs relative to the energy. For program-specific keywords and failure recipes, see the <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA</a> and <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian</a> guides.</p>
+
+<h2 id="what-the-scf-loop-is">What the SCF loop is</h2>
+
+<p>In HF and DFT, the electronic energy depends on the occupied molecular orbitals (or equivalently the density matrix). Those orbitals are eigenfunctions of an effective one-electron Hamiltonian—the Fock matrix in HF, the Kohn–Sham (KS) matrix in DFT—which itself depends on the density. The SCF procedure closes that loop:</p>
+
+<ol>
+  <li>Start from an initial density (or orbital guess).</li>
+  <li>Build the Fock/KS matrix from that density.</li>
+  <li>Diagonalize (or otherwise update orbitals) to get a new density.</li>
+  <li>Repeat until the density, energy, and orbital gradient stop changing within a chosen threshold.</li>
+</ol>
+
+<p>Almost every downstream result—geometry steps, frequencies, and most molecular properties—assumes a converged SCF. A “finished” optimization with a poorly converged electronic structure is not trustworthy.</p>
+
+<h2 id="cost-and-basis-set-scaling">Cost and basis-set scaling</h2>
+
+<p>Let (N) be the number of basis functions. The formal bottleneck for conventional HF is the two-electron repulsion integrals, which scale as (O(N^4)). In practice, integral screening and locality cut this down for large molecules, but the cost still rises steeply when you enlarge the basis (more functions per atom) or the system size.</p>
+
+<p>A few useful rules of thumb:</p>
+
+<ul>
+  <li>Doubling the basis-set quality (e.g. double-ζ → triple-ζ) increases (N) and therefore each Fock build, often by more than a factor of two.</li>
+  <li>Hybrid DFT pays for Coulomb-like terms plus a fraction of exact (HF-like) exchange; exact exchange is usually the expensive piece compared with a pure GGA.</li>
+  <li>A larger basis also makes a bad initial guess more painful: each cycle is heavier, and you may need more cycles before DIIS or related accelerators settle.</li>
+</ul>
+
+<p>Memory and disk pressure grow with (N) as well, which is why how integrals are handled matters in practice.</p>
+
+<h2 id="numerical-xc-grids">Numerical XC grids</h2>
+
+<p>In KS DFT, the exchange–correlation (XC) energy and potential are not evaluated as analytic AO integrals the way Coulomb and exact exchange are. Instead, the density (and its derivatives for GGAs and beyond) is sampled on a real-space quadrature grid—typically a union of atom-centered grids with radial and angular points—and the XC contribution is integrated numerically into the KS matrix <strong>every SCF cycle</strong>.</p>
+
+<p>Practical consequences:</p>
+
+<ul>
+  <li>Grid work scales roughly with (number of grid points) × (basis functions that have appreciable weight at those points). Denser grids raise both cost and the numerical noise floor of the energy.</li>
+  <li>Grids are a DFT-specific cost channel, separate from whether AO integrals are stored on disk or recomputed.</li>
+  <li>Coarser grids are often acceptable early in the SCF; the final energy—and especially gradients—usually need a denser grid so that numerical noise does not masquerade as forces or stall a geometry optimization.</li>
+  <li>If two “identical” DFT jobs differ only in grid settings, small energy differences are expected; do not over-interpret microhartree changes across grid changes.</li>
+</ul>
+
+<h2 id="integrals-in-practice-conventional-vs-direct">Integrals in practice: conventional vs direct</h2>
+
+<p>Two classical strategies exist for the AO two-electron integrals:</p>
+
+<ul>
+  <li><strong>Conventional (in-disk):</strong> compute integrals once, store them on disk, and read them back each SCF cycle. Throughput is then limited by disk space and I/O bandwidth. This can be attractive for small jobs with many SCF cycles when scratch storage is fast and large enough.</li>
+  <li><strong>Direct:</strong> recompute integrals (or screened batches of them) every iteration instead of storing the full set. The trade-off shifts toward CPU (and memory for buffers), which is usually preferable once (N) is large enough that the integral file would be huge or the I/O would dominate.</li>
+</ul>
+
+<p>Modern defaults lean toward direct (or semi-direct) SCF for anything beyond tiny calculations. Whatever the mode, the integral (and grid) accuracy must stay tighter than the SCF convergence threshold: you cannot converge the density below the noise in the Fock/KS matrix.</p>
+
+<h2 id="initial-guesses">Initial guesses</h2>
+
+<p>The first density decides how hard the early SCF cycles will be. Common options:</p>
+
+<ul>
+  <li><strong>Core Hamiltonian / minimal Hückel-like guesses</strong> — cheap and often crude; fine for simple closed-shell organics, fragile for metals or open shells.</li>
+  <li><strong>Superposition of atomic densities (SAD) and related atomic guesses</strong> — usually a much better starting density for molecules.</li>
+  <li><strong>Reading orbitals from a previous calculation</strong> — often the best choice when the geometry or method changed only slightly (optimization steps, basis upgrades, or restarting a failed job).</li>
+  <li><strong>Open-shell tricks</strong> — mixing HOMO/LUMO character or breaking α/β symmetry can help land on a broken-symmetry or diradicaloid solution instead of collapsing to a closed-shell state.</li>
+</ul>
+
+<p>A good guess often saves more wall time than raising the maximum number of cycles. A bad guess can send the SCF into oscillation between qualitatively different electronic structures.</p>
+
+<h2 id="getting-to-convergence">Getting to convergence</h2>
+
+<p>Plain Roothaan–Hall iteration (build Fock/KS → diagonalize → repeat) frequently oscillates: each new density overcorrects the previous one. Production codes therefore accelerate and stabilize the update:</p>
+
+<ul>
+  <li><strong>Damping and level shifting</strong> — mix old and new densities, or shift virtual levels, to damp oscillations early on.</li>
+  <li><strong>DIIS (Direct Inversion in the Iterative Subspace)</strong> — store recent Fock/KS matrices and error vectors (e.g. the orbital gradient) and extrapolate a linear combination that drives the error toward zero. This is the workhorse accelerator for routine SCF.</li>
+  <li><strong>SOSCF / second-order orbital optimization</strong> — treat orbital rotations more like a Newton step using an approximate orbital Hessian. Useful when DIIS stalls, especially for difficult open-shell or near-degenerate cases.</li>
+  <li><strong>Quadratic or trust-region fallbacks</strong> — last-resort algorithms in some packages when standard DIIS/SOSCF paths fail.</li>
+</ul>
+
+<p>A practical mental order of operations: start from a sensible guess, let DIIS (the usual default) work, add damping or level shift if the energy oscillates, and only then escalate to second-order or package-specific robust SCF modes. Tightening thresholds without fixing the electronic-structure problem mostly burns cycles.</p>
+
+<h2 id="analytical-scf-gradients">Analytical SCF gradients</h2>
+
+<p>Once the HF or DFT density is converged, nuclear gradients with respect to atomic coordinates can be evaluated <strong>analytically</strong>. That is much cheaper than numerical differentiation, which would require on the order of (3N_\mathrm{atoms}) extra energy calculations (or twice that for central differences).</p>
+
+<p>An analytical SCF gradient is typically on the order of <strong>one extra SCF-like step</strong> after convergence. The main pieces are:</p>
+
+<ul>
+  <li>derivatives of the AO integrals with respect to nuclear positions,</li>
+  <li>XC contributions on the grid, including grid-weight / grid-center derivative terms in DFT,</li>
+  <li>Pulay terms that appear because the basis functions move with the nuclei (basis-set incompleteness / atom-centered basis effects).</li>
+</ul>
+
+<p>Cost still tracks basis-set size in the same broad way as the energy: larger (N) means heavier derivative-integral and XC work. Gradients are also more sensitive to a loose SCF or a coarse XC grid than a rough single-point energy is—noisy forces slow or mislead geometry optimizations even when the energy looks “almost” converged.</p>
+
+<h2 id="where-to-go-next">Where to go next</h2>
+
+<p>For keyword-level SCF troubleshooting in the packages used in the group:</p>
+
+<ul>
+  <li><a href="/2026/01/01/ORCA-tips-and-troubleshooting.html#scf-convergence-issues">ORCA Basics and Troubleshooting — SCF Convergence Issues</a></li>
+  <li><a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html#scf-convergence-issues">Gaussian Basics and Troubleshooting — SCF Convergence Issues</a></li>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="scf" /><summary type="html"><![CDATA[SCF in Practice]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T08:48:28+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
 
 <p>If you work on a Linux machine, a remote server, or an HPC system, you will eventually need to edit a configuration file, a shell script, or a short note in the terminal. <code class="language-plaintext highlighter-rouge">vi</code> and <code class="language-plaintext highlighter-rouge">vim</code> are classic tools for exactly that. They are usually installed on Unix-like systems, they work well over SSH, and they do not require a graphical interface.</p>
 
@@ -474,7 +576,7 @@ Ctrl<span class="p">-</span><span class="k">v</span>   Block<span class="p">-</s
 
 <p>Once you know the basics, <code class="language-plaintext highlighter-rouge">vim</code> becomes one of the most useful tools in a Linux workflow: it is fast, flexible, and available almost everywhere.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T08:46:26+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T08:48:28+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
 
 <p>If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.</p>
 
@@ -720,9 +822,9 @@ less notes/example.txt
   <li><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has excellent lessons on the shell, command-line tools, editors, and remote work.</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-05T08:46:26+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-05T08:48:28+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
 
-<p>This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a> guide covers the same topics for ORCA. The error catalog builds on community resources, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
+<p>This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a> guide covers the same topics for ORCA. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. The error catalog builds on community resources, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
 
 <blockquote>
   <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to quickly find specific error messages.</p>
@@ -977,6 +1079,8 @@ If you’re optimizing a transition state but get multiple negative frequencies,
 <hr />
 
 <h2 id="scf-convergence-issues">SCF Convergence Issues</h2>
+
+<p>For the conceptual background (guesses, DIIS, SOSCF, direct vs conventional integrals), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. The recipes below are Gaussian-specific.</p>
 
 <h3 id="scf-not-converging">SCF Not Converging</h3>
 
@@ -1264,9 +1368,9 @@ Some functionals don’t support third-order derivatives needed for hyperpolariz
   <li><strong>Gaussian support</strong>: For licensed users, contact Gaussian Inc. support</li>
 </ol>
 
-<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ORCA Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="ORCA Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-05T08:46:26+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html"><![CDATA[<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
+<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ORCA Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="ORCA Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-05T08:48:28+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html"><![CDATA[<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
 
-<p>This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian Basics and Troubleshooting</a> guide covers the same topics for Gaussian. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.</p>
+<p>This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian Basics and Troubleshooting</a> guide covers the same topics for Gaussian. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.</p>
 
 <blockquote>
   <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to jump to a specific error. The ORCA FAQ and the SCF/geometry sections of the manual are the best reference points for troubleshooting.</p>
@@ -1449,6 +1553,8 @@ The ORCA FAQ states that the SCF may need more memory than the user-specified <c
 <hr />
 
 <h2 id="scf-convergence-issues">SCF Convergence Issues</h2>
+
+<p>For the conceptual background (guesses, DIIS, SOSCF, direct vs conventional integrals), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. The recipes below are ORCA-specific.</p>
 
 <h3 id="scf-does-not-converge">SCF does not converge</h3>
 
@@ -1696,7 +1802,7 @@ The FAQ explains that ORCA is invoked from the command line on all platforms and
   <li>ORCA installation and startup: https://www.faccts.de/docs/orca/6.0/manual/contents/faq.html</li>
 </ul>
 
-<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="orca," /><category term="troubleshooting" /><summary type="html"><![CDATA[ORCA Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-10-05T08:46:26+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
+<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="orca," /><category term="troubleshooting" /><summary type="html"><![CDATA[ORCA Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-10-05T08:48:28+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
 
 <p>Agustina is a High Performance Computing (HPC) center. There are many such centers in the world (a list of the most powerful supercomputers is available in the <a href="https://top500.org/">Top500</a>, in case you are curious).</p>
 
@@ -1822,7 +1928,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 
 <p>Then open a new shell (or <code class="language-plaintext highlighter-rouge">source ~/.bashrc</code>) and retry. You need the <code class="language-plaintext highlighter-rouge">certifi</code> package in the Python that runs at login (usually the base conda env).</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T08:46:26+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T08:48:28+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
 
 <h2 id="foundation--learning-resources">Foundation &amp; Learning Resources</h2>
 <ul>
@@ -1879,7 +1985,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
   <li><a href="https://github.com/cod3licious/ml_exercises">A higher-level set of exercises in machine learning</a> and a full book on the topic</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T08:46:26+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T08:48:28+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
 
 <h2 id="about">About</h2>
 
@@ -2049,7 +2155,7 @@ ssh-add ~/.ssh/id_ed25519
   <li><a href="https://education.github.com/pack">GitHub Student Developer Pack</a> – Free tools for students</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Writing tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Writing-tips.html" rel="alternate" type="text/html" title="Writing tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T08:46:26+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Writing-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Writing-tips.html"><![CDATA[<h1 id="scientific-paper-writing-guidelines">Scientific Paper Writing Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Writing tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Writing-tips.html" rel="alternate" type="text/html" title="Writing tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T08:48:28+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Writing-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Writing-tips.html"><![CDATA[<h1 id="scientific-paper-writing-guidelines">Scientific Paper Writing Guidelines</h1>
 
 <h2 id="about">About</h2>
 
@@ -2302,96 +2408,4 @@ ssh-add ~/.ssh/id_ed25519
   <li><a href="https://stackoverflow.com/questions/44970010/axes-class-set-explicitly-size-width-height-of-axes-in-given-units">Multipanel figures</a></li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Paper Writing Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">General tips for students</title><link href="https://rlaplaza.github.io/2025/07/29/General-guidelines.html" rel="alternate" type="text/html" title="General tips for students" /><published>2025-07-29T00:00:00+00:00</published><updated>2026-10-05T08:46:26+00:00</updated><id>https://rlaplaza.github.io/2025/07/29/General-guidelines</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/29/General-guidelines.html"><![CDATA[<h1 id="general-guidelines-for-masters-and-phd-students">General Guidelines for Master’s and PhD Students</h1>
-
-<h2 id="1-principles">1. Principles</h2>
-
-<p>Science is supposed to be demanding and hard, but also exciting and fun. If you only feel the bad parts, something is not right and we should fix it.</p>
-
-<ul>
-  <li><strong>Supportive Environment</strong>: Aim to create a positive workplace that supports everyone’s professional and personal goals</li>
-  <li><strong>Diversity &amp; Inclusion</strong>: Excellence is independent of background; diverse perspectives in gender, race, ethnicity, orientation, economic status, and other identities are essential for innovation and community wellbeing</li>
-  <li><strong>Addressing Bias</strong>: Everyone has implicit biases that can cause unintentional harm; we must acknowledge them, work to correct them, and be willing to admit mistakes</li>
-  <li><strong>Direct Communication</strong>: Group members are encouraged to discuss concerns privately with me, and I will always try my best to listen empathetically</li>
-</ul>
-
-<h2 id="2-wellness-work-hours-and-expectations">2. Wellness, Work Hours, and Expectations</h2>
-
-<p>Somebody once said that researchers have total flexibility to choose which 60 hours of the week they want to work. Of course, this is a joke (at least for me!), but flexibility can indeed be a blessing or a curse. Some pointers:</p>
-
-<ul>
-  <li><strong>Work-Life Balance</strong>: Flexibility in academia is a feature — use it wisely (overwork ≠ productivity)</li>
-  <li><strong>Remote Work</strong>: Most tasks (e.g., writing, reading, coding) can be done remotely and/or asynchronously, and you can and should use this to your advantage</li>
-  <li><strong>Core Hours</strong>: Aim to be in the office from 9–5 for collaboration and social interaction, otherwise you will miss a lot of the fun</li>
-  <li><strong>Workload</strong>: No expectation to work evenings/weekends, if you feel like you <em>have</em> to, we need to discuss</li>
-  <li><strong>Rhythms</strong>: Expect ups and downs depending on deadlines, take breaks when needed and communicate proactively</li>
-  <li><strong>Support Resources</strong>:
-    <ul>
-      <li><a href="https://intranet.csic.es/igualdad">Effective equality platform</a></li>
-      <li><a href="https://intranet.csic.es/procedimientos_prl">Human resources help</a></li>
-    </ul>
-  </li>
-  <li><strong>Sick Days</strong>: Prioritize health, always</li>
-</ul>
-
-<h2 id="3-holidays-and-vacation">3. Holidays and Vacation</h2>
-
-<p>As above, working longer hours or without a break is probably not very efficient for anyone. Science is hard work and most people are able to do just a few hours of mentally demanding work per day. Luckily, there is always some other boring, crappy thing to do for a few more hours. My advice is to try and make those few hours that matter really effective, so:</p>
-
-<ul>
-  <li><strong>Take Your Time Off</strong>: Fully use your entitled vacation and institute holidays</li>
-  <li><strong>Notification</strong>: Inform me in advance if you are not going to be around for whatever reason</li>
-  <li><strong>Conference Travel</strong>: You’re encouraged to extend conferences with vacation if feasible</li>
-</ul>
-
-<h2 id="4-defining-research-projects">4. Defining Research Projects</h2>
-
-<p>A PhD is not a sequential set of tasks that must be completed in order. However, funding often works that way. You will normally have a main project that will be co-designed based on your skills and interests (and the available funding constraints). If you want to bring up some side-project, here are some pointers:</p>
-
-<ul>
-  <li><strong>Balance</strong>: Assess novelty, risk, and impact</li>
-  <li><strong>Decision Gates</strong>: Use go/no-go milestones to steer project directions</li>
-  <li><strong>Goal Setting</strong>:
-    <ul>
-      <li>Short-term: achievable within weeks/months</li>
-      <li>Long-term: achievable over semesters</li>
-      <li>Visionary: dream-level (5–20 year) impact framing</li>
-    </ul>
-  </li>
-  <li><strong>Publication Path</strong>: Each project should have a clear motivation and audience</li>
-  <li><strong>Efficient Use of Time</strong>: Prioritize projects with the potential for meaningful impact</li>
-  <li><strong>Collaborations</strong>: Strongly encouraged both within and beyond the lab</li>
-  <li><strong>Literature Deep Dives</strong>: Crucial for framing and scoping a successful project</li>
-  <li><strong>Project Selection Philosophy</strong>: See <a href="https://www.cell.com/cell/fulltext/S0092-8674%2824%2900304-0">Michael Fischbach on Choosing Problems</a></li>
-</ul>
-
-<h2 id="5-documenting-work">5. Documenting Work</h2>
-
-<p>We must adhere to the <a href="https://www.go-fair.org/fair-principles/">FAIR</a> principles in our research. Documenting what we do and how we do it is part of it. If done smartly, it does not take much time!</p>
-
-<ul>
-  <li><strong>Why</strong>: Proper documentation supports reproducibility, collaboration, and eventual publications or patents</li>
-  <li><strong>Format</strong>: Use electronic notebooks (e.g., OneNote, Notion)</li>
-  <li><strong>Backup</strong>: <a href="https://saco.csic.es/login">SACO CSIC</a> (100 Gb), other cloud storage providers, GitHub, local NAS</li>
-  <li><strong>Version Control</strong>: Use private GitHub repos for all code-based projects</li>
-  <li><strong>File Naming Convention</strong>: Use: <code class="language-plaintext highlighter-rouge">YYYY MM DD &lt;Name&gt;</code> or <code class="language-plaintext highlighter-rouge">YYYY MM DD HH mm &lt;Name&gt;</code> for frequent drafts</li>
-  <li><strong>Further Reading</strong>: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4565690/">How to Record Research Notes</a></li>
-</ul>
-
-<h2 id="6-literature">6. Literature</h2>
-
-<p>Staying on top of the relevant literature is essential for any research project:</p>
-
-<ul>
-  <li><strong>Responsibility</strong>: You are expected to actively monitor the state-of-the-art in your (sub)area of work</li>
-  <li><strong>Avoid redundancy</strong>: Familiarize yourself with existing work to ensure your project is novel</li>
-  <li><strong>Communication</strong>: Share interesting papers with the group</li>
-  <li><strong>Social Media</strong>: Can be an excellent way of keeping track of what other people are doing, but bear in mind it is designed to be addictive!</li>
-  <li><strong>Summarize</strong>: When possible, summarize main results with bullet points to spark discussion, and organize those in your ELN</li>
-  <li><strong>Google Scholar Alerts</strong>: Set up alerts for keywords and authors relevant to your field (<a href="https://instr.iastate.libguides.com/c.php?g=49445&amp;p=6574188">Learn how here</a>)</li>
-  <li><strong>Reference Manager</strong>: Use tools like <a href="https://www.zotero.org/">Zotero</a> to organize references and export BibTeX entries directly to Overleaf</li>
-  <li><strong>Journal Clubs</strong>: Consider forming small groups to review papers informally</li>
-  <li><strong>Skimming ToCs</strong>: Skim table of contents from key journals</li>
-</ul>
-
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[General Guidelines for Master’s and PhD Students]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Paper Writing Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
