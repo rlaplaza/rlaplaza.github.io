@@ -59,6 +59,19 @@ For a large, transparent comparison of dispersion-corrected DFAs on main-group t
 
 ---
 
+## Recommended basis sets
+
+Prefer the Karlsruhe **def2** family for DFT work:
+
+- **def2-SVP** — economical split-valence polarized set for geometry optimizations, frequencies, and exploratory energetics.
+- **def2-TZVP** — triple-zeta polarized set for more converged single points or final energetics once the structure is settled.
+
+These sets were designed with DFT (and HF/MP2) in mind, are balanced across much of the periodic table, and pair heavier elements with Stuttgart effective core potentials so you do not need a separate all-electron treatment for most mid-to-late-row atoms. The examples in this guide use `def2-SVP` for routine jobs and `def2-TZVP` when a larger basis is illustrated.
+
+The original design and accuracy assessment across a large molecular test set is in [Weigend and Ahlrichs (2005)](https://doi.org/10.1039/B508541A).
+
+---
+
 ## Parallelism and memory
 
 ORCA parallelizes with MPI. `%pal nprocs N` asks for `N` processes. `%maxcore` is the memory dedicated to **each** process (in MB), not the total for the job.

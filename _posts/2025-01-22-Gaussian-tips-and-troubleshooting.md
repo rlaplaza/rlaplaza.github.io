@@ -21,7 +21,7 @@ A Gaussian input has Link 0 lines (`%…`), a route section (`# …`), a title, 
 %mem=8GB
 %nprocshared=4
 %chk=water_opt.chk
-# opt freq b3lyp/6-31g(d) EmpiricalDispersion=GD3BJ
+# opt freq b3lyp/def2SVP EmpiricalDispersion=GD3BJ
 
 Water optimization and frequencies
 
@@ -52,6 +52,19 @@ For a large, transparent comparison of dispersion-corrected DFAs on main-group t
 
 ---
 
+## Recommended basis sets
+
+Prefer the Karlsruhe **def2** family for DFT work (Gaussian keywords `def2SVP` and `def2TZVP`):
+
+- **def2-SVP** — economical split-valence polarized set for geometry optimizations, frequencies, and exploratory energetics.
+- **def2-TZVP** — triple-zeta polarized set for more converged single points or final energetics once the structure is settled.
+
+These sets were designed with DFT (and HF/MP2) in mind, are balanced across much of the periodic table, and pair heavier elements with Stuttgart effective core potentials so you do not need a separate all-electron treatment for most mid-to-late-row atoms. The examples below use `def2SVP` for routine jobs; step up to `def2TZVP` when you need tighter energetics.
+
+The original design and accuracy assessment across a large molecular test set is in [Weigend and Ahlrichs (2005)](https://doi.org/10.1039/B508541A).
+
+---
+
 ## Parallelism and memory
 
 `%nprocshared` sets how many cores Gaussian uses with shared-memory parallelism. `%mem` is the memory Gaussian is allowed to allocate. On many systems Gaussian uses roughly 1 GB more than the value you set, so leave headroom relative to the job script:
@@ -77,13 +90,13 @@ Checkpoint files (`%chk=…`) are worth keeping for restarts and chained jobs (`
 For a ground-state minimum, put `opt` on the route line. Computing frequencies in the same job confirms a true minimum (no imaginary modes):
 
 ```text
-# opt freq b3lyp/6-31g(d) EmpiricalDispersion=GD3BJ
+# opt freq b3lyp/def2SVP EmpiricalDispersion=GD3BJ
 ```
 
 Useful options when an optimization is slow or stubborn:
 
 ```text
-# opt=(calcfc,maxcycle=200) b3lyp/6-31g(d) EmpiricalDispersion=GD3BJ
+# opt=(calcfc,maxcycle=200) b3lyp/def2SVP EmpiricalDispersion=GD3BJ
 ```
 
 - `calcfc` computes force constants at the start (often more stable than a crude guess Hessian).
@@ -99,7 +112,7 @@ What “done” looks like: the log reports that the optimization completed (or 
 A transition-state search maximizes energy along one mode and minimizes along the others. A typical Gaussian setup is:
 
 ```text
-# opt=(ts,calcfc,noeigentest) freq b3lyp/6-31g(d) EmpiricalDispersion=GD3BJ
+# opt=(ts,calcfc,noeigentest) freq b3lyp/def2SVP EmpiricalDispersion=GD3BJ
 ```
 
 Practical checklist:
