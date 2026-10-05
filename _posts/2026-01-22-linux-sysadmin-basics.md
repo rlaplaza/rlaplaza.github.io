@@ -10,7 +10,7 @@ tags: tutorial, guidelines, linux, bash, sysadmin
 
 If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.
 
-This is a short introduction to the pieces you will use every day. For a broader learning path, see the [Coding Practices Guidelines](/2025/07/30/coding-tips.html), especially its sections on Unix shell commands, remote cluster work, and reproducible projects.
+This is a short introduction to the pieces you will use every day. For a broader learning path, see the [Coding Practices Guidelines](/2025/07/30/coding-tips.html), especially its sections on Unix shell commands, remote cluster work, and reproducible projects. If you are setting up Python on your own machine next, the [Local Conda and VS Code Setup](/2026/10/05/local-conda-and-vscode-setup.html) guide assumes only this level of terminal comfort.
 
 ## The shell and your home directory
 
@@ -206,6 +206,7 @@ Once these basics feel comfortable, the following sources provide more detail:
 * [The Linux man-pages project](https://www.kernel.org/doc/man-pages/) provides detailed manual-page documentation.
 * The [procps-ng project](https://gitlab.com/procps-ng/procps) provides tools including `top` and `ps`.
 * [Vi and Vim Basics](/2026/01/22/vi-and-vim-basics.html) explains the core editor commands, visual block editing, and `vimdiff` for quick terminal-based comparisons.
+* [Local Conda and VS Code Setup](/2026/10/05/local-conda-and-vscode-setup.html) is the next practical step if you want Python environments on your laptop.
 * [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) has excellent lessons on the shell, command-line tools, editors, and remote work.
 
 ---
