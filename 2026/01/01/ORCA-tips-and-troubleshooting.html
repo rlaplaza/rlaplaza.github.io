@@ -43,21 +43,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Gaussian Basics and Troubleshooting | rlaplaza and crew</title>
+<title>ORCA Basics and Troubleshooting | rlaplaza and crew</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="Gaussian Basics and Troubleshooting">
+<meta name="title" content="ORCA Basics and Troubleshooting">
 <meta name="description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 
-<meta property="og:title" content="Gaussian Basics and Troubleshooting">
+<meta property="og:title" content="ORCA Basics and Troubleshooting">
 <meta property="og:site_title" content="rlaplaza and crew">
 <meta property="og:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="og:url" content="https://rlaplaza.github.io">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="Gaussian Basics and Troubleshooting">
+<meta property="twitter:title" content="ORCA Basics and Troubleshooting">
 <meta property="twitter:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="twitter:url" content="https://rlaplaza.github.io">
 <meta property="twitter:card" content="summary_large_image">
@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-10-05T08:29:45+00:00">
-  <meta property="article:published_time" content="2025-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-10-05T08:29:45+00:00">
-  <meta name="revised" content="2026-10-05T08:29:45+00:00">
+  <meta property="og:updated_time" content="2026-10-05T08:46:26+00:00">
+  <meta property="article:published_time" content="2026-01-01T00:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-05T08:46:26+00:00">
+  <meta name="revised" content="2026-10-05T08:46:26+00:00">
 
 
 <script type="application/ld+json">
@@ -77,13 +77,13 @@
     "@context": "https://schema.org",
     
       "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "Gaussian Basics and Troubleshooting" },
-      "datePublished": "2025-01-22T00:00:00+00:00",
-      "dateModified": "2026-10-05T08:29:45+00:00",
+      "author": { "@type": "Person", "name": "ORCA Basics and Troubleshooting" },
+      "datePublished": "2026-01-01T00:00:00+00:00",
+      "dateModified": "2026-10-05T08:46:26+00:00",
     
-    "name": "Gaussian Basics and Troubleshooting",
+    "name": "ORCA Basics and Troubleshooting",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
-    "headline": "Gaussian Basics and Troubleshooting",
+    "headline": "ORCA Basics and Troubleshooting",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -504,7 +504,7 @@
 -->
 
 
-<h1 class="center">Gaussian Basics and Troubleshooting</h1>
+<h1 class="center">ORCA Basics and Troubleshooting</h1>
 
 <div class="post-info">
   
@@ -526,7 +526,7 @@
   
     <span data-tooltip="Originally published on">
       <i class="icon fa-regular fa-calendar"></i>
-      <span>January 22, 2025</span>
+      <span>January 01, 2026</span>
     </span>
   
 
@@ -552,8 +552,8 @@
         computational-chemistry
       </a>
     
-      <a href="/blog?search=%22tag:%20gaussian%22" class="tag" data-tooltip='Show items with the tag "gaussian"'>
-        gaussian
+      <a href="/blog?search=%22tag:%20orca%22" class="tag" data-tooltip='Show items with the tag "orca"'>
+        orca
       </a>
     
       <a href="/blog?search=%22tag:%20troubleshooting%22" class="tag" data-tooltip='Show items with the tag "troubleshooting"'>
@@ -575,65 +575,87 @@
 -->
 
 
-<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
+<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
 
-<p>This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion <a href="/2025/01/22/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a> guide covers the same topics for ORCA. The error catalog builds on community resources, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
+<p>This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian Basics and Troubleshooting</a> guide covers the same topics for Gaussian. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.</p>
 
 <blockquote>
-  <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to quickly find specific error messages.</p>
+  <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to jump to a specific error. The ORCA FAQ and the SCF/geometry sections of the manual are the best reference points for troubleshooting.</p>
 </blockquote>
 
 <hr>
 
 <h2 id="basic-input-file">Basic input file</h2>
 
-<p>A Gaussian input has Link 0 lines (<code class="language-plaintext highlighter-rouge">%…</code>), a route section (<code class="language-plaintext highlighter-rouge"># …</code>), a title, charge and multiplicity, then coordinates. Blank lines separate the title from the molecule specification and usually end the file.</p>
+<p>A minimal ORCA input has three pieces: a keyword line (method, basis, and job type), optional resource blocks, and a coordinate block with charge and multiplicity.</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%mem=8GB
-%nprocshared=4
-%chk=water_opt.chk
-# opt freq b3lyp/def2SVP EmpiricalDispersion=GD3BJ
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-SVP Opt Freq TightSCF
 
-Water optimization and frequencies
+%pal
+  nprocs 4
+end
 
-0 1
-O    0.000000    0.000000    0.117300
-H    0.000000    0.757200   -0.469200
-H    0.000000   -0.757200   -0.469200
+%maxcore 2000
+
+* xyz 0 1
+O   0.000000   0.000000   0.117300
+H   0.000000   0.757200  -0.469200
+H   0.000000  -0.757200  -0.469200
+*
 </code></pre></div></div>
 
 <ul>
+  <li>The <code class="language-plaintext highlighter-rouge">!</code> line sets the electronic-structure method, basis set, and requested jobs (<code class="language-plaintext highlighter-rouge">Opt</code>, <code class="language-plaintext highlighter-rouge">Freq</code>, SCF tightness, and so on).</li>
   <li>
-<code class="language-plaintext highlighter-rouge">%mem</code>, <code class="language-plaintext highlighter-rouge">%nprocshared</code>, and <code class="language-plaintext highlighter-rouge">%chk</code> set memory, shared-memory cores, and the checkpoint file.</li>
-  <li>The route line starts with <code class="language-plaintext highlighter-rouge">#</code> and lists method, basis, and job keywords.</li>
-  <li>The title line is free text; the next non-blank line is <code class="language-plaintext highlighter-rouge">charge multiplicity</code>, then atoms.</li>
-  <li>Prefer Cartesian coordinates unless you have a reason to use a Z-matrix. Visualization tools (GaussView, Avogadro) help avoid formatting mistakes.</li>
+<code class="language-plaintext highlighter-rouge">%pal</code> and <code class="language-plaintext highlighter-rouge">%maxcore</code> control cores and memory (see the next section).</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">* xyz charge mult</code> starts Cartesian coordinates; the block ends with a lone <code class="language-plaintext highlighter-rouge">*</code>.</li>
+  <li>Launch with the full path to the ORCA binary, for example:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>/path/to/orca water.inp <span class="o">&gt;</span> water.out
+</code></pre></div>    </div>
+  </li>
 </ul>
 
-<p>London dispersion is critical for organics, noncovalent contacts, and many reaction energetics, yet it is missing from most hybrid functionals (including bare B3LYP and PBE0). Add <code class="language-plaintext highlighter-rouge">EmpiricalDispersion=GD3BJ</code> (or GD3), or use a functional that already includes a dispersion model such as <code class="language-plaintext highlighter-rouge">wB97XD</code>.</p>
+<p>London dispersion is critical for organics, noncovalent contacts, and many reaction energetics, yet it is missing from most hybrid functionals (including bare B3LYP and PBE0). Add an empirical correction such as <code class="language-plaintext highlighter-rouge">D3BJ</code> or <code class="language-plaintext highlighter-rouge">D4</code>, or use a functional that already includes nonlocal correlation.</p>
+
+<p>For cluster submission helpers that read <code class="language-plaintext highlighter-rouge">%pal</code> / <code class="language-plaintext highlighter-rouge">%MaxCore</code> from the input, see <a href="/2025/08/01/Using-agustina.html">Using Agustina</a>.</p>
 
 <hr>
 
 <h2 id="recommended-functionals">Recommended functionals</h2>
 
-<p>Practical starting points in Gaussian:</p>
+<p>Practical starting points in ORCA (always with dispersion unless the functional already includes it):</p>
 
 <ul>
   <li>
-<strong>B3LYP-D3(BJ)</strong> — everyday hybrid with Grimme D3(BJ): <code class="language-plaintext highlighter-rouge">b3lyp … EmpiricalDispersion=GD3BJ</code>.</li>
+<strong>B3LYP-D3BJ</strong> or <strong>B3LYP-D4</strong> — still a useful everyday hybrid once dispersion is restored (<code class="language-plaintext highlighter-rouge">! B3LYP D3BJ …</code>).</li>
   <li>
-<strong>PBE0-D3(BJ)</strong> — solid global hybrid (Gaussian keyword <code class="language-plaintext highlighter-rouge">PBE1PBE</code>) with the same dispersion keyword: <code class="language-plaintext highlighter-rouge">PBE1PBE … EmpiricalDispersion=GD3BJ</code>.</li>
+<strong>PBE0-D3BJ</strong> or <strong>PBE0-D4</strong> — a solid global hybrid for many main-group problems (<code class="language-plaintext highlighter-rouge">! PBE0 D3BJ …</code>).</li>
   <li>
-<strong>ωB97X-D</strong> — range-separated hybrid with a built-in dispersion correction: <code class="language-plaintext highlighter-rouge">wB97XD</code> (do not stack an extra <code class="language-plaintext highlighter-rouge">EmpiricalDispersion</code> term on top).</li>
+<strong>ωB97X-V</strong> — among the strongest hybrids in broad benchmarks; the VV10 nonlocal correlation covers dispersion, so do not add a separate <code class="language-plaintext highlighter-rouge">D3</code>/<code class="language-plaintext highlighter-rouge">D4</code> term. Caveat: ORCA does not provide an analytical Hessian for ωB97X-V yet, so geometry/TS work that needs second derivatives typically requires <code class="language-plaintext highlighter-rouge">NumFreq</code> (much more expensive).</li>
 </ul>
 
-<p>For a large, transparent comparison of dispersion-corrected DFAs on main-group thermochemistry, kinetics, and noncovalent interactions, see the <a href="https://doi.org/10.1039/C7CP04913C">GMTKN55 benchmark</a> (Goerigk et al., 2017).</p>
+<p>Useful DFT benchmark and method papers:</p>
+
+<ul>
+  <li>
+<a href="https://doi.org/10.1039/C7CP04913C">GMTKN55</a> (Goerigk et al., 2017) — large main-group thermochemistry, kinetics, and noncovalent-interaction benchmark of many dispersion-corrected DFAs.</li>
+  <li>
+<a href="https://doi.org/10.1002/wcms.30">Grimme, WIREs Comput. Mol. Sci. (2011)</a> — review of London dispersion corrections to DFT and why they matter beyond weakly bound dimers.</li>
+  <li>
+<a href="https://doi.org/10.1063/1.3382344">Grimme et al., J. Chem. Phys. (2010)</a> — DFT-D3 parametrization (the usual <code class="language-plaintext highlighter-rouge">D3</code>/<code class="language-plaintext highlighter-rouge">D3BJ</code> family used in everyday calculations).</li>
+  <li>
+<a href="https://doi.org/10.1039/C3CP54374A">Mardirossian and Head-Gordon, PCCP (2014)</a> — original ωB97X-V paper (range-separated hybrid with VV10 nonlocal correlation).</li>
+  <li>
+<a href="https://doi.org/10.1002/cphc.201100826">Goerigk et al., ChemPhysChem (2011)</a> — dispersion-corrected DFT on the S66/S66x8 noncovalent interaction sets.</li>
+</ul>
 
 <hr>
 
 <h2 id="recommended-basis-sets">Recommended basis sets</h2>
 
-<p>Prefer the Karlsruhe <strong>def2</strong> family for DFT work (Gaussian keywords <code class="language-plaintext highlighter-rouge">def2SVP</code> and <code class="language-plaintext highlighter-rouge">def2TZVP</code>):</p>
+<p>Prefer the Karlsruhe <strong>def2</strong> family for DFT work:</p>
 
 <ul>
   <li>
@@ -642,7 +664,7 @@ H    0.000000   -0.757200   -0.469200
 <strong>def2-TZVP</strong> — triple-zeta polarized set for more converged single points or final energetics once the structure is settled.</li>
 </ul>
 
-<p>These sets were designed with DFT (and HF/MP2) in mind, are balanced across much of the periodic table, and pair heavier elements with Stuttgart effective core potentials so you do not need a separate all-electron treatment for most mid-to-late-row atoms. The examples below use <code class="language-plaintext highlighter-rouge">def2SVP</code> for routine jobs; step up to <code class="language-plaintext highlighter-rouge">def2TZVP</code> when you need tighter energetics.</p>
+<p>These sets were designed with DFT (and HF/MP2) in mind, are balanced across much of the periodic table, and pair heavier elements with Stuttgart effective core potentials so you do not need a separate all-electron treatment for most mid-to-late-row atoms. The examples in this guide use <code class="language-plaintext highlighter-rouge">def2-SVP</code> for routine jobs and <code class="language-plaintext highlighter-rouge">def2-TZVP</code> when a larger basis is illustrated.</p>
 
 <p>The original design and accuracy assessment across a large molecular test set is in <a href="https://doi.org/10.1039/B508541A">Weigend and Ahlrichs (2005)</a>.</p>
 
@@ -650,62 +672,69 @@ H    0.000000   -0.757200   -0.469200
 
 <h2 id="parallelism-and-memory">Parallelism and memory</h2>
 
-<p><code class="language-plaintext highlighter-rouge">%nprocshared</code> sets how many cores Gaussian uses with shared-memory parallelism. <code class="language-plaintext highlighter-rouge">%mem</code> is the memory Gaussian is allowed to allocate. On many systems Gaussian uses roughly 1 GB more than the value you set, so leave headroom relative to the job script:</p>
+<p>ORCA parallelizes with MPI. <code class="language-plaintext highlighter-rouge">%pal nprocs N</code> asks for <code class="language-plaintext highlighter-rouge">N</code> processes. <code class="language-plaintext highlighter-rouge">%maxcore</code> is the memory dedicated to <strong>each</strong> process (in MB), not the total for the job.</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%mem=8GB
-%nprocshared=4
+<p>Rough total memory:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>total ≈ nprocs × maxcore
 </code></pre></div></div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#SBATCH --mem=16G   # comfortably above %mem</span>
-<span class="c">#SBATCH --cpus-per-task=4</span>
+<p>Match these to your scheduler allocation. If you request 8 processes and <code class="language-plaintext highlighter-rouge">%maxcore 2000</code>, plan on roughly 16 GB of RAM for ORCA alone, plus a little headroom for the OS and the queue. Oversubscribing (more processes than memory allows) is a common cause of <code class="language-plaintext highlighter-rouge">Please increase MaxCore</code> aborts—covered in the troubleshooting half below.</p>
+
+<p>Example that asks for 4 cores and 2 GB per process:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%pal
+  nprocs 4
+end
+%maxcore 2000
 </code></pre></div></div>
 
-<p>Match <code class="language-plaintext highlighter-rouge">%nprocshared</code> to the CPU count you requested. If memory is limited, reduce cores first: fewer processors lower the peak memory demand. Use <code class="language-plaintext highlighter-rouge">%nprocshared</code> rather than Linda-style <code class="language-plaintext highlighter-rouge">nprocl</code> unless your site explicitly supports Linda.</p>
-
-<p>Checkpoint files (<code class="language-plaintext highlighter-rouge">%chk=…</code>) are worth keeping for restarts and chained jobs (<code class="language-plaintext highlighter-rouge">geom=allcheck</code>, <code class="language-plaintext highlighter-rouge">guess=read</code>). Point <code class="language-plaintext highlighter-rouge">GAUSS_SCRDIR</code> at a large scratch filesystem when jobs write heavy intermediate files.</p>
+<p>If memory is tight, reduce <code class="language-plaintext highlighter-rouge">nprocs</code> before cutting the method or basis. More cores do not always help if each process is starved of memory.</p>
 
 <hr>
 
 <h2 id="optimizing-minima">Optimizing minima</h2>
 
-<p>For a ground-state minimum, put <code class="language-plaintext highlighter-rouge">opt</code> on the route line. Computing frequencies in the same job confirms a true minimum (no imaginary modes):</p>
+<p>For a ground-state minimum, add <code class="language-plaintext highlighter-rouge">Opt</code> to the keyword line. A common pattern is to optimize and then compute frequencies in one job so you can confirm there are no imaginary modes:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt freq b3lyp/def2SVP EmpiricalDispersion=GD3BJ
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-SVP Opt Freq TightSCF
 </code></pre></div></div>
 
-<p>Useful options when an optimization is slow or stubborn:</p>
+<p>Useful <code class="language-plaintext highlighter-rouge">%geom</code> controls when a structure is floppy or slow to settle:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt=(calcfc,maxcycle=200) b3lyp/def2SVP EmpiricalDispersion=GD3BJ
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%geom
+  MaxIter 100
+  coordsys redundant
+  cartfallback true
+end
 </code></pre></div></div>
 
-<ul>
-  <li>
-<code class="language-plaintext highlighter-rouge">calcfc</code> computes force constants at the start (often more stable than a crude guess Hessian).</li>
-  <li>
-<code class="language-plaintext highlighter-rouge">maxcycle</code> raises the step limit when the structure is close but not quite there.</li>
-  <li>Alternatives such as <code class="language-plaintext highlighter-rouge">opt=RFO</code>, <code class="language-plaintext highlighter-rouge">opt=GDIIS</code>, or <code class="language-plaintext highlighter-rouge">opt=cartesian</code> are covered in the troubleshooting half if the default optimizer stalls.</li>
-</ul>
-
-<p>What “done” looks like: the log reports that the optimization completed (or “Normal termination”), and a frequency job shows <strong>zero</strong> imaginary frequencies for a minimum. Inspect the geometry in a viewer before trusting the energy.</p>
+<p>What “done” looks like: the optimization reports that the geometry has converged, the SCF is tight, and a subsequent frequency job shows <strong>zero</strong> imaginary frequencies for a true minimum. If the optimizer stalls or the structure looks chemically wrong, see the geometry sections in the troubleshooting half rather than blindly raising <code class="language-plaintext highlighter-rouge">MaxIter</code>.</p>
 
 <hr>
 
 <h2 id="optimizing-transition-states">Optimizing transition states</h2>
 
-<p>A transition-state search maximizes energy along one mode and minimizes along the others. A typical Gaussian setup is:</p>
+<p>A transition state (TS) maximizes the energy along one Hessian mode and minimizes along the others. In ORCA that is <code class="language-plaintext highlighter-rouge">OptTS</code>, usually with an explicit Hessian and mode selection:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt=(ts,calcfc,noeigentest) freq b3lyp/def2SVP EmpiricalDispersion=GD3BJ
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-SVP OptTS Freq TightSCF
+
+%geom
+  TS_Mode {M 0} end
+  Calc_Hess true
+  Recalc_Hess 5
+end
 </code></pre></div></div>
 
 <p>Practical checklist:</p>
 
 <ol>
-  <li>Start from a good TS guess (often from a scan or a previous lower-level TS).</li>
-  <li>Use <code class="language-plaintext highlighter-rouge">opt=ts</code> with an initial Hessian (<code class="language-plaintext highlighter-rouge">calcfc</code> or <code class="language-plaintext highlighter-rouge">calcall</code> when affordable).</li>
+  <li>Start from a good guess (often from a relaxed surface scan along the reaction coordinate).</li>
+  <li>Compute or refresh the Hessian (<code class="language-plaintext highlighter-rouge">Calc_Hess</code> / <code class="language-plaintext highlighter-rouge">Recalc_Hess</code>) so the optimizer follows the intended mode.</li>
   <li>After convergence, run frequencies and confirm <strong>exactly one</strong> imaginary mode that matches the reaction coordinate.</li>
 </ol>
 
-<p><code class="language-plaintext highlighter-rouge">noeigentest</code> (or <code class="language-plaintext highlighter-rouge">noeigen</code>) skips the intermediate eigenvalue check when the optimizer reports the wrong number of negative eigenvalues mid-run. That can let the search continue, but it does <strong>not</strong> replace a final frequency verification—see the TS troubleshooting section below.</p>
+<p>If the job collapses to a minimum or follows the wrong mode, the TS troubleshooting section below covers the usual next steps.</p>
 
 <p>When a calculation fails or behaves oddly, use the catalog below. Search for the error text or the symptom that matches your output.</p>
 
@@ -717,474 +746,288 @@ H    0.000000   -0.757200   -0.469200
 
 <h2 id="memory-and-resource-issues">Memory and Resource Issues</h2>
 
-<h3 id="insufficient-memory-errors">Insufficient Memory Errors</h3>
+<h3 id="please-increase-maxcore">“Please increase MaxCore”</h3>
 
-<p><strong>Common Error Messages:</strong></p>
+<p><strong>Common symptom:</strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">CISAX needs XXXXX more words of memory</code></li>
-  <li><code class="language-plaintext highlighter-rouge">XXXXX words are not enough for AlAXAO</code></li>
-  <li><code class="language-plaintext highlighter-rouge">galloc: could not allocate memory</code></li>
-  <li><code class="language-plaintext highlighter-rouge">malloc failed: Resource temporarily unavailable</code></li>
+  <li>ORCA aborts with a message similar to <code class="language-plaintext highlighter-rouge">Please increase MaxCore</code>
+</li>
 </ul>
 
-<p><strong>Solutions:</strong></p>
+<p><strong>What the official guide says:</strong>
+The ORCA FAQ states that the SCF may need more memory than the user-specified <code class="language-plaintext highlighter-rouge">MaxCore</code> and that newer ORCA versions estimate the memory requirement early in the calculation. If the estimate is larger than <code class="language-plaintext highlighter-rouge">MaxCore</code> but smaller than <code class="language-plaintext highlighter-rouge">2*MaxCore</code>, ORCA gives a warning and continues. If it is larger than <code class="language-plaintext highlighter-rouge">2*MaxCore</code>, the job aborts. The FAQ also notes that <code class="language-plaintext highlighter-rouge">MaxCore</code> is the memory dedicated to each process, not the total job memory.</p>
+
+<p><strong>Practical fixes:</strong></p>
 
 <ol>
-  <li>
-<strong>Increase memory allocation</strong>: Use the <code class="language-plaintext highlighter-rouge">%mem</code> directive at the top of your input file:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>%mem=8GB
+  <li>Increase the per-process memory in the job script or launch command.</li>
+  <li>Reduce the number of MPI processes if memory per process is too low.</li>
+  <li>Re-check whether the job is overcommitted on memory.</li>
+</ol>
+
+<p>Example:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-TZVP TightSCF
+%maxcore 2000
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="scf-convergence-issues">SCF Convergence Issues</h2>
+
+<h3 id="scf-does-not-converge">SCF does not converge</h3>
+
+<p><strong>Common symptoms:</strong></p>
+<ul>
+  <li>the energy oscillates or drifts for many cycles</li>
+  <li>the calculation reaches many iterations without stabilizing</li>
+  <li>the orbital gradient remains large</li>
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The ORCA SCF convergence chapter explains that convergence is a major practical issue in quantum chemistry. It documents convergence tolerances, damping, level shifting, DIIS, and the TRAH algorithm. It also notes that if the integral accuracy is worse than the SCF tolerance, a direct SCF calculation cannot converge properly.</p>
+
+<p><strong>Practical fixes:</strong></p>
+
+<ol>
+  <li>Start with a more robust SCF level:
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>! TightSCF
 </code></pre></div>    </div>
-    <p>Note: Gaussian actually uses about 1 GB more than specified, so set <code class="language-plaintext highlighter-rouge">%mem</code> to at least 1 GB less than your job script’s memory allocation.</p>
+    <p>or</p>
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>! SlowConv
+</code></pre></div>    </div>
+  </li>
+  <li>Use damping or level shifting early in a difficult calculation:
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>%scf
+  CNVDamp true
+  DampFac 0.7
+  DampErr 0.001
+end
+</code></pre></div>    </div>
   </li>
   <li>
-<strong>Reduce CPU cores</strong>: If memory is limited, reduce the number of processors:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>%nprocshared=4
-</code></pre></div>    </div>
-    <p>This reduces memory requirements per core.</p>
+    <p>Increase the maximum number of SCF cycles if needed.</p>
   </li>
-  <li>
-<strong>Check job script settings</strong>: Ensure your job submission script (SLURM, PBS, etc.) allocates sufficient memory:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="c">#SBATCH --mem=16G  # Should be ~1GB more than %mem</span>
+  <li>For hard cases, allow the automatic TRAH fallback:
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>%scf
+  AutoTRAH true
+end
 </code></pre></div>    </div>
   </li>
+</ol>
+
+<p>The SCF manual specifically states that TRAH is useful when the conventional SCF procedures struggle.</p>
+
+<h3 id="open-shell-or-near-degenerate-systems">Open-shell or near-degenerate systems</h3>
+
+<p><strong>Common symptoms:</strong></p>
+<ul>
+  <li>convergence stalls for radicals or transition-metal complexes</li>
+  <li>the SCF oscillates between qualitatively different solutions</li>
+  <li>the result is numerically stable but chemically questionable</li>
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The ORCA FAQ and SCF section emphasize that open-shell systems, especially transition-metal complexes, can be difficult. The guidance recommends checking <code class="language-plaintext highlighter-rouge">S^2</code>, UCO overlaps, and spin populations to confirm that the solution is meaningful.</p>
+
+<p><strong>Practical fixes:</strong></p>
+
+<ol>
+  <li>Confirm the charge and multiplicity are chemically reasonable.</li>
+  <li>Try a better initial guess.</li>
+  <li>Use a more restrictive convergence setting for difficult electronic structures.</li>
+  <li>Inspect the resulting electronic structure rather than trusting a “converged” number blindly.</li>
 </ol>
 
 <hr>
 
 <h2 id="geometry-optimization-issues">Geometry Optimization Issues</h2>
 
-<h3 id="optimization-not-converging">Optimization Not Converging</h3>
+<h3 id="optimization-stalls-or-fails-to-converge">Optimization stalls or fails to converge</h3>
 
-<p><strong>Error Messages:</strong></p>
+<p><strong>Common symptoms:</strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Number of steps exceeded, NStep= 100</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Delta-x Convergence NOT Met</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Maximum of *** iterations exceeded in RedStp</code></li>
+  <li>the optimizer cycles without reaching a stable structure</li>
+  <li>the job keeps stepping but never satisfies geometry thresholds</li>
+  <li>a structure appears optimized but is still badly distorted</li>
 </ul>
 
-<p><strong>Solutions:</strong></p>
+<p><strong>What the official guide says:</strong>
+The ORCA geometry optimization chapter explains that optimization can be difficult even when the underlying method is valid. It also notes that floppy structures with many rotations around single bonds or soft dihedral modes are especially challenging. The manual describes the role of the initial Hessian, step type, and coordinate system in convergence.</p>
+
+<p><strong>Practical fixes:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%geom
+  MaxIter 50
+  Step qn
+  Trust 0.3
+  coordsys redundant
+  cartfallback true
+end
+</code></pre></div></div>
 
 <ol>
-  <li>
-<strong>Increase maximum cycles</strong>: Add <code class="language-plaintext highlighter-rouge">opt=maxcycle=n</code> where n is 2-3 times the current number of steps:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># opt=calcfc opt=maxcycle=200
-</code></pre></div>    </div>
-  </li>
-  <li>
-<strong>Try different optimization methods</strong>:
-    <ul>
-      <li>
-<code class="language-plaintext highlighter-rouge">opt=RFO</code> - Rational Function Optimization</li>
-      <li>
-<code class="language-plaintext highlighter-rouge">opt=GDIIS</code> - Geometry Direct Inversion in Iterative Subspace</li>
-      <li>
-<code class="language-plaintext highlighter-rouge">opt=GEDIIS</code> - Geometry Energy-Direct Inversion in Iterative Subspace</li>
-    </ul>
-  </li>
-  <li>
-<strong>Switch coordinate system</strong>: If Z-matrix fails, try Cartesian coordinates:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>opt=cartesian
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Check initial geometry</strong>: Verify your starting structure is reasonable. Use molecular visualization software (GaussView, Avogadro) to inspect the geometry.</p>
-  </li>
-  <li>
-<strong>Modify symmetry</strong>: Sometimes reducing symmetry helps:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># symm=loose
-</code></pre></div>    </div>
-  </li>
+  <li>Check the starting geometry.</li>
+  <li>Use a better initial Hessian or a more suitable coordinate system.</li>
+  <li>If the optimization is problematic, revisit the starting structure instead of assuming the failure is purely numerical.</li>
 </ol>
 
-<h3 id="transition-state-optimization-issues">Transition State Optimization Issues</h3>
+<h3 id="transition-state-optimization-fails-or-follows-the-wrong-mode">Transition state optimization fails or follows the wrong mode</h3>
 
-<p><strong>Error Message:</strong></p>
+<p><strong>Common symptoms:</strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Wrong number of Negative eigenvalues: Desired= 1 Actual= 4</code></li>
+  <li>the calculation converges to a minimum instead of a transition state</li>
+  <li>the optimizer identifies the wrong reaction coordinate</li>
+  <li>multiple negative modes remain</li>
 </ul>
 
-<p><strong>Solution:</strong>
-If you’re optimizing a transition state but get multiple negative frequencies, use:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opt=(ts,noeigen)
+<p><strong>What the official guide says:</strong>
+The ORCA geometry optimization section explains that TS optimization is a separate problem: it maximizes the energy along one Hessian eigenmode while minimizing along the others. It also discusses <code class="language-plaintext highlighter-rouge">TS_Mode</code>, Hessian updates, and relaxed scans for TS optimization.</p>
+
+<p><strong>Practical fixes:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! OptTS
+%geom
+  TS_Mode {M 0} end
+  Calc_Hess true
+  Recalc_Hess 5
+end
 </code></pre></div></div>
-<p>This skips the eigenvalue check. However, always verify your final structure has exactly one imaginary frequency!</p>
+
+<ol>
+  <li>Use an explicit TS setup.</li>
+  <li>Use a relaxed surface scan to locate the relevant reaction coordinate before TS optimization.</li>
+  <li>Confirm that the final structure has exactly one imaginary mode.</li>
+</ol>
+
+<h3 id="atoms-merge-into-each-other-during-optimization">Atoms merge into each other during optimization</h3>
+
+<p><strong>Common symptom:</strong></p>
+<ul>
+  <li>neighboring atoms collapse into one another during optimization</li>
+</ul>
+
+<p><strong>What the official guide says:</strong>
+The ORCA FAQ explicitly states that this usually occurs due to a poor or wrong initial molecular-orbital guess or a bad basis-set definition on the relevant atoms. The advice is to check the basis set on the problematic atoms and then the corresponding MOs.</p>
+
+<p>This is a good example of an ORCA-specific issue: the problem is not a generic optimizer bug, but a quality-of-initial-guess and basis-definition issue.</p>
 
 <hr>
 
 <h2 id="frequency-calculation-issues">Frequency Calculation Issues</h2>
 
-<h3 id="frequency-calculation-errors">Frequency Calculation Errors</h3>
+<h3 id="frequencies-fail-when-the-wavefunction-is-not-converged">Frequencies fail when the wavefunction is not converged</h3>
 
-<p><strong>Error Messages:</strong></p>
+<p><strong>Common symptoms:</strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Error in INITNF</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Linear search skipped for unknown reason</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Inconsistency: ModMin= N Eigenvalue= MM</code></li>
+  <li>the job stops before printing a frequency analysis</li>
+  <li>a frequency calculation fails just after a geometry optimization</li>
+  <li>the Hessian is not trusted because the SCF never reached a stable state</li>
 </ul>
 
-<p><strong>Solutions:</strong></p>
+<p><strong>What the official guide says:</strong>
+The SCF chapter is explicit: properties and numerical calculations, including <code class="language-plaintext highlighter-rouge">NumGrad</code> and <code class="language-plaintext highlighter-rouge">NumFreq</code>, are not performed on non-converged wavefunctions.</p>
+
+<p><strong>Practical fixes:</strong></p>
 
 <ol>
-  <li>
-    <p><strong>Ensure optimization converged</strong>: Frequency calculations require a fully optimized geometry. Check that your optimization completed successfully.</p>
-  </li>
-  <li>
-<strong>Use <code class="language-plaintext highlighter-rouge">freq=readfc</code></strong>: If you have a checkpoint file with force constants:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># freq=readfc
-</code></pre></div>    </div>
-  </li>
-  <li>
-<strong>Recalculate from scratch</strong>: Sometimes it’s best to re-optimize and then compute frequencies in a single job:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># opt freq
+  <li>Ensure the SCF is converged before asking for frequencies.</li>
+  <li>Use a tight SCF and a well-converged geometry before <code class="language-plaintext highlighter-rouge">Freq</code>.</li>
+  <li>If necessary, optimize first and then compute frequencies in the same workflow:
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>! B3LYP D3BJ def2-TZVP Opt Freq
 </code></pre></div>    </div>
   </li>
 </ol>
 
 <hr>
 
-<h2 id="scf-convergence-issues">SCF Convergence Issues</h2>
+<h2 id="file-and-io-problems">File and I/O Problems</h2>
 
-<h3 id="scf-not-converging">SCF Not Converging</h3>
+<h3 id="moread-says-that-no-orbitals-were-found-in-the-gbw-file">MOREAD says that no orbitals were found in the .gbw file</h3>
 
-<p><strong>Error Messages:</strong></p>
+<p><strong>Common symptom:</strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Convergence failure -- run terminated</code></li>
-  <li><code class="language-plaintext highlighter-rouge">SCF Done:  E(RB3LYP) =  ...  A.U. after   50 cycles</code></li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li>
-<strong>Use convergence aids</strong>:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>scf=(conver=8,xqc)
-</code></pre></div>    </div>
-    <ul>
-      <li>
-<code class="language-plaintext highlighter-rouge">conver=8</code> sets tighter convergence criteria</li>
-      <li>
-<code class="language-plaintext highlighter-rouge">xqc</code> uses quadratic convergence</li>
-    </ul>
-  </li>
-  <li>
-<strong>Try different initial guess</strong>:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>guess=mix
-guess=huckel
-guess=read  # from checkpoint file
-</code></pre></div>    </div>
-  </li>
-  <li>
-<strong>Use damping</strong>:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>scf=(conver=8,damp)
-</code></pre></div>    </div>
-  </li>
-  <li>
-<strong>Check for problematic systems</strong>:
-    <ul>
-      <li>Open-shell systems may need <code class="language-plaintext highlighter-rouge">stable=opt</code>
+  <li>ORCA reports that no orbitals are found when using <code class="language-plaintext highlighter-rouge">MOREAD</code>
 </li>
-      <li>Systems with near-degeneracies may need different methods</li>
-    </ul>
-  </li>
-</ol>
-
-<hr>
-
-<h2 id="post-hf-method-convergence">Post-HF Method Convergence</h2>
-
-<h3 id="ccsdccsdt-not-converging">CCSD/CCSD(T) Not Converging</h3>
-
-<p><strong>Error Messages:</strong></p>
-<ul>
-  <li>
-<code class="language-plaintext highlighter-rouge">Error termination via Lnk1e in l913.exe</code> (after CCSD iterations)</li>
-  <li>Large amplitudes in the output</li>
 </ul>
 
-<p><strong>Solutions:</strong></p>
+<p><strong>What the official guide says:</strong>
+The ORCA FAQ explains that ORCA writes the <code class="language-plaintext highlighter-rouge">.gbw</code> file immediately after reading the geometry and basis set information. If a stale <code class="language-plaintext highlighter-rouge">.gbw</code> file with the same basename remains in the working directory, it can be overwritten or interfere with the current calculation. The recommendation is to rename the old file before rerunning.</p>
 
-<ol>
-  <li>
-<strong>Increase maximum cycles</strong>:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>ccsd(t,maxcyc=100)
-</code></pre></div>    </div>
-    <p>Default is 50 cycles.</p>
-  </li>
-  <li>
-    <p><strong>Check convergence trend</strong>: Look at the <code class="language-plaintext highlighter-rouge">DE(Corr)</code> values in the output. If they’re converging (approaching a stable value), increasing cycles should help.</p>
-  </li>
-  <li>
-<strong>Verify reference state</strong>: Ensure your HF reference is reasonable. Try:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>stable=opt
-</code></pre></div>    </div>
-    <p>before the CCSD calculation.</p>
-  </li>
-  <li>
-<strong>Try different basis set</strong>: Sometimes a smaller or different basis set helps establish convergence.</li>
-</ol>
+<p><strong>Practical fix:</strong></p>
 
-<hr>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv </span>oldjob.gbw oldjob.gbw.old
+</code></pre></div></div>
 
-<h2 id="file-and-io-errors">File and I/O Errors</h2>
+<h3 id="old-inputs-stop-working-after-a-version-upgrade">Old inputs stop working after a version upgrade</h3>
 
-<h3 id="disk-space-issues">Disk Space Issues</h3>
-
-<p><strong>Error Messages:</strong></p>
+<p><strong>Common symptom:</strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Erroneous write. write 122880 instead of 4239360</code></li>
-  <li><code class="language-plaintext highlighter-rouge">writwa: No space left on device</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Erroneous write during file extend</code></li>
+  <li>a working input from an older ORCA version fails after installing a new version</li>
 </ul>
 
-<p><strong>Solutions:</strong></p>
+<p><strong>What the official guide says:</strong>
+The FAQ explicitly states that keywords and defaults may change between ORCA versions, and the same input may give slightly different results or fail entirely. The recommendation is to consult the current manual and release notes instead of assuming the old input remains valid.</p>
 
-<ol>
-  <li>
-<strong>Check disk space</strong>:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nb">df</span> <span class="nt">-h</span>
-<span class="nb">du</span> <span class="nt">-sh</span> ~/scratch/
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Clean up scratch directory</strong>: Remove old checkpoint files and temporary files.</p>
-  </li>
-  <li>
-    <p><strong>Use smaller basis set</strong>: For very large calculations, consider using a smaller basis set or reducing system size.</p>
-  </li>
-  <li>
-<strong>Set scratch directory</strong>: Ensure <code class="language-plaintext highlighter-rouge">GAUSS_SCRDIR</code> points to a directory with sufficient space:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">GAUSS_SCRDIR</span><span class="o">=</span>/path/to/large/disk/scratch
-</code></pre></div>    </div>
-  </li>
-</ol>
+<hr>
 
-<h3 id="checkpoint-file-issues">Checkpoint File Issues</h3>
+<h2 id="installation-and-launch-issues">Installation and Launch Issues</h2>
 
-<p><strong>Error Messages:</strong></p>
+<h3 id="orca-is-installed-but-the-program-does-not-start">ORCA is installed but the program does not start</h3>
+
+<p><strong>Common symptoms:</strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Error termination in NtrErr: Operation on file out of range</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Error imposing constraints</code></li>
+  <li>the shell cannot find the ORCA executable</li>
+  <li>the binary appears installed but no calculation starts</li>
+  <li>the job exits immediately without writing output</li>
 </ul>
 
-<p><strong>Solutions:</strong></p>
+<p><strong>What the official guide says:</strong>
+The FAQ explains that ORCA is invoked from the command line on all platforms and gives the standard launch pattern:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;full orca binary folder path&gt;/orca example.inp <span class="o">&gt;</span> example.out
+</code></pre></div></div>
+
+<p>It also explains the installation process for Linux/macOS: the <code class="language-plaintext highlighter-rouge">.run</code> installer is made executable with <code class="language-plaintext highlighter-rouge">chmod a+x</code>, followed by execution of the installation script.</p>
+
+<p><strong>Practical fixes:</strong></p>
 
 <ol>
-  <li>
-    <p><strong>Regenerate checkpoint file</strong>: The checkpoint file may be corrupted or incomplete. Re-run the calculation that generates the needed data.</p>
-  </li>
-  <li>
-    <p><strong>Don’t rely on incomplete checkpoints</strong>: If a previous job failed or was killed, don’t try to read from its checkpoint file.</p>
-  </li>
+  <li>Verify that the ORCA executable is on <code class="language-plaintext highlighter-rouge">PATH</code>.</li>
+  <li>Check that the working directory is the one expected by the script.</li>
+  <li>Run a minimal test calculation before moving to a large job.</li>
 </ol>
 
 <hr>
 
-<h2 id="input-file-errors">Input File Errors</h2>
-
-<h3 id="z-matrix-and-coordinate-errors">Z-Matrix and Coordinate Errors</h3>
-
-<p><strong>Error Messages:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">End of file in Zsymb</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Found a string as input</code></li>
-  <li><code class="language-plaintext highlighter-rouge">There are no atoms in this input structure</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Symbol not found in Z-matrix</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Variable index is out of range</code></li>
-  <li><code class="language-plaintext highlighter-rouge">Determination of dummy atom variables in z-matrix conversion failed</code></li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li>
-    <p><strong>Check input format</strong>: Ensure proper spacing and formatting in your Z-matrix or Cartesian coordinates.</p>
-  </li>
-  <li>
-<strong>Use Cartesian coordinates</strong>: If Z-matrix conversion fails, switch to Cartesian:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># opt=cartesian
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Verify atom definitions</strong>: Check that all atoms are properly defined and variables are correctly referenced.</p>
-  </li>
-  <li>
-<strong>Use GaussView or similar</strong>: Generate input files using molecular visualization software to avoid formatting errors.</li>
-</ol>
-
-<hr>
-
-<h2 id="method-specific-issues">Method-Specific Issues</h2>
-
-<h3 id="dft-functional-limitations">DFT Functional Limitations</h3>
-
-<p><strong>Error Message:</strong></p>
-<ul>
-  <li>
-<code class="language-plaintext highlighter-rouge">No func 3rd derivs with HSE</code> (or similar for other functionals)</li>
-</ul>
-
-<p><strong>Explanation:</strong>
-Some functionals don’t support third-order derivatives needed for hyperpolarizability calculations.</p>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li>
-<strong>For polarizability only</strong>: Use <code class="language-plaintext highlighter-rouge">polar=Numerical</code>:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code># polar=Numerical
-</code></pre></div>    </div>
-    <p>This calculates polarizability α but may fail for hyperpolarizability β.</p>
-  </li>
-  <li>
-    <p><strong>Use different functional</strong>: Switch to a functional that supports third-order derivatives (most standard functionals do).</p>
-  </li>
-  <li>
-<strong>Check output</strong>: Sometimes the desired property (e.g., α) is calculated before the error occurs, so check earlier in the output file.</li>
-</ol>
-
-<hr>
-
-<h2 id="system-and-permission-errors">System and Permission Errors</h2>
-
-<h3 id="gaussian-installation-issues">Gaussian Installation Issues</h3>
-
-<p><strong>Error Messages:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">Files in the Gaussian directory are world accessible. This must be fixed.</code></li>
-  <li><code class="language-plaintext highlighter-rouge">failed to open execfile</code></li>
-</ul>
-
-<p><strong>Solutions:</strong></p>
-
-<ol>
-  <li>
-<strong>Fix permissions</strong>:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> <span class="nt">-R</span> 750 /path/to/Gaussian
-</code></pre></div>    </div>
-  </li>
-  <li>
-<strong>Check Linda vs. OpenMP</strong>: If using <code class="language-plaintext highlighter-rouge">nprocl</code>, ensure your system supports Linda. Otherwise, use <code class="language-plaintext highlighter-rouge">nprocshared</code>:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>%nprocshared=8  # instead of nprocl
-</code></pre></div>    </div>
-  </li>
-  <li>
-<strong>Verify environment variables</strong>: Check that <code class="language-plaintext highlighter-rouge">g09root</code> or <code class="language-plaintext highlighter-rouge">g16root</code> and <code class="language-plaintext highlighter-rouge">GAUSS_EXEDIR</code> are set correctly.</li>
-</ol>
-
-<hr>
-
-<h2 id="monitoring-and-performance-tips">Monitoring and performance tips</h2>
-
-<ol>
-  <li>
-<strong>Watch output in real time</strong>: <code class="language-plaintext highlighter-rouge">tail -f jobname.log</code> while the job runs.</li>
-  <li>
-<strong>Check for convergence</strong>: Look for “Optimization completed” or “Normal termination”.</li>
-  <li>
-<strong>Save intermediate results</strong>: Keep checkpoint files for restarts and <code class="language-plaintext highlighter-rouge">geom=allcheck</code> chains.</li>
-  <li>
-<strong>Use an appropriate basis</strong>: Larger is not always better for exploratory work.</li>
-  <li>
-<strong>Parallelize wisely</strong>: More cores trade against memory; match <code class="language-plaintext highlighter-rouge">%nprocshared</code> to the allocation.</li>
-  <li>
-<strong>Prefer <code class="language-plaintext highlighter-rouge">opt=calcfc</code></strong> when the default Hessian guess is unreliable.</li>
-</ol>
-
-<hr>
-
-<h2 id="quick-reference-common-fixes">Quick Reference: Common Fixes</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Problem</th>
-      <th>Quick Fix</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Out of memory</td>
-      <td>Increase <code class="language-plaintext highlighter-rouge">%mem</code> or decrease <code class="language-plaintext highlighter-rouge">%nprocshared</code>
-</td>
-    </tr>
-    <tr>
-      <td>Optimization not converging</td>
-      <td>Add <code class="language-plaintext highlighter-rouge">opt=maxcycle=200</code> or try <code class="language-plaintext highlighter-rouge">opt=RFO</code>
-</td>
-    </tr>
-    <tr>
-      <td>SCF not converging</td>
-      <td>Add <code class="language-plaintext highlighter-rouge">scf=(conver=8,xqc)</code> or <code class="language-plaintext highlighter-rouge">scf=damp</code>
-</td>
-    </tr>
-    <tr>
-      <td>Multiple negative frequencies</td>
-      <td>Use <code class="language-plaintext highlighter-rouge">opt=(ts,noeigen)</code> but verify result</td>
-    </tr>
-    <tr>
-      <td>Disk space error</td>
-      <td>Clean scratch directory or use smaller basis</td>
-    </tr>
-    <tr>
-      <td>Checkpoint file error</td>
-      <td>Regenerate checkpoint from scratch</td>
-    </tr>
-    <tr>
-      <td>Z-matrix error</td>
-      <td>Switch to <code class="language-plaintext highlighter-rouge">opt=cartesian</code>
-</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr>
-
-<h2 id="additional-resources">Additional Resources</h2>
+<h2 id="a-good-orca-triage-checklist">A good ORCA triage checklist</h2>
 
 <ul>
-  <li><a href="https://gaussian.com/">Gaussian Official Documentation</a></li>
-  <li><a href="https://gaussian.com/man/">Gaussian User’s Reference</a></li>
-  <li><a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s Gaussian Error Guide</a></li>
-  <li><a href="https://github.com/CrawfordGroup/ProgrammingProjects">Crawford Group Computational Chemistry Resources</a></li>
+  <li>Check the SCF convergence before trusting gradients, Hessians, or frequencies.</li>
+  <li>If ORCA says “Please increase MaxCore,” confirm that the limit is per process.</li>
+  <li>For difficult systems, first try <code class="language-plaintext highlighter-rouge">TightSCF</code>, damping, or <code class="language-plaintext highlighter-rouge">AutoTRAH</code>.</li>
+  <li>For TS optimizations, verify the Hessian and reaction mode.</li>
+  <li>For <code class="language-plaintext highlighter-rouge">MOREAD</code>, ensure stale <code class="language-plaintext highlighter-rouge">.gbw</code> files are not colliding with the new job.</li>
+  <li>If the input was written for an older version, re-check the current manual before debugging deeper.</li>
 </ul>
 
 <hr>
 
-<h2 id="getting-help">Getting Help</h2>
+<h2 id="sources">Sources</h2>
 
-<p>If you encounter errors not covered here:</p>
+<ul>
+  <li>ORCA FAQ: https://www.faccts.de/docs/orca/6.0/manual/contents/faq.html</li>
+  <li>ORCA SCF convergence: https://www.faccts.de/docs/orca/6.0/manual/contents/detailed/scfconv.html</li>
+  <li>ORCA geometry optimization: https://www.faccts.de/docs/orca/6.0/manual/contents/detailed/geomopt.html</li>
+  <li>ORCA installation and startup: https://www.faccts.de/docs/orca/6.0/manual/contents/faq.html</li>
+</ul>
 
-<ol>
-  <li>
-<strong>Check the full output file</strong>: Errors often have context earlier in the file</li>
-  <li>
-<strong>Search error messages</strong>: Many errors are documented online</li>
-  <li>
-<strong>Consult colleagues</strong>: Often someone has seen the same issue</li>
-  <li>
-<strong>Gaussian support</strong>: For licensed users, contact Gaussian Inc. support</li>
-</ol>
-
-<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>
+<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>
   </section>
 
   
@@ -1202,12 +1045,17 @@ Some functionals don’t support third-order derivatives needed for hyperpolariz
 <div class="post-nav">
   <span>
     
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">
+        Gaussian Basics and Troubleshooting
+      </a>
+    
   </span>
   <span>
     
       Next post <i class="icon fa-solid fa-angle-right"></i><br>
-      <a href="/2025/01/22/ORCA-tips-and-troubleshooting.html">
-        ORCA Basics and Troubleshooting
+      <a href="/2026/01/22/Vi-and-vim-basics.html">
+        Vi and Vim Basics
       </a>
     
   </span>
