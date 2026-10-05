@@ -43,21 +43,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>ORCA Tips and Troubleshooting Guide | rlaplaza and crew</title>
+<title>ORCA Basics and Troubleshooting | rlaplaza and crew</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="ORCA Tips and Troubleshooting Guide">
+<meta name="title" content="ORCA Basics and Troubleshooting">
 <meta name="description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 
-<meta property="og:title" content="ORCA Tips and Troubleshooting Guide">
+<meta property="og:title" content="ORCA Basics and Troubleshooting">
 <meta property="og:site_title" content="rlaplaza and crew">
 <meta property="og:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="og:url" content="https://rlaplaza.github.io">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="ORCA Tips and Troubleshooting Guide">
+<meta property="twitter:title" content="ORCA Basics and Troubleshooting">
 <meta property="twitter:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="twitter:url" content="https://rlaplaza.github.io">
 <meta property="twitter:card" content="summary_large_image">
@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-10-05T07:46:18+00:00">
+  <meta property="og:updated_time" content="2026-10-05T08:16:36+00:00">
   <meta property="article:published_time" content="2025-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-10-05T07:46:18+00:00">
-  <meta name="revised" content="2026-10-05T07:46:18+00:00">
+  <meta property="article:modified_time" content="2026-10-05T08:16:36+00:00">
+  <meta name="revised" content="2026-10-05T08:16:36+00:00">
 
 
 <script type="application/ld+json">
@@ -77,13 +77,13 @@
     "@context": "https://schema.org",
     
       "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "ORCA Tips and Troubleshooting Guide" },
+      "author": { "@type": "Person", "name": "ORCA Basics and Troubleshooting" },
       "datePublished": "2025-01-22T00:00:00+00:00",
-      "dateModified": "2026-10-05T07:46:18+00:00",
+      "dateModified": "2026-10-05T08:16:36+00:00",
     
-    "name": "ORCA Tips and Troubleshooting Guide",
+    "name": "ORCA Basics and Troubleshooting",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
-    "headline": "ORCA Tips and Troubleshooting Guide",
+    "headline": "ORCA Basics and Troubleshooting",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -504,7 +504,7 @@
 -->
 
 
-<h1 class="center">ORCA Tips and Troubleshooting Guide</h1>
+<h1 class="center">ORCA Basics and Troubleshooting</h1>
 
 <div class="post-info">
   
@@ -575,13 +575,123 @@
 -->
 
 
-<h1 id="orca-tips-and-troubleshooting-guide">ORCA Tips and Troubleshooting Guide</h1>
+<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
 
-<p>This guide compiles common ORCA issues encountered in routine electronic-structure work and offers practical fixes. It follows the same spirit as the Gaussian guide, but the advice below is rooted in the official ORCA FAQ and manuals rather than in forum folklore or anecdotal advice.</p>
+<p>This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion <a href="/2025/01/22/Gaussian-tips-and-troubleshooting.html">Gaussian Basics and Troubleshooting</a> guide covers the same topics for Gaussian. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.</p>
 
 <blockquote>
-  <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to jump to the relevant error text. The ORCA FAQ and the SCF/geometry sections of the manual are the best and most reliable reference points for troubleshooting.</p>
+  <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to jump to a specific error. The ORCA FAQ and the SCF/geometry sections of the manual are the best reference points for troubleshooting.</p>
 </blockquote>
+
+<hr>
+
+<h2 id="basic-input-file">Basic input file</h2>
+
+<p>A minimal ORCA input has three pieces: a keyword line (method, basis, and job type), optional resource blocks, and a coordinate block with charge and multiplicity.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP def2-SVP Opt Freq TightSCF
+
+%pal
+  nprocs 4
+end
+
+%maxcore 2000
+
+* xyz 0 1
+O   0.000000   0.000000   0.117300
+H   0.000000   0.757200  -0.469200
+H   0.000000  -0.757200  -0.469200
+*
+</code></pre></div></div>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">!</code> line sets the electronic-structure method, basis set, and requested jobs (<code class="language-plaintext highlighter-rouge">Opt</code>, <code class="language-plaintext highlighter-rouge">Freq</code>, SCF tightness, and so on).</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">%pal</code> and <code class="language-plaintext highlighter-rouge">%maxcore</code> control cores and memory (see the next section).</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">* xyz charge mult</code> starts Cartesian coordinates; the block ends with a lone <code class="language-plaintext highlighter-rouge">*</code>.</li>
+  <li>Launch with the full path to the ORCA binary, for example:
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>/path/to/orca water.inp <span class="o">&gt;</span> water.out
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>For cluster submission helpers that read <code class="language-plaintext highlighter-rouge">%pal</code> / <code class="language-plaintext highlighter-rouge">%MaxCore</code> from the input, see <a href="/2025/08/01/Using-agustina.html">Using Agustina</a>.</p>
+
+<hr>
+
+<h2 id="parallelism-and-memory">Parallelism and memory</h2>
+
+<p>ORCA parallelizes with MPI. <code class="language-plaintext highlighter-rouge">%pal nprocs N</code> asks for <code class="language-plaintext highlighter-rouge">N</code> processes. <code class="language-plaintext highlighter-rouge">%maxcore</code> is the memory dedicated to <strong>each</strong> process (in MB), not the total for the job.</p>
+
+<p>Rough total memory:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>total ≈ nprocs × maxcore
+</code></pre></div></div>
+
+<p>Match these to your scheduler allocation. If you request 8 processes and <code class="language-plaintext highlighter-rouge">%maxcore 2000</code>, plan on roughly 16 GB of RAM for ORCA alone, plus a little headroom for the OS and the queue. Oversubscribing (more processes than memory allows) is a common cause of <code class="language-plaintext highlighter-rouge">Please increase MaxCore</code> aborts—covered in the troubleshooting half below.</p>
+
+<p>Example that asks for 4 cores and 2 GB per process:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%pal
+  nprocs 4
+end
+%maxcore 2000
+</code></pre></div></div>
+
+<p>If memory is tight, reduce <code class="language-plaintext highlighter-rouge">nprocs</code> before cutting the method or basis. More cores do not always help if each process is starved of memory.</p>
+
+<hr>
+
+<h2 id="optimizing-minima">Optimizing minima</h2>
+
+<p>For a ground-state minimum, add <code class="language-plaintext highlighter-rouge">Opt</code> to the keyword line. A common pattern is to optimize and then compute frequencies in one job so you can confirm there are no imaginary modes:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP def2-SVP Opt Freq TightSCF
+</code></pre></div></div>
+
+<p>Useful <code class="language-plaintext highlighter-rouge">%geom</code> controls when a structure is floppy or slow to settle:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%geom
+  MaxIter 100
+  coordsys redundant
+  cartfallback true
+end
+</code></pre></div></div>
+
+<p>What “done” looks like: the optimization reports that the geometry has converged, the SCF is tight, and a subsequent frequency job shows <strong>zero</strong> imaginary frequencies for a true minimum. If the optimizer stalls or the structure looks chemically wrong, see the geometry sections in the troubleshooting half rather than blindly raising <code class="language-plaintext highlighter-rouge">MaxIter</code>.</p>
+
+<hr>
+
+<h2 id="optimizing-transition-states">Optimizing transition states</h2>
+
+<p>A transition state (TS) maximizes the energy along one Hessian mode and minimizes along the others. In ORCA that is <code class="language-plaintext highlighter-rouge">OptTS</code>, usually with an explicit Hessian and mode selection:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>! B3LYP def2-SVP OptTS Freq TightSCF
+
+%geom
+  TS_Mode {M 0} end
+  Calc_Hess true
+  Recalc_Hess 5
+end
+</code></pre></div></div>
+
+<p>Practical checklist:</p>
+
+<ol>
+  <li>Start from a good guess (often from a relaxed surface scan along the reaction coordinate).</li>
+  <li>Compute or refresh the Hessian (<code class="language-plaintext highlighter-rouge">Calc_Hess</code> / <code class="language-plaintext highlighter-rouge">Recalc_Hess</code>) so the optimizer follows the intended mode.</li>
+  <li>After convergence, run frequencies and confirm <strong>exactly one</strong> imaginary mode that matches the reaction coordinate.</li>
+</ol>
+
+<p>If the job collapses to a minimum or follows the wrong mode, the TS troubleshooting section below covers the usual next steps.</p>
+
+<p>When a calculation fails or behaves oddly, use the catalog below. Search for the error text or the symptom that matches your output.</p>
+
+<hr>
+
+<h2 id="troubleshooting-common-issues">Troubleshooting common issues</h2>
 
 <hr>
 
@@ -888,7 +998,7 @@ The FAQ explains that ORCA is invoked from the command line on all platforms and
     
       <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
       <a href="/2025/01/22/Gaussian-tips-and-troubleshooting.html">
-        Gaussian Tips and Troubleshooting Guide
+        Gaussian Basics and Troubleshooting
       </a>
     
   </span>

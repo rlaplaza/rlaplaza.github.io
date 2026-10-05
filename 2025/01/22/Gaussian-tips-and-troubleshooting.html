@@ -43,21 +43,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Gaussian Tips and Troubleshooting Guide | rlaplaza and crew</title>
+<title>Gaussian Basics and Troubleshooting | rlaplaza and crew</title>
 
 <link rel="icon" href="/images/icon.png">
 
-<meta name="title" content="Gaussian Tips and Troubleshooting Guide">
+<meta name="title" content="Gaussian Basics and Troubleshooting">
 <meta name="description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 
-<meta property="og:title" content="Gaussian Tips and Troubleshooting Guide">
+<meta property="og:title" content="Gaussian Basics and Troubleshooting">
 <meta property="og:site_title" content="rlaplaza and crew">
 <meta property="og:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="og:url" content="https://rlaplaza.github.io">
 <meta property="og:image" content="/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="Gaussian Tips and Troubleshooting Guide">
+<meta property="twitter:title" content="Gaussian Basics and Troubleshooting">
 <meta property="twitter:description" content="at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter">
 <meta property="twitter:url" content="https://rlaplaza.github.io">
 <meta property="twitter:card" content="summary_large_image">
@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-10-05T07:46:18+00:00">
+  <meta property="og:updated_time" content="2026-10-05T08:16:36+00:00">
   <meta property="article:published_time" content="2025-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-10-05T07:46:18+00:00">
-  <meta name="revised" content="2026-10-05T07:46:18+00:00">
+  <meta property="article:modified_time" content="2026-10-05T08:16:36+00:00">
+  <meta name="revised" content="2026-10-05T08:16:36+00:00">
 
 
 <script type="application/ld+json">
@@ -77,13 +77,13 @@
     "@context": "https://schema.org",
     
       "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "Gaussian Tips and Troubleshooting Guide" },
+      "author": { "@type": "Person", "name": "Gaussian Basics and Troubleshooting" },
       "datePublished": "2025-01-22T00:00:00+00:00",
-      "dateModified": "2026-10-05T07:46:18+00:00",
+      "dateModified": "2026-10-05T08:16:36+00:00",
     
-    "name": "Gaussian Tips and Troubleshooting Guide",
+    "name": "Gaussian Basics and Troubleshooting",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
-    "headline": "Gaussian Tips and Troubleshooting Guide",
+    "headline": "Gaussian Basics and Troubleshooting",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
@@ -504,7 +504,7 @@
 -->
 
 
-<h1 class="center">Gaussian Tips and Troubleshooting Guide</h1>
+<h1 class="center">Gaussian Basics and Troubleshooting</h1>
 
 <div class="post-info">
   
@@ -575,13 +575,107 @@
 -->
 
 
-<h1 id="gaussian-tips-and-troubleshooting-guide">Gaussian Tips and Troubleshooting Guide</h1>
+<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
 
-<p>This guide compiles common errors encountered when running Gaussian calculations and provides practical solutions. Whether you’re optimizing geometries, computing frequencies, or running excited-state calculations, these tips should help you navigate the most frequent issues.</p>
+<p>This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion <a href="/2025/01/22/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a> guide covers the same topics for ORCA. The error catalog builds on community resources, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
 
 <blockquote>
-  <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to quickly find specific error messages. This guide is inspired by and builds upon resources from the computational chemistry community, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
+  <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to quickly find specific error messages.</p>
 </blockquote>
+
+<hr>
+
+<h2 id="basic-input-file">Basic input file</h2>
+
+<p>A Gaussian input has Link 0 lines (<code class="language-plaintext highlighter-rouge">%…</code>), a route section (<code class="language-plaintext highlighter-rouge"># …</code>), a title, charge and multiplicity, then coordinates. Blank lines separate the title from the molecule specification and usually end the file.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%mem=8GB
+%nprocshared=4
+%chk=water_opt.chk
+# opt freq b3lyp/6-31g(d)
+
+Water optimization and frequencies
+
+0 1
+O    0.000000    0.000000    0.117300
+H    0.000000    0.757200   -0.469200
+H    0.000000   -0.757200   -0.469200
+</code></pre></div></div>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">%mem</code>, <code class="language-plaintext highlighter-rouge">%nprocshared</code>, and <code class="language-plaintext highlighter-rouge">%chk</code> set memory, shared-memory cores, and the checkpoint file.</li>
+  <li>The route line starts with <code class="language-plaintext highlighter-rouge">#</code> and lists method, basis, and job keywords.</li>
+  <li>The title line is free text; the next non-blank line is <code class="language-plaintext highlighter-rouge">charge multiplicity</code>, then atoms.</li>
+  <li>Prefer Cartesian coordinates unless you have a reason to use a Z-matrix. Visualization tools (GaussView, Avogadro) help avoid formatting mistakes.</li>
+</ul>
+
+<hr>
+
+<h2 id="parallelism-and-memory">Parallelism and memory</h2>
+
+<p><code class="language-plaintext highlighter-rouge">%nprocshared</code> sets how many cores Gaussian uses with shared-memory parallelism. <code class="language-plaintext highlighter-rouge">%mem</code> is the memory Gaussian is allowed to allocate. On many systems Gaussian uses roughly 1 GB more than the value you set, so leave headroom relative to the job script:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%mem=8GB
+%nprocshared=4
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#SBATCH --mem=16G   # comfortably above %mem</span>
+<span class="c">#SBATCH --cpus-per-task=4</span>
+</code></pre></div></div>
+
+<p>Match <code class="language-plaintext highlighter-rouge">%nprocshared</code> to the CPU count you requested. If memory is limited, reduce cores first: fewer processors lower the peak memory demand. Use <code class="language-plaintext highlighter-rouge">%nprocshared</code> rather than Linda-style <code class="language-plaintext highlighter-rouge">nprocl</code> unless your site explicitly supports Linda.</p>
+
+<p>Checkpoint files (<code class="language-plaintext highlighter-rouge">%chk=…</code>) are worth keeping for restarts and chained jobs (<code class="language-plaintext highlighter-rouge">geom=allcheck</code>, <code class="language-plaintext highlighter-rouge">guess=read</code>). Point <code class="language-plaintext highlighter-rouge">GAUSS_SCRDIR</code> at a large scratch filesystem when jobs write heavy intermediate files.</p>
+
+<hr>
+
+<h2 id="optimizing-minima">Optimizing minima</h2>
+
+<p>For a ground-state minimum, put <code class="language-plaintext highlighter-rouge">opt</code> on the route line. Computing frequencies in the same job confirms a true minimum (no imaginary modes):</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt freq b3lyp/6-31g(d)
+</code></pre></div></div>
+
+<p>Useful options when an optimization is slow or stubborn:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt=(calcfc,maxcycle=200) b3lyp/6-31g(d)
+</code></pre></div></div>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">calcfc</code> computes force constants at the start (often more stable than a crude guess Hessian).</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">maxcycle</code> raises the step limit when the structure is close but not quite there.</li>
+  <li>Alternatives such as <code class="language-plaintext highlighter-rouge">opt=RFO</code>, <code class="language-plaintext highlighter-rouge">opt=GDIIS</code>, or <code class="language-plaintext highlighter-rouge">opt=cartesian</code> are covered in the troubleshooting half if the default optimizer stalls.</li>
+</ul>
+
+<p>What “done” looks like: the log reports that the optimization completed (or “Normal termination”), and a frequency job shows <strong>zero</strong> imaginary frequencies for a minimum. Inspect the geometry in a viewer before trusting the energy.</p>
+
+<hr>
+
+<h2 id="optimizing-transition-states">Optimizing transition states</h2>
+
+<p>A transition-state search maximizes energy along one mode and minimizes along the others. A typical Gaussian setup is:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># opt=(ts,calcfc,noeigentest) freq b3lyp/6-31g(d)
+</code></pre></div></div>
+
+<p>Practical checklist:</p>
+
+<ol>
+  <li>Start from a good TS guess (often from a scan or a previous lower-level TS).</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">opt=ts</code> with an initial Hessian (<code class="language-plaintext highlighter-rouge">calcfc</code> or <code class="language-plaintext highlighter-rouge">calcall</code> when affordable).</li>
+  <li>After convergence, run frequencies and confirm <strong>exactly one</strong> imaginary mode that matches the reaction coordinate.</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">noeigentest</code> (or <code class="language-plaintext highlighter-rouge">noeigen</code>) skips the intermediate eigenvalue check when the optimizer reports the wrong number of negative eigenvalues mid-run. That can let the search continue, but it does <strong>not</strong> replace a final frequency verification—see the TS troubleshooting section below.</p>
+
+<p>When a calculation fails or behaves oddly, use the catalog below. Search for the error text or the symptom that matches your output.</p>
+
+<hr>
+
+<h2 id="troubleshooting-common-issues">Troubleshooting common issues</h2>
 
 <hr>
 
@@ -962,63 +1056,21 @@ Some functionals don’t support third-order derivatives needed for hyperpolariz
 
 <hr>
 
-<h2 id="general-best-practices">General Best Practices</h2>
-
-<h3 id="input-file-organization">Input File Organization</h3>
+<h2 id="monitoring-and-performance-tips">Monitoring and performance tips</h2>
 
 <ol>
   <li>
-<strong>Always include route section</strong>: Start with <code class="language-plaintext highlighter-rouge">#</code> followed by method and keywords</li>
+<strong>Watch output in real time</strong>: <code class="language-plaintext highlighter-rouge">tail -f jobname.log</code> while the job runs.</li>
   <li>
-<strong>Use title line</strong>: Provide a descriptive title</li>
+<strong>Check for convergence</strong>: Look for “Optimization completed” or “Normal termination”.</li>
   <li>
-<strong>Specify charge and multiplicity</strong>: Essential for proper calculation</li>
+<strong>Save intermediate results</strong>: Keep checkpoint files for restarts and <code class="language-plaintext highlighter-rouge">geom=allcheck</code> chains.</li>
   <li>
-<strong>Use checkpoint files</strong>: Include <code class="language-plaintext highlighter-rouge">%chk=filename.chk</code> for recovery</li>
-</ol>
-
-<h3 id="example-well-structured-input">Example Well-Structured Input:</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%mem=8GB
-%nprocshared=4
-%chk=water_opt.chk
-# opt freq b3lyp/6-31g(d)
-
-Water optimization
-
-0 1
-O    0.000000    0.000000    0.117300
-H    0.000000    0.757200   -0.469200
-H    0.000000   -0.757200   -0.469200
-</code></pre></div></div>
-
-<h3 id="monitoring-calculations">Monitoring Calculations</h3>
-
-<ol>
+<strong>Use an appropriate basis</strong>: Larger is not always better for exploratory work.</li>
   <li>
-<strong>Watch output in real-time</strong>: Use <code class="language-plaintext highlighter-rouge">tail -f</code> to monitor progress:
-    <div class="language-bash highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="nb">tail</span> <span class="nt">-f</span> jobname.log
-</code></pre></div>    </div>
-  </li>
+<strong>Parallelize wisely</strong>: More cores trade against memory; match <code class="language-plaintext highlighter-rouge">%nprocshared</code> to the allocation.</li>
   <li>
-    <p><strong>Check for convergence</strong>: Look for “Optimization completed” or “Normal termination”</p>
-  </li>
-  <li>
-<strong>Save intermediate results</strong>: Use checkpoint files to restart or extract data</li>
-</ol>
-
-<h3 id="performance-tips">Performance Tips</h3>
-
-<ol>
-  <li>
-<strong>Use appropriate basis sets</strong>: Don’t use larger basis sets than necessary</li>
-  <li>
-<strong>Parallelize wisely</strong>: More cores don’t always mean faster (memory trade-off)</li>
-  <li>
-<strong>Use efficient methods</strong>: Consider <code class="language-plaintext highlighter-rouge">opt=calcfc</code> to calculate force constants once</li>
-  <li>
-<strong>Chain calculations</strong>: Use <code class="language-plaintext highlighter-rouge">geom=allcheck</code> to continue from previous calculations</li>
+<strong>Prefer <code class="language-plaintext highlighter-rouge">opt=calcfc</code></strong> when the default Hessian guess is unreliable.</li>
 </ol>
 
 <hr>
@@ -1119,7 +1171,7 @@ H    0.000000   -0.757200   -0.469200
     
       Next post <i class="icon fa-solid fa-angle-right"></i><br>
       <a href="/2025/01/22/ORCA-tips-and-troubleshooting.html">
-        ORCA Tips and Troubleshooting Guide
+        ORCA Basics and Troubleshooting
       </a>
     
   </span>
