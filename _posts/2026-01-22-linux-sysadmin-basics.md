@@ -179,7 +179,7 @@ Useful keys while `top` is running include:
 
 At first, use `top` for observation. Look for processes consuming an unusual amount of CPU or memory, and notice the load and memory summaries at the top of the display. Do not terminate a process just because it appears in the list: first identify which user started it, what command it represents, and whether it belongs to an important job.
 
-On a shared server or HPC system, your institution may provide additional monitoring commands or a scheduler such as SLURM. The [Using Agustina](/2025/08/01/Using-agustina.html) post describes job helpers and log locations for that environment. For another example of useful monitoring habits, the [Gaussian Tips and Troubleshooting Guide](/2025/01/22/Gaussian-tips-and-troubleshooting.html) discusses reading complete output, following logs with `tail -f`, and checking available disk space.
+On a shared server or HPC system, your institution may provide additional monitoring commands or a scheduler such as SLURM. The [Using Agustina](/2025/08/01/Using-agustina.html) post describes job helpers and log locations for that environment. For another example of useful monitoring habits, the [Gaussian Basics and Troubleshooting](/2025/01/22/Gaussian-tips-and-troubleshooting.html) guide discusses reading complete output, following logs with `tail -f`, and checking available disk space.
 
 ## Good first habits
 

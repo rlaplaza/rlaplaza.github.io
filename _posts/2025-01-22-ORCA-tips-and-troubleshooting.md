@@ -1,15 +1,124 @@
 ---
-title: ORCA Tips and Troubleshooting Guide
+title: ORCA Basics and Troubleshooting
 image: images/post-tutorial.jpg
 author: rlaplaza
 tags: tutorial, computational-chemistry, orca, troubleshooting
 ---
 
-# ORCA Tips and Troubleshooting Guide
+# ORCA Basics and Troubleshooting
 
-This guide compiles common ORCA issues encountered in routine electronic-structure work and offers practical fixes. It follows the same spirit as the Gaussian guide, but the advice below is rooted in the official ORCA FAQ and manuals rather than in forum folklore or anecdotal advice.
+This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion [Gaussian Basics and Troubleshooting](/2025/01/22/Gaussian-tips-and-troubleshooting.html) guide covers the same topics for Gaussian. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.
 
-> **Tip**: Use your browser's search function (Ctrl+F / Cmd+F) to jump to the relevant error text. The ORCA FAQ and the SCF/geometry sections of the manual are the best and most reliable reference points for troubleshooting.
+> **Tip**: Use your browser's search function (Ctrl+F / Cmd+F) to jump to a specific error. The ORCA FAQ and the SCF/geometry sections of the manual are the best reference points for troubleshooting.
+
+---
+
+## Basic input file
+
+A minimal ORCA input has three pieces: a keyword line (method, basis, and job type), optional resource blocks, and a coordinate block with charge and multiplicity.
+
+```text
+! B3LYP def2-SVP Opt Freq TightSCF
+
+%pal
+  nprocs 4
+end
+
+%maxcore 2000
+
+* xyz 0 1
+O   0.000000   0.000000   0.117300
+H   0.000000   0.757200  -0.469200
+H   0.000000  -0.757200  -0.469200
+*
+```
+
+- The `!` line sets the electronic-structure method, basis set, and requested jobs (`Opt`, `Freq`, SCF tightness, and so on).
+- `%pal` and `%maxcore` control cores and memory (see the next section).
+- `* xyz charge mult` starts Cartesian coordinates; the block ends with a lone `*`.
+- Launch with the full path to the ORCA binary, for example:
+  ```bash
+  /path/to/orca water.inp > water.out
+  ```
+
+For cluster submission helpers that read `%pal` / `%MaxCore` from the input, see [Using Agustina](/2025/08/01/Using-agustina.html).
+
+---
+
+## Parallelism and memory
+
+ORCA parallelizes with MPI. `%pal nprocs N` asks for `N` processes. `%maxcore` is the memory dedicated to **each** process (in MB), not the total for the job.
+
+Rough total memory:
+
+```text
+total ≈ nprocs × maxcore
+```
+
+Match these to your scheduler allocation. If you request 8 processes and `%maxcore 2000`, plan on roughly 16 GB of RAM for ORCA alone, plus a little headroom for the OS and the queue. Oversubscribing (more processes than memory allows) is a common cause of `Please increase MaxCore` aborts—covered in the troubleshooting half below.
+
+Example that asks for 4 cores and 2 GB per process:
+
+```text
+%pal
+  nprocs 4
+end
+%maxcore 2000
+```
+
+If memory is tight, reduce `nprocs` before cutting the method or basis. More cores do not always help if each process is starved of memory.
+
+---
+
+## Optimizing minima
+
+For a ground-state minimum, add `Opt` to the keyword line. A common pattern is to optimize and then compute frequencies in one job so you can confirm there are no imaginary modes:
+
+```text
+! B3LYP def2-SVP Opt Freq TightSCF
+```
+
+Useful `%geom` controls when a structure is floppy or slow to settle:
+
+```text
+%geom
+  MaxIter 100
+  coordsys redundant
+  cartfallback true
+end
+```
+
+What “done” looks like: the optimization reports that the geometry has converged, the SCF is tight, and a subsequent frequency job shows **zero** imaginary frequencies for a true minimum. If the optimizer stalls or the structure looks chemically wrong, see the geometry sections in the troubleshooting half rather than blindly raising `MaxIter`.
+
+---
+
+## Optimizing transition states
+
+A transition state (TS) maximizes the energy along one Hessian mode and minimizes along the others. In ORCA that is `OptTS`, usually with an explicit Hessian and mode selection:
+
+```text
+! B3LYP def2-SVP OptTS Freq TightSCF
+
+%geom
+  TS_Mode {M 0} end
+  Calc_Hess true
+  Recalc_Hess 5
+end
+```
+
+Practical checklist:
+
+1. Start from a good guess (often from a relaxed surface scan along the reaction coordinate).
+2. Compute or refresh the Hessian (`Calc_Hess` / `Recalc_Hess`) so the optimizer follows the intended mode.
+3. After convergence, run frequencies and confirm **exactly one** imaginary mode that matches the reaction coordinate.
+
+If the job collapses to a minimum or follows the wrong mode, the TS troubleshooting section below covers the usual next steps.
+
+When a calculation fails or behaves oddly, use the catalog below. Search for the error text or the symptom that matches your output.
+
+---
+
+## Troubleshooting common issues
 
 ---
 

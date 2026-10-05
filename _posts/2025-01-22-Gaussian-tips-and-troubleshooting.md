@@ -1,15 +1,106 @@
 ---
-title: Gaussian Tips and Troubleshooting Guide
+title: Gaussian Basics and Troubleshooting
 image: images/post-tutorial.jpg
 author: rlaplaza
 tags: tutorial, computational-chemistry, gaussian, troubleshooting
 ---
 
-# Gaussian Tips and Troubleshooting Guide
+# Gaussian Basics and Troubleshooting
 
-This guide compiles common errors encountered when running Gaussian calculations and provides practical solutions. Whether you're optimizing geometries, computing frequencies, or running excited-state calculations, these tips should help you navigate the most frequent issues.
+This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion [ORCA Basics and Troubleshooting](/2025/01/22/ORCA-tips-and-troubleshooting.html) guide covers the same topics for ORCA. The error catalog builds on community resources, particularly [Zhe Wang's comprehensive error guide](https://wongzit.github.io/gaussian-common-errors-and-solutions/).
 
-> **Tip**: Use your browser's search function (Ctrl+F / Cmd+F) to quickly find specific error messages. This guide is inspired by and builds upon resources from the computational chemistry community, particularly [Zhe Wang's comprehensive error guide](https://wongzit.github.io/gaussian-common-errors-and-solutions/).
+> **Tip**: Use your browser's search function (Ctrl+F / Cmd+F) to quickly find specific error messages.
+
+---
+
+## Basic input file
+
+A Gaussian input has Link 0 lines (`%…`), a route section (`# …`), a title, charge and multiplicity, then coordinates. Blank lines separate the title from the molecule specification and usually end the file.
+
+```text
+%mem=8GB
+%nprocshared=4
+%chk=water_opt.chk
+# opt freq b3lyp/6-31g(d)
+
+Water optimization and frequencies
+
+0 1
+O    0.000000    0.000000    0.117300
+H    0.000000    0.757200   -0.469200
+H    0.000000   -0.757200   -0.469200
+```
+
+- `%mem`, `%nprocshared`, and `%chk` set memory, shared-memory cores, and the checkpoint file.
+- The route line starts with `#` and lists method, basis, and job keywords.
+- The title line is free text; the next non-blank line is `charge multiplicity`, then atoms.
+- Prefer Cartesian coordinates unless you have a reason to use a Z-matrix. Visualization tools (GaussView, Avogadro) help avoid formatting mistakes.
+
+---
+
+## Parallelism and memory
+
+`%nprocshared` sets how many cores Gaussian uses with shared-memory parallelism. `%mem` is the memory Gaussian is allowed to allocate. On many systems Gaussian uses roughly 1 GB more than the value you set, so leave headroom relative to the job script:
+
+```text
+%mem=8GB
+%nprocshared=4
+```
+
+```bash
+#SBATCH --mem=16G   # comfortably above %mem
+#SBATCH --cpus-per-task=4
+```
+
+Match `%nprocshared` to the CPU count you requested. If memory is limited, reduce cores first: fewer processors lower the peak memory demand. Use `%nprocshared` rather than Linda-style `nprocl` unless your site explicitly supports Linda.
+
+Checkpoint files (`%chk=…`) are worth keeping for restarts and chained jobs (`geom=allcheck`, `guess=read`). Point `GAUSS_SCRDIR` at a large scratch filesystem when jobs write heavy intermediate files.
+
+---
+
+## Optimizing minima
+
+For a ground-state minimum, put `opt` on the route line. Computing frequencies in the same job confirms a true minimum (no imaginary modes):
+
+```text
+# opt freq b3lyp/6-31g(d)
+```
+
+Useful options when an optimization is slow or stubborn:
+
+```text
+# opt=(calcfc,maxcycle=200) b3lyp/6-31g(d)
+```
+
+- `calcfc` computes force constants at the start (often more stable than a crude guess Hessian).
+- `maxcycle` raises the step limit when the structure is close but not quite there.
+- Alternatives such as `opt=RFO`, `opt=GDIIS`, or `opt=cartesian` are covered in the troubleshooting half if the default optimizer stalls.
+
+What “done” looks like: the log reports that the optimization completed (or “Normal termination”), and a frequency job shows **zero** imaginary frequencies for a minimum. Inspect the geometry in a viewer before trusting the energy.
+
+---
+
+## Optimizing transition states
+
+A transition-state search maximizes energy along one mode and minimizes along the others. A typical Gaussian setup is:
+
+```text
+# opt=(ts,calcfc,noeigentest) freq b3lyp/6-31g(d)
+```
+
+Practical checklist:
+
+1. Start from a good TS guess (often from a scan or a previous lower-level TS).
+2. Use `opt=ts` with an initial Hessian (`calcfc` or `calcall` when affordable).
+3. After convergence, run frequencies and confirm **exactly one** imaginary mode that matches the reaction coordinate.
+
+`noeigentest` (or `noeigen`) skips the intermediate eigenvalue check when the optimizer reports the wrong number of negative eigenvalues mid-run. That can let the search continue, but it does **not** replace a final frequency verification—see the TS troubleshooting section below.
+
+When a calculation fails or behaves oddly, use the catalog below. Search for the error text or the symptom that matches your output.
+
+---
+
+## Troubleshooting common issues
 
 ---
 
@@ -294,48 +385,14 @@ Some functionals don't support third-order derivatives needed for hyperpolarizab
 
 ---
 
-## General Best Practices
+## Monitoring and performance tips
 
-### Input File Organization
-
-1. **Always include route section**: Start with `#` followed by method and keywords
-2. **Use title line**: Provide a descriptive title
-3. **Specify charge and multiplicity**: Essential for proper calculation
-4. **Use checkpoint files**: Include `%chk=filename.chk` for recovery
-
-### Example Well-Structured Input:
-
-```
-%mem=8GB
-%nprocshared=4
-%chk=water_opt.chk
-# opt freq b3lyp/6-31g(d)
-
-Water optimization
-
-0 1
-O    0.000000    0.000000    0.117300
-H    0.000000    0.757200   -0.469200
-H    0.000000   -0.757200   -0.469200
-```
-
-### Monitoring Calculations
-
-1. **Watch output in real-time**: Use `tail -f` to monitor progress:
-   ```bash
-   tail -f jobname.log
-   ```
-
-2. **Check for convergence**: Look for "Optimization completed" or "Normal termination"
-
-3. **Save intermediate results**: Use checkpoint files to restart or extract data
-
-### Performance Tips
-
-1. **Use appropriate basis sets**: Don't use larger basis sets than necessary
-2. **Parallelize wisely**: More cores don't always mean faster (memory trade-off)
-3. **Use efficient methods**: Consider `opt=calcfc` to calculate force constants once
-4. **Chain calculations**: Use `geom=allcheck` to continue from previous calculations
+1. **Watch output in real time**: `tail -f jobname.log` while the job runs.
+2. **Check for convergence**: Look for “Optimization completed” or “Normal termination”.
+3. **Save intermediate results**: Keep checkpoint files for restarts and `geom=allcheck` chains.
+4. **Use an appropriate basis**: Larger is not always better for exploratory work.
+5. **Parallelize wisely**: More cores trade against memory; match `%nprocshared` to the allocation.
+6. **Prefer `opt=calcfc`** when the default Hessian guess is unreliable.
 
 ---
 

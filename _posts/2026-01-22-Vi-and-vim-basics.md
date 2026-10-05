@@ -9,7 +9,7 @@ tags: tutorial, guidelines, linux, bash, vim, vi
 
 If you work on a Linux machine, a remote server, or an HPC system, you will eventually need to edit a configuration file, a shell script, or a short note in the terminal. `vi` and `vim` are classic tools for exactly that. They are usually installed on Unix-like systems, they work well over SSH, and they do not require a graphical interface.
 
-This short guide is meant to be practical. It complements the [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html) article and the [Coding Practices Guidelines](/2025/07/30/coding-tips.html), especially the parts about shell work, remote systems, and command-line tooling.
+This short guide is meant to be practical. It complements the [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html) article and the [Coding Practices Guidelines](/2025/07/30/Coding-tips.html), especially the parts about shell work, remote systems, and command-line tooling.
 
 ## What are `vi` and `vim`?
 
@@ -191,7 +191,7 @@ vimtutor
 ```
 
 * The [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html) article covers shell setup, environment variables, and remote work habits that go well with `vim`.
-* The [Using Agustina](/2025/08/01/using-agustina.html) guide is a practical example of editing shell configuration files in an HPC workflow.
+* The [Using Agustina](/2025/08/01/Using-agustina.html) guide is a practical example of editing shell configuration files in an HPC workflow.
 
 Once you know the basics, `vim` becomes one of the most useful tools in a Linux workflow: it is fast, flexible, and available almost everywhere.
 
