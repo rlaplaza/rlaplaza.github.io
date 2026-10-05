@@ -7,7 +7,7 @@ tags: tutorial, computational-chemistry, orca, troubleshooting
 
 # ORCA Basics and Troubleshooting
 
-This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion [Gaussian Basics and Troubleshooting](/2025/01/22/Gaussian-tips-and-troubleshooting.html) guide covers the same topics for Gaussian. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.
+This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion [Gaussian Basics and Troubleshooting](/2026/01/01/Gaussian-tips-and-troubleshooting.html) guide covers the same topics for Gaussian. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.
 
 > **Tip**: Use your browser's search function (Ctrl+F / Cmd+F) to jump to a specific error. The ORCA FAQ and the SCF/geometry sections of the manual are the best reference points for troubleshooting.
 
@@ -55,7 +55,13 @@ Practical starting points in ORCA (always with dispersion unless the functional 
 - **PBE0-D3BJ** or **PBE0-D4** — a solid global hybrid for many main-group problems (`! PBE0 D3BJ …`).
 - **ωB97X-V** — among the strongest hybrids in broad benchmarks; the VV10 nonlocal correlation covers dispersion, so do not add a separate `D3`/`D4` term. Caveat: ORCA does not provide an analytical Hessian for ωB97X-V yet, so geometry/TS work that needs second derivatives typically requires `NumFreq` (much more expensive).
 
-For a large, transparent comparison of dispersion-corrected DFAs on main-group thermochemistry, kinetics, and noncovalent interactions, see the [GMTKN55 benchmark](https://doi.org/10.1039/C7CP04913C) (Goerigk et al., 2017).
+Useful DFT benchmark and method papers:
+
+- [GMTKN55](https://doi.org/10.1039/C7CP04913C) (Goerigk et al., 2017) — large main-group thermochemistry, kinetics, and noncovalent-interaction benchmark of many dispersion-corrected DFAs.
+- [Grimme, WIREs Comput. Mol. Sci. (2011)](https://doi.org/10.1002/wcms.30) — review of London dispersion corrections to DFT and why they matter beyond weakly bound dimers.
+- [Grimme et al., J. Chem. Phys. (2010)](https://doi.org/10.1063/1.3382344) — DFT-D3 parametrization (the usual `D3`/`D3BJ` family used in everyday calculations).
+- [Mardirossian and Head-Gordon, PCCP (2014)](https://doi.org/10.1039/C3CP54374A) — original ωB97X-V paper (range-separated hybrid with VV10 nonlocal correlation).
+- [Goerigk et al., ChemPhysChem (2011)](https://doi.org/10.1002/cphc.201100826) — dispersion-corrected DFT on the S66/S66x8 noncovalent interaction sets.
 
 ---
 

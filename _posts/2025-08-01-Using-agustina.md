@@ -65,7 +65,7 @@ subconda.sh -h
 
 The idea is simple: the wrapper creates a `sbatch` job script for you, sets the job resources, activates the chosen environment, runs the job, and writes the logs under a `slurm_logs/` folder next to your input files. This saves a lot of boilerplate and reduces the chance of forgetting the `--account` project or a required environment module.
 
-`suborca.sh` is meant for ORCA jobs. For writing the input itself (keywords, `%pal` / `%MaxCore`, optimizations), see [ORCA Basics and Troubleshooting](/2025/01/22/ORCA-tips-and-troubleshooting.html). A typical submission example is:
+`suborca.sh` is meant for ORCA jobs. For writing the input itself (keywords, `%pal` / `%MaxCore`, optimizations), see [ORCA Basics and Troubleshooting](/2026/01/01/ORCA-tips-and-troubleshooting.html). A typical submission example is:
 
 ```
 suborca.sh -n 4 -m 16000 my_calculation.inp

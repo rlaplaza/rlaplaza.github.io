@@ -7,7 +7,7 @@ tags: tutorial, computational-chemistry, gaussian, troubleshooting
 
 # Gaussian Basics and Troubleshooting
 
-This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion [ORCA Basics and Troubleshooting](/2025/01/22/ORCA-tips-and-troubleshooting.html) guide covers the same topics for ORCA. The error catalog builds on community resources, particularly [Zhe Wang's comprehensive error guide](https://wongzit.github.io/gaussian-common-errors-and-solutions/).
+This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion [ORCA Basics and Troubleshooting](/2026/01/01/ORCA-tips-and-troubleshooting.html) guide covers the same topics for ORCA. The error catalog builds on community resources, particularly [Zhe Wang's comprehensive error guide](https://wongzit.github.io/gaussian-common-errors-and-solutions/).
 
 > **Tip**: Use your browser's search function (Ctrl+F / Cmd+F) to quickly find specific error messages.
 
@@ -48,7 +48,14 @@ Practical starting points in Gaussian:
 - **PBE0-D3(BJ)** — solid global hybrid (Gaussian keyword `PBE1PBE`) with the same dispersion keyword: `PBE1PBE … EmpiricalDispersion=GD3BJ`.
 - **ωB97X-D** — range-separated hybrid with a built-in dispersion correction: `wB97XD` (do not stack an extra `EmpiricalDispersion` term on top).
 
-For a large, transparent comparison of dispersion-corrected DFAs on main-group thermochemistry, kinetics, and noncovalent interactions, see the [GMTKN55 benchmark](https://doi.org/10.1039/C7CP04913C) (Goerigk et al., 2017).
+Useful DFT benchmark and method papers:
+
+- [GMTKN55](https://doi.org/10.1039/C7CP04913C) (Goerigk et al., 2017) — large main-group thermochemistry, kinetics, and noncovalent-interaction benchmark of many dispersion-corrected DFAs.
+- [Grimme, WIREs Comput. Mol. Sci. (2011)](https://doi.org/10.1002/wcms.30) — review of London dispersion corrections to DFT and why they matter beyond weakly bound dimers.
+- [Grimme et al., J. Chem. Phys. (2010)](https://doi.org/10.1063/1.3382344) — DFT-D3 parametrization (the usual `EmpiricalDispersion=GD3` / `GD3BJ` family).
+- [Chai and Head-Gordon, PCCP (2008)](https://doi.org/10.1039/B810189B) — ωB97X-D functional (Gaussian `wB97XD`).
+- [Mardirossian and Head-Gordon, PCCP (2014)](https://doi.org/10.1039/C3CP54374A) — ωB97X-V (strong hybrid with VV10; useful context even when you use `wB97XD` in Gaussian).
+- [Goerigk et al., ChemPhysChem (2011)](https://doi.org/10.1002/cphc.201100826) — dispersion-corrected DFT on the S66/S66x8 noncovalent interaction sets.
 
 ---
 
