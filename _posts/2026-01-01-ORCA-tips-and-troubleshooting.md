@@ -57,7 +57,7 @@ Practical starting points in ORCA (always with dispersion unless the functional 
 
 Useful DFT benchmark and method papers:
 
-- [GMTKN55](https://doi.org/10.1039/C7CP04913C) (Goerigk et al., 2017) — large main-group thermochemistry, kinetics, and noncovalent-interaction benchmark of many dispersion-corrected DFAs.
+- [GMTKN55](https://doi.org/10.1039/C7CP04913G) (Goerigk et al., 2017) — large main-group thermochemistry, kinetics, and noncovalent-interaction benchmark of many dispersion-corrected DFAs.
 - [Grimme, WIREs Comput. Mol. Sci. (2011)](https://doi.org/10.1002/wcms.30) — review of London dispersion corrections to DFT and why they matter beyond weakly bound dimers.
 - [Grimme et al., J. Chem. Phys. (2010)](https://doi.org/10.1063/1.3382344) — DFT-D3 parametrization (the usual `D3`/`D3BJ` family used in everyday calculations).
 - [Mardirossian and Head-Gordon, PCCP (2014)](https://doi.org/10.1039/C3CP54374A) — original ωB97X-V paper (range-separated hybrid with VV10 nonlocal correlation).
