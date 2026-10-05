@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-10-05T07:43:08+00:00">
+  <meta property="og:updated_time" content="2026-10-05T07:46:18+00:00">
   <meta property="article:published_time" content="2026-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-10-05T07:43:08+00:00">
-  <meta name="revised" content="2026-10-05T07:43:08+00:00">
+  <meta property="article:modified_time" content="2026-10-05T07:46:18+00:00">
+  <meta name="revised" content="2026-10-05T07:46:18+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Linux Sysadmin Basics" },
       "datePublished": "2026-01-22T00:00:00+00:00",
-      "dateModified": "2026-10-05T07:43:08+00:00",
+      "dateModified": "2026-10-05T07:46:18+00:00",
     
     "name": "Linux Sysadmin Basics",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
@@ -583,7 +583,7 @@
 
 <p>If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.</p>
 
-<p>This is a short introduction to the pieces you will use every day. For a broader learning path, see the <a href="/2025/07/30/coding-tips.html">Coding Practices Guidelines</a>, especially its sections on Unix shell commands, remote cluster work, and reproducible projects. If you are setting up Python on your own machine next, the <a href="/2026/10/05/local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> guide assumes only this level of terminal comfort.</p>
+<p>This is a short introduction to the pieces you will use every day. For a broader learning path, see the <a href="/2025/07/30/Coding-tips.html">Coding Practices Guidelines</a>, especially its sections on Unix shell commands, remote cluster work, and reproducible projects. If you are setting up Python on your own machine next, the <a href="/2026/10/05/Local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> guide assumes only this level of terminal comfort.</p>
 
 <h2 id="the-shell-and-your-home-directory">The shell and your home directory</h2>
 
@@ -624,7 +624,7 @@ cd</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2"
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.bashrc
 </code></pre></div></div>
 
-<p>The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> guide shows practical examples of <code class="language-plaintext highlighter-rouge">.bashrc</code> aliases, SSH jump hosts, prompt customization, and <code class="language-plaintext highlighter-rouge">PATH</code> settings for an HPC system. It is a useful next step once the basic idea is familiar. For editing files like this directly from the terminal, a classic option is <code class="language-plaintext highlighter-rouge">vim</code>; see the <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide for the essentials: modes, editing, visual blocks, and <code class="language-plaintext highlighter-rouge">vimdiff</code>.</p>
+<p>The <a href="/2025/08/01/Using-agustina.html">Using Agustina</a> guide shows practical examples of <code class="language-plaintext highlighter-rouge">.bashrc</code> aliases, SSH jump hosts, prompt customization, and <code class="language-plaintext highlighter-rouge">PATH</code> settings for an HPC system. It is a useful next step once the basic idea is familiar. For editing files like this directly from the terminal, a classic option is <code class="language-plaintext highlighter-rouge">vim</code>; see the <a href="/2026/01/22/Vi-and-vim-basics.html">Vi and Vim Basics</a> guide for the essentials: modes, editing, visual blocks, and <code class="language-plaintext highlighter-rouge">vimdiff</code>.</p>
 
 <p>Be careful when modifying <code class="language-plaintext highlighter-rouge">.bashrc</code>. A syntax error can make every new shell print an error, and a badly constructed <code class="language-plaintext highlighter-rouge">PATH</code> can make commands difficult to find. Before making a substantial change, keep a backup:</p>
 
@@ -749,9 +749,9 @@ less notes/example.txt
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">--help</span>
 </code></pre></div></div>
 
-<p>When a file needs to be edited directly from the shell instead of a GUI editor, <code class="language-plaintext highlighter-rouge">vim</code> is the standard choice on Linux systems. The <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide is a quick reference for the most common commands and workflows.</p>
+<p>When a file needs to be edited directly from the shell instead of a GUI editor, <code class="language-plaintext highlighter-rouge">vim</code> is the standard choice on Linux systems. The <a href="/2026/01/22/Vi-and-vim-basics.html">Vi and Vim Basics</a> guide is a quick reference for the most common commands and workflows.</p>
 
-<p>The <a href="/2025/07/30/git-tips.html">Basic Git and GitHub Guide</a> builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.</p>
+<p>The <a href="/2025/07/30/Git-tips.html">Basic Git and GitHub Guide</a> builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.</p>
 
 <h2 id="looking-at-running-processes-with-top">Looking at running processes with <code class="language-plaintext highlighter-rouge">top</code>
 </h2>
@@ -793,7 +793,7 @@ less notes/example.txt
 
 <p>At first, use <code class="language-plaintext highlighter-rouge">top</code> for observation. Look for processes consuming an unusual amount of CPU or memory, and notice the load and memory summaries at the top of the display. Do not terminate a process just because it appears in the list: first identify which user started it, what command it represents, and whether it belongs to an important job.</p>
 
-<p>On a shared server or HPC system, your institution may provide additional monitoring commands or a scheduler such as SLURM. The <a href="/2025/08/01/using-agustina.html">Using Agustina</a> post describes job helpers and log locations for that environment. For another example of useful monitoring habits, the <a href="/2025/01/22/gaussian-tips-and-troubleshooting.html">Gaussian Tips and Troubleshooting Guide</a> discusses reading complete output, following logs with <code class="language-plaintext highlighter-rouge">tail -f</code>, and checking available disk space.</p>
+<p>On a shared server or HPC system, your institution may provide additional monitoring commands or a scheduler such as SLURM. The <a href="/2025/08/01/Using-agustina.html">Using Agustina</a> post describes job helpers and log locations for that environment. For another example of useful monitoring habits, the <a href="/2025/01/22/Gaussian-tips-and-troubleshooting.html">Gaussian Tips and Troubleshooting Guide</a> discusses reading complete output, following logs with <code class="language-plaintext highlighter-rouge">tail -f</code>, and checking available disk space.</p>
 
 <h2 id="good-first-habits">Good first habits</h2>
 
@@ -809,9 +809,9 @@ less notes/example.txt
   <li>Record the commands, software versions, and environment needed to reproduce a result.</li>
 </ol>
 
-<p>The <a href="/2025/07/29/general-guidelines.html">General Guidelines for Master’s and PhD Students</a> expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.</p>
+<p>The <a href="/2025/07/29/General-guidelines.html">General Guidelines for Master’s and PhD Students</a> expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.</p>
 
-<p>The <a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> guide is the practical companion for the quick editing commands you will use every time you change a shell config file or small script on a remote system.</p>
+<p>The <a href="/2026/01/22/Vi-and-vim-basics.html">Vi and Vim Basics</a> guide is the practical companion for the quick editing commands you will use every time you change a shell config file or small script on a remote system.</p>
 
 <h2 id="further-reading">Further reading</h2>
 
@@ -825,9 +825,9 @@ less notes/example.txt
 <a href="https://www.kernel.org/doc/man-pages/">The Linux man-pages project</a> provides detailed manual-page documentation.</li>
   <li>The <a href="https://gitlab.com/procps-ng/procps">procps-ng project</a> provides tools including <code class="language-plaintext highlighter-rouge">top</code> and <code class="language-plaintext highlighter-rouge">ps</code>.</li>
   <li>
-<a href="/2026/01/22/vi-and-vim-basics.html">Vi and Vim Basics</a> explains the core editor commands, visual block editing, and <code class="language-plaintext highlighter-rouge">vimdiff</code> for quick terminal-based comparisons.</li>
+<a href="/2026/01/22/Vi-and-vim-basics.html">Vi and Vim Basics</a> explains the core editor commands, visual block editing, and <code class="language-plaintext highlighter-rouge">vimdiff</code> for quick terminal-based comparisons.</li>
   <li>
-<a href="/2026/10/05/local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> is the next practical step if you want Python environments on your laptop.</li>
+<a href="/2026/10/05/Local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> is the next practical step if you want Python environments on your laptop.</li>
   <li>
 <a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has excellent lessons on the shell, command-line tools, editors, and remote work.</li>
 </ul>
