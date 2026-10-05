@@ -18,7 +18,7 @@ This guide starts with a short tutorial on how to write and run a basic ORCA job
 A minimal ORCA input has three pieces: a keyword line (method, basis, and job type), optional resource blocks, and a coordinate block with charge and multiplicity.
 
 ```text
-! B3LYP def2-SVP Opt Freq TightSCF
+! B3LYP D3BJ def2-SVP Opt Freq TightSCF
 
 %pal
   nprocs 4
@@ -41,7 +41,21 @@ H   0.000000  -0.757200  -0.469200
   /path/to/orca water.inp > water.out
   ```
 
+London dispersion is critical for organics, noncovalent contacts, and many reaction energetics, yet it is missing from most hybrid functionals (including bare B3LYP and PBE0). Add an empirical correction such as `D3BJ` or `D4`, or use a functional that already includes nonlocal correlation.
+
 For cluster submission helpers that read `%pal` / `%MaxCore` from the input, see [Using Agustina](/2025/08/01/Using-agustina.html).
+
+---
+
+## Recommended functionals
+
+Practical starting points in ORCA (always with dispersion unless the functional already includes it):
+
+- **B3LYP-D3BJ** or **B3LYP-D4** — still a useful everyday hybrid once dispersion is restored (`! B3LYP D3BJ …`).
+- **PBE0-D3BJ** or **PBE0-D4** — a solid global hybrid for many main-group problems (`! PBE0 D3BJ …`).
+- **ωB97X-V** — among the strongest hybrids in broad benchmarks; the VV10 nonlocal correlation covers dispersion, so do not add a separate `D3`/`D4` term. Caveat: ORCA does not provide an analytical Hessian for ωB97X-V yet, so geometry/TS work that needs second derivatives typically requires `NumFreq` (much more expensive).
+
+For a large, transparent comparison of dispersion-corrected DFAs on main-group thermochemistry, kinetics, and noncovalent interactions, see the [GMTKN55 benchmark](https://doi.org/10.1039/C7CP04913C) (Goerigk et al., 2017).
 
 ---
 
@@ -75,7 +89,7 @@ If memory is tight, reduce `nprocs` before cutting the method or basis. More cor
 For a ground-state minimum, add `Opt` to the keyword line. A common pattern is to optimize and then compute frequencies in one job so you can confirm there are no imaginary modes:
 
 ```text
-! B3LYP def2-SVP Opt Freq TightSCF
+! B3LYP D3BJ def2-SVP Opt Freq TightSCF
 ```
 
 Useful `%geom` controls when a structure is floppy or slow to settle:
@@ -97,7 +111,7 @@ What “done” looks like: the optimization reports that the geometry has conve
 A transition state (TS) maximizes the energy along one Hessian mode and minimizes along the others. In ORCA that is `OptTS`, usually with an explicit Hessian and mode selection:
 
 ```text
-! B3LYP def2-SVP OptTS Freq TightSCF
+! B3LYP D3BJ def2-SVP OptTS Freq TightSCF
 
 %geom
   TS_Mode {M 0} end
@@ -141,7 +155,7 @@ The ORCA FAQ states that the SCF may need more memory than the user-specified `M
 Example:
 
 ```text
-! def2-TZVP TightSCF
+! B3LYP D3BJ def2-TZVP TightSCF
 %maxcore 2000
 ```
 
@@ -292,7 +306,7 @@ The SCF chapter is explicit: properties and numerical calculations, including `N
 2. Use a tight SCF and a well-converged geometry before `Freq`.
 3. If necessary, optimize first and then compute frequencies in the same workflow:
    ```text
-   ! B3LYP def2-TZVP Opt Freq
+   ! B3LYP D3BJ def2-TZVP Opt Freq
    ```
 
 ---

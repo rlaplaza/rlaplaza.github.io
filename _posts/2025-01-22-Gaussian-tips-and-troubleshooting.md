@@ -21,7 +21,7 @@ A Gaussian input has Link 0 lines (`%…`), a route section (`# …`), a title, 
 %mem=8GB
 %nprocshared=4
 %chk=water_opt.chk
-# opt freq b3lyp/6-31g(d)
+# opt freq b3lyp/6-31g(d) EmpiricalDispersion=GD3BJ
 
 Water optimization and frequencies
 
@@ -35,6 +35,20 @@ H    0.000000   -0.757200   -0.469200
 - The route line starts with `#` and lists method, basis, and job keywords.
 - The title line is free text; the next non-blank line is `charge multiplicity`, then atoms.
 - Prefer Cartesian coordinates unless you have a reason to use a Z-matrix. Visualization tools (GaussView, Avogadro) help avoid formatting mistakes.
+
+London dispersion is critical for organics, noncovalent contacts, and many reaction energetics, yet it is missing from most hybrid functionals (including bare B3LYP and PBE0). Add `EmpiricalDispersion=GD3BJ` (or GD3), or use a functional that already includes a dispersion model such as `wB97XD`.
+
+---
+
+## Recommended functionals
+
+Practical starting points in Gaussian:
+
+- **B3LYP-D3(BJ)** — everyday hybrid with Grimme D3(BJ): `b3lyp … EmpiricalDispersion=GD3BJ`.
+- **PBE0-D3(BJ)** — solid global hybrid (Gaussian keyword `PBE1PBE`) with the same dispersion keyword: `PBE1PBE … EmpiricalDispersion=GD3BJ`.
+- **ωB97X-D** — range-separated hybrid with a built-in dispersion correction: `wB97XD` (do not stack an extra `EmpiricalDispersion` term on top).
+
+For a large, transparent comparison of dispersion-corrected DFAs on main-group thermochemistry, kinetics, and noncovalent interactions, see the [GMTKN55 benchmark](https://doi.org/10.1039/C7CP04913C) (Goerigk et al., 2017).
 
 ---
 
@@ -63,13 +77,13 @@ Checkpoint files (`%chk=…`) are worth keeping for restarts and chained jobs (`
 For a ground-state minimum, put `opt` on the route line. Computing frequencies in the same job confirms a true minimum (no imaginary modes):
 
 ```text
-# opt freq b3lyp/6-31g(d)
+# opt freq b3lyp/6-31g(d) EmpiricalDispersion=GD3BJ
 ```
 
 Useful options when an optimization is slow or stubborn:
 
 ```text
-# opt=(calcfc,maxcycle=200) b3lyp/6-31g(d)
+# opt=(calcfc,maxcycle=200) b3lyp/6-31g(d) EmpiricalDispersion=GD3BJ
 ```
 
 - `calcfc` computes force constants at the start (often more stable than a crude guess Hessian).
@@ -85,7 +99,7 @@ What “done” looks like: the log reports that the optimization completed (or 
 A transition-state search maximizes energy along one mode and minimizes along the others. A typical Gaussian setup is:
 
 ```text
-# opt=(ts,calcfc,noeigentest) freq b3lyp/6-31g(d)
+# opt=(ts,calcfc,noeigentest) freq b3lyp/6-31g(d) EmpiricalDispersion=GD3BJ
 ```
 
 Practical checklist:
