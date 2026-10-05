@@ -158,7 +158,7 @@ cp --help
 
 When a file needs to be edited directly from the shell instead of a GUI editor, `vim` is the standard choice on Linux systems. The [Vi and Vim Basics](/2026/01/22/Vi-and-vim-basics.html) guide is a quick reference for the most common commands and workflows.
 
-The [Basic Git and GitHub Guide](/2025/07/30/git-tips.html) builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.
+The [Basic Git and GitHub Guide](/2025/07/30/Git-tips.html) builds on these same terminal habits with commands for cloning repositories, checking changes, creating commits, and collaborating through GitHub.
 
 ## Looking at running processes with `top`
 
@@ -193,7 +193,7 @@ When working on a machine you do not fully control:
 6. Keep important work backed up and under version control.
 7. Record the commands, software versions, and environment needed to reproduce a result.
 
-The [General Guidelines for Master's and PhD Students](/2025/07/29/general-guidelines.html) expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.
+The [General Guidelines for Master's and PhD Students](/2025/07/29/General-guidelines.html) expands on documentation, backups, version control, and remote collaboration. These habits are as important as memorizing individual commands.
 
 The [Vi and Vim Basics](/2026/01/22/Vi-and-vim-basics.html) guide is the practical companion for the quick editing commands you will use every time you change a shell config file or small script on a remote system.
 
