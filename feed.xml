@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-10-05T08:52:59+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Local Conda and VS Code Setup</title><link href="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html" rel="alternate" type="text/html" title="Local Conda and VS Code Setup" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-05T08:51:54+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html"><![CDATA[<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-10-05T11:24:01+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Local Conda and VS Code Setup</title><link href="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html" rel="alternate" type="text/html" title="Local Conda and VS Code Setup" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html"><![CDATA[<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
 
 <p>This guide walks you through installing Miniconda and Visual Studio Code on your own computer, creating a dedicated Conda environment, installing packages inside it, and running Python from that environment in VS Code.</p>
 
@@ -291,9 +291,9 @@ python hello.py
 
 <p>Keep one habit from day one: activate the correct environment before installing packages or running project code. If the prompt does not show <code class="language-plaintext highlighter-rouge">(myenv)</code>, pause and activate first.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="python," /><category term="conda," /><category term="vscode" /><summary type="html"><![CDATA[Local Conda and VS Code Setup]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SCF in Practice</title><link href="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html" rel="alternate" type="text/html" title="SCF in Practice" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-05T08:51:54+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/SCF-in-practice</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html"><![CDATA[<h1 id="scf-in-practice">SCF in Practice</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="python," /><category term="conda," /><category term="vscode" /><summary type="html"><![CDATA[Local Conda and VS Code Setup]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SCF in Practice</title><link href="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html" rel="alternate" type="text/html" title="SCF in Practice" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/SCF-in-practice</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html"><![CDATA[<h1 id="scf-in-practice">SCF in Practice</h1>
 
-<p>This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure as used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost, how integrals and XC grids enter, how jobs are started and converged, and what an analytical gradient costs relative to the energy. For program-specific keywords and failure recipes, see the <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA</a> and <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian</a> guides.</p>
+<p>This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure as used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost (integrals vs diagonalization, disk vs RAM), how basis sets (including diffuse functions), XC grids, and implicit solvent enter, how jobs are started and converged, and what analytical gradients and Hessians cost relative to the energy. For program-specific keywords and failure recipes, see the <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA</a> and <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian</a> guides.</p>
 
 <h2 id="what-the-scf-loop-is">What the SCF loop is</h2>
 
@@ -308,19 +308,102 @@ python hello.py
 
 <p>Almost every downstream result—geometry steps, frequencies, and most molecular properties—assumes a converged SCF. A “finished” optimization with a poorly converged electronic structure is not trustworthy.</p>
 
-<h2 id="cost-and-basis-set-scaling">Cost and basis-set scaling</h2>
+<h2 id="basis-functions-primitives-contractions-and-how-n-grows">Basis functions: primitives, contractions, and how $N$ grows</h2>
 
-<p>Let (N) be the number of basis functions. The formal bottleneck for conventional HF is the two-electron repulsion integrals, which scale as (O(N^4)). In practice, integral screening and locality cut this down for large molecules, but the cost still rises steeply when you enlarge the basis (more functions per atom) or the system size.</p>
+<p>Let $N$ be the number of <strong>contracted</strong> atomic basis functions in the calculation. That $N$ is the dimension of the Fock/KS and overlap matrices, and it is what appears in the familiar SCF scaling arguments below.</p>
 
-<p>A few useful rules of thumb:</p>
+<p>A <strong>primitive Gaussian-type orbital (GTO)</strong> is a single Gaussian radial factor times an angular factor. A <strong>contracted GTO (cGTO)</strong> is a fixed linear combination of several primitives that share the same center and angular momentum:</p>
+
+<p>$$
+\chi_\mu(\mathbf{r}) = \sum_{k} d_{k\mu}\, g_k(\mathbf{r}).
+$$</p>
+
+<p>Production HF/DFT bases (def2, Pople, correlation-consistent, …) are almost always <strong>contracted</strong>: the contraction coefficients $d_{k\mu}$ are frozen, so the SCF works in a smaller space of $N$ cGTOs while each two-electron integral over cGTOs still expands into many primitive integrals. That is the usual efficiency trade-off for SCF: fewer variational degrees of freedom, more work per matrix element.</p>
+
+<p>“Uncontracted” or loosely contracted bases (more nearly raw primitive GTOs) enlarge $N$ and are more common when the radial flexibility matters for <strong>correlated wavefunction methods</strong> (MP2, CC, …), which need to describe dynamical correlation, not only the mean-field density. For everyday DFT/HF geometry work, contracted sets such as def2-SVP are the default.</p>
+
+<h3 id="how-many-functions-per-atom-a-def2-svp-sketch">How many functions per atom? A def2-SVP sketch</h3>
+
+<p>def2-SVP is a polarized valence double-$\zeta$ set. With spherical harmonics (5 $d$ and 7 $f$ functions), typical contracted sizes are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Atom</th>
+      <th>Electrons treated in the basis</th>
+      <th>Contraction (primitives $\rightarrow$ cGTOs)</th>
+      <th style="text-align: right">Spherical $N$ per atom</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>H</td>
+      <td>all (1)</td>
+      <td>$(4s,1p)\rightarrow[2s,1p]$</td>
+      <td style="text-align: right">5</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>all (6)</td>
+      <td>$(7s,4p,1d)\rightarrow[3s,2p,1d]$</td>
+      <td style="text-align: right">14</td>
+    </tr>
+    <tr>
+      <td>Fe</td>
+      <td>all (26)</td>
+      <td>$(14s,9p,5d,1f)\rightarrow[5s,3p,2d,1f]$</td>
+      <td style="text-align: right">31</td>
+    </tr>
+    <tr>
+      <td>Au</td>
+      <td>valence only (19); 60 in ECP</td>
+      <td>$(7s,6p,5d,1f)\rightarrow[6s,3p,2d,1f]$</td>
+      <td style="text-align: right">32</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Two takeaways:</p>
 
 <ul>
-  <li>Doubling the basis-set quality (e.g. double-ζ → triple-ζ) increases (N) and therefore each Fock build, often by more than a factor of two.</li>
-  <li>Hybrid DFT pays for Coulomb-like terms plus a fraction of exact (HF-like) exchange; exact exchange is usually the expensive piece compared with a pure GGA.</li>
-  <li>A larger basis also makes a bad initial guess more painful: each cycle is heavier, and you may need more cycles before DIIS or related accelerators settle.</li>
+  <li><strong>$N$ tracks the electrons you actually expand in the basis, not the nuclear charge alone.</strong> Going from H to C to Fe grows the per-atom basis because more shells are occupied and polarized.</li>
+  <li><strong>Effective core potentials (ECPs / pseudopotentials) cut that growth for heavy elements.</strong> From Rb onward, def2 sets pair with def2-ECP: gold’s 60 core electrons are removed from the SCF, so Au/def2-SVP has roughly the same number of basis functions as all-electron Fe/def2-SVP (~32 vs ~31), not “79/26 times more.” Without an ECP, an all-electron basis for Au would be far larger and usually needs a relativistic Hamiltonian as well.</li>
 </ul>
 
-<p>Memory and disk pressure grow with (N) as well, which is why how integrals are handled matters in practice.</p>
+<p>So for a molecule, $N \approx \sum_{\text{atoms}} n_{\text{basis}}(Z)$, with $n_{\text{basis}}$ jumping at shells and <strong>dropping again when an ECP replaces the core</strong>.</p>
+
+<h3 id="diffuse-functions-anions-vs-cations">Diffuse functions: anions vs cations</h3>
+
+<p>Standard polarized valence sets (def2-SVP, 6-31G(d), …) are tuned for <strong>neutral</strong> densities. Charge changes how spatially extended the electron cloud is, and the basis has to follow.</p>
+
+<ul>
+  <li><strong>Anions</strong> (and loosely bound electrons, Rydberg states, some excited states) need <strong>diffuse</strong> functions—primitives with small exponents that reach farther from the nucleus. Without them, the extra electron is artificially confined, electron affinities and anion energetics are often badly wrong, and the SCF may still “converge” to a basis-set artifact. Augmented sets (aug-cc-pVXZ, ma-def2, 6-31+G(d), …) add those diffuse shells and increase $N$, which also makes integral screening harder (more diffuse = denser overlap = costlier Fock builds and sometimes tougher SCF).</li>
+  <li><strong>Cations</strong> are the opposite trend: removing electrons <strong>contracts</strong> the density. Diffuse functions are usually unnecessary for the cation itself; a solid polarized valence set is often enough. (You may still want diffuse functions on a large neutral or anionic partner in the same calculation.)</li>
+  <li><strong>Practical pattern:</strong> add diffuse functions when the species of interest is anionic or when absolute electron-binding matters; do not scatter “+” or “aug” onto every atom by default—each diffuse shell grows $N$ and can worsen linear dependence in large bases.</li>
+</ul>
+
+<h2 id="cost-two-electron-integrals-vs-fock-diagonalization">Cost: two-electron integrals vs Fock diagonalization</h2>
+
+<p>Each SCF cycle has two structurally different pieces:</p>
+
+<ol>
+  <li><strong>Build the Fock/KS matrix</strong> — dominated by two-electron contributions (Coulomb, and exact exchange for HF/hybrids), plus the XC grid for DFT.</li>
+  <li><strong>Update orbitals</strong> — classically a generalized diagonalization of an $N \times N$ matrix,
+$$\mathbf{F}\,\mathbf{C} = \mathbf{S}\,\mathbf{C}\,\boldsymbol{\varepsilon},$$
+which scales as $O(N^3)$.</li>
+</ol>
+
+<p>Formal AO two-electron integral work scales as $O(N^4)$ before screening. With density-based screening and locality, the effective Fock-build cost is often closer to $O(N^2)$–$O(N^3)$ for large molecules, but <strong>raising the basis quality still hurts</strong>: more functions per atom means denser, less local integrals and a heavier XC grid.</p>
+
+<p><strong>Which piece wins?</strong> For the system sizes typical in molecular DFT/HF (up to a few thousand basis functions), <strong>Fock/KS construction almost always dominates</strong> wall time. Diagonalization’s $O(N^3)$ only becomes competitive for very large $N$ or when integral engines and screening are extremely efficient. Hybrid functionals keep a large exact-exchange term, so they stay integral-heavy longer than pure GGAs.</p>
+
+<p>Rules of thumb:</p>
+
+<ul>
+  <li>Double-$\zeta$ → triple-$\zeta$ increases $N$ per atom substantially; each Fock build often slows by more than the naive $N$ ratio.</li>
+  <li>Hybrid DFT pays for Coulomb-like terms plus a fraction of exact exchange; that exchange piece is usually the expensive one compared with a pure GGA.</li>
+  <li>A larger basis also makes a bad initial guess more painful: each cycle is heavier, and you may need more cycles before DIIS settles.</li>
+</ul>
 
 <h2 id="numerical-xc-grids">Numerical XC grids</h2>
 
@@ -329,22 +412,61 @@ python hello.py
 <p>Practical consequences:</p>
 
 <ul>
-  <li>Grid work scales roughly with (number of grid points) × (basis functions that have appreciable weight at those points). Denser grids raise both cost and the numerical noise floor of the energy.</li>
+  <li>Grid work scales roughly with (number of grid points) $\times$ (basis functions that have appreciable weight at those points). Denser grids raise both cost and the numerical noise floor of the energy.</li>
   <li>Grids are a DFT-specific cost channel, separate from whether AO integrals are stored on disk or recomputed.</li>
-  <li>Coarser grids are often acceptable early in the SCF; the final energy—and especially gradients—usually need a denser grid so that numerical noise does not masquerade as forces or stall a geometry optimization.</li>
+  <li>Coarser grids are often acceptable early in the SCF; the final energy—and especially gradients and Hessians—usually need a denser grid so that numerical noise does not masquerade as forces or force constants.</li>
   <li>If two “identical” DFT jobs differ only in grid settings, small energy differences are expected; do not over-interpret microhartree changes across grid changes.</li>
+</ul>
+
+<h2 id="implicit-solvent-in-the-scf">Implicit solvent in the SCF</h2>
+
+<p>Continuum solvation models (PCM, CPCM, SMD, COSMO, …) do <strong>not</strong> add explicit solvent molecules. They represent the solvent as a polarizable dielectric outside a molecular cavity. That reaction field depends on the solute’s charge density, so it must be updated <strong>inside the SCF</strong>, not bolted on after a gas-phase calculation (unless you deliberately choose a non-self-consistent approximation).</p>
+
+<p>In each cycle the workflow is conceptually:</p>
+
+<ol>
+  <li>Build the usual vacuum Fock/KS pieces from the current density.</li>
+  <li>From that density, compute the solute–solvent interaction (apparent surface charges on the cavity, or an equivalent reaction potential).</li>
+  <li>Add the corresponding one-electron operator to $\mathbf{F}$ / the KS matrix.</li>
+  <li>Obtain a new density and repeat until both the electronic structure <strong>and</strong> the reaction field are consistent.</li>
+</ol>
+
+<p>Consequences for practice:</p>
+
+<ul>
+  <li>Solvated SCF is a bit more expensive per cycle than the gas-phase analogue (cavity setup and reaction-field build), but the scaling is usually mild compared with exact exchange or a large basis.</li>
+  <li>The optimized density in solvent can differ from the gas phase—especially for ions and polar molecules—so geometries, dipole moments, and orbital energies shift. That is the point of putting solvent in the SCF.</li>
+  <li>Charged solutes are where continuum models are most used and most delicate: the cavity, radii, and electrostatic asymptotics matter; combining anions with <strong>both</strong> diffuse functions and a continuum solvent is common, but check for SCF instability or over-polarization if something looks chemically odd.</li>
+  <li>Non-electrostatic terms (cavitation, dispersion, SMD-style corrections) may be added to the free energy after or alongside the SCF depending on the model; the part that changes the orbitals is the electrostatic reaction field.</li>
 </ul>
 
 <h2 id="integrals-in-practice-conventional-vs-direct">Integrals in practice: conventional vs direct</h2>
 
-<p>Two classical strategies exist for the AO two-electron integrals:</p>
+<p>Two classical strategies exist for the AO two-electron integrals $(\mu\nu\mid\lambda\sigma)$.</p>
+
+<h3 id="conventional-in-disk-scf">Conventional (in-disk) SCF</h3>
+
+<p>Compute the unique integrals once, write them to a scratch file, and <strong>read them back every SCF cycle</strong> to assemble $\mathbf{F}$.</p>
+
+<p>Consequences on real HPC:</p>
 
 <ul>
-  <li><strong>Conventional (in-disk):</strong> compute integrals once, store them on disk, and read them back each SCF cycle. Throughput is then limited by disk space and I/O bandwidth. This can be attractive for small jobs with many SCF cycles when scratch storage is fast and large enough.</li>
-  <li><strong>Direct:</strong> recompute integrals (or screened batches of them) every iteration instead of storing the full set. The trade-off shifts toward CPU (and memory for buffers), which is usually preferable once (N) is large enough that the integral file would be huge or the I/O would dominate.</li>
+  <li><strong>Disk capacity:</strong> the integral file grows as $O(N^4)$ before symmetry/screening; even with screening it can reach tens or hundreds of GB. Shared scratch that fills up kills the job for everyone on the node.</li>
+  <li><strong>I/O bandwidth and latency:</strong> each cycle re-reads that file. On a busy cluster filesystem (NFS, shared parallel FS), many cores doing large sequential or random reads contend with other users. Wall time then tracks <strong>I/O wait</strong>, not CPU flops.</li>
+  <li><strong>Local scratch helps</strong> (node-local SSD/NVMe): conventional SCF can still be fine for small-to-medium $N$ with many iterations, provided the file fits and the disk is fast.</li>
+  <li><strong>Network scratch hurts:</strong> if the scratch filesystem is remote (shared NFS or similar), conventional SCF is often slower than recomputing integrals.</li>
 </ul>
 
-<p>Modern defaults lean toward direct (or semi-direct) SCF for anything beyond tiny calculations. Whatever the mode, the integral (and grid) accuracy must stay tighter than the SCF convergence threshold: you cannot converge the density below the noise in the Fock/KS matrix.</p>
+<h3 id="direct-scf">Direct SCF</h3>
+
+<p>Recompute screened integral batches every iteration instead of storing the full set. The bottleneck shifts to <strong>CPU and RAM</strong>:</p>
+
+<ul>
+  <li><strong>RAM</strong> holds the density matrix, Fock/KS matrix, MO coefficients, integral buffers, DIIS history, and (for DFT) grid batches. Parallel runs often need memory <strong>per process</strong>; under-provisioning causes thrashing or aborts.</li>
+  <li>Semidirect schemes keep only the most expensive or most reused integral classes on disk and recompute the rest—a compromise when RAM is tight but some I/O is acceptable.</li>
+</ul>
+
+<p>Modern defaults lean toward direct (or semidirect) SCF once $N$ is large enough that the integral file would be huge or the filesystem would dominate. Whatever the mode, integral and grid accuracy must stay tighter than the SCF convergence threshold: you cannot converge the density below the noise in $\mathbf{F}$.</p>
 
 <h2 id="initial-guesses">Initial guesses</h2>
 
@@ -354,7 +476,7 @@ python hello.py
   <li><strong>Core Hamiltonian / minimal Hückel-like guesses</strong> — cheap and often crude; fine for simple closed-shell organics, fragile for metals or open shells.</li>
   <li><strong>Superposition of atomic densities (SAD) and related atomic guesses</strong> — usually a much better starting density for molecules.</li>
   <li><strong>Reading orbitals from a previous calculation</strong> — often the best choice when the geometry or method changed only slightly (optimization steps, basis upgrades, or restarting a failed job).</li>
-  <li><strong>Open-shell tricks</strong> — mixing HOMO/LUMO character or breaking α/β symmetry can help land on a broken-symmetry or diradicaloid solution instead of collapsing to a closed-shell state.</li>
+  <li><strong>Open-shell tricks</strong> — mixing HOMO/LUMO character or breaking $\alpha$/$\beta$ symmetry can help land on a broken-symmetry or diradicaloid solution instead of collapsing to a closed-shell state.</li>
 </ul>
 
 <p>A good guess often saves more wall time than raising the maximum number of cycles. A bad guess can send the SCF into oscillation between qualitatively different electronic structures.</p>
@@ -366,7 +488,7 @@ python hello.py
 <ul>
   <li><strong>Damping and level shifting</strong> — mix old and new densities, or shift virtual levels, to damp oscillations early on.</li>
   <li><strong>DIIS (Direct Inversion in the Iterative Subspace)</strong> — store recent Fock/KS matrices and error vectors (e.g. the orbital gradient) and extrapolate a linear combination that drives the error toward zero. This is the workhorse accelerator for routine SCF.</li>
-  <li><strong>SOSCF / second-order orbital optimization</strong> — treat orbital rotations more like a Newton step using an approximate orbital Hessian. Useful when DIIS stalls, especially for difficult open-shell or near-degenerate cases.</li>
+  <li><strong>SOSCF / second-order orbital optimization</strong> — treat orbital rotations more like a Newton step using an approximate <strong>orbital</strong> Hessian (second derivatives with respect to orbital rotations, not nuclear coordinates). Useful when DIIS stalls, especially for difficult open-shell or near-degenerate cases.</li>
   <li><strong>Quadratic or trust-region fallbacks</strong> — last-resort algorithms in some packages when standard DIIS/SOSCF paths fail.</li>
 </ul>
 
@@ -374,7 +496,13 @@ python hello.py
 
 <h2 id="analytical-scf-gradients">Analytical SCF gradients</h2>
 
-<p>Once the HF or DFT density is converged, nuclear gradients with respect to atomic coordinates can be evaluated <strong>analytically</strong>. That is much cheaper than numerical differentiation, which would require on the order of (3N_\mathrm{atoms}) extra energy calculations (or twice that for central differences).</p>
+<p>Once the HF or DFT density is converged, nuclear gradients</p>
+
+<p>$$
+G_{A,\alpha} = \frac{\partial E}{\partial R_{A,\alpha}}
+$$</p>
+
+<p>can be evaluated <strong>analytically</strong>. That is much cheaper than numerical differentiation, which would require on the order of $3N_{\mathrm{atoms}}$ extra energy calculations (or twice that for central differences).</p>
 
 <p>An analytical SCF gradient is typically on the order of <strong>one extra SCF-like step</strong> after convergence. The main pieces are:</p>
 
@@ -384,7 +512,35 @@ python hello.py
   <li>Pulay terms that appear because the basis functions move with the nuclei (basis-set incompleteness / atom-centered basis effects).</li>
 </ul>
 
-<p>Cost still tracks basis-set size in the same broad way as the energy: larger (N) means heavier derivative-integral and XC work. Gradients are also more sensitive to a loose SCF or a coarse XC grid than a rough single-point energy is—noisy forces slow or mislead geometry optimizations even when the energy looks “almost” converged.</p>
+<p>Cost still tracks basis-set size in the same broad way as the energy: larger $N$ means heavier derivative-integral and XC work. Gradients are also more sensitive to a loose SCF or a coarse XC grid than a rough single-point energy is—noisy forces slow or mislead geometry optimizations even when the energy looks “almost” converged.</p>
+
+<h2 id="nuclear-hessians-how-they-are-computed-and-why-they-matter">Nuclear Hessians: how they are computed and why they matter</h2>
+
+<p>The nuclear Hessian is the matrix of second derivatives of the energy with respect to nuclear coordinates,</p>
+
+<p>$$
+H_{A\alpha,B\beta} = \frac{\partial^2 E}{\partial R_{A\alpha}\,\partial R_{B\beta}}.
+$$</p>
+
+<p>It is what you diagonalize (after mass-weighting) to get vibrational frequencies and normal modes.</p>
+
+<p><strong>Why it matters in practice:</strong></p>
+
+<ul>
+  <li><strong>Characterize stationary points:</strong> a true minimum has all real frequencies (no imaginary modes); a transition state has exactly one imaginary mode along the reaction coordinate.</li>
+  <li><strong>Thermochemistry:</strong> zero-point energy, enthalpy, and free-energy corrections come from the frequency spectrum.</li>
+  <li><strong>Better geometry optimization:</strong> many optimizers start from a cheap approximate Hessian and update it; computing an exact Hessian (or a good partial one) can stabilize difficult optimizations, at a price.</li>
+</ul>
+
+<p><strong>How they are computed:</strong></p>
+
+<ul>
+  <li><strong>Analytical Hessian:</strong> differentiate the gradient expressions again. For HF/DFT this requires higher-derivative AO integrals, XC second-derivative / grid contributions, and solution of <strong>coupled-perturbed SCF (CPSCF)</strong> response equations for the density’s response to nuclear displacements. Cost is much higher than one gradient—often loosely “several to many times” an energy-plus-gradient—and memory pressure rises with the response intermediates.</li>
+  <li><strong>Numerical Hessian:</strong> finite differences of <strong>analytical gradients</strong> (displace atoms, compute $G$, form difference quotients). Roughly $O(N_{\mathrm{atoms}})$ gradient calculations (about $2\times 3N_{\mathrm{atoms}}$ displacements for central differences, reduced by symmetry). Easier to implement and common for DFT when analytical second derivatives are unavailable or fragile; still far cheaper than finite differences of energies alone.</li>
+  <li><strong>Semi-numerical / hybrid schemes:</strong> some packages differentiate some contributions analytically and others by finite difference.</li>
+</ul>
+
+<p>Practical notes: Hessians inherit all SCF and grid sensitivity of the gradient, amplified—loose SCF thresholds or coarse XC grids produce noisy frequencies and spurious small imaginary modes. Always confirm that the electronic structure is tightly converged before trusting a frequency job.</p>
 
 <h2 id="where-to-go-next">Where to go next</h2>
 
@@ -393,7 +549,7 @@ python hello.py
 <ul>
   <li><a href="/2026/01/01/ORCA-tips-and-troubleshooting.html#scf-convergence-issues">ORCA Basics and Troubleshooting — SCF Convergence Issues</a></li>
   <li><a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html#scf-convergence-issues">Gaussian Basics and Troubleshooting — SCF Convergence Issues</a></li>
-</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="scf" /><summary type="html"><![CDATA[SCF in Practice]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T08:51:54+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="scf" /><summary type="html"><![CDATA[SCF in Practice]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
 
 <p>If you work on a Linux machine, a remote server, or an HPC system, you will eventually need to edit a configuration file, a shell script, or a short note in the terminal. <code class="language-plaintext highlighter-rouge">vi</code> and <code class="language-plaintext highlighter-rouge">vim</code> are classic tools for exactly that. They are usually installed on Unix-like systems, they work well over SSH, and they do not require a graphical interface.</p>
 
@@ -576,7 +732,7 @@ Ctrl<span class="p">-</span><span class="k">v</span>   Block<span class="p">-</s
 
 <p>Once you know the basics, <code class="language-plaintext highlighter-rouge">vim</code> becomes one of the most useful tools in a Linux workflow: it is fast, flexible, and available almost everywhere.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T08:51:54+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
 
 <p>If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.</p>
 
@@ -822,7 +978,7 @@ less notes/example.txt
   <li><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has excellent lessons on the shell, command-line tools, editors, and remote work.</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-05T08:51:54+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
 
 <p>This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a> guide covers the same topics for ORCA. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. The error catalog builds on community resources, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
 
@@ -1368,7 +1524,7 @@ Some functionals don’t support third-order derivatives needed for hyperpolariz
   <li><strong>Gaussian support</strong>: For licensed users, contact Gaussian Inc. support</li>
 </ol>
 
-<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ORCA Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="ORCA Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-05T08:51:54+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html"><![CDATA[<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
+<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ORCA Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="ORCA Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html"><![CDATA[<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
 
 <p>This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian Basics and Troubleshooting</a> guide covers the same topics for Gaussian. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.</p>
 
@@ -1802,7 +1958,7 @@ The FAQ explains that ORCA is invoked from the command line on all platforms and
   <li>ORCA installation and startup: https://www.faccts.de/docs/orca/6.0/manual/contents/faq.html</li>
 </ul>
 
-<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="orca," /><category term="troubleshooting" /><summary type="html"><![CDATA[ORCA Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-10-05T08:51:54+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
+<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="orca," /><category term="troubleshooting" /><summary type="html"><![CDATA[ORCA Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
 
 <p>Agustina is a High Performance Computing (HPC) center. There are many such centers in the world (a list of the most powerful supercomputers is available in the <a href="https://top500.org/">Top500</a>, in case you are curious).</p>
 
@@ -1928,7 +2084,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 
 <p>Then open a new shell (or <code class="language-plaintext highlighter-rouge">source ~/.bashrc</code>) and retry. You need the <code class="language-plaintext highlighter-rouge">certifi</code> package in the Python that runs at login (usually the base conda env).</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T08:51:54+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
 
 <h2 id="foundation--learning-resources">Foundation &amp; Learning Resources</h2>
 <ul>
@@ -1985,7 +2141,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
   <li><a href="https://github.com/cod3licious/ml_exercises">A higher-level set of exercises in machine learning</a> and a full book on the topic</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T08:51:54+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
 
 <h2 id="about">About</h2>
 
@@ -2155,7 +2311,7 @@ ssh-add ~/.ssh/id_ed25519
   <li><a href="https://education.github.com/pack">GitHub Student Developer Pack</a> – Free tools for students</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Writing tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Writing-tips.html" rel="alternate" type="text/html" title="Writing tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T08:51:54+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Writing-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Writing-tips.html"><![CDATA[<h1 id="scientific-paper-writing-guidelines">Scientific Paper Writing Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Writing tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Writing-tips.html" rel="alternate" type="text/html" title="Writing tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Writing-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Writing-tips.html"><![CDATA[<h1 id="scientific-paper-writing-guidelines">Scientific Paper Writing Guidelines</h1>
 
 <h2 id="about">About</h2>
 
