@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-10-08T10:07:41+00:00">
+  <meta property="og:updated_time" content="2026-10-08T11:28:31+00:00">
   <meta property="article:published_time" content="2025-07-30T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-10-08T10:07:41+00:00">
-  <meta name="revised" content="2026-10-08T10:07:41+00:00">
+  <meta property="article:modified_time" content="2026-10-08T11:28:31+00:00">
+  <meta name="revised" content="2026-10-08T11:28:31+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Git tips and tricks" },
       "datePublished": "2025-07-30T00:00:00+00:00",
-      "dateModified": "2026-10-08T10:07:41+00:00",
+      "dateModified": "2026-10-08T11:28:31+00:00",
     
     "name": "Git tips and tricks",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
@@ -655,7 +655,7 @@ ssh-add ~/.ssh/id_ed25519
 <ol>
   <li>Contact Ruben and <strong>share your GitHub username</strong>
 </li>
-  <li>They will invite you to the <a href="https://github.com/rlaplaza-lab">rlaplaza-lab GitHub organization</a>
+  <li>You will be invited to the <a href="https://github.com/rlaplaza-lab">rlaplaza-lab GitHub organization</a>
 </li>
   <li>Accept the invitation via email or at <a href="https://github.com/orgs/rlaplaza-lab">https://github.com/orgs/rlaplaza-lab</a>
 </li>
@@ -686,7 +686,7 @@ ssh-add ~/.ssh/id_ed25519
 
 <h3 id="add-changes-to-staging">Add changes to staging</h3>
 
-<p>Staging is a temporary location that stores the changes you are going to do to the repository (kinda!). Adding changes to staging is necessary to let git know that the changes you made are things you want to change in the repo.</p>
+<p>Staging is a temporary area that holds the changes you plan to make to the repository. Adding changes to staging is how you tell Git which of your edits should go into the next commit.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add filename.py
 </code></pre></div></div>
@@ -697,21 +697,21 @@ ssh-add ~/.ssh/id_ed25519
 
 <h3 id="commit-changes-with-a-message">Commit changes with a message</h3>
 
-<p>A commit is a snapshot of the repository (kinda!). Once you have all the changes you want added (in staging), you make a commit with all those.</p>
+<p>A commit is a snapshot of the repository. Once all the changes you want are staged, you save them together in a single commit.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Describe your changes clearly"</span>
 </code></pre></div></div>
 
 <h3 id="push-changes-to-github">Push changes to GitHub</h3>
 
-<p>Now, we can put our commit in the original repo (upstream branch).</p>
+<p>Now we can upload our commit to the remote repository on GitHub.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
 </code></pre></div></div>
 
 <h3 id="pull-latest-changes-from-github">Pull latest changes from GitHub</h3>
 
-<p>We can also get the latest commit from the upstream branch. Of course, it is possible to change the branch we push and pull from, but we dont cover it here.</p>
+<p>We can also download the latest commits from the remote repository. It is possible to push and pull from different branches, but we do not cover that here.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
 </code></pre></div></div>

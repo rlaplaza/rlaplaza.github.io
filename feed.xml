@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-10-08T10:08:42+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Molecular Visualization with v, vmol, and xyzrender</title><link href="https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html" rel="alternate" type="text/html" title="Molecular Visualization with v, vmol, and xyzrender" /><published>2026-10-08T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html"><![CDATA[<h1 id="molecular-visualization-with-v-vmol-and-xyzrender">Molecular Visualization with v, vmol, and xyzrender</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-10-08T11:29:46+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Molecular Visualization with v, vmol, and xyzrender</title><link href="https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html" rel="alternate" type="text/html" title="Molecular Visualization with v, vmol, and xyzrender" /><published>2026-10-08T00:00:00+00:00</published><updated>2026-10-08T11:28:31+00:00</updated><id>https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html"><![CDATA[<h1 id="molecular-visualization-with-v-vmol-and-xyzrender">Molecular Visualization with v, vmol, and xyzrender</h1>
 
 <p>This guide covers a lightweight Linux/WSL workflow for looking at molecular structures and making clean 2D figures:</p>
 
@@ -8,7 +8,7 @@
   <li><strong><a href="https://xyzrender.readthedocs.io/"><code class="language-plaintext highlighter-rouge">xyzrender</code></a></strong> — publication-quality SVG/PNG/PDF renders from XYZ, cube files, and many QM outputs; uses <code class="language-plaintext highlighter-rouge">vmol</code>/<code class="language-plaintext highlighter-rouge">v</code> for interactive orientation.</li>
 </ul>
 
-<p>By the end you should be able to open a structure from the terminal, orient it interactively, render a figure from the CLI or a Jupyter notebook, and build <strong>multi-style</strong> images (for example Paton ball-and-stick adsorbate on a vdW metal slab) like the camphor/Cu(111) and bipyridine/Au(111) panels used in our surface papers.</p>
+<p>By the end you should be able to open a structure from the terminal, orient it interactively, render a figure from the CLI or a Jupyter notebook, and build <strong>multi-style</strong> images (for example a Paton ball-and-stick adsorbate on a vdW metal slab) like the camphor/Cu(111) and bipyridine/Au(111) panels used in our surface papers.</p>
 
 <p>If Conda/environments are unfamiliar, start with <a href="/2026/10/05/Local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a>. For basic shell skills, see <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a>.</p>
 
@@ -59,7 +59,7 @@
   <li>Run these tools from a <strong>WSL terminal</strong>, not from native Windows PowerShell — the packages are Linux wheels.</li>
 </ul>
 
-<p>If <code class="language-plaintext highlighter-rouge">vmol</code> exits immediately or complains about opening a display, fix the <code class="language-plaintext highlighter-rouge">DISPLAY</code> environment variable / the X server before debugging Python.</p>
+<p>If <code class="language-plaintext highlighter-rouge">vmol</code> exits immediately or complains about opening a display, fix the <code class="language-plaintext highlighter-rouge">DISPLAY</code> variable or the X server first — it is almost never a Python problem.</p>
 
 <h2 id="2-install-in-a-conda-or-venv-environment">2. Install in a Conda (or venv) environment</h2>
 
@@ -176,7 +176,7 @@ python <span class="nt">-m</span> vmol.vmol2 job.out
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmol molecule.xyz | xyzrender <span class="nt">-o</span> molecule.svg
 </code></pre></div></div>
 
-<p>Rotate in the viewer, press <code class="language-plaintext highlighter-rouge">z</code> (XYZ goes to the pipe), then <code class="language-plaintext highlighter-rouge">q</code>. <code class="language-plaintext highlighter-rouge">xyzrender</code> reads stdin and writes the figure. Auto-orientation is off when input comes from stdin.</p>
+<p>Rotate in the viewer, press <code class="language-plaintext highlighter-rouge">z</code> (the XYZ goes into the pipe), then <code class="language-plaintext highlighter-rouge">q</code>. <code class="language-plaintext highlighter-rouge">xyzrender</code> reads stdin and writes the figure. Auto-orientation is off when input comes from stdin.</p>
 
 <h2 id="4-cli-figures-with-xyzrender">4. CLI: figures with xyzrender</h2>
 
@@ -370,8 +370,8 @@ xyzrender slab_adsorbate.xyz <span class="se">\</span>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">--region ATOMS CONFIG</code> is <strong>repeatable</strong> (several fragments, several styles).</li>
-  <li><code class="language-plaintext highlighter-rouge">--unbond A-B</code> removes unwanted stick bonds (metal–metal and metal–adsorbate) so the slab stays spacefill without a wire mesh of Cu–Cu sticks.</li>
-  <li>Prefer <code class="language-plaintext highlighter-rouge">--no-orient</code> (or lock a camera / <code class="language-plaintext highlighter-rouge">--ref</code>) once you have chosen a view; auto-orientation can flip a series of surface panels inconsistently.</li>
+  <li><code class="language-plaintext highlighter-rouge">--unbond A-B</code> removes unwanted stick bonds (metal–metal and metal–adsorbate) so the slab stays space-filling instead of a wire mesh of Cu–Cu sticks.</li>
+  <li>Prefer <code class="language-plaintext highlighter-rouge">--no-orient</code> (or lock a camera with <code class="language-plaintext highlighter-rouge">--ref</code>) once you have chosen a view; auto-orientation can flip a series of surface panels inconsistently.</li>
   <li>Equivalent idea with index lists if metals are atoms 1–N in the XYZ:</li>
 </ul>
 
@@ -432,7 +432,7 @@ xyzrender slab_adsorbate.xyz <span class="se">\</span>
 
 <h3 id="64-geometry-hygiene-before-styling">6.4 Geometry hygiene before styling</h3>
 
-<p>Style regions only control drawing. Publication panels still need a sensible structure file:</p>
+<p>Style regions only control how things are drawn. Publication panels still need a sensible structure file:</p>
 
 <ol>
   <li><strong>Bring the adsorbate above the slab</strong> (some trajectories store molecules on the periodic underside).</li>
@@ -509,7 +509,7 @@ xyzrender slab_adsorbate.xyz <span class="se">\</span>
   <li>For organics, standardize on one preset (<code class="language-plaintext highlighter-rouge">paton</code>, <code class="language-plaintext highlighter-rouge">pmol</code>, …) and <code class="language-plaintext highlighter-rouge">--ref</code> for consistent views; for surfaces, standardize on <strong>Paton + metal vdW region</strong>.</li>
   <li>Diffuse / large systems: hide hydrogens by default in figures (<code class="language-plaintext highlighter-rouge">xyzrender</code> defaults) and only pass <code class="language-plaintext highlighter-rouge">--hy</code> when H positions matter.</li>
   <li>If notebook <code class="language-plaintext highlighter-rouge">orient()</code> fails but CLI <code class="language-plaintext highlighter-rouge">vmol file.xyz</code> works, the notebook server may lack a <code class="language-plaintext highlighter-rouge">DISPLAY</code> — start Jupyter from the same graphical WSL/Linux session, or orient on the CLI and load the saved XYZ.</li>
-  <li>Upstream docs change faster than this page: treat <a href="https://xyzrender.readthedocs.io/">xyzrender docs</a>, <a href="https://github.com/briling/v/blob/master/python/README.md">vmol README</a>, and the <a href="https://github.com/briling/v"><code class="language-plaintext highlighter-rouge">v</code> README</a> as the source of truth for flags.</li>
+  <li>Upstream docs change faster than this page: treat the <a href="https://xyzrender.readthedocs.io/">xyzrender docs</a>, <a href="https://github.com/briling/v/blob/master/python/README.md">vmol README</a>, and <a href="https://github.com/briling/v"><code class="language-plaintext highlighter-rouge">v</code> README</a> as the source of truth for flags.</li>
 </ul>
 
 <h2 id="where-to-go-next">Where to go next</h2>
@@ -520,7 +520,7 @@ xyzrender slab_adsorbate.xyz <span class="se">\</span>
   <li><a href="https://xyzrender.readthedocs.io/en/latest/quickstart_python.html">xyzrender Python / Jupyter quickstart</a></li>
   <li><a href="https://xyzrender.readthedocs.io/en/latest/examples/style_regions.html">xyzrender style regions</a></li>
   <li><a href="https://github.com/briling/v">v / vmol on GitHub</a></li>
-</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="python," /><category term="visualization," /><category term="linux," /><category term="wsl" /><summary type="html"><![CDATA[Molecular Visualization with v, vmol, and xyzrender]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Local Conda and VS Code Setup</title><link href="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html" rel="alternate" type="text/html" title="Local Conda and VS Code Setup" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html"><![CDATA[<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="python," /><category term="visualization," /><category term="linux," /><category term="wsl" /><summary type="html"><![CDATA[Molecular Visualization with v, vmol, and xyzrender]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Local Conda and VS Code Setup</title><link href="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html" rel="alternate" type="text/html" title="Local Conda and VS Code Setup" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-08T11:28:31+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html"><![CDATA[<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
 
 <p>This guide walks you through installing Miniconda and Visual Studio Code on your own computer, creating a dedicated Conda environment, installing packages inside it, and running Python from that environment in VS Code.</p>
 
@@ -794,7 +794,7 @@ which python
 python hello.py
 </code></pre></div></div>
 
-<p>The printed path should point inside your Conda environment, not to a system-wide Python. That is the check that you are running inside the delimited environment.</p>
+<p>The printed path should point inside your Conda environment, not to a system-wide Python. That is the check that you are running inside the isolated environment.</p>
 
 <p>You can also open a notebook (<code class="language-plaintext highlighter-rouge">.ipynb</code>) and choose the same <code class="language-plaintext highlighter-rouge">myenv</code> kernel in the kernel picker.</p>
 
@@ -813,13 +813,13 @@ python hello.py
 
 <p>Keep one habit from day one: activate the correct environment before installing packages or running project code. If the prompt does not show <code class="language-plaintext highlighter-rouge">(myenv)</code>, pause and activate first.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="python," /><category term="conda," /><category term="vscode" /><summary type="html"><![CDATA[Local Conda and VS Code Setup]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SCF in Practice</title><link href="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html" rel="alternate" type="text/html" title="SCF in Practice" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/SCF-in-practice</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html"><![CDATA[<h1 id="scf-in-practice">SCF in Practice</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="python," /><category term="conda," /><category term="vscode" /><summary type="html"><![CDATA[Local Conda and VS Code Setup]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SCF in Practice</title><link href="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html" rel="alternate" type="text/html" title="SCF in Practice" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-08T11:28:31+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/SCF-in-practice</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html"><![CDATA[<h1 id="scf-in-practice">SCF in Practice</h1>
 
-<p>This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure as used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost (integrals vs diagonalization, disk vs RAM), how basis sets (including diffuse functions), XC grids, and implicit solvent enter, how jobs are started and converged, and what analytical gradients and Hessians cost relative to the energy. For program-specific keywords and failure recipes, see the <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA</a> and <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian</a> guides.</p>
+<p>This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost (integrals vs diagonalization, disk vs RAM), how basis sets, XC grids, and implicit solvent enter, how jobs are started and converged, and what gradients and Hessians cost relative to the energy. For program-specific keywords and failure recipes, see the <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA</a> and <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian</a> guides.</p>
 
 <h2 id="what-the-scf-loop-is">What the SCF loop is</h2>
 
-<p>In HF and DFT, the electronic energy depends on the occupied molecular orbitals (or equivalently the density matrix). Those orbitals are eigenfunctions of an effective one-electron Hamiltonian—the Fock matrix in HF, the Kohn–Sham (KS) matrix in DFT—which itself depends on the density. The SCF procedure closes that loop:</p>
+<p>In HF and DFT, the electronic energy depends on the occupied molecular orbitals (or equivalently the density matrix). Those orbitals come from diagonalizing an effective one-electron Hamiltonian—the Fock matrix in HF, the Kohn–Sham (KS) matrix in DFT—which itself depends on the density. The SCF procedure closes that loop:</p>
 
 <ol>
   <li>Start from an initial density (or orbital guess).</li>
@@ -842,7 +842,7 @@ $$</p>
 
 <p>Production HF/DFT bases (def2, Pople, correlation-consistent, …) are almost always <strong>contracted</strong>: the contraction coefficients $d_{k\mu}$ are frozen, so the SCF works in a smaller space of $N$ cGTOs while each two-electron integral over cGTOs still expands into many primitive integrals. That is the usual efficiency trade-off for SCF: fewer variational degrees of freedom, more work per matrix element.</p>
 
-<p>“Uncontracted” or loosely contracted bases (more nearly raw primitive GTOs) enlarge $N$ and are more common when the radial flexibility matters for <strong>correlated wavefunction methods</strong> (MP2, CC, …), which need to describe dynamical correlation, not only the mean-field density. For everyday DFT/HF geometry work, contracted sets such as def2-SVP are the default.</p>
+<p>“Uncontracted” bases (closer to raw primitive GTOs) enlarge $N$ and are more common when radial flexibility matters for <strong>correlated wavefunction methods</strong> (MP2, CC, …), which need to describe dynamical correlation, not only the mean-field density. For everyday DFT/HF geometry work, contracted sets such as def2-SVP are the default.</p>
 
 <h3 id="how-many-functions-per-atom-a-def2-svp-sketch">How many functions per atom? A def2-SVP sketch</h3>
 
@@ -906,7 +906,7 @@ $$</p>
 
 <h2 id="cost-two-electron-integrals-vs-fock-diagonalization">Cost: two-electron integrals vs Fock diagonalization</h2>
 
-<p>Each SCF cycle has two structurally different pieces:</p>
+<p>Each SCF cycle has two different kinds of work:</p>
 
 <ol>
   <li><strong>Build the Fock/KS matrix</strong> — dominated by two-electron contributions (Coulomb, and exact exchange for HF/hybrids), plus the XC grid for DFT.</li>
@@ -915,7 +915,7 @@ $$\mathbf{F}\,\mathbf{C} = \mathbf{S}\,\mathbf{C}\,\boldsymbol{\varepsilon},$$
 which scales as $O(N^3)$.</li>
 </ol>
 
-<p>Formal AO two-electron integral work scales as $O(N^4)$ before screening. With density-based screening and locality, the effective Fock-build cost is often closer to $O(N^2)$–$O(N^3)$ for large molecules, but <strong>raising the basis quality still hurts</strong>: more functions per atom means denser, less local integrals and a heavier XC grid.</p>
+<p>Formally, AO two-electron integral work scales as $O(N^4)$ before screening. With density-based screening and locality, the effective Fock-build cost is often closer to $O(N^2)$–$O(N^3)$ for large molecules, but <strong>raising the basis quality still hurts</strong>: more functions per atom means denser, less local integrals and a heavier XC grid.</p>
 
 <p><strong>Which piece wins?</strong> For the system sizes typical in molecular DFT/HF (up to a few thousand basis functions), <strong>Fock/KS construction almost always dominates</strong> wall time. Diagonalization’s $O(N^3)$ only becomes competitive for very large $N$ or when integral engines and screening are extremely efficient. Hybrid functionals keep a large exact-exchange term, so they stay integral-heavy longer than pure GGAs.</p>
 
@@ -929,7 +929,7 @@ which scales as $O(N^3)$.</li>
 
 <h2 id="numerical-xc-grids">Numerical XC grids</h2>
 
-<p>In KS DFT, the exchange–correlation (XC) energy and potential are not evaluated as analytic AO integrals the way Coulomb and exact exchange are. Instead, the density (and its derivatives for GGAs and beyond) is sampled on a real-space quadrature grid—typically a union of atom-centered grids with radial and angular points—and the XC contribution is integrated numerically into the KS matrix <strong>every SCF cycle</strong>.</p>
+<p>In KS DFT, the exchange–correlation (XC) energy and potential are not computed as analytic AO integrals the way Coulomb and exact exchange are. Instead, the density (and its derivatives for GGAs and beyond) is sampled on a real-space grid—typically a union of atom-centered grids with radial and angular points—and the XC contribution is integrated numerically into the KS matrix <strong>every SCF cycle</strong>.</p>
 
 <p>Practical consequences:</p>
 
@@ -942,7 +942,7 @@ which scales as $O(N^3)$.</li>
 
 <h2 id="implicit-solvent-in-the-scf">Implicit solvent in the SCF</h2>
 
-<p>Continuum solvation models (PCM, CPCM, SMD, COSMO, …) do <strong>not</strong> add explicit solvent molecules. They represent the solvent as a polarizable dielectric outside a molecular cavity. That reaction field depends on the solute’s charge density, so it must be updated <strong>inside the SCF</strong>, not bolted on after a gas-phase calculation (unless you deliberately choose a non-self-consistent approximation).</p>
+<p>Continuum solvation models (PCM, CPCM, SMD, COSMO, …) do <strong>not</strong> add explicit solvent molecules. They treat the solvent as a polarizable dielectric outside a molecular cavity. The solvent’s reaction field depends on the solute’s charge density, so it must be updated <strong>inside the SCF</strong>, not bolted on after a gas-phase calculation (unless you deliberately choose a non-self-consistent approximation).</p>
 
 <p>In each cycle the workflow is conceptually:</p>
 
@@ -984,7 +984,7 @@ which scales as $O(N^3)$.</li>
 <p>Recompute screened integral batches every iteration instead of storing the full set. The bottleneck shifts to <strong>CPU and RAM</strong>:</p>
 
 <ul>
-  <li><strong>RAM</strong> holds the density matrix, Fock/KS matrix, MO coefficients, integral buffers, DIIS history, and (for DFT) grid batches. Parallel runs often need memory <strong>per process</strong>; under-provisioning causes thrashing or aborts.</li>
+  <li><strong>RAM</strong> holds the density matrix, Fock/KS matrix, MO coefficients, integral buffers, DIIS history, and (for DFT) grid batches. Parallel runs often need memory <strong>per process</strong>; too little memory causes thrashing or aborts.</li>
   <li>Semidirect schemes keep only the most expensive or most reused integral classes on disk and recompute the rest—a compromise when RAM is tight but some I/O is acceptable.</li>
 </ul>
 
@@ -1014,7 +1014,7 @@ which scales as $O(N^3)$.</li>
   <li><strong>Quadratic or trust-region fallbacks</strong> — last-resort algorithms in some packages when standard DIIS/SOSCF paths fail.</li>
 </ul>
 
-<p>A practical mental order of operations: start from a sensible guess, let DIIS (the usual default) work, add damping or level shift if the energy oscillates, and only then escalate to second-order or package-specific robust SCF modes. Tightening thresholds without fixing the electronic-structure problem mostly burns cycles.</p>
+<p>A practical order of operations: start from a sensible guess, let DIIS (the usual default) work, add damping or a level shift if the energy oscillates, and only then escalate to second-order or package-specific robust SCF modes. Tightening thresholds without fixing the underlying electronic-structure problem mostly burns cycles.</p>
 
 <h2 id="analytical-scf-gradients">Analytical SCF gradients</h2>
 
@@ -1071,7 +1071,7 @@ $$</p>
 <ul>
   <li><a href="/2026/01/01/ORCA-tips-and-troubleshooting.html#scf-convergence-issues">ORCA Basics and Troubleshooting — SCF Convergence Issues</a></li>
   <li><a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html#scf-convergence-issues">Gaussian Basics and Troubleshooting — SCF Convergence Issues</a></li>
-</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="scf" /><summary type="html"><![CDATA[SCF in Practice]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="scf" /><summary type="html"><![CDATA[SCF in Practice]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-08T11:28:31+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
 
 <p>If you work on a Linux machine, a remote server, or an HPC system, you will eventually need to edit a configuration file, a shell script, or a short note in the terminal. <code class="language-plaintext highlighter-rouge">vi</code> and <code class="language-plaintext highlighter-rouge">vim</code> are classic tools for exactly that. They are usually installed on Unix-like systems, they work well over SSH, and they do not require a graphical interface.</p>
 
@@ -1102,7 +1102,7 @@ Esc      Leave Insert <span class="k">mode</span>
 <span class="p">:</span><span class="k">q</span><span class="p">!</span>      Quit without saving
 </code></pre></div></div>
 
-<p>A beginner habit worth keeping is: whenever you want to execute a normal-mode command, make sure you are not in Insert mode.</p>
+<p>A beginner habit worth keeping: before running a Normal-mode command, press <code class="language-plaintext highlighter-rouge">Esc</code> to make sure you are not in Insert mode.</p>
 
 <h2 id="basic-motion-and-editing">Basic motion and editing</h2>
 
@@ -1203,7 +1203,7 @@ Ctrl<span class="p">-</span><span class="k">v</span>   Block<span class="p">-</s
 <span class="k">dp</span>       Diff <span class="k">put</span><span class="p">:</span> <span class="k">copy</span> <span class="k">to</span> the other <span class="k">file</span>
 </code></pre></div></div>
 
-<p>This is a great tool for checking changes in config files, scripts, or results from different runs. If you are debugging a parameter change or reconciling versions, it is much faster than manually diffing text in a shell.</p>
+<p>This is a great tool for checking changes in config files, scripts, or results from different runs. If you are debugging a parameter change or reconciling versions, it is much faster than comparing the files by hand.</p>
 
 <h2 id="editing-configuration-files">Editing configuration files</h2>
 
@@ -1254,7 +1254,7 @@ Ctrl<span class="p">-</span><span class="k">v</span>   Block<span class="p">-</s
 
 <p>Once you know the basics, <code class="language-plaintext highlighter-rouge">vim</code> becomes one of the most useful tools in a Linux workflow: it is fast, flexible, and available almost everywhere.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-08T11:28:31+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
 
 <p>If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.</p>
 
@@ -1500,7 +1500,7 @@ less notes/example.txt
   <li><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has excellent lessons on the shell, command-line tools, editors, and remote work.</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-08T11:28:31+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
 
 <p>This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a> guide covers the same topics for ORCA. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. The error catalog builds on community resources, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
 
@@ -2046,7 +2046,7 @@ Some functionals don’t support third-order derivatives needed for hyperpolariz
   <li><strong>Gaussian support</strong>: For licensed users, contact Gaussian Inc. support</li>
 </ol>
 
-<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ORCA Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="ORCA Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html"><![CDATA[<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
+<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ORCA Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="ORCA Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-08T11:28:31+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html"><![CDATA[<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
 
 <p>This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian Basics and Troubleshooting</a> guide covers the same topics for Gaussian. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.</p>
 
@@ -2480,11 +2480,11 @@ The FAQ explains that ORCA is invoked from the command line on all platforms and
   <li>ORCA installation and startup: https://www.faccts.de/docs/orca/6.0/manual/contents/faq.html</li>
 </ul>
 
-<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="orca," /><category term="troubleshooting" /><summary type="html"><![CDATA[ORCA Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
+<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="orca," /><category term="troubleshooting" /><summary type="html"><![CDATA[ORCA Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-10-08T11:28:31+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
 
 <p>Agustina is a High Performance Computing (HPC) center. There are many such centers in the world (a list of the most powerful supercomputers is available in the <a href="https://top500.org/">Top500</a>, in case you are curious).</p>
 
-<p>The main documentation of Agustina is <a href="https://doc--publica-bifi-es.translate.goog/agustina/manual_agustina.html?_x_tr_sl=es&amp;_x_tr_tl=en&amp;_x_tr_hl=en&amp;_x_tr_pto=wapp">here</a>, which includes account creation and basic usage. Remember that any changes you do to your <code class="language-plaintext highlighter-rouge">.bashrc</code> will be applied once you create a new terminal or run <code class="language-plaintext highlighter-rouge">source .bashrc</code>.</p>
+<p>The main documentation of Agustina is <a href="https://doc--publica-bifi-es.translate.goog/agustina/manual_agustina.html?_x_tr_sl=es&amp;_x_tr_tl=en&amp;_x_tr_hl=en&amp;_x_tr_pto=wapp">here</a>, which includes account creation and basic usage. Remember that any changes you make to your <code class="language-plaintext highlighter-rouge">.bashrc</code> will be applied once you open a new terminal or run <code class="language-plaintext highlighter-rouge">source .bashrc</code>.</p>
 
 <ul>
   <li>Like most HPC centers, Agustina requires users to connect from a local network for security reasons. In other centers you must use a VPN. In Agustina, you can ssh to the login node (<code class="language-plaintext highlighter-rouge">agustina.bifi.unizar.es</code>) through a bridge node (<code class="language-plaintext highlighter-rouge">bridge.bifi.unizar.es</code>). Setting up these aliases in your <code class="language-plaintext highlighter-rouge">.bashrc</code> file will be useful:</li>
@@ -2606,7 +2606,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 
 <p>Then open a new shell (or <code class="language-plaintext highlighter-rouge">source ~/.bashrc</code>) and retry. You need the <code class="language-plaintext highlighter-rouge">certifi</code> package in the Python that runs at login (usually the base conda env).</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-08T11:28:31+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
 
 <h2 id="foundation--learning-resources">Foundation &amp; Learning Resources</h2>
 <ul>
@@ -2663,7 +2663,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
   <li><a href="https://github.com/cod3licious/ml_exercises">A higher-level set of exercises in machine learning</a> and a full book on the topic</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-08T11:28:31+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
 
 <h2 id="about">About</h2>
 
@@ -2746,7 +2746,7 @@ ssh-add ~/.ssh/id_ed25519
 
 <ol>
   <li>Contact Ruben and <strong>share your GitHub username</strong></li>
-  <li>They will invite you to the <a href="https://github.com/rlaplaza-lab">rlaplaza-lab GitHub organization</a></li>
+  <li>You will be invited to the <a href="https://github.com/rlaplaza-lab">rlaplaza-lab GitHub organization</a></li>
   <li>Accept the invitation via email or at <a href="https://github.com/orgs/rlaplaza-lab">https://github.com/orgs/rlaplaza-lab</a></li>
 </ol>
 
@@ -2775,7 +2775,7 @@ ssh-add ~/.ssh/id_ed25519
 
 <h3 id="add-changes-to-staging">Add changes to staging</h3>
 
-<p>Staging is a temporary location that stores the changes you are going to do to the repository (kinda!). Adding changes to staging is necessary to let git know that the changes you made are things you want to change in the repo.</p>
+<p>Staging is a temporary area that holds the changes you plan to make to the repository. Adding changes to staging is how you tell Git which of your edits should go into the next commit.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add filename.py
 </code></pre></div></div>
@@ -2786,21 +2786,21 @@ ssh-add ~/.ssh/id_ed25519
 
 <h3 id="commit-changes-with-a-message">Commit changes with a message</h3>
 
-<p>A commit is a snapshot of the repository (kinda!). Once you have all the changes you want added (in staging), you make a commit with all those.</p>
+<p>A commit is a snapshot of the repository. Once all the changes you want are staged, you save them together in a single commit.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Describe your changes clearly"</span>
 </code></pre></div></div>
 
 <h3 id="push-changes-to-github">Push changes to GitHub</h3>
 
-<p>Now, we can put our commit in the original repo (upstream branch).</p>
+<p>Now we can upload our commit to the remote repository on GitHub.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
 </code></pre></div></div>
 
 <h3 id="pull-latest-changes-from-github">Pull latest changes from GitHub</h3>
 
-<p>We can also get the latest commit from the upstream branch. Of course, it is possible to change the branch we push and pull from, but we dont cover it here.</p>
+<p>We can also download the latest commits from the remote repository. It is possible to push and pull from different branches, but we do not cover that here.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
 </code></pre></div></div>
