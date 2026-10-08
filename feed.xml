@@ -1,4 +1,526 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-10-05T11:24:01+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Local Conda and VS Code Setup</title><link href="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html" rel="alternate" type="text/html" title="Local Conda and VS Code Setup" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html"><![CDATA[<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-10-08T10:08:42+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Molecular Visualization with v, vmol, and xyzrender</title><link href="https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html" rel="alternate" type="text/html" title="Molecular Visualization with v, vmol, and xyzrender" /><published>2026-10-08T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html"><![CDATA[<h1 id="molecular-visualization-with-v-vmol-and-xyzrender">Molecular Visualization with v, vmol, and xyzrender</h1>
+
+<p>This guide covers a lightweight Linux/WSL workflow for looking at molecular structures and making clean 2D figures:</p>
+
+<ul>
+  <li><strong><a href="https://github.com/briling/v"><code class="language-plaintext highlighter-rouge">v</code></a></strong> — a fast X11 molecular viewer (rotate, animate modes, dump reoriented XYZ).</li>
+  <li><strong><a href="https://github.com/briling/v/tree/master/python"><code class="language-plaintext highlighter-rouge">vmol</code></a></strong> — the Python package / CLI wrappers around <code class="language-plaintext highlighter-rouge">v</code> (<code class="language-plaintext highlighter-rouge">vmol</code>, <code class="language-plaintext highlighter-rouge">vmol2</code>).</li>
+  <li><strong><a href="https://xyzrender.readthedocs.io/"><code class="language-plaintext highlighter-rouge">xyzrender</code></a></strong> — publication-quality SVG/PNG/PDF renders from XYZ, cube files, and many QM outputs; uses <code class="language-plaintext highlighter-rouge">vmol</code>/<code class="language-plaintext highlighter-rouge">v</code> for interactive orientation.</li>
+</ul>
+
+<p>By the end you should be able to open a structure from the terminal, orient it interactively, render a figure from the CLI or a Jupyter notebook, and build <strong>multi-style</strong> images (for example Paton ball-and-stick adsorbate on a vdW metal slab) like the camphor/Cu(111) and bipyridine/Au(111) panels used in our surface papers.</p>
+
+<p>If Conda/environments are unfamiliar, start with <a href="/2026/10/05/Local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a>. For basic shell skills, see <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a>.</p>
+
+<h2 id="how-the-pieces-fit-together">How the pieces fit together</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>Role</th>
+      <th>Needs a display?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">v</code> / <code class="language-plaintext highlighter-rouge">vmol</code></td>
+      <td>Interactive 3D viewing (X11)</td>
+      <td>Yes (unless headless <code class="language-plaintext highlighter-rouge">gui:0</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">vmol2</code></td>
+      <td>Same viewer, but loads ORCA/Gaussian/… via <code class="language-plaintext highlighter-rouge">cclib</code></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">xyzrender</code></td>
+      <td>Static figures (SVG/PNG/PDF) and notebook inline display</td>
+      <td>No for plain renders; yes for <code class="language-plaintext highlighter-rouge">-I</code> / <code class="language-plaintext highlighter-rouge">orient()</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Typical figure workflow: open the molecule in <code class="language-plaintext highlighter-rouge">vmol</code> (or <code class="language-plaintext highlighter-rouge">xyzrender -I</code>), rotate to a useful view, press <code class="language-plaintext highlighter-rouge">z</code> to emit XYZ, then let <code class="language-plaintext highlighter-rouge">xyzrender</code> draw the publication graphic.</p>
+
+<h2 id="1-prerequisites-x11-on-linux-and-wsl">1. Prerequisites: X11 on Linux and WSL</h2>
+
+<p><code class="language-plaintext highlighter-rouge">v</code>/<code class="language-plaintext highlighter-rouge">vmol</code> draw with <strong>X11</strong>. Plain SVG/PNG rendering with <code class="language-plaintext highlighter-rouge">xyzrender</code> does <strong>not</strong> need a display.</p>
+
+<h3 id="native-linux">Native Linux</h3>
+
+<p>Most desktop installs already have X11. From a graphical session, <code class="language-plaintext highlighter-rouge">echo $DISPLAY</code> should print something like <code class="language-plaintext highlighter-rouge">:0</code> or <code class="language-plaintext highlighter-rouge">:1</code>. If you SSH into a remote machine, use X11 forwarding (<code class="language-plaintext highlighter-rouge">ssh -X</code> / <code class="language-plaintext highlighter-rouge">ssh -Y</code>) or run the viewer locally on files you copy back.</p>
+
+<h3 id="wsl-windows-subsystem-for-linux">WSL (Windows Subsystem for Linux)</h3>
+
+<ul>
+  <li><strong>Windows 11 + WSLg:</strong> GUI apps usually work out of the box. In Ubuntu/WSL, check <code class="language-plaintext highlighter-rouge">echo $DISPLAY</code> (often <code class="language-plaintext highlighter-rouge">:0</code>).</li>
+  <li><strong>Windows 10 / no WSLg:</strong> install an X server on Windows (VcXsrv, X410, …), start it, then in WSL set e.g. <code class="language-plaintext highlighter-rouge">export DISPLAY=:0</code> (or the address your X server documents).</li>
+  <li>Run these tools from a <strong>WSL terminal</strong>, not from native Windows PowerShell — the packages are Linux wheels.</li>
+</ul>
+
+<p>If <code class="language-plaintext highlighter-rouge">vmol</code> exits immediately or complains about opening a display, fix the <code class="language-plaintext highlighter-rouge">DISPLAY</code> environment variable / the X server before debugging Python.</p>
+
+<h2 id="2-install-in-a-conda-or-venv-environment">2. Install in a Conda (or venv) environment</h2>
+
+<p>Activate the environment you use for notebooks / chemistry scripts, then:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Interactive viewer + xyzrender (recommended on Linux/WSL)</span>
+pip <span class="nb">install</span> <span class="s1">'xyzrender[v]'</span>
+
+<span class="c"># Or install the pieces separately:</span>
+<span class="c"># pip install vmol          # v wrapper (XYZ / Priroda)</span>
+<span class="c"># pip install 'vmol[all]'   # + cclib → vmol2 for ORCA/Gaussian logs</span>
+<span class="c"># pip install xyzrender     # figures only (no interactive v)</span>
+</code></pre></div></div>
+
+<p>Quick checks:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmol <span class="nt">-h</span>          <span class="c"># or: vmol   (no args → help / reference)</span>
+xyzrender <span class="nt">-h</span>
+python <span class="nt">-c</span> <span class="s2">"import vmol, xyzrender; print('ok')"</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">vmol</code> ships manylinux wheels for current CPython versions. Building from source is documented in the <a href="https://github.com/briling/v/blob/master/python/install-other.md">vmol install notes</a> if you need a custom <code class="language-plaintext highlighter-rouge">v.so</code>.</p>
+
+<h2 id="3-cli-view-structures-with-vmol">3. CLI: view structures with vmol</h2>
+
+<p>Native XYZ (and Priroda) files:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmol molecule.xyz
+</code></pre></div></div>
+
+<p>Useful options (same language as upstream <code class="language-plaintext highlighter-rouge">v</code>):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmol molecule.xyz bonds:0              <span class="c"># hide bonds</span>
+vmol molecule.xyz colors:cpk           <span class="c"># CPK colors (default scheme is colors:v)</span>
+vmol crystal.xyz cell:10,10,10         <span class="c"># cubic cell in Å</span>
+vmol traj.xyz dt:0.05                  <span class="c"># slower frame delay</span>
+</code></pre></div></div>
+
+<p>ORCA / Gaussian / other outputs that <code class="language-plaintext highlighter-rouge">v</code> does not read natively — use <code class="language-plaintext highlighter-rouge">vmol2</code> (needs <code class="language-plaintext highlighter-rouge">cclib</code>):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="s1">'vmol[all]'</span>   <span class="c"># if you have not already</span>
+vmol2 job.out             <span class="c"># ORCA</span>
+vmol2 job.log             <span class="c"># Gaussian</span>
+vmol2 job.log vib:0       <span class="c"># force geometry frames instead of normal modes when both exist</span>
+</code></pre></div></div>
+
+<p>You can also run the modules explicitly:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> vmol molecule.xyz
+python <span class="nt">-m</span> vmol.vmol2 job.out
+</code></pre></div></div>
+
+<h3 id="essential-keyboard-shortcuts">Essential keyboard shortcuts</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>mouse / arrows</td>
+      <td>rotate (Ctrl/Shift = slower)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Home</code> / <code class="language-plaintext highlighter-rouge">End</code></td>
+      <td>zoom in / out</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">n</code> / <code class="language-plaintext highlighter-rouge">t</code> / <code class="language-plaintext highlighter-rouge">l</code> / <code class="language-plaintext highlighter-rouge">b</code></td>
+      <td>toggle numbers / types / bond lengths / bonds</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Enter</code> / <code class="language-plaintext highlighter-rouge">Backspace</code></td>
+      <td>next / previous frame</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Ins</code></td>
+      <td>play animation / vibrate selected mode</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">z</code></td>
+      <td>print current geometry as XYZ (stdout)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x</code></td>
+      <td>print Priroda-style input</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">p</code></td>
+      <td>print input aimed at SVG generators</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">u</code></td>
+      <td>print rotation matrix</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">m</code></td>
+      <td>save current frame as <code class="language-plaintext highlighter-rouge">.xpm</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">q</code> / <code class="language-plaintext highlighter-rouge">Esc</code></td>
+      <td>quit</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Full tables live in the <a href="https://github.com/briling/v#keyboard"><code class="language-plaintext highlighter-rouge">v</code> README</a>.</p>
+
+<h3 id="orient-once-then-render-pipe">Orient once, then render (pipe)</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vmol molecule.xyz | xyzrender <span class="nt">-o</span> molecule.svg
+</code></pre></div></div>
+
+<p>Rotate in the viewer, press <code class="language-plaintext highlighter-rouge">z</code> (XYZ goes to the pipe), then <code class="language-plaintext highlighter-rouge">q</code>. <code class="language-plaintext highlighter-rouge">xyzrender</code> reads stdin and writes the figure. Auto-orientation is off when input comes from stdin.</p>
+
+<h2 id="4-cli-figures-with-xyzrender">4. CLI: figures with xyzrender</h2>
+
+<p>Basic XYZ → SVG (auto-oriented by default):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xyzrender caffeine.xyz
+xyzrender caffeine.xyz <span class="nt">-o</span> figure.png
+xyzrender caffeine.xyz <span class="nt">-o</span> figure.pdf <span class="nt">--hy</span> <span class="nt">--config</span> paton
+</code></pre></div></div>
+
+<p>From QM outputs (format auto-detected):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xyzrender calc.out
+xyzrender calc.out <span class="nt">--ts</span>          <span class="c"># emphasize TS-like bonds when supported</span>
+</code></pre></div></div>
+
+<p>Interactive orientation, then render (opens <code class="language-plaintext highlighter-rouge">vmol</code> by default):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xyzrender molecule.xyz <span class="nt">-I</span> <span class="nt">-o</span> oriented.svg
+xyzrender molecule.xyz <span class="nt">-I</span> <span class="nt">--viewer</span> vmol <span class="nt">-o</span> oriented.png
+</code></pre></div></div>
+
+<p>In the viewer: rotate → <code class="language-plaintext highlighter-rouge">z</code> → <code class="language-plaintext highlighter-rouge">q</code>/<code class="language-plaintext highlighter-rouge">Esc</code>. Reuse a saved orientation across related files with <code class="language-plaintext highlighter-rouge">--ref</code> (see the <a href="https://xyzrender.readthedocs.io/en/stable/orientation.html">orientation docs</a>).</p>
+
+<h2 id="5-python-notebooks">5. Python notebooks</h2>
+
+<p>Install the same packages into the kernel’s environment, then:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">xyzrender</span> <span class="kn">import</span> <span class="n">load</span><span class="p">,</span> <span class="n">render</span><span class="p">,</span> <span class="n">orient</span>
+
+<span class="n">mol</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s">"caffeine.xyz"</span><span class="p">)</span>
+<span class="n">render</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>                              <span class="c1"># inline SVG in Jupyter
+</span><span class="n">render</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s">"caffeine.svg"</span><span class="p">)</span>       <span class="c1"># also write a file
+</span><span class="n">render</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">hy</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s">"paton"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Interactive orientation from the notebook (needs a working X11 display — fine on Linux desktops and WSL with WSLg):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">orient</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>                              <span class="c1"># opens vmol; rotate, press z, then q
+</span><span class="n">render</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s">"oriented.svg"</span><span class="p">)</span>       <span class="c1"># uses the locked orientation
+</span></code></pre></div></div>
+
+<p>GIFs:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">xyzrender</span> <span class="kn">import</span> <span class="n">render_gif</span>
+
+<span class="n">render_gif</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">gif_rot</span><span class="o">=</span><span class="s">"y"</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s">"spin.gif"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Cube / surface examples (when you have <code class="language-plaintext highlighter-rouge">.cube</code> data):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mol</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s">"orbital.cube"</span><span class="p">)</span>
+<span class="n">render</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">mo</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">iso</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="calling-vmol-directly-from-python">Calling vmol directly from Python</h3>
+
+<p>For scripts that only need the viewer / captured XYZ (without xyzrender):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">vmol</span> <span class="kn">import</span> <span class="n">vmol</span>
+
+<span class="c1"># Open interactively
+</span><span class="n">vmol</span><span class="p">.</span><span class="n">run</span><span class="p">([</span><span class="s">"molecule.xyz"</span><span class="p">])</span>
+
+<span class="c1"># Rotate, press z (or x/p), then q — capture printed text
+</span><span class="n">out</span> <span class="o">=</span> <span class="n">vmol</span><span class="p">.</span><span class="n">capture</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s">"molecule.xyz"</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+<span class="c1"># Pass coordinates without a file (numpy-friendly)
+</span><span class="n">out</span> <span class="o">=</span> <span class="n">vmol</span><span class="p">.</span><span class="n">capture</span><span class="p">(</span>
+    <span class="n">mols</span><span class="o">=</span><span class="p">{</span><span class="s">"q"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="s">"r"</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.92</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]],</span> <span class="s">"name"</span><span class="p">:</span> <span class="s">"HF"</span><span class="p">},</span>
+    <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s">"shell:0.6,0.7"</span><span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>ASE <code class="language-plaintext highlighter-rouge">Atoms</code> objects and multi-frame lists are supported as <code class="language-plaintext highlighter-rouge">mols=</code>; see the <a href="https://github.com/briling/v/tree/master/python/examples">vmol examples</a>.</p>
+
+<p>Headless point-group check (no window):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">vmol</span> <span class="kn">import</span> <span class="n">vmol</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">vmol</span><span class="p">.</span><span class="n">capture</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s">"molecule.xyz"</span><span class="p">,</span> <span class="s">"gui:0"</span><span class="p">,</span> <span class="s">"com:."</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<h2 id="6-multi-style-figures-paton-molecule--vdw-slab">6. Multi-style figures: Paton molecule + vdW slab</h2>
+
+<p>Uniform presets are fine for organics. Surface adsorption figures usually need <strong>two styles in one image</strong>:</p>
+
+<ul>
+  <li><strong>Adsorbate</strong> → <code class="language-plaintext highlighter-rouge">paton</code> (clean PyMOL-like ball-and-stick; carbons often pale).</li>
+  <li><strong>Metal slab</strong> → <code class="language-plaintext highlighter-rouge">vdw</code> (opaque space-filling spheres so the lattice reads as a surface).</li>
+</ul>
+
+<p>xyzrender supports this with <strong>style regions</strong>: a base <code class="language-plaintext highlighter-rouge">--config</code> for most atoms, plus <code class="language-plaintext highlighter-rouge">--region</code> (CLI) or <code class="language-plaintext highlighter-rouge">regions=</code> (Python) for atom subsets. Official overview: <a href="https://xyzrender.readthedocs.io/en/latest/examples/style_regions.html">Style Regions</a>.</p>
+
+<p>Target look (from our camphor/Cu and bipyridine/Au figure pipelines):</p>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Camphor on Cu 111 : Paton adsorbate with a semi-transparent DFT overlay on a vdW copper slab.">
+    <img src="/images/xyzrender-camphor-single-pose.png" style="
+        width: 100%;
+        max-height: unset;
+      " alt="Camphor on Cu 111 : Paton adsorbate with a semi-transparent DFT overlay on a vdW copper slab." loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Camphor on Cu(111): Paton adsorbate (with a semi-transparent DFT overlay) on a vdW copper slab.
+
+    </figcaption>
+  
+</figure>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Bipyridine on Au 111 : Paton organics on a vdW gold slab, shared camera across coverage steps.">
+    <img src="/images/xyzrender-bipyridine-single-pose.png" style="
+        width: 100%;
+        max-height: unset;
+      " alt="Bipyridine on Au 111 : Paton organics on a vdW gold slab, shared camera across coverage steps." loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Bipyridine on Au(111): Paton organics on a vdW gold slab, shared camera across coverage steps.
+
+    </figcaption>
+  
+</figure>
+
+<h3 id="61-presets-alone-why-regions-matter">6.1 Presets alone (why regions matter)</h3>
+
+<p>Same toy slab+molecule XYZ, three uniform choices:</p>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="--config paton everywhere slab bonds clutter the surface.">
+    <img src="/images/xyzrender-demo-paton-only.png" style="
+        width: 100%;
+        max-height: unset;
+      " alt="--config paton everywhere slab bonds clutter the surface." loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      <code class="language-plaintext highlighter-rouge">--config paton</code> everywhere — slab bonds clutter the surface.
+
+    </figcaption>
+  
+</figure>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="--config vdw everywhere adsorbate connectivity disappears into spacefill.">
+    <img src="/images/xyzrender-demo-vdw-only.png" style="
+        width: 100%;
+        max-height: unset;
+      " alt="--config vdw everywhere adsorbate connectivity disappears into spacefill." loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      <code class="language-plaintext highlighter-rouge">--config vdw</code> everywhere — adsorbate connectivity disappears into spacefill.
+
+    </figcaption>
+  
+</figure>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Base paton metal vdw region the style used for camphor bipyridine panels.">
+    <img src="/images/xyzrender-demo-paton-vdw.png" style="
+        width: 100%;
+        max-height: unset;
+      " alt="Base paton metal vdw region the style used for camphor bipyridine panels." loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Base <code class="language-plaintext highlighter-rouge">paton</code> + metal <code class="language-plaintext highlighter-rouge">vdw</code> region — the style used for camphor/bipyridine panels.
+
+    </figcaption>
+  
+</figure>
+
+<h3 id="62-cli-recipe">6.2 CLI recipe</h3>
+
+<p>Atom selectors are <strong>1-indexed</strong>. You can use index ranges (<code class="language-plaintext highlighter-rouge">"1-32"</code>), elements (<code class="language-plaintext highlighter-rouge">"Cu"</code>, <code class="language-plaintext highlighter-rouge">"Au"</code>, <code class="language-plaintext highlighter-rouge">"Pt"</code>), or categories (<code class="language-plaintext highlighter-rouge">"M"</code> for metals).</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Metals (element selector) as vdW; everything else keeps the base Paton style</span>
+xyzrender slab_adsorbate.xyz <span class="se">\</span>
+  <span class="nt">--config</span> paton <span class="se">\</span>
+  <span class="nt">--region</span> <span class="s2">"Cu"</span> vdw <span class="se">\</span>
+  <span class="nt">--unbond</span> Cu-Cu <span class="nt">--unbond</span> Cu-C <span class="nt">--unbond</span> Cu-O <span class="nt">--unbond</span> Cu-H <span class="se">\</span>
+  <span class="nt">--no-orient</span> <span class="se">\</span>
+  <span class="nt">-o</span> figure.png
+</code></pre></div></div>
+
+<p>Notes:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--region ATOMS CONFIG</code> is <strong>repeatable</strong> (several fragments, several styles).</li>
+  <li><code class="language-plaintext highlighter-rouge">--unbond A-B</code> removes unwanted stick bonds (metal–metal and metal–adsorbate) so the slab stays spacefill without a wire mesh of Cu–Cu sticks.</li>
+  <li>Prefer <code class="language-plaintext highlighter-rouge">--no-orient</code> (or lock a camera / <code class="language-plaintext highlighter-rouge">--ref</code>) once you have chosen a view; auto-orientation can flip a series of surface panels inconsistently.</li>
+  <li>Equivalent idea with index lists if metals are atoms 1–N in the XYZ:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xyzrender slab_adsorbate.xyz <span class="nt">--config</span> paton <span class="nt">--region</span> <span class="s2">"1-32"</span> vdw <span class="nt">-o</span> figure.png
+</code></pre></div></div>
+
+<h3 id="63-python-recipe-closest-to-our-paper-scripts">6.3 Python recipe (closest to our paper scripts)</h3>
+
+<p>Paper figures in the metalsurfer JCIM repo build on this pattern (<code class="language-plaintext highlighter-rouge">build_config("paton")</code> + a <code class="language-plaintext highlighter-rouge">vdw</code> region for metals, then optional overlays). Minimal teaching version:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">xyzrender</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">xyzrender.config</span> <span class="kn">import</span> <span class="n">build_config</span><span class="p">,</span> <span class="n">build_region_config</span>
+<span class="kn">from</span> <span class="nn">xyzrender.export</span> <span class="kn">import</span> <span class="n">svg_to_png</span>
+
+<span class="c1"># Assume XYZ lists metal atoms first (indices 1..n_metal), then the adsorbate.
+</span><span class="n">n_metal</span> <span class="o">=</span> <span class="mi">32</span>
+
+<span class="n">metal_cfg</span> <span class="o">=</span> <span class="n">build_region_config</span><span class="p">(</span>
+    <span class="s">"vdw"</span><span class="p">,</span>
+    <span class="n">atom_scale</span><span class="o">=</span><span class="mf">7.0</span><span class="p">,</span>      <span class="c1"># slightly under full contact radii looks cleaner on dense fcc faces
+</span>    <span class="n">hide_bonds</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">fog</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">build_config</span><span class="p">(</span>
+    <span class="s">"paton"</span><span class="p">,</span>
+    <span class="n">fog</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">background</span><span class="o">=</span><span class="s">"white"</span><span class="p">,</span>
+    <span class="n">orient</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>        <span class="c1"># keep a fixed orientation for a figure series
+</span><span class="p">)</span>
+
+<span class="n">unbond</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Cu-Cu"</span><span class="p">,</span> <span class="s">"Cu-C"</span><span class="p">,</span> <span class="s">"Cu-O"</span><span class="p">,</span> <span class="s">"Cu-H"</span><span class="p">]</span>  <span class="c1"># adapt to your metal + adsorbate elements
+</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">render</span><span class="p">(</span>
+    <span class="s">"slab_adsorbate.xyz"</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">,</span>
+    <span class="n">regions</span><span class="o">=</span><span class="p">[(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_metal</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">metal_cfg</span><span class="p">)],</span>
+    <span class="c1"># or: regions=[("Cu", metal_cfg)] / regions=[("M", "vdw")]
+</span>    <span class="n">unbond</span><span class="o">=</span><span class="n">unbond</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s">"figure.svg"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">svg_to_png</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="s">"figure.png"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">560</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Element-selector form (often enough if the adsorbate has no metal atoms):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">render</span><span class="p">(</span>
+    <span class="s">"slab_adsorbate.xyz"</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="s">"paton"</span><span class="p">,</span>
+    <span class="n">regions</span><span class="o">=</span><span class="p">[(</span><span class="s">"Cu"</span><span class="p">,</span> <span class="s">"vdw"</span><span class="p">)],</span>
+    <span class="n">unbond</span><span class="o">=</span><span class="p">[</span><span class="s">"Cu-Cu"</span><span class="p">,</span> <span class="s">"Cu-C"</span><span class="p">,</span> <span class="s">"Cu-O"</span><span class="p">,</span> <span class="s">"Cu-H"</span><span class="p">],</span>
+    <span class="n">fog</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">background</span><span class="o">=</span><span class="s">"white"</span><span class="p">,</span>
+    <span class="n">orient</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s">"figure.svg"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="64-geometry-hygiene-before-styling">6.4 Geometry hygiene before styling</h3>
+
+<p>Style regions only control drawing. Publication panels still need a sensible structure file:</p>
+
+<ol>
+  <li><strong>Bring the adsorbate above the slab</strong> (some trajectories store molecules on the periodic underside).</li>
+  <li><strong>Keep only the top metal layers</strong> you want to show (2 layers is typical for fcc(111) figures).</li>
+  <li><strong>Wrap / tile</strong> so the adsorbate sits inside a clear surface patch; optionally expand the cell for a fuller lattice.</li>
+  <li><strong>Tilt</strong> slightly about $x$ (e.g. $-15^\circ$ to $-25^\circ$) so upright molecules read in a near-top view.</li>
+  <li>Write a <strong>plain XYZ</strong> for rendering (no <code class="language-plaintext highlighter-rouge">Lattice=</code> header) if you want molecular Paton bonding on the adsorbate; draw the cell as a separate overlay if needed.</li>
+</ol>
+
+<p>Our camphor and bipyridine scripts do that bookkeeping in helpers, then call the Paton+vdW render once — see <code class="language-plaintext highlighter-rouge">scripts/figure_common.py</code> (<code class="language-plaintext highlighter-rouge">render_surface_pose</code>, <code class="language-plaintext highlighter-rouge">_metal_vdw_region</code>) and <code class="language-plaintext highlighter-rouge">scripts/make_camphor_figure.py</code> / <code class="language-plaintext highlighter-rouge">scripts/make_bipyridine_figure.py</code> in the metalsurfer JCIM paper repo.</p>
+
+<h3 id="65-optional-extras-used-in-the-paper-panels">6.5 Optional extras used in the paper panels</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Extra</th>
+      <th>What it does</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**Structural overlay**</td>
+      <td>Second geometry (e.g. DFT on top of MLIP) via <code class="language-plaintext highlighter-rouge">overlay=</code> / <code class="language-plaintext highlighter-rouge">overlay_config</code>; recolor carbons and use opacity ~0.75.</td>
+    </tr>
+    <tr>
+      <td>**Locked camera**</td>
+      <td>Reuse <code class="language-plaintext highlighter-rouge">fixed_span</code> / <code class="language-plaintext highlighter-rouge">fixed_center</code> (or xyzrender <code class="language-plaintext highlighter-rouge">--ref</code>) so a series of coverage steps share one framing.</td>
+    </tr>
+    <tr>
+      <td>**Larger adsorbate sticks**</td>
+      <td><code class="language-plaintext highlighter-rouge">atom_scale</code> / <code class="language-plaintext highlighter-rouge">bond_width</code> on the **base** Paton config so the molecule punches through the dense vdW metal.</td>
+    </tr>
+    <tr>
+      <td>**Cell edges**</td>
+      <td>Either xyzrender’s cell drawing or a post-pass that injects dashed parallelogram edges into the SVG.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Overlay sketch:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">xyzrender.types</span> <span class="kn">import</span> <span class="n">OverlayConfig</span>
+
+<span class="n">dft_cfg</span> <span class="o">=</span> <span class="n">build_region_config</span><span class="p">(</span><span class="s">"paton"</span><span class="p">)</span>
+<span class="n">dft_cfg</span><span class="p">.</span><span class="n">color_overrides</span> <span class="o">=</span> <span class="p">{</span><span class="s">"C"</span><span class="p">:</span> <span class="s">"#2a9d6e"</span><span class="p">,</span> <span class="s">"O"</span><span class="p">:</span> <span class="s">"#ff0d0d"</span><span class="p">}</span>
+<span class="n">dft_cfg</span><span class="p">.</span><span class="n">auto_hide_h</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">render</span><span class="p">(</span>
+    <span class="s">"mlip_pose.xyz"</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">,</span>
+    <span class="n">regions</span><span class="o">=</span><span class="p">[(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_metal</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">metal_cfg</span><span class="p">)],</span>
+    <span class="n">overlay</span><span class="o">=</span><span class="s">"dft_pose.xyz"</span><span class="p">,</span>
+    <span class="n">overlay_config</span><span class="o">=</span><span class="n">OverlayConfig</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">dft_cfg</span><span class="p">),</span>
+    <span class="n">unbond</span><span class="o">=</span><span class="n">unbond</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s">"overlay.svg"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="66-checklist-for-a-camphor--or-bipyridine-like-panel">6.6 Checklist for a camphor- or bipyridine-like panel</h3>
+
+<ol>
+  <li>XYZ with metals and adsorbate clearly separable (by element or index block).</li>
+  <li><code class="language-plaintext highlighter-rouge">config="paton"</code> base + <code class="language-plaintext highlighter-rouge">regions=[(metals, "vdw")]</code> (tune <code class="language-plaintext highlighter-rouge">atom_scale</code> ~6–8).</li>
+  <li><code class="language-plaintext highlighter-rouge">unbond</code> metal–metal and metal–adsorbate pairs.</li>
+  <li>Fixed orientation / shared camera across the panel series.</li>
+  <li>Export SVG → PNG at 300 dpi for the manuscript collage.</li>
+</ol>
+
+<h2 id="7-practical-tips">7. Practical tips</h2>
+
+<ul>
+  <li>Prefer a dedicated Conda env so <code class="language-plaintext highlighter-rouge">vmol</code>’s binary wheel and Jupyter share the same Python.</li>
+  <li>For organics, standardize on one preset (<code class="language-plaintext highlighter-rouge">paton</code>, <code class="language-plaintext highlighter-rouge">pmol</code>, …) and <code class="language-plaintext highlighter-rouge">--ref</code> for consistent views; for surfaces, standardize on <strong>Paton + metal vdW region</strong>.</li>
+  <li>Diffuse / large systems: hide hydrogens by default in figures (<code class="language-plaintext highlighter-rouge">xyzrender</code> defaults) and only pass <code class="language-plaintext highlighter-rouge">--hy</code> when H positions matter.</li>
+  <li>If notebook <code class="language-plaintext highlighter-rouge">orient()</code> fails but CLI <code class="language-plaintext highlighter-rouge">vmol file.xyz</code> works, the notebook server may lack a <code class="language-plaintext highlighter-rouge">DISPLAY</code> — start Jupyter from the same graphical WSL/Linux session, or orient on the CLI and load the saved XYZ.</li>
+  <li>Upstream docs change faster than this page: treat <a href="https://xyzrender.readthedocs.io/">xyzrender docs</a>, <a href="https://github.com/briling/v/blob/master/python/README.md">vmol README</a>, and the <a href="https://github.com/briling/v"><code class="language-plaintext highlighter-rouge">v</code> README</a> as the source of truth for flags.</li>
+</ul>
+
+<h2 id="where-to-go-next">Where to go next</h2>
+
+<ul>
+  <li><a href="https://xyzrender.readthedocs.io/en/latest/installation.html">xyzrender installation</a></li>
+  <li><a href="https://xyzrender.readthedocs.io/en/stable/quickstart_cli.html">xyzrender CLI quickstart</a></li>
+  <li><a href="https://xyzrender.readthedocs.io/en/latest/quickstart_python.html">xyzrender Python / Jupyter quickstart</a></li>
+  <li><a href="https://xyzrender.readthedocs.io/en/latest/examples/style_regions.html">xyzrender style regions</a></li>
+  <li><a href="https://github.com/briling/v">v / vmol on GitHub</a></li>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="python," /><category term="visualization," /><category term="linux," /><category term="wsl" /><summary type="html"><![CDATA[Molecular Visualization with v, vmol, and xyzrender]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Local Conda and VS Code Setup</title><link href="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html" rel="alternate" type="text/html" title="Local Conda and VS Code Setup" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html"><![CDATA[<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
 
 <p>This guide walks you through installing Miniconda and Visual Studio Code on your own computer, creating a dedicated Conda environment, installing packages inside it, and running Python from that environment in VS Code.</p>
 
@@ -291,7 +813,7 @@ python hello.py
 
 <p>Keep one habit from day one: activate the correct environment before installing packages or running project code. If the prompt does not show <code class="language-plaintext highlighter-rouge">(myenv)</code>, pause and activate first.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="python," /><category term="conda," /><category term="vscode" /><summary type="html"><![CDATA[Local Conda and VS Code Setup]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SCF in Practice</title><link href="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html" rel="alternate" type="text/html" title="SCF in Practice" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/SCF-in-practice</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html"><![CDATA[<h1 id="scf-in-practice">SCF in Practice</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="python," /><category term="conda," /><category term="vscode" /><summary type="html"><![CDATA[Local Conda and VS Code Setup]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SCF in Practice</title><link href="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html" rel="alternate" type="text/html" title="SCF in Practice" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/SCF-in-practice</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html"><![CDATA[<h1 id="scf-in-practice">SCF in Practice</h1>
 
 <p>This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure as used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost (integrals vs diagonalization, disk vs RAM), how basis sets (including diffuse functions), XC grids, and implicit solvent enter, how jobs are started and converged, and what analytical gradients and Hessians cost relative to the energy. For program-specific keywords and failure recipes, see the <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA</a> and <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian</a> guides.</p>
 
@@ -549,7 +1071,7 @@ $$</p>
 <ul>
   <li><a href="/2026/01/01/ORCA-tips-and-troubleshooting.html#scf-convergence-issues">ORCA Basics and Troubleshooting — SCF Convergence Issues</a></li>
   <li><a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html#scf-convergence-issues">Gaussian Basics and Troubleshooting — SCF Convergence Issues</a></li>
-</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="scf" /><summary type="html"><![CDATA[SCF in Practice]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="scf" /><summary type="html"><![CDATA[SCF in Practice]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
 
 <p>If you work on a Linux machine, a remote server, or an HPC system, you will eventually need to edit a configuration file, a shell script, or a short note in the terminal. <code class="language-plaintext highlighter-rouge">vi</code> and <code class="language-plaintext highlighter-rouge">vim</code> are classic tools for exactly that. They are usually installed on Unix-like systems, they work well over SSH, and they do not require a graphical interface.</p>
 
@@ -732,7 +1254,7 @@ Ctrl<span class="p">-</span><span class="k">v</span>   Block<span class="p">-</s
 
 <p>Once you know the basics, <code class="language-plaintext highlighter-rouge">vim</code> becomes one of the most useful tools in a Linux workflow: it is fast, flexible, and available almost everywhere.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
 
 <p>If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.</p>
 
@@ -978,7 +1500,7 @@ less notes/example.txt
   <li><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has excellent lessons on the shell, command-line tools, editors, and remote work.</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
 
 <p>This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a> guide covers the same topics for ORCA. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. The error catalog builds on community resources, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
 
@@ -1524,7 +2046,7 @@ Some functionals don’t support third-order derivatives needed for hyperpolariz
   <li><strong>Gaussian support</strong>: For licensed users, contact Gaussian Inc. support</li>
 </ol>
 
-<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ORCA Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="ORCA Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html"><![CDATA[<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
+<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ORCA Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="ORCA Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html"><![CDATA[<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
 
 <p>This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian Basics and Troubleshooting</a> guide covers the same topics for Gaussian. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.</p>
 
@@ -1958,7 +2480,7 @@ The FAQ explains that ORCA is invoked from the command line on all platforms and
   <li>ORCA installation and startup: https://www.faccts.de/docs/orca/6.0/manual/contents/faq.html</li>
 </ul>
 
-<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="orca," /><category term="troubleshooting" /><summary type="html"><![CDATA[ORCA Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
+<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="orca," /><category term="troubleshooting" /><summary type="html"><![CDATA[ORCA Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
 
 <p>Agustina is a High Performance Computing (HPC) center. There are many such centers in the world (a list of the most powerful supercomputers is available in the <a href="https://top500.org/">Top500</a>, in case you are curious).</p>
 
@@ -2084,7 +2606,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 
 <p>Then open a new shell (or <code class="language-plaintext highlighter-rouge">source ~/.bashrc</code>) and retry. You need the <code class="language-plaintext highlighter-rouge">certifi</code> package in the Python that runs at login (usually the base conda env).</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
 
 <h2 id="foundation--learning-resources">Foundation &amp; Learning Resources</h2>
 <ul>
@@ -2141,7 +2663,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
   <li><a href="https://github.com/cod3licious/ml_exercises">A higher-level set of exercises in machine learning</a> and a full book on the topic</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Coding Practices Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Git tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Git-tips.html" rel="alternate" type="text/html" title="Git tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-08T10:07:41+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Git-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Git-tips.html"><![CDATA[<h1 id="basic-git--github-guide-for-scientific-projects">Basic Git &amp; GitHub Guide for Scientific Projects</h1>
 
 <h2 id="about">About</h2>
 
@@ -2311,257 +2833,4 @@ ssh-add ~/.ssh/id_ed25519
   <li><a href="https://education.github.com/pack">GitHub Student Developer Pack</a> – Free tools for students</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Writing tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Writing-tips.html" rel="alternate" type="text/html" title="Writing tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-10-05T11:23:00+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Writing-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Writing-tips.html"><![CDATA[<h1 id="scientific-paper-writing-guidelines">Scientific Paper Writing Guidelines</h1>
-
-<h2 id="about">About</h2>
-
-<p>This document provides a structured guide to help you write a clear, rigorous, and publishable <strong>scientific manuscript</strong>, especially in the <strong>chemical sciences</strong>. It is tailored to those using <strong><a href="https://www.overleaf.com/">Overleaf</a></strong> with <strong><a href="https://www.overleaf.com/latex/templates/acs-publishing-template/jngpwwcvzjtv">ACS</a></strong> or <strong><a href="https://www.overleaf.com/latex/templates/rsc-article-template/fhxhhrxcqzvm">RSC</a></strong> LaTeX templates, but the core principles apply universally.</p>
-
-<hr />
-
-<h2 id="getting-started">Getting Started</h2>
-
-<h3 id="choose-the-right-journal">Choose the Right Journal</h3>
-
-<p>Before writing, define your <strong>target journal</strong>. This influences structure, style, and reference format. Consider:</p>
-
-<ul>
-  <li>Scope of the journal</li>
-  <li>Impact factor and audience</li>
-  <li>Recent articles similar to your work</li>
-</ul>
-
-<p>Links:</p>
-<ul>
-  <li><a href="https://pubs.acs.org/page/journals">ACS Journals List</a></li>
-  <li><a href="https://www.rsc.org/journals-books-databases/about-journals/">RSC Journals List</a></li>
-  <li><a href="https://journalfinder.elsevier.com/">Journal Finder (Elsevier)</a></li>
-</ul>
-
-<h3 id="use-the-official-template">Use the Official Template</h3>
-
-<p>Overleaf templates ensure correct formatting and metadata setup.</p>
-
-<p>Here are some useful ones, but for most journals we will probably have a previous example. For others, you may have to look for the template yourself (if it exists!):</p>
-
-<ul>
-  <li><strong>ACS Template:</strong> <a href="https://www.overleaf.com/latex/templates/latex-template-for-american-chemical-society-acs-journal-submissions/nzngbcrcptmm">Link</a></li>
-  <li><strong>RSC Template:</strong> <a href="https://www.overleaf.com/latex/templates/tagged/rsc">Link</a></li>
-</ul>
-
-<p>Follow the structure provided and don’t override style commands unless necessary.</p>
-
-<ul>
-  <li>In general, I prefer using <a href="https://www.overleaf.com/">Overleaf</a> for all manuscripts (unless a journal prohibits LaTeX). Use group-maintained Overleaf templates where possible (cover letters, SI, latexdiff, etc.). If you are not sure if there is one, ask me!</li>
-  <li>Use cross-references (<code class="language-plaintext highlighter-rouge">\ref{}</code>) for figures, tables, sections—<strong>never hard-code numbers</strong>.</li>
-  <li>For versioning: Continue working in one Overleaf project. Backup older versions by copying to separate <code class="language-plaintext highlighter-rouge">.tex</code> files every now and then, specially before major changes.</li>
-  <li>For reviewer responses: Use <code class="language-plaintext highlighter-rouge">latexdiff</code> to highlight changes (e.g., for reviewer responses). For the actual answers, we may use <a href="https://docs.google.com/">Google docs</a> instead.</li>
-</ul>
-
-<h3 id="outline-first">Outline First</h3>
-
-<p>Before writing, prepare an outline for discussion with your advisor (i.e., me). The outline should include:</p>
-
-<ul>
-  <li><strong>Abstract</strong>: 4–8 sentences summarizing the entire paper’s message and contributions.</li>
-  <li><strong>Introduction</strong>: A paragraph-level sketch of background, open questions, and this paper’s specific goals. End with a clear list of 2–4 main contributions.</li>
-  <li><strong>Figure 1</strong>: Often a schematic or conceptual diagram—draft this early.</li>
-  <li><strong>Results</strong>: Describe key experiments, figures, and tables. Write draft captions early on—they should be mostly self-contained.</li>
-  <li><strong>Discussion</strong>: Draft sections for analysis and interpretation, including an explicit <strong>limitations</strong> paragraph if applicable.</li>
-</ul>
-
-<hr />
-
-<h2 id="general-structure-of-a-scientific-paper">General Structure of a Scientific Paper</h2>
-
-<h3 id="1-title">1. Title</h3>
-
-<ul>
-  <li>Concise, descriptive, and specific</li>
-  <li>Avoid jargon or overly broad titles</li>
-  <li>Include keywords if relevant</li>
-</ul>
-
-<h3 id="2-abstract">2. Abstract</h3>
-
-<ul>
-  <li>150–250 words</li>
-  <li>Summarize the problem, key methods, major results, and conclusions</li>
-  <li>Write it <strong>last</strong>, even though it appears first</li>
-</ul>
-
-<h3 id="3-introduction">3. Introduction</h3>
-
-<ul>
-  <li>Context and motivation</li>
-  <li>Review of relevant work (with citations)</li>
-  <li>Clearly state the <strong>research question or hypothesis</strong></li>
-  <li>End with a summary of <strong>your contribution</strong></li>
-</ul>
-
-<h3 id="4-results-and-discussion">4. Results and Discussion</h3>
-
-<ul>
-  <li>Present results in <strong>logical order</strong>, not necessarily chronological</li>
-  <li>Use <strong>figures and tables</strong> to highlight key findings</li>
-  <li>Discuss implications, limitations, and comparisons with prior work</li>
-  <li>Include <strong>control experiments</strong> or computational benchmarks if relevant</li>
-</ul>
-
-<h3 id="5-methods--experimental-section">5. Methods / Experimental Section</h3>
-
-<ul>
-  <li>Describe methods with enough detail to allow replication</li>
-  <li>Separate subsections for synthesis, measurements, and simulations</li>
-  <li>Include software versions, parameters, and tools used</li>
-  <li>Use SI units and standard nomenclature</li>
-</ul>
-
-<h3 id="6-conclusions">6. Conclusions</h3>
-
-<ul>
-  <li>Recap major findings, make sure message is clear even if its repetitive</li>
-  <li>Emphasize scientific impact</li>
-  <li>Optionally outline future directions</li>
-</ul>
-
-<h3 id="7-references">7. References</h3>
-
-<ul>
-  <li>Use a <strong>consistent and journal-appropriate</strong> style (ACS, RSC, etc.)</li>
-  <li>Use BibTeX with a reference manager like:
-    <ul>
-      <li><a href="https://www.zotero.org/">Zotero</a></li>
-      <li><a href="https://www.mendeley.com/">Mendeley</a></li>
-      <li><a href="https://www.jabref.org/">JabRef</a></li>
-    </ul>
-  </li>
-</ul>
-
-<p>To generate BibTeX entries from DOIs, use:</p>
-<ul>
-  <li><a href="https://www.doi2bib.org/">DOI2Bib</a></li>
-</ul>
-
-<p>To clean up <code class="language-plaintext highlighter-rouge">.bib</code> files, use:</p>
-<ul>
-  <li><a href="https://github.com/texworld/betterbib">betterbib (GitHub)</a></li>
-</ul>
-
-<hr />
-
-<h2 id="writing-tips">Writing Tips</h2>
-
-<h3 id="be-clear-and-concise">Be Clear and Concise</h3>
-
-<ul>
-  <li>Prefer short, direct sentences</li>
-  <li>Avoid unnecessary jargon</li>
-  <li>Eliminate filler phrases (e.g., “it is worth mentioning that”)</li>
-</ul>
-
-<h3 id="be-scientific">Be Scientific</h3>
-
-<ul>
-  <li>Support all claims with <strong>data or references</strong></li>
-  <li>Use error bars, confidence intervals, and statistical significance where applicable</li>
-  <li>Avoid overclaiming or hyping results</li>
-</ul>
-
-<h3 id="be-structured">Be Structured</h3>
-
-<ul>
-  <li>Use informative section headers</li>
-  <li>Use logical transitions between paragraphs</li>
-  <li>Ensure each paragraph has one core idea</li>
-</ul>
-
-<h3 id="be-visual">Be Visual</h3>
-
-<ul>
-  <li>Use well-labeled figures and tables</li>
-  <li>Avoid clutter in graphs (no rainbow plots, overly small fonts)</li>
-  <li>Refer to <strong>every</strong> figure/table in the main text</li>
-</ul>
-
-<p>Recommended tools for figure-making are:</p>
-<ul>
-  <li><a href="https://www.perkinelmer.com/category/chemdraw">ChemDraw</a>, always with ACS style</li>
-  <li><a href="https://matplotlib.org/">Matplotlib</a> / <a href="https://plotly.com/">Plotly</a></li>
-</ul>
-
-<hr />
-
-<h2 id="overleaf-and-latex-tips">Overleaf and LaTeX Tips</h2>
-
-<ul>
-  <li>Use <code class="language-plaintext highlighter-rouge">\cite{}</code> with a <code class="language-plaintext highlighter-rouge">.bib</code> file to manage references</li>
-  <li>Use <code class="language-plaintext highlighter-rouge">\autoref{}</code> or <code class="language-plaintext highlighter-rouge">\ref{}</code> for cross-referencing</li>
-  <li>Define custom commands for repeated symbols or equations</li>
-  <li>Add <code class="language-plaintext highlighter-rouge">% TODO:</code> comments to mark unfinished areas</li>
-  <li>Use <code class="language-plaintext highlighter-rouge">[draft]</code> option in <code class="language-plaintext highlighter-rouge">\documentclass</code> for fast compilation during writing</li>
-</ul>
-
-<hr />
-
-<h2 id="final-checklist">Final Checklist</h2>
-
-<ul>
-  <li>Never submit any version (poster, abstract, manuscript) without advisor approval.</li>
-  <li>If deadlines are involved, plan ahead for:
-    <ul>
-      <li>Internal review. It takes me time to review a paper critically and several rounds may (probably will) be necessary.</li>
-      <li>External collaborator approval — <strong>allow ≥30 days</strong> if needed.</li>
-    </ul>
-  </li>
-</ul>
-
-<p>Before submission or feedback, ensure:</p>
-
-<h3 id="-scientific-rigor">✅ Scientific Rigor</h3>
-
-<ul>
-  <li>All claims supported with data or references</li>
-  <li>All figures readable and reproducible</li>
-  <li>All abbreviations defined at first use</li>
-</ul>
-
-<h3 id="-formatting">✅ Formatting</h3>
-
-<ul>
-  <li>Correct journal style (template, references, headings)</li>
-  <li>Figures and tables placed appropriately</li>
-  <li>Units and nomenclature are consistent and SI-compliant when possible (for energies, we like kcal/mol or eV)</li>
-</ul>
-
-<h3 id="-language-and-clarity">✅ Language and Clarity</h3>
-
-<ul>
-  <li>Spell-checked and grammar-checked</li>
-  <li>No overly long or vague sentences</li>
-  <li>Clear and engaging abstract</li>
-</ul>
-
-<h3 id="-metadata">✅ Metadata</h3>
-
-<ul>
-  <li>Author names and affiliations are correct</li>
-  <li>ORCID and email info included</li>
-  <li>Proper keywords provided (if required)</li>
-</ul>
-
-<hr />
-
-<h2 id="bonus-tools">Bonus Tools</h2>
-
-<ul>
-  <li><a href="https://www.grammarly.com/">Grammarly</a> – grammar and style check</li>
-  <li><a href="https://writefull.com/">Writefull</a> – language correction for scientific writing</li>
-  <li><a href="https://tableconvert.com/">LaTeX table converter</a> – for tables</li>
-  <li><a href="https://latexeditor.lagrida.com/">LaTeX equation writer</a> – for equations</li>
-  <li><a href="https://www.overleaf.com/learn">Overleaf LaTeX Tutorials</a></li>
-  <li><a href="https://serialmentor.com/dataviz/">Data Visualization: A Practical Introduction</a></li>
-  <li><a href="https://stackoverflow.com/questions/44970010/axes-class-set-explicitly-size-width-height-of-axes-in-given-units">Multipanel figures</a></li>
-</ul>
-
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Scientific Paper Writing Guidelines]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Basic Git &amp; GitHub Guide for Scientific Projects]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
