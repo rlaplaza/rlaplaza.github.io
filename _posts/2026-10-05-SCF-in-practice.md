@@ -7,11 +7,11 @@ tags: tutorial, computational-chemistry, scf
 
 # SCF in Practice
 
-This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure as used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost (integrals vs diagonalization, disk vs RAM), how basis sets (including diffuse functions), XC grids, and implicit solvent enter, how jobs are started and converged, and what analytical gradients and Hessians cost relative to the energy. For program-specific keywords and failure recipes, see the [ORCA](/2026/01/01/ORCA-tips-and-troubleshooting.html) and [Gaussian](/2026/01/01/Gaussian-tips-and-troubleshooting.html) guides.
+This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost (integrals vs diagonalization, disk vs RAM), how basis sets, XC grids, and implicit solvent enter, how jobs are started and converged, and what gradients and Hessians cost relative to the energy. For program-specific keywords and failure recipes, see the [ORCA](/2026/01/01/ORCA-tips-and-troubleshooting.html) and [Gaussian](/2026/01/01/Gaussian-tips-and-troubleshooting.html) guides.
 
 ## What the SCF loop is
 
-In HF and DFT, the electronic energy depends on the occupied molecular orbitals (or equivalently the density matrix). Those orbitals are eigenfunctions of an effective one-electron Hamiltonian—the Fock matrix in HF, the Kohn–Sham (KS) matrix in DFT—which itself depends on the density. The SCF procedure closes that loop:
+In HF and DFT, the electronic energy depends on the occupied molecular orbitals (or equivalently the density matrix). Those orbitals come from diagonalizing an effective one-electron Hamiltonian—the Fock matrix in HF, the Kohn–Sham (KS) matrix in DFT—which itself depends on the density. The SCF procedure closes that loop:
 
 1. Start from an initial density (or orbital guess).
 2. Build the Fock/KS matrix from that density.
@@ -32,7 +32,7 @@ $$
 
 Production HF/DFT bases (def2, Pople, correlation-consistent, …) are almost always **contracted**: the contraction coefficients $d_{k\mu}$ are frozen, so the SCF works in a smaller space of $N$ cGTOs while each two-electron integral over cGTOs still expands into many primitive integrals. That is the usual efficiency trade-off for SCF: fewer variational degrees of freedom, more work per matrix element.
 
-“Uncontracted” or loosely contracted bases (more nearly raw primitive GTOs) enlarge $N$ and are more common when the radial flexibility matters for **correlated wavefunction methods** (MP2, CC, …), which need to describe dynamical correlation, not only the mean-field density. For everyday DFT/HF geometry work, contracted sets such as def2-SVP are the default.
+“Uncontracted” bases (closer to raw primitive GTOs) enlarge $N$ and are more common when radial flexibility matters for **correlated wavefunction methods** (MP2, CC, …), which need to describe dynamical correlation, not only the mean-field density. For everyday DFT/HF geometry work, contracted sets such as def2-SVP are the default.
 
 ### How many functions per atom? A def2-SVP sketch
 
@@ -62,14 +62,14 @@ Standard polarized valence sets (def2-SVP, 6-31G(d), …) are tuned for **neutra
 
 ## Cost: two-electron integrals vs Fock diagonalization
 
-Each SCF cycle has two structurally different pieces:
+Each SCF cycle has two different kinds of work:
 
 1. **Build the Fock/KS matrix** — dominated by two-electron contributions (Coulomb, and exact exchange for HF/hybrids), plus the XC grid for DFT.
 2. **Update orbitals** — classically a generalized diagonalization of an $N \times N$ matrix,
    $$\mathbf{F}\,\mathbf{C} = \mathbf{S}\,\mathbf{C}\,\boldsymbol{\varepsilon},$$
    which scales as $O(N^3)$.
 
-Formal AO two-electron integral work scales as $O(N^4)$ before screening. With density-based screening and locality, the effective Fock-build cost is often closer to $O(N^2)$–$O(N^3)$ for large molecules, but **raising the basis quality still hurts**: more functions per atom means denser, less local integrals and a heavier XC grid.
+Formally, AO two-electron integral work scales as $O(N^4)$ before screening. With density-based screening and locality, the effective Fock-build cost is often closer to $O(N^2)$–$O(N^3)$ for large molecules, but **raising the basis quality still hurts**: more functions per atom means denser, less local integrals and a heavier XC grid.
 
 **Which piece wins?** For the system sizes typical in molecular DFT/HF (up to a few thousand basis functions), **Fock/KS construction almost always dominates** wall time. Diagonalization’s $O(N^3)$ only becomes competitive for very large $N$ or when integral engines and screening are extremely efficient. Hybrid functionals keep a large exact-exchange term, so they stay integral-heavy longer than pure GGAs.
 
@@ -81,7 +81,7 @@ Rules of thumb:
 
 ## Numerical XC grids
 
-In KS DFT, the exchange–correlation (XC) energy and potential are not evaluated as analytic AO integrals the way Coulomb and exact exchange are. Instead, the density (and its derivatives for GGAs and beyond) is sampled on a real-space quadrature grid—typically a union of atom-centered grids with radial and angular points—and the XC contribution is integrated numerically into the KS matrix **every SCF cycle**.
+In KS DFT, the exchange–correlation (XC) energy and potential are not computed as analytic AO integrals the way Coulomb and exact exchange are. Instead, the density (and its derivatives for GGAs and beyond) is sampled on a real-space grid—typically a union of atom-centered grids with radial and angular points—and the XC contribution is integrated numerically into the KS matrix **every SCF cycle**.
 
 Practical consequences:
 
@@ -92,7 +92,7 @@ Practical consequences:
 
 ## Implicit solvent in the SCF
 
-Continuum solvation models (PCM, CPCM, SMD, COSMO, …) do **not** add explicit solvent molecules. They represent the solvent as a polarizable dielectric outside a molecular cavity. That reaction field depends on the solute’s charge density, so it must be updated **inside the SCF**, not bolted on after a gas-phase calculation (unless you deliberately choose a non-self-consistent approximation).
+Continuum solvation models (PCM, CPCM, SMD, COSMO, …) do **not** add explicit solvent molecules. They treat the solvent as a polarizable dielectric outside a molecular cavity. The solvent's reaction field depends on the solute’s charge density, so it must be updated **inside the SCF**, not bolted on after a gas-phase calculation (unless you deliberately choose a non-self-consistent approximation).
 
 In each cycle the workflow is conceptually:
 
@@ -127,7 +127,7 @@ Consequences on real HPC:
 
 Recompute screened integral batches every iteration instead of storing the full set. The bottleneck shifts to **CPU and RAM**:
 
-- **RAM** holds the density matrix, Fock/KS matrix, MO coefficients, integral buffers, DIIS history, and (for DFT) grid batches. Parallel runs often need memory **per process**; under-provisioning causes thrashing or aborts.
+- **RAM** holds the density matrix, Fock/KS matrix, MO coefficients, integral buffers, DIIS history, and (for DFT) grid batches. Parallel runs often need memory **per process**; too little memory causes thrashing or aborts.
 - Semidirect schemes keep only the most expensive or most reused integral classes on disk and recompute the rest—a compromise when RAM is tight but some I/O is acceptable.
 
 Modern defaults lean toward direct (or semidirect) SCF once $N$ is large enough that the integral file would be huge or the filesystem would dominate. Whatever the mode, integral and grid accuracy must stay tighter than the SCF convergence threshold: you cannot converge the density below the noise in $\mathbf{F}$.
@@ -152,7 +152,7 @@ Plain Roothaan–Hall iteration (build Fock/KS → diagonalize → repeat) frequ
 - **SOSCF / second-order orbital optimization** — treat orbital rotations more like a Newton step using an approximate **orbital** Hessian (second derivatives with respect to orbital rotations, not nuclear coordinates). Useful when DIIS stalls, especially for difficult open-shell or near-degenerate cases.
 - **Quadratic or trust-region fallbacks** — last-resort algorithms in some packages when standard DIIS/SOSCF paths fail.
 
-A practical mental order of operations: start from a sensible guess, let DIIS (the usual default) work, add damping or level shift if the energy oscillates, and only then escalate to second-order or package-specific robust SCF modes. Tightening thresholds without fixing the electronic-structure problem mostly burns cycles.
+A practical order of operations: start from a sensible guess, let DIIS (the usual default) work, add damping or a level shift if the energy oscillates, and only then escalate to second-order or package-specific robust SCF modes. Tightening thresholds without fixing the underlying electronic-structure problem mostly burns cycles.
 
 ## Analytical SCF gradients
 

@@ -9,7 +9,7 @@ tags: tutorial, guidelines
 
 Agustina is a High Performance Computing (HPC) center. There are many such centers in the world (a list of the most powerful supercomputers is available in the [Top500](https://top500.org/), in case you are curious).
 
-The main documentation of Agustina is [here](https://doc--publica-bifi-es.translate.goog/agustina/manual_agustina.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp), which includes account creation and basic usage. Remember that any changes you do to your `.bashrc` will be applied once you create a new terminal or run `source .bashrc`.
+The main documentation of Agustina is [here](https://doc--publica-bifi-es.translate.goog/agustina/manual_agustina.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp), which includes account creation and basic usage. Remember that any changes you make to your `.bashrc` will be applied once you open a new terminal or run `source .bashrc`.
 
 * Like most HPC centers, Agustina requires users to connect from a local network for security reasons. In other centers you must use a VPN. In Agustina, you can ssh to the login node (`agustina.bifi.unizar.es`) through a bridge node (`bridge.bifi.unizar.es`). Setting up these aliases in your `.bashrc` file will be useful:
 

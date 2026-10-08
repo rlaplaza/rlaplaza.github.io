@@ -13,7 +13,7 @@ This guide covers a lightweight Linux/WSL workflow for looking at molecular stru
 - **[`vmol`](https://github.com/briling/v/tree/master/python)** — the Python package / CLI wrappers around `v` (`vmol`, `vmol2`).
 - **[`xyzrender`](https://xyzrender.readthedocs.io/)** — publication-quality SVG/PNG/PDF renders from XYZ, cube files, and many QM outputs; uses `vmol`/`v` for interactive orientation.
 
-By the end you should be able to open a structure from the terminal, orient it interactively, render a figure from the CLI or a Jupyter notebook, and build **multi-style** images (for example Paton ball-and-stick adsorbate on a vdW metal slab) like the camphor/Cu(111) and bipyridine/Au(111) panels used in our surface papers.
+By the end you should be able to open a structure from the terminal, orient it interactively, render a figure from the CLI or a Jupyter notebook, and build **multi-style** images (for example a Paton ball-and-stick adsorbate on a vdW metal slab) like the camphor/Cu(111) and bipyridine/Au(111) panels used in our surface papers.
 
 If Conda/environments are unfamiliar, start with [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html). For basic shell skills, see [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html).
 
@@ -41,7 +41,7 @@ Most desktop installs already have X11. From a graphical session, `echo $DISPLAY
 - **Windows 10 / no WSLg:** install an X server on Windows (VcXsrv, X410, …), start it, then in WSL set e.g. `export DISPLAY=:0` (or the address your X server documents).
 - Run these tools from a **WSL terminal**, not from native Windows PowerShell — the packages are Linux wheels.
 
-If `vmol` exits immediately or complains about opening a display, fix the `DISPLAY` environment variable / the X server before debugging Python.
+If `vmol` exits immediately or complains about opening a display, fix the `DISPLAY` variable or the X server first — it is almost never a Python problem.
 
 ## 2. Install in a Conda (or venv) environment
 
@@ -124,7 +124,7 @@ Full tables live in the [`v` README](https://github.com/briling/v#keyboard).
 vmol molecule.xyz | xyzrender -o molecule.svg
 ```
 
-Rotate in the viewer, press `z` (XYZ goes to the pipe), then `q`. `xyzrender` reads stdin and writes the figure. Auto-orientation is off when input comes from stdin.
+Rotate in the viewer, press `z` (the XYZ goes into the pipe), then `q`. `xyzrender` reads stdin and writes the figure. Auto-orientation is off when input comes from stdin.
 
 ## 4. CLI: figures with xyzrender
 
@@ -260,8 +260,8 @@ xyzrender slab_adsorbate.xyz \
 Notes:
 
 - `--region ATOMS CONFIG` is **repeatable** (several fragments, several styles).
-- `--unbond A-B` removes unwanted stick bonds (metal–metal and metal–adsorbate) so the slab stays spacefill without a wire mesh of Cu–Cu sticks.
-- Prefer `--no-orient` (or lock a camera / `--ref`) once you have chosen a view; auto-orientation can flip a series of surface panels inconsistently.
+- `--unbond A-B` removes unwanted stick bonds (metal–metal and metal–adsorbate) so the slab stays space-filling instead of a wire mesh of Cu–Cu sticks.
+- Prefer `--no-orient` (or lock a camera with `--ref`) once you have chosen a view; auto-orientation can flip a series of surface panels inconsistently.
 - Equivalent idea with index lists if metals are atoms 1–N in the XYZ:
 
 ```bash
@@ -324,7 +324,7 @@ render(
 
 ### 6.4 Geometry hygiene before styling
 
-Style regions only control drawing. Publication panels still need a sensible structure file:
+Style regions only control how things are drawn. Publication panels still need a sensible structure file:
 
 1. **Bring the adsorbate above the slab** (some trajectories store molecules on the periodic underside).
 2. **Keep only the top metal layers** you want to show (2 layers is typical for fcc(111) figures).
@@ -377,7 +377,7 @@ render(
 - For organics, standardize on one preset (`paton`, `pmol`, …) and `--ref` for consistent views; for surfaces, standardize on **Paton + metal vdW region**.
 - Diffuse / large systems: hide hydrogens by default in figures (`xyzrender` defaults) and only pass `--hy` when H positions matter.
 - If notebook `orient()` fails but CLI `vmol file.xyz` works, the notebook server may lack a `DISPLAY` — start Jupyter from the same graphical WSL/Linux session, or orient on the CLI and load the saved XYZ.
-- Upstream docs change faster than this page: treat [xyzrender docs](https://xyzrender.readthedocs.io/), [vmol README](https://github.com/briling/v/blob/master/python/README.md), and the [`v` README](https://github.com/briling/v) as the source of truth for flags.
+- Upstream docs change faster than this page: treat the [xyzrender docs](https://xyzrender.readthedocs.io/), [vmol README](https://github.com/briling/v/blob/master/python/README.md), and [`v` README](https://github.com/briling/v) as the source of truth for flags.
 
 ## Where to go next
 

@@ -41,7 +41,7 @@ Follow the structure provided and don’t override style commands unless necessa
 
 - In general, I prefer using [Overleaf](https://www.overleaf.com/) for all manuscripts (unless a journal prohibits LaTeX). Use group-maintained Overleaf templates where possible (cover letters, SI, latexdiff, etc.). If you are not sure if there is one, ask me!
 - Use cross-references (`\ref{}`) for figures, tables, sections—**never hard-code numbers**.
-- For versioning: Continue working in one Overleaf project. Backup older versions by copying to separate `.tex` files every now and then, specially before major changes.
+- For versioning: keep working in one Overleaf project. Back up older versions by copying to separate `.tex` files every now and then, especially before major changes.
 - For reviewer responses: Use `latexdiff` to highlight changes (e.g., for reviewer responses). For the actual answers, we may use [Google docs](https://docs.google.com/) instead.
 
 ### Outline First
@@ -93,7 +93,7 @@ Before writing, prepare an outline for discussion with your advisor (i.e., me). 
 
 ### 6. Conclusions
 
-- Recap major findings, make sure message is clear even if its repetitive
+- Recap major findings, and make sure the message is clear even if it is repetitive
 - Emphasize scientific impact
 - Optionally outline future directions
 

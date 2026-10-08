@@ -38,7 +38,7 @@ Esc      Leave Insert mode
 :q!      Quit without saving
 ```
 
-A beginner habit worth keeping is: whenever you want to execute a normal-mode command, make sure you are not in Insert mode.
+A beginner habit worth keeping: before running a Normal-mode command, press `Esc` to make sure you are not in Insert mode.
 
 ## Basic motion and editing
 
@@ -147,7 +147,7 @@ do       Diff obtain: copy from the other file
 dp       Diff put: copy to the other file
 ```
 
-This is a great tool for checking changes in config files, scripts, or results from different runs. If you are debugging a parameter change or reconciling versions, it is much faster than manually diffing text in a shell.
+This is a great tool for checking changes in config files, scripts, or results from different runs. If you are debugging a parameter change or reconciling versions, it is much faster than comparing the files by hand.
 
 ## Editing configuration files
 

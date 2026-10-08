@@ -263,7 +263,7 @@ conda activate myenv
 python hello.py
 ```
 
-The printed path should point inside your Conda environment, not to a system-wide Python. That is the check that you are running inside the delimited environment.
+The printed path should point inside your Conda environment, not to a system-wide Python. That is the check that you are running inside the isolated environment.
 
 You can also open a notebook (`.ipynb`) and choose the same `myenv` kernel in the kernel picker.
 
