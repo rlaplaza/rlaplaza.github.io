@@ -9,7 +9,7 @@ tags: tutorial, guidelines, linux, bash, vim, vi
 
 If you work on a Linux machine, a remote server, or an HPC system, you will eventually need to edit a configuration file, a shell script, or a short note in the terminal. `vi` and `vim` are classic tools for exactly that. They are usually installed on Unix-like systems, they work well over SSH, and they do not require a graphical interface.
 
-This short guide is meant to be practical. It complements the [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html) article and the [Coding Practices Guidelines](/2025/07/30/Coding-tips.html), especially the parts about shell work, remote systems, and command-line tooling.
+This short guide is meant to be practical. If you are opening a terminal for the first time, [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html) practices `vi` on a tiny file before this page. It also complements the [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html) article and the [Coding Practices Guidelines](/2025/07/30/Coding-tips.html), especially the parts about shell work, remote systems, and command-line tooling.
 
 ## What are `vi` and `vim`?
 

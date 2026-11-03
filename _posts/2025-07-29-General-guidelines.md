@@ -7,6 +7,8 @@ tags: tutorial, guidelines
 
 # General Guidelines for Master's and PhD Students
 
+Bachelor students: before the rest of the lab tutorials, start with [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html). It assumes you have only used Windows so far. The other practical tutorials are [Git](/2025/07/30/Git-tips.html), [coding](/2025/07/30/Coding-tips.html), [writing](/2025/07/30/Writing-tips.html), and [presentations](/2025/07/29/Presentation-tips.html).
+
 ## 1. Principles
 
 Science is supposed to be demanding and hard, but also exciting and fun. If you only feel the bad parts, something is not right and we should fix it. 

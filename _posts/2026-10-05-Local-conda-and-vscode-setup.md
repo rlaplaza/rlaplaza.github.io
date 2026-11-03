@@ -16,7 +16,7 @@ By the end you should be able to:
 3. Install packages into that environment only (not into the whole computer).
 4. Select that environment as the Python interpreter in VS Code and run a small script.
 
-If terminal commands feel unfamiliar, skim the [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html) post first. For broader coding habits and why environments matter, see the [Coding Practices Guidelines](/2025/07/30/Coding-tips.html). Once you need Conda on the cluster rather than on your laptop, continue with [Using Agustina](/2025/08/01/Using-agustina.html).
+If you have never used a terminal, start with [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html). If you only need a short command refresher, skim the [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html) post first. For broader coding habits and why environments matter, see the [Coding Practices Guidelines](/2025/07/30/Coding-tips.html). Once you need Conda on the cluster rather than on your laptop, continue with [Using Agustina](/2025/08/01/Using-agustina.html).
 
 ## 1. Open a terminal
 

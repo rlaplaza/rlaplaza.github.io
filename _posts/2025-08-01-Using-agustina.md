@@ -11,6 +11,8 @@ Agustina is a High Performance Computing (HPC) center. There are many such cente
 
 The main documentation of Agustina is [here](https://doc--publica-bifi-es.translate.goog/agustina/manual_agustina.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp), which includes account creation and basic usage. Remember that any changes you make to your `.bashrc` will be applied once you open a new terminal or run `source .bashrc`.
 
+New to the terminal? Start with [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html). It installs MobaXterm, practices the first commands on your laptop, and opens the bridge session used below. The PuTTY steps on this page are the other Windows option.
+
 * Like most HPC centers, Agustina requires users to connect from a local network for security reasons. In other centers you must use a VPN. In Agustina, you can ssh to the login node (`agustina.bifi.unizar.es`) through a bridge node (`bridge.bifi.unizar.es`). Setting up these aliases in your `.bashrc` file will be useful:
 
 ```
@@ -126,6 +128,8 @@ export SSL_CERT_FILE="$(python -m certifi)"
 ```
 
 Then open a new shell (or `source ~/.bashrc`) and retry. You need the `certifi` package in the Python that runs at login (usually the base conda env).
+
+To edit files on the cluster, use [Vi and Vim Basics](/2026/01/22/Vi-and-vim-basics.html). The GitHub key step above is spelled out from scratch in [Git tips](/2025/07/30/Git-tips.html).
 
 ---
 

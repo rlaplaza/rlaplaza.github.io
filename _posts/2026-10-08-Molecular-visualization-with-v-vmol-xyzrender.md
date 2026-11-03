@@ -15,7 +15,7 @@ This guide covers a lightweight Linux/WSL workflow for looking at molecular stru
 
 By the end you should be able to open a structure from the terminal, orient it interactively, render a figure from the CLI or a Jupyter notebook, and build **multi-style** images (for example a Paton ball-and-stick adsorbate on a vdW metal slab) like the camphor/Cu(111) and bipyridine/Au(111) panels used in our surface papers.
 
-If Conda/environments are unfamiliar, start with [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html). For basic shell skills, see [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html).
+If you have never used a terminal, start with [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html). For a command refresher, see [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html). If Conda or environments are unfamiliar, start with [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html).
 
 ## How the pieces fit together
 

@@ -1,5 +1,4 @@
 ---
-
 title: Linux Sysadmin Basics
 image: images/post-tutorial.jpg
 author: rlaplaza
@@ -7,6 +6,8 @@ tags: tutorial, guidelines, linux, bash, sysadmin
 ---
 
 # Linux Sysadmin Basics
+
+If you have never used a terminal, start with [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html). This page is the next step after that.
 
 If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.
 
