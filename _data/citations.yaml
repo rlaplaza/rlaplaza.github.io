@@ -1,5 +1,18 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
+- id: doi:10.26434/chemrxiv.15010192/v1
+  title: 'Metalsurfer: Fast Generation of Realistic Substrate-Adsorbate Interfaces'
+  authors:
+  - Jorge Gonzalo
+  - Jorge Felez
+  - Julen Munarriz
+  - Ruben Laplaza
+  publisher: American Chemical Society (ACS)
+  date: '2026-10-09'
+  link: https://doi.org/hcm6jc
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1021/acssuschemeng.6c06444
   title: Hydrosoluble Betaine-Stabilized CuRu Bimetallic Nanoparticles for the Aqueous
     Semi-Hydrogenation of Alkynols
@@ -75,6 +88,23 @@
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
+- id: doi:10.1039/D6DT01596D
+  title: "A study on the selectivity in 5-hydroxymethylfurfural reduction using SnO\n\
+    \                    <sub>2</sub>\n                    -decorated Ru catalysts:\
+    \ unveiling the importance of furan ring aromaticity"
+  authors:
+  - "Adri\xE1n Garc\xEDa-Zaragoza"
+  - Christian Cerezo-Navarrete
+  - Carlo Marini
+  - "Rub\xE9n Laplaza"
+  - "Pascual O\xF1a-Burgos"
+  - "Luis M. Mart\xEDnez-Prieto"
+  publisher: Dalton Transactions
+  date: '2026-01-01'
+  link: https://doi.org/hcn7sg
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1039/D5DD00571J
   title: Benchmarking physics-inspired machine learning models for transition metal
     complexes with diverse charge and spin states
@@ -102,6 +132,18 @@
   publisher: Chemical Science
   date: '2026-01-01'
   link: https://doi.org/hbrs86
+  orcid: 0000-0001-6315-4398
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1039/D6DD00648E
+  title: 'The data in data science for chemistry: how the sausage is made'
+  authors:
+  - Ruben Laplaza
+  - Stefan N. Heinen
+  - Carlos Vivar Rios
+  publisher: Digital Discovery
+  date: '2026-01-01'
+  link: https://doi.org/hcm6jd
   orcid: 0000-0001-6315-4398
   plugin: orcid.py
   file: orcid.yaml
