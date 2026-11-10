@@ -66,10 +66,10 @@
 
   <meta name="author" content="rlaplaza">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-11-03T13:58:35+00:00">
+  <meta property="og:updated_time" content="2026-11-10T15:34:47+00:00">
   <meta property="article:published_time" content="2026-11-03T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-11-03T13:58:35+00:00">
-  <meta name="revised" content="2026-11-03T13:58:35+00:00">
+  <meta property="article:modified_time" content="2026-11-10T15:34:47+00:00">
+  <meta name="revised" content="2026-11-10T15:34:47+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Linux and MobaXterm for bachelor students" },
       "datePublished": "2026-11-03T00:00:00+00:00",
-      "dateModified": "2026-11-03T13:58:35+00:00",
+      "dateModified": "2026-11-10T15:34:47+00:00",
     
     "name": "Linux and MobaXterm for bachelor students",
     "description": "at the IIQ in Seville. A lab working on machine learning and computational tools to unveil the secrets of matter",
@@ -531,6 +531,11 @@
   
 
   
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>November 10, 2026</span>
+    </span>
+  
 </div>
 
 
@@ -568,7 +573,7 @@
 
 <h1 id="linux-and-mobaxterm-for-bachelor-students">Linux and MobaXterm for bachelor students</h1>
 
-<p>This page is the first stop if you have only ever used Windows. By the end you will be able to install MobaXterm, type basic Linux commands on your own computer, and open a remote session on the lab cluster, Agustina.</p>
+<p>This page is the first stop if you have only ever used Windows. By the end you will be able to install MobaXterm or Ubuntu inside Windows, type basic Linux commands on your own computer, and open a remote session on the lab cluster, Agustina.</p>
 
 <p>You do not need to memorize the commands. Type them once, read what comes back, and keep this page open.</p>
 
@@ -616,6 +621,69 @@
 
 <p>Your Windows Desktop is not the first place this terminal opens. MobaXterm keeps its own home folder, often <code class="language-plaintext highlighter-rouge">/home/mobaxterm</code>. Stay there while you practice, so you do not change real Windows files.</p>
 
+<h2 id="install-ubuntu-with-wsl">Install Ubuntu with WSL</h2>
+
+<p>MobaXterm is enough for the first commands and for logging into Agustina. <strong>WSL</strong> (Windows Subsystem for Linux) is a second option: a real Ubuntu Linux that lives inside Windows. Use it when a later guide asks you to install Linux programs on your laptop. The <a href="/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html">molecular visualization</a> guide is one of those.</p>
+
+<div class="alert" style="--color: #F59E0B">
+  
+  <i class="icon fa-solid fa-circle-exclamation"></i>
+  <div class="alert-content">
+    <p>The <a href="/2026/10/05/Local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> guide wants Windows PowerShell, not this Ubuntu window.</p>
+
+  </div>
+</div>
+
+<p>You need Windows 11, or a recent Windows 10. The computer will restart once.</p>
+
+<ol>
+  <li>Open the Start menu and type <code class="language-plaintext highlighter-rouge">PowerShell</code>.</li>
+  <li>Right-click <strong>Windows PowerShell</strong> and choose <strong>Run as administrator</strong>. Say yes if Windows asks for permission.</li>
+  <li>Type this and press Enter:</li>
+</ol>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wsl</span><span class="w"> </span><span class="nt">--install</span><span class="w">
+</span></code></pre></div></div>
+
+<ol>
+  <li>Wait until it finishes. If it asks you to restart, restart the computer.</li>
+  <li>After the restart, the <strong>Ubuntu</strong> window should open by itself. If it does not, open <strong>Ubuntu</strong> from the Start menu.</li>
+  <li>Ubuntu asks for a new username and a new password. This account belongs to Ubuntu. It is not your Windows password.</li>
+</ol>
+
+<div class="alert" style="--color: #d946ef">
+  
+  <i class="icon fa-solid fa-lightbulb"></i>
+  <div class="alert-content">
+    <p>The Ubuntu password stays invisible while you type it. Type it, press Enter, then type it again when Ubuntu asks you to confirm.</p>
+
+  </div>
+</div>
+
+<p>You should land at a line that ends with <code class="language-plaintext highlighter-rouge">$</code>. Check that this really is Ubuntu:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /etc/os-release
+</code></pre></div></div>
+
+<p>You should see <code class="language-plaintext highlighter-rouge">NAME="Ubuntu"</code> near the top.</p>
+
+<p>Next time, open <strong>Ubuntu</strong> from the Start menu. The same commands in the rest of this page work here. Two addresses are different from MobaXterm:</p>
+
+<ul>
+  <li>Your Ubuntu home is <code class="language-plaintext highlighter-rouge">/home/</code> plus the username you just chose, not <code class="language-plaintext highlighter-rouge">/home/mobaxterm</code>.</li>
+  <li>Your Windows files live under <code class="language-plaintext highlighter-rouge">/mnt/c/Users/YourName/</code>. In MobaXterm that same place is <code class="language-plaintext highlighter-rouge">/drives/c/Users/YourName/</code>.</li>
+</ul>
+
+<p>Bring Ubuntu’s list of installable programs up to date before you install anything else. <code class="language-plaintext highlighter-rouge">sudo</code> means “run this as Ubuntu’s administrator”. It asks for the Ubuntu password.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt upgrade
+</code></pre></div></div>
+
+<p>Press <code class="language-plaintext highlighter-rouge">Y</code> and Enter if <code class="language-plaintext highlighter-rouge">upgrade</code> asks whether to continue. This can take a few minutes. When the <code class="language-plaintext highlighter-rouge">$</code> prompt comes back, Ubuntu is ready.</p>
+
+<p>If <code class="language-plaintext highlighter-rouge">wsl --install</code> says the command is not recognized, install the <strong>Ubuntu</strong> app from the Microsoft Store, open it, and create the username and password there. If Windows complains that virtualization is turned off, ask in the lab before changing BIOS settings.</p>
+
 <h2 id="your-first-commands">Your first commands</h2>
 
 <p>Type each block one line at a time. Press Enter after each line. Wait until the <code class="language-plaintext highlighter-rouge">$</code> prompt comes back before you type the next command.</p>
@@ -623,7 +691,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">pwd</span>
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">pwd</code> means “print working directory”. A <strong>directory</strong> is a folder. This command tells you which folder you are standing in. You should see a path such as <code class="language-plaintext highlighter-rouge">/home/mobaxterm</code>.</p>
+<p><code class="language-plaintext highlighter-rouge">pwd</code> means “print working directory”. A <strong>directory</strong> is a folder. This command tells you which folder you are standing in. In MobaXterm you should see a path such as <code class="language-plaintext highlighter-rouge">/home/mobaxterm</code>. In Ubuntu you should see <code class="language-plaintext highlighter-rouge">/home/</code> plus the username you created.</p>
 
 <p>A <strong>path</strong> is the address of a file or folder. Slashes separate the rooms. <code class="language-plaintext highlighter-rouge">/home/mobaxterm</code> means: start at the root of the disk (<code class="language-plaintext highlighter-rouge">/</code>), go into <code class="language-plaintext highlighter-rouge">home</code>, then into <code class="language-plaintext highlighter-rouge">mobaxterm</code>.</p>
 
@@ -743,7 +811,7 @@ ls</span> <span class="nt">-a</span>
 
 <p><code class="language-plaintext highlighter-rouge">.bashrc</code> is a settings file the shell reads each time it starts. Later guides ask you to add lines to it. Do not edit it today. Seeing the name is enough.</p>
 
-<p>Windows files, if you need them, live under a path like <code class="language-plaintext highlighter-rouge">/drives/c/Users/YourName/Desktop</code>. You can <code class="language-plaintext highlighter-rouge">cd</code> there. For this practice, stay in the MobaXterm home.</p>
+<p>Windows files, if you need them, live under <code class="language-plaintext highlighter-rouge">/drives/c/Users/YourName/Desktop</code> in MobaXterm and under <code class="language-plaintext highlighter-rouge">/mnt/c/Users/YourName/Desktop</code> in Ubuntu. You can <code class="language-plaintext highlighter-rouge">cd</code> there. For this practice, stay in the Linux home.</p>
 
 <h2 id="phone-another-computer-with-ssh">Phone another computer with SSH</h2>
 
@@ -759,6 +827,8 @@ ls</span> <span class="nt">-a</span>
 
   </div>
 </div>
+
+<p>From Ubuntu, skip the clicks below and type <code class="language-plaintext highlighter-rouge">ssh username@bridge.bifi.unizar.es</code>, using your real username. The steps after the password are the same. From MobaXterm, use the mouse:</p>
 
 <ol>
   <li>In MobaXterm, click <strong>Session</strong>, then <strong>SSH</strong>.</li>
@@ -815,7 +885,7 @@ ls</span>
   <li>
 <a href="/2025/08/01/Using-agustina.html">Using Agustina</a> is the cluster: the <code class="language-plaintext highlighter-rouge">tob</code> and <code class="language-plaintext highlighter-rouge">toa</code> aliases, conda, and how to submit a job.</li>
   <li>
-<a href="/2025/07/30/Git-tips.html">Git tips</a> can be done in this same MobaXterm local terminal.</li>
+<a href="/2025/07/30/Git-tips.html">Git tips</a> can be done in this same terminal, whether that is MobaXterm or Ubuntu.</li>
   <li>
 <a href="/2026/01/22/Vi-and-vim-basics.html">Vi and Vim Basics</a> is the rest of the editor you just used: moving around, changing text, and comparing files.</li>
   <li>
