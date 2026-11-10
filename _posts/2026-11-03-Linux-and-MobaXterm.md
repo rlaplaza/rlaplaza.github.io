@@ -7,7 +7,7 @@ tags: tutorial, guidelines, beginner
 
 # Linux and MobaXterm for bachelor students
 
-This page is the first stop if you have only ever used Windows. By the end you will be able to install MobaXterm, type basic Linux commands on your own computer, and open a remote session on the lab cluster, Agustina.
+This page is the first stop if you have only ever used Windows. By the end you will be able to install MobaXterm or Ubuntu inside Windows, type basic Linux commands on your own computer, and open a remote session on the lab cluster, Agustina.
 
 You do not need to memorize the commands. Type them once, read what comes back, and keep this page open.
 
@@ -43,6 +43,52 @@ Three parts of the window matter:
 
 Your Windows Desktop is not the first place this terminal opens. MobaXterm keeps its own home folder, often `/home/mobaxterm`. Stay there while you practice, so you do not change real Windows files.
 
+## Install Ubuntu with WSL
+
+MobaXterm is enough for the first commands and for logging into Agustina. **WSL** (Windows Subsystem for Linux) is a second option: a real Ubuntu Linux that lives inside Windows. Use it when a later guide asks you to install Linux programs on your laptop. The [molecular visualization](/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html) guide is one of those.
+
+{% include alert.html type="warning" content="The [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html) guide wants Windows PowerShell, not this Ubuntu window." %}
+
+You need Windows 11, or a recent Windows 10. The computer will restart once.
+
+1. Open the Start menu and type `PowerShell`.
+2. Right-click **Windows PowerShell** and choose **Run as administrator**. Say yes if Windows asks for permission.
+3. Type this and press Enter:
+
+```powershell
+wsl --install
+```
+
+4. Wait until it finishes. If it asks you to restart, restart the computer.
+5. After the restart, the **Ubuntu** window should open by itself. If it does not, open **Ubuntu** from the Start menu.
+6. Ubuntu asks for a new username and a new password. This account belongs to Ubuntu. It is not your Windows password.
+
+{% include alert.html type="tip" content="The Ubuntu password stays invisible while you type it. Type it, press Enter, then type it again when Ubuntu asks you to confirm." %}
+
+You should land at a line that ends with `$`. Check that this really is Ubuntu:
+
+```bash
+cat /etc/os-release
+```
+
+You should see `NAME="Ubuntu"` near the top.
+
+Next time, open **Ubuntu** from the Start menu. The same commands in the rest of this page work here. Two addresses are different from MobaXterm:
+
+- Your Ubuntu home is `/home/` plus the username you just chose, not `/home/mobaxterm`.
+- Your Windows files live under `/mnt/c/Users/YourName/`. In MobaXterm that same place is `/drives/c/Users/YourName/`.
+
+Bring Ubuntu's list of installable programs up to date before you install anything else. `sudo` means "run this as Ubuntu's administrator". It asks for the Ubuntu password.
+
+```bash
+sudo apt update
+sudo apt upgrade
+```
+
+Press `Y` and Enter if `upgrade` asks whether to continue. This can take a few minutes. When the `$` prompt comes back, Ubuntu is ready.
+
+If `wsl --install` says the command is not recognized, install the **Ubuntu** app from the Microsoft Store, open it, and create the username and password there. If Windows complains that virtualization is turned off, ask in the lab before changing BIOS settings.
+
 ## Your first commands
 
 Type each block one line at a time. Press Enter after each line. Wait until the `$` prompt comes back before you type the next command.
@@ -51,7 +97,7 @@ Type each block one line at a time. Press Enter after each line. Wait until the 
 pwd
 ```
 
-`pwd` means "print working directory". A **directory** is a folder. This command tells you which folder you are standing in. You should see a path such as `/home/mobaxterm`.
+`pwd` means "print working directory". A **directory** is a folder. This command tells you which folder you are standing in. In MobaXterm you should see a path such as `/home/mobaxterm`. In Ubuntu you should see `/home/` plus the username you created.
 
 A **path** is the address of a file or folder. Slashes separate the rooms. `/home/mobaxterm` means: start at the root of the disk (`/`), go into `home`, then into `mobaxterm`.
 
@@ -145,7 +191,7 @@ ls -a
 
 `.bashrc` is a settings file the shell reads each time it starts. Later guides ask you to add lines to it. Do not edit it today. Seeing the name is enough.
 
-Windows files, if you need them, live under a path like `/drives/c/Users/YourName/Desktop`. You can `cd` there. For this practice, stay in the MobaXterm home.
+Windows files, if you need them, live under `/drives/c/Users/YourName/Desktop` in MobaXterm and under `/mnt/c/Users/YourName/Desktop` in Ubuntu. You can `cd` there. For this practice, stay in the Linux home.
 
 ## Phone another computer with SSH
 
@@ -154,6 +200,8 @@ Windows files, if you need them, live under a path like `/drives/c/Users/YourNam
 You need the username and password the lab gave you. If you do not have them yet, stop after the local practice and ask.
 
 {% include alert.html type="tip" content="When Linux asks for a password, the cursor does not move and no dots appear. That is normal. Type the password and press Enter." %}
+
+From Ubuntu, skip the clicks below and type `ssh username@bridge.bifi.unizar.es`, using your real username. The steps after the password are the same. From MobaXterm, use the mouse:
 
 1. In MobaXterm, click **Session**, then **SSH**.
 2. In **Remote host**, type `bridge.bifi.unizar.es`.
@@ -208,7 +256,7 @@ Stay in this order. Each page assumes you can already do what the previous one t
 
 1. [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html) repeats these commands and adds `.bashrc`, `PATH`, and small scripts.
 2. [Using Agustina](/2025/08/01/Using-agustina.html) is the cluster: the `tob` and `toa` aliases, conda, and how to submit a job.
-3. [Git tips](/2025/07/30/Git-tips.html) can be done in this same MobaXterm local terminal.
+3. [Git tips](/2025/07/30/Git-tips.html) can be done in this same terminal, whether that is MobaXterm or Ubuntu.
 4. [Vi and Vim Basics](/2026/01/22/Vi-and-vim-basics.html) is the rest of the editor you just used: moving around, changing text, and comparing files.
 5. [Coding tips](/2025/07/30/Coding-tips.html) points at the [Software Carpentry Unix shell](https://swcarpentry.github.io/shell-novice/) lessons, which are the right next practice once this page feels easy.
 6. [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html) is for Python on your laptop, after the terminal feels ordinary.

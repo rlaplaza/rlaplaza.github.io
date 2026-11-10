@@ -37,6 +37,8 @@ Most desktop installs already have X11. From a graphical session, `echo $DISPLAY
 
 ### WSL (Windows Subsystem for Linux)
 
+If Ubuntu is not installed yet, follow [Install Ubuntu with WSL](/2026/11/03/Linux-and-MobaXterm.html#install-ubuntu-with-wsl) in the bachelor Linux guide, then come back here.
+
 - **Windows 11 + WSLg:** GUI apps usually work out of the box. In Ubuntu/WSL, check `echo $DISPLAY` (often `:0`).
 - **Windows 10 / no WSLg:** install an X server on Windows (VcXsrv, X410, …), start it, then in WSL set e.g. `export DISPLAY=:0` (or the address your X server documents).
 - Run these tools from a **WSL terminal**, not from native Windows PowerShell — the packages are Linux wheels.
