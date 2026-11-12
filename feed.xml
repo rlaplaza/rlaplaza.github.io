@@ -1,8 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-11-10T15:36:53+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Linux and MobaXterm for bachelor students</title><link href="https://rlaplaza.github.io/2026/11/03/Linux-and-MobaXterm.html" rel="alternate" type="text/html" title="Linux and MobaXterm for bachelor students" /><published>2026-11-03T00:00:00+00:00</published><updated>2026-11-10T15:34:47+00:00</updated><id>https://rlaplaza.github.io/2026/11/03/Linux-and-MobaXterm</id><content type="html" xml:base="https://rlaplaza.github.io/2026/11/03/Linux-and-MobaXterm.html"><![CDATA[<h1 id="linux-and-mobaxterm-for-bachelor-students">Linux and MobaXterm for bachelor students</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rlaplaza.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rlaplaza.github.io/" rel="alternate" type="text/html" /><updated>2026-11-12T14:55:42+00:00</updated><id>https://rlaplaza.github.io/feed.xml</id><title type="html">rlaplaza and crew</title><subtitle>A lab working on machine learning and computational tools to unveil the secrets of matter</subtitle><entry><title type="html">Linux and MobaXterm for bachelor students</title><link href="https://rlaplaza.github.io/2026/11/03/Linux-and-MobaXterm.html" rel="alternate" type="text/html" title="Linux and MobaXterm for bachelor students" /><published>2026-11-03T00:00:00+00:00</published><updated>2026-11-12T14:54:44+00:00</updated><id>https://rlaplaza.github.io/2026/11/03/Linux-and-MobaXterm</id><content type="html" xml:base="https://rlaplaza.github.io/2026/11/03/Linux-and-MobaXterm.html"><![CDATA[<h1 id="linux-and-mobaxterm-for-bachelor-students">Linux and MobaXterm for bachelor students</h1>
 
-<p>This page is the first stop if you have only ever used Windows. By the end you will be able to install MobaXterm or Ubuntu inside Windows, type basic Linux commands on your own computer, and open a remote session on the lab cluster, Agustina.</p>
+<p>This page is the first stop if you have only ever used Windows. By the end you will be able to install MobaXterm or Ubuntu inside Windows, type basic Linux commands on your own computer, open a remote session on the lab cluster, Agustina, and move files between your laptop and the cluster.</p>
 
 <p>You do not need to memorize the commands. Type them once, read what comes back, and keep this page open.</p>
+
+<p>The page has four parts:</p>
+
+<ol>
+  <li><strong>Set up a terminal on Windows</strong>: MobaXterm (recommended) or Ubuntu with WSL.</li>
+  <li><strong>Learn the first commands</strong>: folders, files, and the <code class="language-plaintext highlighter-rouge">vi</code> editor.</li>
+  <li><strong>Talk to the cluster</strong>: open an SSH session with MobaXterm, or with PuTTY if that is what you have.</li>
+  <li><strong>Move files</strong>: drag and drop in MobaXterm, or FileZilla, or <code class="language-plaintext highlighter-rouge">scp</code> once the rest feels ordinary.</li>
+</ol>
+
+<p>You only need one setup from part one. MobaXterm covers parts three and four on its own, so if you install it you can skim the PuTTY and FileZilla sections and come back to them as a reference.</p>
+
+<div class="tutorial-nav">
+  <p><strong>Where this fits</strong></p>
+  <ul>
+    <li>
+      <strong>Companion</strong>:
+      <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a>
+    </li>
+  
+    <li>
+      <strong>Next</strong>:
+      <a href="/2025/08/01/Using-agustina.html">Using Agustina</a>
+    </li>
+  </ul>
+</div>
 
 <h2 id="why-the-lab-uses-linux">Why the lab uses Linux</h2>
 
@@ -42,7 +68,7 @@
 <ul>
   <li>The black (or dark) area is the terminal. You type commands there.</li>
   <li><strong>Session</strong>, at the top, is how you phone another computer later.</li>
-  <li>The left panel is a file browser. After you connect to Agustina it shows the remote files, and you can drag a file between your laptop and the cluster. You do not need it for the practice below.</li>
+  <li>The left panel is a file browser. After you connect to Agustina it shows the remote files, and you can drag a file between your laptop and the cluster. It does the job of a separate program such as FileZilla. You do not need it for the practice below.</li>
 </ul>
 
 <p>Your Windows Desktop is not the first place this terminal opens. MobaXterm keeps its own home folder, often <code class="language-plaintext highlighter-rouge">/home/mobaxterm</code>. Stay there while you practice, so you do not change real Windows files.</p>
@@ -279,7 +305,7 @@ ls</span>
 
 <p><code class="language-plaintext highlighter-rouge">pwd</code> should show a path under <code class="language-plaintext highlighter-rouge">/home/</code> with your username. <code class="language-plaintext highlighter-rouge">ls</code> shows your files on the cluster, which may be empty.</p>
 
-<p>The left panel should now list those remote files. Dragging a file between that panel and your computer is the easy way to move one file. You do not need another program for that.</p>
+<p>The left panel should now list those remote files. Dragging a file between that panel and your computer is the easy way to move one file. You do not need another program for that. If you are on PuTTY or Ubuntu instead, where there is no such panel, jump to <a href="#moving-files-with-filezilla">Moving files with FileZilla</a>.</p>
 
 <p>Leave the same way you would hang up a phone. <code class="language-plaintext highlighter-rouge">exit</code> drops one connection:</p>
 
@@ -298,20 +324,183 @@ ls</span>
 
 <p>If the session waits a long time and then fails, you are probably off the network the cluster expects. Try again from the university network, then ask in the lab. Do not keep guessing passwords.</p>
 
+<h2 id="the-same-call-with-putty">The same call with PuTTY</h2>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    <p>If you installed MobaXterm you can skip this section. MobaXterm already does everything PuTTY does, and its file panel already does what FileZilla does. Read on if your laptop has PuTTY, if someone in the lab hands you PuTTY steps, or if you would rather use the tool the <a href="/2025/08/01/Using-agustina.html">Using Agustina</a> page describes.</p>
+
+  </div>
+</div>
+
+<p><strong>PuTTY</strong> is a free Windows program that does one thing: open an SSH window. It has no file browser, which is why it usually comes with <strong>FileZilla</strong> (next section) or with its own command-line companions, <code class="language-plaintext highlighter-rouge">pscp</code> and <code class="language-plaintext highlighter-rouge">psftp</code>.</p>
+
+<ol>
+  <li>Download PuTTY from the <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">official download page</a>. That page always points at the newest release, so bookmark it. Avoid copycat sites that bundle PuTTY with other software.</li>
+  <li>Take the <strong>64-bit x86</strong> MSI installer, which installs PuTTY together with <code class="language-plaintext highlighter-rouge">pscp</code> and <code class="language-plaintext highlighter-rouge">psftp</code>. If you would rather not install anything, the standalone 64-bit <code class="language-plaintext highlighter-rouge">putty.exe</code> is fine too: you can keep the single file on your Desktop and run it from there.</li>
+  <li>In <strong>Host Name (or IP address)</strong>, type <code class="language-plaintext highlighter-rouge">username@bridge.bifi.unizar.es</code>, with your real username.</li>
+  <li>Scroll up in the left-hand category list to <strong>Connection → Data</strong> and put the same username in <strong>Auto-login username</strong>. PuTTY versions differ, so setting both is the safe option.</li>
+  <li>Scroll back to <strong>Session</strong>, type <code class="language-plaintext highlighter-rouge">bridge</code> in <strong>Saved Sessions</strong>, and click <strong>Save</strong>. This stores the session so you do not retype the address.</li>
+  <li>Click <strong>Open</strong>.</li>
+  <li>The first time only, a <strong>PuTTY Security Alert</strong> pops up asking about the host key. Click <strong>Accept</strong>. It is the same “do you trust this computer” question as in MobaXterm.</li>
+  <li>Type your password and press Enter. Remember that nothing appears while you type.</li>
+</ol>
+
+<p>The prompt changes. You are on the bridge. Now call Agustina, exactly as in the MobaXterm section:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh username@agustina.bifi.unizar.es
+</code></pre></div></div>
+
+<p>To reuse the session later, open PuTTY, double-click <code class="language-plaintext highlighter-rouge">bridge</code> under <strong>Saved Sessions</strong>, and it connects.</p>
+
+<p>PuTTY has two habits worth knowing before they surprise you:</p>
+
+<ul>
+  <li><strong>The window closes when the connection drops</strong>, taking the error message with it. If that happens, reconnect and read the message before it disappears, or ask what the message said.</li>
+  <li><strong>Copying and pasting are reversed compared to Windows.</strong> Select text with the left mouse button and it is copied immediately; right-click pastes it. <code class="language-plaintext highlighter-rouge">Ctrl+C</code> in a PuTTY window <em>stops a program</em>, it does not copy.</li>
+</ul>
+
+<div class="alert" style="--color: #d946ef">
+  
+  <i class="icon fa-solid fa-lightbulb"></i>
+  <div class="alert-content">
+    <p>PuTTY stores your password badly and never shows it again, so do not save passwords in it. Type it. When typing it gets old, the <a href="/2025/08/01/Using-agustina.html">Using Agustina</a> page shows how to set up an SSH key so you log in without one.</p>
+
+  </div>
+</div>
+
+<h2 id="moving-files-with-filezilla">Moving files with FileZilla</h2>
+
+<p>A terminal is awkward for files you want to <em>see</em>. <strong>FileZilla</strong> is a free program with two panels side by side: your laptop on the left, the remote machine on the right. You select a file and click to send it. The same idea underlies MobaXterm’s left panel and PuTTY’s <code class="language-plaintext highlighter-rouge">pscp</code>.</p>
+
+<ol>
+  <li>Download the <strong>FileZilla Client</strong> Windows installer from the <a href="https://filezilla-project.org/download.php">official download page</a>. Click straight past the sponsored offers, or use the “show all downloads” link to get the plain client.</li>
+  <li>Install it with the defaults and open it.</li>
+  <li>Click <strong>File → Site Manager</strong>, then <strong>New Site</strong>.</li>
+  <li>Fill the form in:
+    <ul>
+      <li><strong>Protocol</strong>: <code class="language-plaintext highlighter-rouge">SFTP - SSH File Transfer Protocol</code></li>
+      <li><strong>Host</strong>: <code class="language-plaintext highlighter-rouge">bridge.bifi.unizar.es</code></li>
+      <li><strong>Logon Type</strong>: <code class="language-plaintext highlighter-rouge">Normal</code></li>
+      <li><strong>User</strong>: your cluster username</li>
+      <li><strong>Password</strong>: your cluster password</li>
+    </ul>
+  </li>
+  <li>Click <strong>Connect</strong>. If it asks whether you trust the host key, tick the box and click <strong>OK</strong>.</li>
+  <li>In the right panel, navigate to <code class="language-plaintext highlighter-rouge">/home/yourusername/</code>. That is your folder on the bridge.</li>
+  <li>Drag a file from the left panel to the right panel to upload it. Double-click a file in the right panel to download it.</li>
+</ol>
+
+<div class="alert" style="--color: #F59E0B">
+  
+  <i class="icon fa-solid fa-circle-exclamation"></i>
+  <div class="alert-content">
+    <p>The bridge is a front door, not a workspace. It has very little disk space, and files you drop there are not in your Agustina home. Use it to pass a file through, then move it on to Agustina, or work directly on Agustina from the start.</p>
+
+  </div>
+</div>
+
+<p>Because the bridge sits in front of Agustina, the reliable pattern with FileZilla is two hops:</p>
+
+<ol>
+  <li>Upload from your laptop to the bridge with the site you just made.</li>
+  <li>On the bridge, in a terminal (MobaXterm, PuTTY, or Ubuntu), push the file to Agustina:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp hello.txt username@agustina.bifi.unizar.es:
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">scp</code> means “copy over SSH”. The trailing <code class="language-plaintext highlighter-rouge">:</code> means “my home folder on the far machine”. The reverse direction, Agustina back to the bridge, swaps the two arguments:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp username@agustina.bifi.unizar.es:result.out <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">.</code> at the end means “here, the folder I am standing in”.</p>
+
+<p>If you would rather point FileZilla at Agustina in one step, and your IP is allowed to reach it directly, make a second site with <strong>Host</strong> <code class="language-plaintext highlighter-rouge">agustina.bifi.unizar.es</code> and the same username and password. If the connection times out, you are behind the firewall and must go through the bridge.</p>
+
+<p>Once you are comfortable, learn the command-line versions. They work on any machine, they need no clicks, and they are what the cluster guides assume you can read:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># from MobaXterm or Ubuntu, to the cluster</span>
+scp hello.txt username@agustina.bifi.unizar.es:
+<span class="c"># from the cluster, back to your laptop ("./" means here)</span>
+scp username@agustina.bifi.unizar.es:result.out <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>From native Windows PowerShell, the same two commands work as written: Windows 10 and 11 ship an <code class="language-plaintext highlighter-rouge">ssh</code> / <code class="language-plaintext highlighter-rouge">scp</code> client. PuTTY’s own equivalents are <code class="language-plaintext highlighter-rouge">pscp hello.txt username@bridge.bifi.unizar.es:</code> and <code class="language-plaintext highlighter-rouge">psftp username@bridge.bifi.unizar.es</code>.</p>
+
+<div class="alert" style="--color: #d946ef">
+  
+  <i class="icon fa-solid fa-lightbulb"></i>
+  <div class="alert-content">
+    <p>Never use FileZilla or <code class="language-plaintext highlighter-rouge">scp</code> to move a whole folder of results back and forth repeatedly, and never edit a file in place on the cluster with a graphical client. Pull it, edit it, push it back, or just edit it on the cluster with <code class="language-plaintext highlighter-rouge">vi</code>. Re-uploading a directory can quietly overwrite newer work.</p>
+
+  </div>
+</div>
+
+<h2 id="which-tool-do-i-use">Which tool do I use?</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>I want to…</th>
+      <th>MobaXterm</th>
+      <th>PuTTY + FileZilla</th>
+      <th>Ubuntu (WSL)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Type commands on my laptop</td>
+      <td>Local terminal</td>
+      <td>not its job</td>
+      <td>Ubuntu terminal</td>
+    </tr>
+    <tr>
+      <td>Log in to the bridge / Agustina</td>
+      <td>**Session → SSH**</td>
+      <td>PuTTY session, then <code class="language-plaintext highlighter-rouge">ssh</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ssh</code></td>
+    </tr>
+    <tr>
+      <td>Move one file</td>
+      <td>Drag to the left panel</td>
+      <td>FileZilla (or <code class="language-plaintext highlighter-rouge">pscp</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">scp</code></td>
+    </tr>
+    <tr>
+      <td>Edit a file on the cluster</td>
+      <td><code class="language-plaintext highlighter-rouge">vi</code> in the terminal</td>
+      <td><code class="language-plaintext highlighter-rouge">vi</code> in the terminal</td>
+      <td><code class="language-plaintext highlighter-rouge">vi</code> in the terminal</td>
+    </tr>
+    <tr>
+      <td>Run a graphical viewer (e.g. <code class="language-plaintext highlighter-rouge">vmol</code>)</td>
+      <td>Needs an X server setup</td>
+      <td>Needs an X server setup</td>
+      <td>usually works as-is</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>There is no wrong column. Pick one, learn it properly, and stop switching. The <a href="/2025/07/30/Coding-tips.html">Coding Practices Guidelines</a> make the same point about every tool: whatever you use every day, get to know it in depth.</p>
+
 <h2 id="what-to-read-next">What to read next</h2>
 
 <p>Stay in this order. Each page assumes you can already do what the previous one taught.</p>
 
 <ol>
   <li><a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a> repeats these commands and adds <code class="language-plaintext highlighter-rouge">.bashrc</code>, <code class="language-plaintext highlighter-rouge">PATH</code>, and small scripts.</li>
-  <li><a href="/2025/08/01/Using-agustina.html">Using Agustina</a> is the cluster: the <code class="language-plaintext highlighter-rouge">tob</code> and <code class="language-plaintext highlighter-rouge">toa</code> aliases, conda, and how to submit a job.</li>
+  <li><a href="/2025/08/01/Using-agustina.html">Using Agustina</a> is the cluster: the <code class="language-plaintext highlighter-rouge">tob</code> and <code class="language-plaintext highlighter-rouge">toa</code> aliases, the PuTTY login pattern, conda, and how to submit a job.</li>
   <li><a href="/2025/07/30/Git-tips.html">Git tips</a> can be done in this same terminal, whether that is MobaXterm or Ubuntu.</li>
   <li><a href="/2026/01/22/Vi-and-vim-basics.html">Vi and Vim Basics</a> is the rest of the editor you just used: moving around, changing text, and comparing files.</li>
   <li><a href="/2025/07/30/Coding-tips.html">Coding tips</a> points at the <a href="https://swcarpentry.github.io/shell-novice/">Software Carpentry Unix shell</a> lessons, which are the right next practice once this page feels easy.</li>
   <li><a href="/2026/10/05/Local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> is for Python on your laptop, after the terminal feels ordinary.</li>
 </ol>
 
-<p>If a command prints an error, copy the error, say which page you were on, and ask. That is faster than trying random flags.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="beginner" /><summary type="html"><![CDATA[Linux and MobaXterm for bachelor students]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Molecular Visualization with v, vmol, and xyzrender</title><link href="https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html" rel="alternate" type="text/html" title="Molecular Visualization with v, vmol, and xyzrender" /><published>2026-10-08T00:00:00+00:00</published><updated>2026-11-10T15:34:47+00:00</updated><id>https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html"><![CDATA[<h1 id="molecular-visualization-with-v-vmol-and-xyzrender">Molecular Visualization with v, vmol, and xyzrender</h1>
+<p>If a command prints an error, copy the error, say which page you were on, and ask. That is faster than trying random flags.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="beginner," /><category term="ssh," /><category term="windows" /><summary type="html"><![CDATA[Linux and MobaXterm for bachelor students]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Molecular Visualization with v, vmol, and xyzrender</title><link href="https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html" rel="alternate" type="text/html" title="Molecular Visualization with v, vmol, and xyzrender" /><published>2026-10-08T00:00:00+00:00</published><updated>2026-11-12T14:54:44+00:00</updated><id>https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html"><![CDATA[<h1 id="molecular-visualization-with-v-vmol-and-xyzrender">Molecular Visualization with v, vmol, and xyzrender</h1>
 
 <p>This guide covers a lightweight Linux/WSL workflow for looking at molecular structures and making clean 2D figures:</p>
 
@@ -324,6 +513,26 @@ ls</span>
 <p>By the end you should be able to open a structure from the terminal, orient it interactively, render a figure from the CLI or a Jupyter notebook, and build <strong>multi-style</strong> images (for example a Paton ball-and-stick adsorbate on a vdW metal slab) like the camphor/Cu(111) and bipyridine/Au(111) panels used in our surface papers.</p>
 
 <p>If you have never used a terminal, start with <a href="/2026/11/03/Linux-and-MobaXterm.html">Linux and MobaXterm for bachelor students</a>. For a command refresher, see <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a>. If Conda or environments are unfamiliar, start with <a href="/2026/10/05/Local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a>.</p>
+
+<div class="tutorial-nav">
+  <p><strong>Where this fits</strong></p>
+  <ul>
+    <li>
+      <strong>Before this</strong>:
+      <a href="/2026/10/05/Local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a>
+    </li>
+  
+    <li>
+      <strong>Companion</strong>:
+      <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a>
+    </li>
+  
+    <li>
+      <strong>Next</strong>:
+      <a href="/2025/07/30/Writing-tips.html">Writing tips and tricks</a>
+    </li>
+  </ul>
+</div>
 
 <h2 id="how-the-pieces-fit-together">How the pieces fit together</h2>
 
@@ -835,7 +1044,7 @@ xyzrender slab_adsorbate.xyz <span class="se">\</span>
   <li><a href="https://xyzrender.readthedocs.io/en/latest/quickstart_python.html">xyzrender Python / Jupyter quickstart</a></li>
   <li><a href="https://xyzrender.readthedocs.io/en/latest/examples/style_regions.html">xyzrender style regions</a></li>
   <li><a href="https://github.com/briling/v">v / vmol on GitHub</a></li>
-</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="python," /><category term="visualization," /><category term="linux," /><category term="wsl" /><summary type="html"><![CDATA[Molecular Visualization with v, vmol, and xyzrender]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Local Conda and VS Code Setup</title><link href="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html" rel="alternate" type="text/html" title="Local Conda and VS Code Setup" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-11-10T15:34:47+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html"><![CDATA[<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="python," /><category term="visualization," /><category term="linux," /><category term="wsl" /><summary type="html"><![CDATA[Molecular Visualization with v, vmol, and xyzrender]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Local Conda and VS Code Setup</title><link href="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html" rel="alternate" type="text/html" title="Local Conda and VS Code Setup" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-11-12T14:54:44+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/Local-conda-and-vscode-setup.html"><![CDATA[<h1 id="local-conda-and-vs-code-setup">Local Conda and VS Code Setup</h1>
 
 <p>This guide walks you through installing Miniconda and Visual Studio Code on your own computer, creating a dedicated Conda environment, installing packages inside it, and running Python from that environment in VS Code.</p>
 
@@ -848,7 +1057,27 @@ xyzrender slab_adsorbate.xyz <span class="se">\</span>
   <li>Select that environment as the Python interpreter in VS Code and run a small script.</li>
 </ol>
 
-<p>If you have never used a terminal, start with <a href="/2026/11/03/Linux-and-MobaXterm.html">Linux and MobaXterm for bachelor students</a>. If you only need a short command refresher, skim the <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a> post first. For broader coding habits and why environments matter, see the <a href="/2025/07/30/Coding-tips.html">Coding Practices Guidelines</a>. Once you need Conda on the cluster rather than on your laptop, continue with <a href="/2025/08/01/Using-agustina.html">Using Agustina</a>.</p>
+<p>This is all local work, on your own machine. For broader coding habits and why environments matter, see the <a href="/2025/07/30/Coding-tips.html">Coding Practices Guidelines</a>.</p>
+
+<div class="tutorial-nav">
+  <p><strong>Where this fits</strong></p>
+  <ul>
+    <li>
+      <strong>Before this</strong>:
+      <a href="/2026/11/03/Linux-and-MobaXterm.html">Linux and MobaXterm for bachelor students</a>
+    </li>
+  
+    <li>
+      <strong>Companion</strong>:
+      <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a>
+    </li>
+  
+    <li>
+      <strong>Next</strong>:
+      <a href="/2025/08/01/Using-agustina.html">Using Agustina</a>
+    </li>
+  </ul>
+</div>
 
 <h2 id="1-open-a-terminal">1. Open a terminal</h2>
 
@@ -1128,9 +1357,24 @@ python hello.py
 
 <p>Keep one habit from day one: activate the correct environment before installing packages or running project code. If the prompt does not show <code class="language-plaintext highlighter-rouge">(myenv)</code>, pause and activate first.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="python," /><category term="conda," /><category term="vscode" /><summary type="html"><![CDATA[Local Conda and VS Code Setup]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SCF in Practice</title><link href="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html" rel="alternate" type="text/html" title="SCF in Practice" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-11-10T15:34:47+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/SCF-in-practice</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html"><![CDATA[<h1 id="scf-in-practice">SCF in Practice</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="python," /><category term="conda," /><category term="vscode" /><summary type="html"><![CDATA[Local Conda and VS Code Setup]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">SCF in Practice</title><link href="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html" rel="alternate" type="text/html" title="SCF in Practice" /><published>2026-10-05T00:00:00+00:00</published><updated>2026-11-12T14:54:44+00:00</updated><id>https://rlaplaza.github.io/2026/10/05/SCF-in-practice</id><content type="html" xml:base="https://rlaplaza.github.io/2026/10/05/SCF-in-practice.html"><![CDATA[<h1 id="scf-in-practice">SCF in Practice</h1>
 
-<p>This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost (integrals vs diagonalization, disk vs RAM), how basis sets, XC grids, and implicit solvent enter, how jobs are started and converged, and what gradients and Hessians cost relative to the energy. For program-specific keywords and failure recipes, see the <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA</a> and <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian</a> guides.</p>
+<p>This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost (integrals vs diagonalization, disk vs RAM), how basis sets, XC grids, and implicit solvent enter, how jobs are started and converged, and what gradients and Hessians cost relative to the energy. For program-specific keywords and failure recipes, see the ORCA and Gaussian guides linked below.</p>
+
+<div class="tutorial-nav">
+  <p><strong>Where this fits</strong></p>
+  <ul>
+    <li>
+      <strong>Companion</strong>:
+      <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian Basics and Troubleshooting</a>
+    </li>
+  
+    <li>
+      <strong>Next</strong>:
+      <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a>
+    </li>
+  </ul>
+</div>
 
 <h2 id="what-the-scf-loop-is">What the SCF loop is</h2>
 
@@ -1386,11 +1630,31 @@ $$</p>
 <ul>
   <li><a href="/2026/01/01/ORCA-tips-and-troubleshooting.html#scf-convergence-issues">ORCA Basics and Troubleshooting — SCF Convergence Issues</a></li>
   <li><a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html#scf-convergence-issues">Gaussian Basics and Troubleshooting — SCF Convergence Issues</a></li>
-</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="scf" /><summary type="html"><![CDATA[SCF in Practice]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-11-10T15:34:47+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
+</ul>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="scf" /><summary type="html"><![CDATA[SCF in Practice]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Vi and Vim Basics</title><link href="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html" rel="alternate" type="text/html" title="Vi and Vim Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-11-12T14:54:44+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/Vi-and-vim-basics.html"><![CDATA[<h1 id="vi-and-vim-basics">Vi and Vim Basics</h1>
 
 <p>If you work on a Linux machine, a remote server, or an HPC system, you will eventually need to edit a configuration file, a shell script, or a short note in the terminal. <code class="language-plaintext highlighter-rouge">vi</code> and <code class="language-plaintext highlighter-rouge">vim</code> are classic tools for exactly that. They are usually installed on Unix-like systems, they work well over SSH, and they do not require a graphical interface.</p>
 
-<p>This short guide is meant to be practical. If you are opening a terminal for the first time, <a href="/2026/11/03/Linux-and-MobaXterm.html">Linux and MobaXterm for bachelor students</a> practices <code class="language-plaintext highlighter-rouge">vi</code> on a tiny file before this page. It also complements the <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a> article and the <a href="/2025/07/30/Coding-tips.html">Coding Practices Guidelines</a>, especially the parts about shell work, remote systems, and command-line tooling.</p>
+<p>This short guide is meant to be practical, and it pairs well with the <a href="/2025/07/30/Coding-tips.html">Coding Practices Guidelines</a>, especially the parts about shell work, remote systems, and command-line tooling.</p>
+
+<div class="tutorial-nav">
+  <p><strong>Where this fits</strong></p>
+  <ul>
+    <li>
+      <strong>Before this</strong>:
+      <a href="/2026/11/03/Linux-and-MobaXterm.html">Linux and MobaXterm for bachelor students</a>
+    </li>
+  
+    <li>
+      <strong>Companion</strong>:
+      <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a>
+    </li>
+  
+    <li>
+      <strong>Next</strong>:
+      <a href="/2025/08/01/Using-agustina.html">Using Agustina</a>
+    </li>
+  </ul>
+</div>
 
 <h2 id="what-are-vi-and-vim">What are <code class="language-plaintext highlighter-rouge">vi</code> and <code class="language-plaintext highlighter-rouge">vim</code>?</h2>
 
@@ -1569,9 +1833,27 @@ Ctrl<span class="p">-</span><span class="k">v</span>   Block<span class="p">-</s
 
 <p>Once you know the basics, <code class="language-plaintext highlighter-rouge">vim</code> becomes one of the most useful tools in a Linux workflow: it is fast, flexible, and available almost everywhere.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-11-10T15:34:47+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="vim," /><category term="vi" /><summary type="html"><![CDATA[Vi and Vim Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linux Sysadmin Basics</title><link href="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html" rel="alternate" type="text/html" title="Linux Sysadmin Basics" /><published>2026-01-22T00:00:00+00:00</published><updated>2026-11-12T14:54:44+00:00</updated><id>https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/22/linux-sysadmin-basics.html"><![CDATA[<h1 id="linux-sysadmin-basics">Linux Sysadmin Basics</h1>
 
-<p>If you have never used a terminal, start with <a href="/2026/11/03/Linux-and-MobaXterm.html">Linux and MobaXterm for bachelor students</a>. This page is the next step after that.</p>
+<div class="tutorial-nav">
+  <p><strong>Where this fits</strong></p>
+  <ul>
+    <li>
+      <strong>Before this</strong>:
+      <a href="/2026/11/03/Linux-and-MobaXterm.html">Linux and MobaXterm for bachelor students</a>
+    </li>
+  
+    <li>
+      <strong>Companion</strong>:
+      <a href="/2026/01/22/Vi-and-vim-basics.html">Vi and Vim Basics</a>
+    </li>
+  
+    <li>
+      <strong>Next</strong>:
+      <a href="/2025/08/01/Using-agustina.html">Using Agustina</a>
+    </li>
+  </ul>
+</div>
 
 <p>If you work in research or software, you will probably spend time on a Linux machine sooner or later. You may use a local terminal, connect to a department server over SSH, or submit work to an HPC system. The commands are not difficult, but it helps to understand what your shell is doing before you start changing files or launching jobs.</p>
 
@@ -1817,9 +2099,29 @@ less notes/example.txt
   <li><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> has excellent lessons on the shell, command-line tools, editors, and remote work.</li>
 </ul>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-11-10T15:34:47+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines," /><category term="linux," /><category term="bash," /><category term="sysadmin" /><summary type="html"><![CDATA[Linux Sysadmin Basics]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gaussian Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="Gaussian Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-11-12T14:54:44+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/Gaussian-tips-and-troubleshooting.html"><![CDATA[<h1 id="gaussian-basics-and-troubleshooting">Gaussian Basics and Troubleshooting</h1>
 
 <p>This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a> guide covers the same topics for ORCA. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. The error catalog builds on community resources, particularly <a href="https://wongzit.github.io/gaussian-common-errors-and-solutions/">Zhe Wang’s comprehensive error guide</a>.</p>
+
+<div class="tutorial-nav">
+  <p><strong>Where this fits</strong></p>
+  <ul>
+    <li>
+      <strong>Before this</strong>:
+      <a href="/2025/08/01/Using-agustina.html">Using Agustina</a>
+    </li>
+  
+    <li>
+      <strong>Companion</strong>:
+      <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a>
+    </li>
+  
+    <li>
+      <strong>Next</strong>:
+      <a href="/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html">Molecular Visualization with v, vmol, and xyzrender</a>
+    </li>
+  </ul>
+</div>
 
 <blockquote>
   <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to quickly find specific error messages.</p>
@@ -2363,9 +2665,29 @@ Some functionals don’t support third-order derivatives needed for hyperpolariz
   <li><strong>Gaussian support</strong>: For licensed users, contact Gaussian Inc. support</li>
 </ol>
 
-<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ORCA Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="ORCA Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-11-10T15:34:47+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html"><![CDATA[<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
+<p>Remember: Computational chemistry calculations can be finicky. When in doubt, start simpler (smaller basis set, fewer atoms) and work your way up!</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="gaussian," /><category term="troubleshooting" /><summary type="html"><![CDATA[Gaussian Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">ORCA Basics and Troubleshooting</title><link href="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html" rel="alternate" type="text/html" title="ORCA Basics and Troubleshooting" /><published>2026-01-01T00:00:00+00:00</published><updated>2026-11-12T14:54:44+00:00</updated><id>https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting</id><content type="html" xml:base="https://rlaplaza.github.io/2026/01/01/ORCA-tips-and-troubleshooting.html"><![CDATA[<h1 id="orca-basics-and-troubleshooting">ORCA Basics and Troubleshooting</h1>
 
 <p>This guide starts with a short tutorial on how to write and run a basic ORCA job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common failures. The companion <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian Basics and Troubleshooting</a> guide covers the same topics for Gaussian. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see <a href="/2026/10/05/SCF-in-practice.html">SCF in Practice</a>. Advice below is rooted in the official ORCA FAQ and manuals rather than forum folklore.</p>
+
+<div class="tutorial-nav">
+  <p><strong>Where this fits</strong></p>
+  <ul>
+    <li>
+      <strong>Before this</strong>:
+      <a href="/2025/08/01/Using-agustina.html">Using Agustina</a>
+    </li>
+  
+    <li>
+      <strong>Companion</strong>:
+      <a href="/2026/01/01/Gaussian-tips-and-troubleshooting.html">Gaussian Basics and Troubleshooting</a>
+    </li>
+  
+    <li>
+      <strong>Next</strong>:
+      <a href="/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html">Molecular Visualization with v, vmol, and xyzrender</a>
+    </li>
+  </ul>
+</div>
 
 <blockquote>
   <p><strong>Tip</strong>: Use your browser’s search function (Ctrl+F / Cmd+F) to jump to a specific error. The ORCA FAQ and the SCF/geometry sections of the manual are the best reference points for troubleshooting.</p>
@@ -2797,13 +3119,33 @@ The FAQ explains that ORCA is invoked from the command line on all platforms and
   <li>ORCA installation and startup: https://www.faccts.de/docs/orca/6.0/manual/contents/faq.html</li>
 </ul>
 
-<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="orca," /><category term="troubleshooting" /><summary type="html"><![CDATA[ORCA Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-11-10T15:34:47+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
+<p>These are the official ORCA documentation pages used as the verified basis for the advice above.</p>]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="computational-chemistry," /><category term="orca," /><category term="troubleshooting" /><summary type="html"><![CDATA[ORCA Basics and Troubleshooting]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Using Agustina</title><link href="https://rlaplaza.github.io/2025/08/01/Using-agustina.html" rel="alternate" type="text/html" title="Using Agustina" /><published>2025-08-01T00:00:00+00:00</published><updated>2026-11-12T14:54:44+00:00</updated><id>https://rlaplaza.github.io/2025/08/01/Using-agustina</id><content type="html" xml:base="https://rlaplaza.github.io/2025/08/01/Using-agustina.html"><![CDATA[<h1 id="using-agustina">Using Agustina</h1>
 
 <p>Agustina is a High Performance Computing (HPC) center. There are many such centers in the world (a list of the most powerful supercomputers is available in the <a href="https://top500.org/">Top500</a>, in case you are curious).</p>
 
 <p>The main documentation of Agustina is <a href="https://doc--publica-bifi-es.translate.goog/agustina/manual_agustina.html?_x_tr_sl=es&amp;_x_tr_tl=en&amp;_x_tr_hl=en&amp;_x_tr_pto=wapp">here</a>, which includes account creation and basic usage. Remember that any changes you make to your <code class="language-plaintext highlighter-rouge">.bashrc</code> will be applied once you open a new terminal or run <code class="language-plaintext highlighter-rouge">source .bashrc</code>.</p>
 
-<p>New to the terminal? Start with <a href="/2026/11/03/Linux-and-MobaXterm.html">Linux and MobaXterm for bachelor students</a>. It installs MobaXterm, practices the first commands on your laptop, and opens the bridge session used below. The PuTTY steps on this page are the other Windows option.</p>
+<p>New to the terminal? Start with <a href="/2026/11/03/Linux-and-MobaXterm.html">Linux and MobaXterm for bachelor students</a>. It installs a terminal on Windows, practices the first commands on your laptop, walks through the same bridge login with MobaXterm or <a href="/2026/11/03/Linux-and-MobaXterm.html#the-same-call-with-putty">PuTTY</a>, and covers <a href="/2026/11/03/Linux-and-MobaXterm.html#moving-files-with-filezilla">moving files with FileZilla or <code class="language-plaintext highlighter-rouge">scp</code></a>.</p>
+
+<div class="tutorial-nav">
+  <p><strong>Where this fits</strong></p>
+  <ul>
+    <li>
+      <strong>Before this</strong>:
+      <a href="/2026/11/03/Linux-and-MobaXterm.html">Linux and MobaXterm for bachelor students</a>
+    </li>
+  
+    <li>
+      <strong>Companion</strong>:
+      <a href="/2026/01/22/linux-sysadmin-basics.html">Linux Sysadmin Basics</a>
+    </li>
+  
+    <li>
+      <strong>Next</strong>:
+      <a href="/2026/01/01/ORCA-tips-and-troubleshooting.html">ORCA Basics and Troubleshooting</a>
+    </li>
+  </ul>
+</div>
 
 <ul>
   <li>Like most HPC centers, Agustina requires users to connect from a local network for security reasons. In other centers you must use a VPN. In Agustina, you can ssh to the login node (<code class="language-plaintext highlighter-rouge">agustina.bifi.unizar.es</code>) through a bridge node (<code class="language-plaintext highlighter-rouge">bridge.bifi.unizar.es</code>). Setting up these aliases in your <code class="language-plaintext highlighter-rouge">.bashrc</code> file will be useful:</li>
@@ -2826,7 +3168,7 @@ alias toa='ssh -J username@bridge.bifi.unizar.es username@agustina.bifi.unizar.e
       <li>Once you are on the bridge, run <code class="language-plaintext highlighter-rouge">ssh username@agustina.bifi.unizar.es</code> to reach the login node.</li>
     </ol>
 
-    <p>If you are connecting directly and your IP is already authorized by the firewall, you can simply set the hostname to <code class="language-plaintext highlighter-rouge">username@agustina.bifi.unizar.es</code> instead. For file transfers, PuTTY’s companion tools (<code class="language-plaintext highlighter-rouge">pscp</code> / <code class="language-plaintext highlighter-rouge">psftp</code>) or a graphical client like WinSCP are often the easiest alternatives to <code class="language-plaintext highlighter-rouge">scp</code> and <code class="language-plaintext highlighter-rouge">rsync</code>.</p>
+    <p>If you are connecting directly and your IP is already authorized by the firewall, you can simply set the hostname to <code class="language-plaintext highlighter-rouge">username@agustina.bifi.unizar.es</code> instead. For file transfers, PuTTY’s companion tools (<code class="language-plaintext highlighter-rouge">pscp</code> / <code class="language-plaintext highlighter-rouge">psftp</code>) or a graphical client like FileZilla (SFTP) or WinSCP are often the easiest alternatives to <code class="language-plaintext highlighter-rouge">scp</code> and <code class="language-plaintext highlighter-rouge">rsync</code>. The bachelor guide has a <a href="/2026/11/03/Linux-and-MobaXterm.html#moving-files-with-filezilla">click-by-click FileZilla setup</a> that works here too: point it at the bridge, then hop the file on to Agustina with <code class="language-plaintext highlighter-rouge">scp</code>.</p>
   </li>
   <li>
     <p>Once in Agustina, you will notice that the command line interface is very plain. To improve it, you can set up a few extras in your <code class="language-plaintext highlighter-rouge">.bashrc</code> file (in your Agustina user home!):</p>
@@ -2927,18 +3269,33 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 
 <p>To edit files on the cluster, use <a href="/2026/01/22/Vi-and-vim-basics.html">Vi and Vim Basics</a>. The GitHub key step above is spelled out from scratch in <a href="/2025/07/30/Git-tips.html">Git tips</a>.</p>
 
-<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-11-10T15:34:47+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
+<hr />]]></content><author><name>rlaplaza</name></author><category term="tutorial," /><category term="guidelines" /><summary type="html"><![CDATA[Using Agustina]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://rlaplaza.github.io/images/post-tutorial.jpg" /><media:content medium="image" url="https://rlaplaza.github.io/images/post-tutorial.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding tips and tricks</title><link href="https://rlaplaza.github.io/2025/07/30/Coding-tips.html" rel="alternate" type="text/html" title="Coding tips and tricks" /><published>2025-07-30T00:00:00+00:00</published><updated>2026-11-12T14:54:44+00:00</updated><id>https://rlaplaza.github.io/2025/07/30/Coding-tips</id><content type="html" xml:base="https://rlaplaza.github.io/2025/07/30/Coding-tips.html"><![CDATA[<h1 id="coding-practices-guidelines">Coding Practices Guidelines</h1>
 
 <h2 id="foundation--learning-resources">Foundation &amp; Learning Resources</h2>
 <ul>
   <li><strong>Software Carpentry Fundamentals</strong>: Master basic coding practices through <a href="https://software-carpentry.org/lessons/">Software Carpentry</a> and <a href="https://coderefinery.org/">Coderefinery</a> workshops, covering Unix shell commands, Git version control, and essential Python programming skills. Any time spent learning is well spent! If you have never opened a terminal, read <a href="/2026/11/03/Linux-and-MobaXterm.html">Linux and MobaXterm for bachelor students</a> first, then the lab <a href="/2025/07/30/Git-tips.html">Git tips</a> before the external version-control lessons.</li>
   <li><strong>Beginner-friendly roadmap</strong>: If you are starting from zero, the most useful CodeRefinery lessons are usually: <a href="https://coderefinery.github.io/git-intro/">Introduction to version control</a> for Git and GitHub basics, <a href="https://coderefinery.github.io/git-collaborative/">Collaborative distributed version control</a> for branching and pull requests, <a href="https://coderefinery.github.io/reproducible-research/">Reproducible research</a> for environments and documentation, <a href="https://coderefinery.github.io/testing/">Automated testing</a> for safer code changes, and <a href="https://coderefinery.github.io/modular-type-along/">Modular code development type-along</a> for keeping projects maintainable as they grow.</li>
   <li><strong>Scientific Computing Scripting</strong>: Develop proficiency in scripting for scientific computing using resources from the <a href="https://education.molssi.org/python_scripting_cms/aio/index.html">NSF MolSSI group’s comprehensive Python tutorials</a></li>
-  <li><strong>Deep Learning Education</strong>: Utilize <a href="https://d2l.ai">d2l.ai resources</a> for comprehensive deep learning fundamentals, including their preliminaries section and appendix of essential tools</li>
+  <li><strong>Deep Learning Education</strong>: Work through the <a href="https://d2l.ai">d2l.ai resources</a> for deep learning fundamentals, including their preliminaries section and appendix of the tools you will actually need</li>
   <li><strong>Command Line Editors</strong>: Use <code class="language-plaintext highlighter-rouge">vi</code> to edit files on a remote machine. <a href="/2026/01/22/Vi-and-vim-basics.html">Vi and Vim Basics</a> is the lab guide, and <a href="https://missing.csail.mit.edu">MIT’s IAP “Missing Semester” class</a> is the longer treatment of the shell and editors.</li>
   <li><strong>Every Day Life</strong>: I recommend using a good IDE, such as VSCode, which also has <a href="https://code.visualstudio.com/docs/python/python-tutorial">python tutorials</a> and integration with LLMs. Whatever tools you choose to use every day, you should get to know <em>in depth!</em> If you still need to install Miniconda and wire VS Code to a Conda environment on your laptop, start with the <a href="/2026/10/05/Local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a> guide.</li>
   <li><strong>Concrete rookie path</strong>: A realistic sequence is to start with a shell crash course, then Git/GitHub, then a small reproducible project, then testing and modularization. In CodeRefinery terms, that means moving from the basic Git lessons to the reproducible research and testing materials before attempting larger research pipelines or HPC workflows.</li>
 </ul>
+
+<div class="tutorial-nav">
+  <p><strong>Where this fits</strong></p>
+  <ul>
+    <li>
+      <strong>Before this</strong>:
+      <a href="/2025/07/30/Git-tips.html">Git tips and tricks</a>
+    </li>
+  
+    <li>
+      <strong>Next</strong>:
+      <a href="/2026/10/05/Local-conda-and-vscode-setup.html">Local Conda and VS Code Setup</a>
+    </li>
+  </ul>
+</div>
 
 <h2 id="python-development-standards">Python Development Standards</h2>
 <ul>
@@ -2950,7 +3307,7 @@ export TERMINFO=/usr/share/terminfo # This makes sure that clear command works
 <h2 id="project-structure--organization">Project Structure &amp; Organization</h2>
 <ul>
   <li><strong>Beyond Notebooks</strong>: While Jupyter notebooks are excellent for experimental analysis and tutorials, prioritize well-organized, documented codebases for rigorous testing and reproducible research using frameworks like <a href="https://github.com/drivendata/cookiecutter-data-science">cookiecutter-data-science templates</a> or <a href="https://github.com/rociomer/dl-chem-101">dl-chem-101</a></li>
-  <li><strong>Repository Management</strong>: Utilize private repositories for continuous backups (this will save your ass at some point, I swear!)</li>
+  <li><strong>Repository Management</strong>: Keep private repositories as a running backup (this will save your ass at some point, I swear!)</li>
   <li><strong>Code Publication</strong>: Before open-sourcing code, thoroughly audit repositories to remove proprietary information, passwords, or private data; consider creating clean repositories for finalized code publication in the <a href="https://github.com/rlaplaza-lab">group’s GitHub organization</a></li>
 </ul>
 

@@ -1,0 +1,22 @@
+.tutorial-nav {
+  margin: 20px 0;
+  padding: 20px 24px;
+  border: solid 1px var(--light-gray);
+  border-radius: var(--rounded);
+  line-height: var(--spacing);
+}
+
+.tutorial-nav > :first-child {
+  margin-top: 0;
+}
+
+.tutorial-nav > :last-child {
+  margin-bottom: 0;
+}
+
+.tutorial-nav ul {
+  margin-bottom: 0;
+  padding-left: 24px;
+}
+
+/*# sourceMappingURL=tutorial-nav.css.map */
