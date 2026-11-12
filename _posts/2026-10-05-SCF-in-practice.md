@@ -7,7 +7,13 @@ tags: tutorial, computational-chemistry, scf
 
 # SCF in Practice
 
-This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost (integrals vs diagonalization, disk vs RAM), how basis sets, XC grids, and implicit solvent enter, how jobs are started and converged, and what gradients and Hessians cost relative to the energy. For program-specific keywords and failure recipes, see the [ORCA](/2026/01/01/ORCA-tips-and-troubleshooting.html) and [Gaussian](/2026/01/01/Gaussian-tips-and-troubleshooting.html) guides.
+This post is a short, package-agnostic primer on the self-consistent field (SCF) procedure used in routine Hartree–Fock (HF) and Kohn–Sham DFT calculations. The goal is basic intuition: what the loop does, what drives the cost (integrals vs diagonalization, disk vs RAM), how basis sets, XC grids, and implicit solvent enter, how jobs are started and converged, and what gradients and Hessians cost relative to the energy. For program-specific keywords and failure recipes, see the ORCA and Gaussian guides linked below.
+
+{%
+  include tutorial-nav.html
+  peer="/2026/01/01/Gaussian-tips-and-troubleshooting.html"
+  next="/2026/01/01/ORCA-tips-and-troubleshooting.html"
+%}
 
 ## What the SCF loop is
 

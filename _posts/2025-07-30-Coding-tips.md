@@ -11,10 +11,16 @@ tags: tutorial, guidelines
 * **Software Carpentry Fundamentals**: Master basic coding practices through [Software Carpentry](https://software-carpentry.org/lessons/) and [Coderefinery](https://coderefinery.org/) workshops, covering Unix shell commands, Git version control, and essential Python programming skills. Any time spent learning is well spent! If you have never opened a terminal, read [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html) first, then the lab [Git tips](/2025/07/30/Git-tips.html) before the external version-control lessons.
 * **Beginner-friendly roadmap**: If you are starting from zero, the most useful CodeRefinery lessons are usually: [Introduction to version control](https://coderefinery.github.io/git-intro/) for Git and GitHub basics, [Collaborative distributed version control](https://coderefinery.github.io/git-collaborative/) for branching and pull requests, [Reproducible research](https://coderefinery.github.io/reproducible-research/) for environments and documentation, [Automated testing](https://coderefinery.github.io/testing/) for safer code changes, and [Modular code development type-along](https://coderefinery.github.io/modular-type-along/) for keeping projects maintainable as they grow.
 * **Scientific Computing Scripting**: Develop proficiency in scripting for scientific computing using resources from the [NSF MolSSI group's comprehensive Python tutorials](https://education.molssi.org/python_scripting_cms/aio/index.html)
-* **Deep Learning Education**: Utilize [d2l.ai resources](https://d2l.ai) for comprehensive deep learning fundamentals, including their preliminaries section and appendix of essential tools
+* **Deep Learning Education**: Work through the [d2l.ai resources](https://d2l.ai) for deep learning fundamentals, including their preliminaries section and appendix of the tools you will actually need
 * **Command Line Editors**: Use `vi` to edit files on a remote machine. [Vi and Vim Basics](/2026/01/22/Vi-and-vim-basics.html) is the lab guide, and [MIT's IAP "Missing Semester" class](https://missing.csail.mit.edu) is the longer treatment of the shell and editors.
 * **Every Day Life**: I recommend using a good IDE, such as VSCode, which also has [python tutorials](https://code.visualstudio.com/docs/python/python-tutorial) and integration with LLMs. Whatever tools you choose to use every day, you should get to know *in depth!* If you still need to install Miniconda and wire VS Code to a Conda environment on your laptop, start with the [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html) guide.
 * **Concrete rookie path**: A realistic sequence is to start with a shell crash course, then Git/GitHub, then a small reproducible project, then testing and modularization. In CodeRefinery terms, that means moving from the basic Git lessons to the reproducible research and testing materials before attempting larger research pipelines or HPC workflows.
+
+{%
+  include tutorial-nav.html
+  prereq="/2025/07/30/Git-tips.html"
+  next="/2026/10/05/Local-conda-and-vscode-setup.html"
+%}
 
 ## Python Development Standards
 * **Code Style & Quality**: We do most of our coding in python. Adhere to [PEP 8 guidelines](https://realpython.com/python-pep8/) for Python code formatting and use automated tools like Pylint, Google's yapf, black, or Sublime Text's AutoPEP8 to maintain consistent style standards
@@ -23,7 +29,7 @@ tags: tutorial, guidelines
 
 ## Project Structure & Organization
 * **Beyond Notebooks**: While Jupyter notebooks are excellent for experimental analysis and tutorials, prioritize well-organized, documented codebases for rigorous testing and reproducible research using frameworks like [cookiecutter-data-science templates](https://github.com/drivendata/cookiecutter-data-science) or [dl-chem-101](https://github.com/rociomer/dl-chem-101)
-* **Repository Management**: Utilize private repositories for continuous backups (this will save your ass at some point, I swear!)
+* **Repository Management**: Keep private repositories as a running backup (this will save your ass at some point, I swear!)
 * **Code Publication**: Before open-sourcing code, thoroughly audit repositories to remove proprietary information, passwords, or private data; consider creating clean repositories for finalized code publication in the [group's GitHub organization](https://github.com/rlaplaza-lab)
 
 ## Reproducibility & Environment Management

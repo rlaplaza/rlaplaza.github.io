@@ -2,14 +2,29 @@
 title: Linux and MobaXterm for bachelor students
 image: images/post-tutorial.jpg
 author: rlaplaza
-tags: tutorial, guidelines, beginner
+tags: tutorial, guidelines, beginner, ssh, windows
 ---
 
 # Linux and MobaXterm for bachelor students
 
-This page is the first stop if you have only ever used Windows. By the end you will be able to install MobaXterm or Ubuntu inside Windows, type basic Linux commands on your own computer, and open a remote session on the lab cluster, Agustina.
+This page is the first stop if you have only ever used Windows. By the end you will be able to install MobaXterm or Ubuntu inside Windows, type basic Linux commands on your own computer, open a remote session on the lab cluster, Agustina, and move files between your laptop and the cluster.
 
 You do not need to memorize the commands. Type them once, read what comes back, and keep this page open.
+
+The page has four parts:
+
+1. **Set up a terminal on Windows**: MobaXterm (recommended) or Ubuntu with WSL.
+2. **Learn the first commands**: folders, files, and the `vi` editor.
+3. **Talk to the cluster**: open an SSH session with MobaXterm, or with PuTTY if that is what you have.
+4. **Move files**: drag and drop in MobaXterm, or FileZilla, or `scp` once the rest feels ordinary.
+
+You only need one setup from part one. MobaXterm covers parts three and four on its own, so if you install it you can skim the PuTTY and FileZilla sections and come back to them as a reference.
+
+{%
+  include tutorial-nav.html
+  peer="/2026/01/22/linux-sysadmin-basics.html"
+  next="/2025/08/01/Using-agustina.html"
+%}
 
 ## Why the lab uses Linux
 
@@ -39,7 +54,7 @@ Three parts of the window matter:
 
 - The black (or dark) area is the terminal. You type commands there.
 - **Session**, at the top, is how you phone another computer later.
-- The left panel is a file browser. After you connect to Agustina it shows the remote files, and you can drag a file between your laptop and the cluster. You do not need it for the practice below.
+- The left panel is a file browser. After you connect to Agustina it shows the remote files, and you can drag a file between your laptop and the cluster. It does the job of a separate program such as FileZilla. You do not need it for the practice below.
 
 Your Windows Desktop is not the first place this terminal opens. MobaXterm keeps its own home folder, often `/home/mobaxterm`. Stay there while you practice, so you do not change real Windows files.
 
@@ -229,7 +244,7 @@ ls
 
 `pwd` should show a path under `/home/` with your username. `ls` shows your files on the cluster, which may be empty.
 
-The left panel should now list those remote files. Dragging a file between that panel and your computer is the easy way to move one file. You do not need another program for that.
+The left panel should now list those remote files. Dragging a file between that panel and your computer is the easy way to move one file. You do not need another program for that. If you are on PuTTY or Ubuntu instead, where there is no such panel, jump to [Moving files with FileZilla](#moving-files-with-filezilla).
 
 Leave the same way you would hang up a phone. `exit` drops one connection:
 
@@ -250,12 +265,105 @@ After that, `toa` opens Agustina in one step. Replace `username` before you past
 
 If the session waits a long time and then fails, you are probably off the network the cluster expects. Try again from the university network, then ask in the lab. Do not keep guessing passwords.
 
+## The same call with PuTTY
+
+{% include alert.html type="info" content="If you installed MobaXterm you can skip this section. MobaXterm already does everything PuTTY does, and its file panel already does what FileZilla does. Read on if your laptop has PuTTY, if someone in the lab hands you PuTTY steps, or if you would rather use the tool the [Using Agustina](/2025/08/01/Using-agustina.html) page describes." %}
+
+**PuTTY** is a free Windows program that does one thing: open an SSH window. It has no file browser, which is why it usually comes with **FileZilla** (next section) or with its own command-line companions, `pscp` and `psftp`.
+
+1. Download PuTTY from the [official download page](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). That page always points at the newest release, so bookmark it. Avoid copycat sites that bundle PuTTY with other software.
+2. Take the **64-bit x86** MSI installer, which installs PuTTY together with `pscp` and `psftp`. If you would rather not install anything, the standalone 64-bit `putty.exe` is fine too: you can keep the single file on your Desktop and run it from there.
+3. In **Host Name (or IP address)**, type `username@bridge.bifi.unizar.es`, with your real username.
+4. Scroll up in the left-hand category list to **Connection → Data** and put the same username in **Auto-login username**. PuTTY versions differ, so setting both is the safe option.
+5. Scroll back to **Session**, type `bridge` in **Saved Sessions**, and click **Save**. This stores the session so you do not retype the address.
+6. Click **Open**.
+7. The first time only, a **PuTTY Security Alert** pops up asking about the host key. Click **Accept**. It is the same "do you trust this computer" question as in MobaXterm.
+8. Type your password and press Enter. Remember that nothing appears while you type.
+
+The prompt changes. You are on the bridge. Now call Agustina, exactly as in the MobaXterm section:
+
+```bash
+ssh username@agustina.bifi.unizar.es
+```
+
+To reuse the session later, open PuTTY, double-click `bridge` under **Saved Sessions**, and it connects.
+
+PuTTY has two habits worth knowing before they surprise you:
+
+- **The window closes when the connection drops**, taking the error message with it. If that happens, reconnect and read the message before it disappears, or ask what the message said.
+- **Copying and pasting are reversed compared to Windows.** Select text with the left mouse button and it is copied immediately; right-click pastes it. `Ctrl+C` in a PuTTY window *stops a program*, it does not copy.
+
+{% include alert.html type="tip" content="PuTTY stores your password badly and never shows it again, so do not save passwords in it. Type it. When typing it gets old, the [Using Agustina](/2025/08/01/Using-agustina.html) page shows how to set up an SSH key so you log in without one." %}
+
+## Moving files with FileZilla
+
+A terminal is awkward for files you want to *see*. **FileZilla** is a free program with two panels side by side: your laptop on the left, the remote machine on the right. You select a file and click to send it. The same idea underlies MobaXterm's left panel and PuTTY's `pscp`.
+
+1. Download the **FileZilla Client** Windows installer from the [official download page](https://filezilla-project.org/download.php). Click straight past the sponsored offers, or use the "show all downloads" link to get the plain client.
+2. Install it with the defaults and open it.
+3. Click **File → Site Manager**, then **New Site**.
+4. Fill the form in:
+   - **Protocol**: `SFTP - SSH File Transfer Protocol`
+   - **Host**: `bridge.bifi.unizar.es`
+   - **Logon Type**: `Normal`
+   - **User**: your cluster username
+   - **Password**: your cluster password
+5. Click **Connect**. If it asks whether you trust the host key, tick the box and click **OK**.
+6. In the right panel, navigate to `/home/yourusername/`. That is your folder on the bridge.
+7. Drag a file from the left panel to the right panel to upload it. Double-click a file in the right panel to download it.
+
+{% include alert.html type="warning" content="The bridge is a front door, not a workspace. It has very little disk space, and files you drop there are not in your Agustina home. Use it to pass a file through, then move it on to Agustina, or work directly on Agustina from the start." %}
+
+Because the bridge sits in front of Agustina, the reliable pattern with FileZilla is two hops:
+
+1. Upload from your laptop to the bridge with the site you just made.
+2. On the bridge, in a terminal (MobaXterm, PuTTY, or Ubuntu), push the file to Agustina:
+
+```bash
+scp hello.txt username@agustina.bifi.unizar.es:
+```
+
+`scp` means "copy over SSH". The trailing `:` means "my home folder on the far machine". The reverse direction, Agustina back to the bridge, swaps the two arguments:
+
+```bash
+scp username@agustina.bifi.unizar.es:result.out .
+```
+
+The `.` at the end means "here, the folder I am standing in".
+
+If you would rather point FileZilla at Agustina in one step, and your IP is allowed to reach it directly, make a second site with **Host** `agustina.bifi.unizar.es` and the same username and password. If the connection times out, you are behind the firewall and must go through the bridge.
+
+Once you are comfortable, learn the command-line versions. They work on any machine, they need no clicks, and they are what the cluster guides assume you can read:
+
+```bash
+# from MobaXterm or Ubuntu, to the cluster
+scp hello.txt username@agustina.bifi.unizar.es:
+# from the cluster, back to your laptop ("./" means here)
+scp username@agustina.bifi.unizar.es:result.out .
+```
+
+From native Windows PowerShell, the same two commands work as written: Windows 10 and 11 ship an `ssh` / `scp` client. PuTTY's own equivalents are `pscp hello.txt username@bridge.bifi.unizar.es:` and `psftp username@bridge.bifi.unizar.es`.
+
+{% include alert.html type="tip" content="Never use FileZilla or `scp` to move a whole folder of results back and forth repeatedly, and never edit a file in place on the cluster with a graphical client. Pull it, edit it, push it back, or just edit it on the cluster with `vi`. Re-uploading a directory can quietly overwrite newer work." %}
+
+## Which tool do I use?
+
+| I want to... | MobaXterm | PuTTY + FileZilla | Ubuntu (WSL) |
+| --- | --- | --- | --- |
+| Type commands on my laptop | Local terminal | not its job | Ubuntu terminal |
+| Log in to the bridge / Agustina | **Session → SSH** | PuTTY session, then `ssh` | `ssh` |
+| Move one file | Drag to the left panel | FileZilla (or `pscp`) | `scp` |
+| Edit a file on the cluster | `vi` in the terminal | `vi` in the terminal | `vi` in the terminal |
+| Run a graphical viewer (e.g. `vmol`) | Needs an X server setup | Needs an X server setup | usually works as-is |
+
+There is no wrong column. Pick one, learn it properly, and stop switching. The [Coding Practices Guidelines](/2025/07/30/Coding-tips.html) make the same point about every tool: whatever you use every day, get to know it in depth.
+
 ## What to read next
 
 Stay in this order. Each page assumes you can already do what the previous one taught.
 
 1. [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html) repeats these commands and adds `.bashrc`, `PATH`, and small scripts.
-2. [Using Agustina](/2025/08/01/Using-agustina.html) is the cluster: the `tob` and `toa` aliases, conda, and how to submit a job.
+2. [Using Agustina](/2025/08/01/Using-agustina.html) is the cluster: the `tob` and `toa` aliases, the PuTTY login pattern, conda, and how to submit a job.
 3. [Git tips](/2025/07/30/Git-tips.html) can be done in this same terminal, whether that is MobaXterm or Ubuntu.
 4. [Vi and Vim Basics](/2026/01/22/Vi-and-vim-basics.html) is the rest of the editor you just used: moving around, changing text, and comparing files.
 5. [Coding tips](/2025/07/30/Coding-tips.html) points at the [Software Carpentry Unix shell](https://swcarpentry.github.io/shell-novice/) lessons, which are the right next practice once this page feels easy.

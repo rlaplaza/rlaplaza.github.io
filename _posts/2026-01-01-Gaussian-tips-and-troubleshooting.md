@@ -9,6 +9,13 @@ tags: tutorial, computational-chemistry, gaussian, troubleshooting
 
 This guide starts with a short tutorial on how to write and run a basic Gaussian job—input layout, parallelism and memory, and geometry optimization for minima and transition states. The second half is a troubleshooting catalog for common errors. The companion [ORCA Basics and Troubleshooting](/2026/01/01/ORCA-tips-and-troubleshooting.html) guide covers the same topics for ORCA. For background on how the SCF works in practice (scaling, integrals, guesses, convergence accelerators, and analytical gradients), see [SCF in Practice](/2026/10/05/SCF-in-practice.html). The error catalog builds on community resources, particularly [Zhe Wang's comprehensive error guide](https://wongzit.github.io/gaussian-common-errors-and-solutions/).
 
+{%
+  include tutorial-nav.html
+  prereq="/2025/08/01/Using-agustina.html"
+  peer="/2026/01/01/ORCA-tips-and-troubleshooting.html"
+  next="/2026/10/08/Molecular-visualization-with-v-vmol-xyzrender.html"
+%}
+
 > **Tip**: Use your browser's search function (Ctrl+F / Cmd+F) to quickly find specific error messages.
 
 ---

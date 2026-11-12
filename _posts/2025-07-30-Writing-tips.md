@@ -9,7 +9,13 @@ tags: tutorial, guidelines
 
 ## About
 
-This document provides a structured guide to help you write a clear, rigorous, and publishable **scientific manuscript**, especially in the **chemical sciences**. It is tailored to those using **[Overleaf](https://www.overleaf.com/)** with **[ACS](https://www.overleaf.com/latex/templates/acs-publishing-template/jngpwwcvzjtv)** or **[RSC](https://www.overleaf.com/latex/templates/rsc-article-template/fhxhhrxcqzvm)** LaTeX templates, but the core principles apply universally. Day-to-day notes and references are in the [General Guidelines](/2025/07/29/General-guidelines.html). For talks, see the [Scientific Presentation Guidelines](/2025/07/29/Presentation-tips.html).
+This document provides a structured guide to help you write a clear, rigorous, and publishable **scientific manuscript**, especially in the **chemical sciences**. It is tailored to those using **[Overleaf](https://www.overleaf.com/)** with **[ACS](https://www.overleaf.com/latex/templates/acs-publishing-template/jngpwwcvzjtv)** or **[RSC](https://www.overleaf.com/latex/templates/rsc-article-template/fhxhhrxcqzvm)** LaTeX templates, but the core principles apply universally. Day-to-day notes and references are in the [General Guidelines](/2025/07/29/General-guidelines.html).
+
+{%
+  include tutorial-nav.html
+  prereq="/2025/07/29/General-guidelines.html"
+  next="/2025/07/29/Presentation-tips.html"
+%}
 
 ---
 

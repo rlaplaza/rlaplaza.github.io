@@ -11,7 +11,14 @@ Agustina is a High Performance Computing (HPC) center. There are many such cente
 
 The main documentation of Agustina is [here](https://doc--publica-bifi-es.translate.goog/agustina/manual_agustina.html?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp), which includes account creation and basic usage. Remember that any changes you make to your `.bashrc` will be applied once you open a new terminal or run `source .bashrc`.
 
-New to the terminal? Start with [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html). It installs MobaXterm, practices the first commands on your laptop, and opens the bridge session used below. The PuTTY steps on this page are the other Windows option.
+New to the terminal? Start with [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html). It installs a terminal on Windows, practices the first commands on your laptop, walks through the same bridge login with MobaXterm or [PuTTY](/2026/11/03/Linux-and-MobaXterm.html#the-same-call-with-putty), and covers [moving files with FileZilla or `scp`](/2026/11/03/Linux-and-MobaXterm.html#moving-files-with-filezilla).
+
+{%
+  include tutorial-nav.html
+  prereq="/2026/11/03/Linux-and-MobaXterm.html"
+  peer="/2026/01/22/linux-sysadmin-basics.html"
+  next="/2026/01/01/ORCA-tips-and-troubleshooting.html"
+%}
 
 * Like most HPC centers, Agustina requires users to connect from a local network for security reasons. In other centers you must use a VPN. In Agustina, you can ssh to the login node (`agustina.bifi.unizar.es`) through a bridge node (`bridge.bifi.unizar.es`). Setting up these aliases in your `.bashrc` file will be useful:
 
@@ -29,7 +36,7 @@ That way you can jump over bridge to access Agustina using simply `toa`.
   3. Log in with your Agustina username and password.
   4. Once you are on the bridge, run `ssh username@agustina.bifi.unizar.es` to reach the login node.
 
-  If you are connecting directly and your IP is already authorized by the firewall, you can simply set the hostname to `username@agustina.bifi.unizar.es` instead. For file transfers, PuTTY's companion tools (`pscp` / `psftp`) or a graphical client like WinSCP are often the easiest alternatives to `scp` and `rsync`.
+  If you are connecting directly and your IP is already authorized by the firewall, you can simply set the hostname to `username@agustina.bifi.unizar.es` instead. For file transfers, PuTTY's companion tools (`pscp` / `psftp`) or a graphical client like FileZilla (SFTP) or WinSCP are often the easiest alternatives to `scp` and `rsync`. The bachelor guide has a [click-by-click FileZilla setup](/2026/11/03/Linux-and-MobaXterm.html#moving-files-with-filezilla) that works here too: point it at the bridge, then hop the file on to Agustina with `scp`.
 
 * Once in Agustina, you will notice that the command line interface is very plain. To improve it, you can set up a few extras in your `.bashrc` file (in your Agustina user home!):
 

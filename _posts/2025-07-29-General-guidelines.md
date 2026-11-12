@@ -1,5 +1,5 @@
 ---
-title: General tips for students 
+title: General tips for students
 image: images/post-tutorial.jpg
 author: rlaplaza
 tags: tutorial, guidelines
@@ -7,7 +7,12 @@ tags: tutorial, guidelines
 
 # General Guidelines for Master's and PhD Students
 
-Bachelor students: before the rest of the lab tutorials, start with [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html). It assumes you have only used Windows so far. The other practical tutorials are [Git](/2025/07/30/Git-tips.html), [coding](/2025/07/30/Coding-tips.html), [writing](/2025/07/30/Writing-tips.html), and [presentations](/2025/07/29/Presentation-tips.html).
+Bachelor students: before the rest of the lab tutorials, start with [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html). It assumes you have only used Windows so far, and covers PuTTY and FileZilla alongside MobaXterm. The other practical tutorials are [Git](/2025/07/30/Git-tips.html), [coding](/2025/07/30/Coding-tips.html), [writing](/2025/07/30/Writing-tips.html), and [presentations](/2025/07/29/Presentation-tips.html).
+
+{%
+  include tutorial-nav.html
+  next="/2026/11/03/Linux-and-MobaXterm.html"
+%}
 
 ## 1. Principles
 

@@ -1,0 +1,78 @@
+{% comment %}
+  "Where this fits" box for the lab tutorial series.
+
+  Usage (every argument optional; each is a post url):
+
+    {% include tutorial-nav.html
+      prereq="/2026/11/03/Linux-and-MobaXterm.html"
+      peer="/2026/01/22/Vi-and-vim-basics.html"
+      next="/2025/08/01/Using-agustina.html"
+    %}
+
+  Notes on the Liquid dialect (4.0):
+  - Rows are built with capture, not array filters, because `push` silently
+    no-ops on an empty array.
+  - Labels are written inline, not looked up by index, because Liquid cannot
+    index an array with a variable.
+  - Titles come from site.posts, so renaming a post updates every box and a
+    mistyped url renders no line rather than a wrong label.
+  - A url used by more than one slot renders once, under the strongest label
+    (prereq beats peer beats next).
+  Slot names and rendered labels differ on purpose. The labels are the words
+  the rest of the tutorials already use for each other ("next step",
+  "companion", "before this"), so the box does not introduce a fourth way of
+  saying the same thing.
+{% endcomment %}
+{% assign nav_body = "" %}
+
+{% assign nav_before_post = site.posts | where: "url", include.prereq | first %}
+{% assign nav_peer_post = site.posts | where: "url", include.peer | first %}
+{% assign nav_next_post = site.posts | where: "url", include.next | first %}
+
+{% if nav_before_post %}
+  {% capture nav_item %}
+    <li>
+      <strong>Before this</strong>:
+      <a href="{{ nav_before_post.url | relative_url }}">{{ nav_before_post.title }}</a>
+    </li>
+  {% endcapture %}
+  {% capture nav_body %}{{ nav_body }}{{ nav_item }}{% endcapture %}
+{% endif %}
+
+{% assign nav_peer_shown = false %}
+{% if nav_before_post and include.peer == include.prereq %}
+  {% assign nav_peer_shown = true %}
+{% endif %}
+{% if nav_peer_post and nav_peer_shown == false %}
+  {% capture nav_item %}
+    <li>
+      <strong>Companion</strong>:
+      <a href="{{ nav_peer_post.url | relative_url }}">{{ nav_peer_post.title }}</a>
+    </li>
+  {% endcapture %}
+  {% capture nav_body %}{{ nav_body }}{{ nav_item }}{% endcapture %}
+{% endif %}
+
+{% assign nav_next_shown = false %}
+{% if nav_before_post and include.next == include.prereq %}
+  {% assign nav_next_shown = true %}
+{% endif %}
+{% if nav_peer_post and include.next == include.peer %}
+  {% assign nav_next_shown = true %}
+{% endif %}
+{% if nav_next_post and nav_next_shown == false %}
+  {% capture nav_item %}
+    <li>
+      <strong>Next</strong>:
+      <a href="{{ nav_next_post.url | relative_url }}">{{ nav_next_post.title }}</a>
+    </li>
+  {% endcapture %}
+  {% capture nav_body %}{{ nav_body }}{{ nav_item }}{% endcapture %}
+{% endif %}
+
+{% if nav_body != "" %}
+<div class="tutorial-nav">
+  <p><strong>Where this fits</strong></p>
+  <ul>{{ nav_body }}</ul>
+</div>
+{% endif %}

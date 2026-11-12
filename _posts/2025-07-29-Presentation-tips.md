@@ -9,7 +9,13 @@ tags: tutorial, guidelines
 
 ## About
 
-This document aims to help you create effective **slides for scientific communication**, suitable for conferences, thesis defenses, candidacy exams, and other academic presentations. For the written paper, see the [Scientific Paper Writing Guidelines](/2025/07/30/Writing-tips.html). We cover the **basics**, offer **tips and tricks**, and end with a **comprehensive checklist** you should review **systematically and carefully** before presenting.
+This document aims to help you create effective **slides for scientific communication**, suitable for conferences, thesis defenses, candidacy exams, and other academic presentations. We cover the **basics**, offer **tips and tricks**, and end with a **comprehensive checklist** you should review **systematically and carefully** before presenting.
+
+{%
+  include tutorial-nav.html
+  prereq="/2025/07/30/Writing-tips.html"
+  next="/2025/07/29/General-guidelines.html"
+%}
 
 You’re encouraged to discuss your presentation’s **content and structure** with senior lab members or your supervisor once you’ve implemented these fundamentals. Doing so saves everyone time and enhances the quality of feedback.
 

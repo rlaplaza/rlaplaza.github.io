@@ -17,6 +17,13 @@ By the end you should be able to open a structure from the terminal, orient it i
 
 If you have never used a terminal, start with [Linux and MobaXterm for bachelor students](/2026/11/03/Linux-and-MobaXterm.html). For a command refresher, see [Linux Sysadmin Basics](/2026/01/22/linux-sysadmin-basics.html). If Conda or environments are unfamiliar, start with [Local Conda and VS Code Setup](/2026/10/05/Local-conda-and-vscode-setup.html).
 
+{%
+  include tutorial-nav.html
+  prereq="/2026/10/05/Local-conda-and-vscode-setup.html"
+  peer="/2026/01/01/ORCA-tips-and-troubleshooting.html"
+  next="/2025/07/30/Writing-tips.html"
+%}
+
 ## How the pieces fit together
 
 | Tool | Role | Needs a display? |
